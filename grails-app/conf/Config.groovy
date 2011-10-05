@@ -11,6 +11,8 @@
 // }
 
 
+grails.app.context = '/'
+
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
@@ -101,3 +103,11 @@ rabbitmq {
     msgs()
   }
 }
+
+
+// Application configuration
+appConf.title = 'Continuous Publishing'
+appConf.subTitle = 'Now everyone can publish ...'
+appConf.cook.exchangeName = ''
+appConf.cook.version = 1.0
+appConf.cook.routingKey = 'RepoCook'

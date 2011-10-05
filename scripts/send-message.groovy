@@ -7,7 +7,7 @@ factory.host = 'localhost'
 connection = factory.newConnection()
 channel = connection.createChannel()
 
-channel.queueDeclare('msgs', false, false, false, null)
+channel.queueDeclare('RepoCook', false, false, false, null)
 
 //Sending
 /*
@@ -18,7 +18,7 @@ println(" [x] Sent '$message'")
 
 //Receiving
 consumer = new QueueingConsumer(channel)
-channel.basicConsume('msgs', true, consumer)
+channel.basicConsume('RepoCook', true, consumer)
 
 while (true) {
 	delivery = consumer.nextDelivery()

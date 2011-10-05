@@ -11,7 +11,7 @@
     G E N E R A L
 --------------------------------------------------------------------------------- */
 body {
-	font: 12px/170% 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+	font: 13px/170% 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
 	color: #777;
 	margin: 0; padding: 0;
 	background: url(../images/bg.jpg);
@@ -198,7 +198,7 @@ input.button {
 #header h1#logo-text a {
 	position: absolute;
 	margin: 0; padding: 0 5px 0 0;
-	font: bold 55px 'Trebuchet MS', 'Helvetica Neue', Arial, Sans-Serif;
+	font: bold 48px 'Trebuchet MS', 'Helvetica Neue', Arial, Sans-Serif;
 	letter-spacing: -4px;
 	color: #333;
 	text-decoration: none;
@@ -211,7 +211,7 @@ input.button {
 	margin: 0; padding:  0 5px 0 0;
 	font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
 	font-weight: bold;
-	font-size: 11px;
+	font-size: 13px;
 	line-height: 1.8em;
 	font-style: normal;
 	letter-spacing: -.5px;
