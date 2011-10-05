@@ -15,7 +15,7 @@ class Book {
 	Date lastUpdated		//修改日期
 
 	static constraints = {
-		name (nullable: false, blank: false, size: 5..20, unique: true, matches: /[a-zA-Z0-9\-\_]+/)
+		name (nullable: false, blank: false, size: 5..30, unique: true, matches: /[a-zA-Z0-9\-\_]+/)
 		title (nullable: false, blank: false)
 		homepage (url: true)
 		description (nullable: false, blank: true)
