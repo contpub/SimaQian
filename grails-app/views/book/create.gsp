@@ -40,7 +40,7 @@
 <p>
 	<label for="type">Repository Type</label><br />
 	<g:select name="type"
-		from="${RepoType?.values()}"
+		from="${book.typeList}"
 		value="${book.type?.toString()}"
 		noSelection="['':'']" />
 </p>
