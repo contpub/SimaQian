@@ -66,7 +66,8 @@ environments {
     production {
         grails.logging.jul.usebridge = false
         grails.serverURL = "http://www.changeme.com"
-    }
+		log4j.appender.'errors.File'="/tmp/stacktrace.log"
+	}
 }
 
 // log4j configuration
