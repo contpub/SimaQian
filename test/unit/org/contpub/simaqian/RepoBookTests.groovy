@@ -16,12 +16,13 @@ class RepoBookTests {
 	 */
     void testCreate() {
     	RepoBook book = new RepoBook(
-	    	title: 'book1',
+			name: 'BookName',
+			title: 'book1',
+			description: 'test',
 	    	homepage: 'http://contpub.org/book1',
 	    	type: RepoType.GitHub,
-	    	url: 'git://test'
+	    	url: 'git://test.com'
 	    )
-	    
 	    book.save()
 
 		assertNotNull book.id
