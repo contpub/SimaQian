@@ -64,8 +64,17 @@
 
 <div id="bookshelf"><div class="inner">
 <g:each in="${books}" var="book">
-<g:link action="show" id="${book.id}"><div class="box"><span class="empty">${book.title}</span></div></g:link>
+<g:link action="show" id="${book.id}"><div class="box">
+<g:if test="${book.cover==null||book.cover.equals('')}">
+<span class="empty">${book.title}</span>
+</g:if>
+<g:else>
+<img src="${book.cover}" />
+</g:else>
+</div>
+</g:link>
 </g:each>
+<!--
 <a href="#"><div class="box"><img src="http://freeebooksearch.net/pics/ce839_java_51IJ8LZqxmL.jpg" /></div></a>
 <a href="#"><div class="box"><img src="http://freeebooksearch.net/pics/ce839_java_51IJ8LZqxmL.jpg" /></div></a>
 <a href="#"><div class="box"><img src="http://freeebooksearch.net/pics/ce839_java_51IJ8LZqxmL.jpg" /></div></a>
@@ -84,7 +93,7 @@
 <a href="#"><div class="box"><img src="http://freeebooksearch.net/pics/ce839_java_51IJ8LZqxmL.jpg" /></div></a>
 <a href="#"><div class="box"><img src="http://freeebooksearch.net/pics/ce839_java_51IJ8LZqxmL.jpg" /></div></a>
 <a href="#"><div class="box"><img src="http://freeebooksearch.net/pics/ce839_java_51IJ8LZqxmL.jpg" /></div></a>
-
+-->
 <div style="clear:both"></div>
 </div></div>
 
