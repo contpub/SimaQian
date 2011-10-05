@@ -26,7 +26,23 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:h2:prodDb"
+
+			pooled = true
+			driverClassName = "com.mysql.jdbc.Driver"
+			username = "contpub"
+			password = "contpub"
+			url = "jdbc:mysql://localhost/contpub?useUnicode=true&characterEncoding=UTF8"
+			properties {
+				minEvictableIdleTimeMillis=1800000
+				timeBetweenEvictionRunsMillis=1800000
+				numTestsPerEvictionRun=3
+				testOnBorrow=true
+				testWhileIdle=true
+				testOnReturn=true
+				validationQuery="SELECT 1"
+			}
+			
+            //url = "jdbc:h2:prodDb"
             // For MySQL production scenarios enable the following settings
 //          pooled = true
 //          properties {
