@@ -11,6 +11,9 @@ class Book {
 	
 	String urlToPdf
 	String urlToEpub
+	
+	Boolean isCooking = false	//是否正在處理轉換中
+	Integer countCook = 0		//計算
 
 	Date dateCreated		//建立日期
 	Date lastUpdated		//修改日期
