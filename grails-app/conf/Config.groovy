@@ -100,7 +100,7 @@ rabbitmq {
     consumers = 5
   }
   queues = {
-    msgs()
+    CookBack()
   }
 }
 

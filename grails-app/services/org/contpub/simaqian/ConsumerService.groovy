@@ -1,11 +1,34 @@
 package org.contpub.simaqian
 
+import groovy.json.*
+
 class ConsumerService {
 	
-	static rabbitQueue = "msgs"
+	static rabbitQueue = 'CookBack'
 	
-	void handleMessage(msg) {
-	    println "Received message: $msg"
+	void handleMessage(message) {
+		def msgPlain = new String(message)
+		
+	    println "Received message: ${msgPlain}"
+	    
+	    try {
+	    	def slurper = new JsonSlurper()
+	    	def msg = slurper.parseText(msgPlain)
+			if (msg.id) {
+				def book = RepoBook.get(msg.id)
+				if (book) {
+					if (msg.pdf) {
+						book.urlToPdf = msg.pdf
+					}
+					if (msg.epub) {
+						book.urlToEpub = msg.epub
+					}
+					book.save()
+				}
+			}
+		} catch (e) {
+			println e
+		}
 	}
 
     def serviceMethod() {

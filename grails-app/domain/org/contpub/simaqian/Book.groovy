@@ -8,6 +8,9 @@ class Book {
 	String description		//簡述書籍內容
 	String icon				//縮圖（小圖示）
 	String cover			//書籍的封面圖片（使用外部相簿位址）
+	
+	String urlToPdf
+	String urlToEpub
 
 	Date dateCreated		//建立日期
 	Date lastUpdated		//修改日期
@@ -16,5 +19,7 @@ class Book {
 		homepage (url: true)
 		icon (url: true)
 		cover (url: true)
+		urlToPdf (nullable: true)
+		urlToEpub (nullable: true)
 	}
 }

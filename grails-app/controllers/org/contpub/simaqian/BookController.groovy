@@ -1,7 +1,6 @@
 package org.contpub.simaqian
 
-import groovy.json.JsonBuilder
-import groovy.json.JsonOutput
+import groovy.json.*
 
 class BookController {
 
@@ -18,7 +17,7 @@ class BookController {
 		def json = new JsonBuilder()
 		def version = grailsApplication.config.appConf.cook.version
 		
-		json url: book.url, type: book.type, name: book.name, version: version
+		json id: book.id, url: book.url, type: book.type, name: book.name, version: version
 		
 		def routingKey = grailsApplication.config.appConf.cook.routingKey
 		def msgContent = json?.toString()
