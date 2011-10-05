@@ -14,6 +14,11 @@ class BookController {
 	
 	def cook = {
 		def book = RepoBook.get(params.id)
+		
+		book.isCooking = true
+		book.countCook ++
+		book.save()
+		
 		def json = new JsonBuilder()
 		def version = grailsApplication.config.appConf.cook.version
 		
@@ -32,10 +37,6 @@ class BookController {
 		[book: new RepoBook()]
 	}
 	
-	def update = {
-		[book: RepoBook.get(params.id)]
-	}
-
 	def save = {
 		def book = new RepoBook(params)
 
@@ -46,4 +47,26 @@ class BookController {
 			render (view: 'create', model: [book: book])
 		}
 	}
+	
+	def update = {
+		[book: RepoBook.get(params.id)]
+	}
+
+	def saveUpdate = {
+		def book = RepoBook.get(params.id)
+		
+		book.title = params.title
+		book.description = params.description
+		book.homepage = params.homepage
+		book.icon = params.icon
+		book.cover = params.cover
+		
+		if (book.save()) {
+			redirect (action: 'show', id: book.id)
+		}
+		else {
+			render (view: 'update', model: [book: book])
+		}
+	}
+
 }

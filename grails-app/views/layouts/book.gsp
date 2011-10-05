@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>${grailsApplication.config.appConf.title}</title>
+<title><g:layoutTitle default="Book" /> - ${grailsApplication.config.appConf.title}</title>
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="author" content="Erwin Aligam - styleshout.com" />
 <meta name="description" content="Site Description Here" />
@@ -9,6 +9,8 @@
 <meta name="robots" content="index, follow, noarchive" />
 <meta name="googlebot" content="noarchive" />
 <link rel="stylesheet" type="text/css" media="screen" href="${createLinkTo(dir: 'css', file: 'screen.css')}" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<g:layoutHead />
 </head>
 <body>
 <!--header -->
@@ -20,7 +22,8 @@
 	<div  id="nav">
 		<ul>
 			<li><a href="#">Home</a></li>
-			<li id="current"><a href="${createLink('/')}">Books</a></li>
+			<li id="${actionName!='create'?'current':'candidate'}"><a href="${createLink('/')}">Books</a></li>
+			<li id="${actionName=='create'?'current':'candidate'}"><a href="${createLink(action: 'create')}">Create New</a></li>
 			<li><a href="#">Support</a></li>
 			<li><a href="#">About</a></li>
 		</ul>

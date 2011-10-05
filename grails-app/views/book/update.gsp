@@ -2,14 +2,9 @@
 
 <g:renderErrors bean="${book}" />
 
-<g:form action="save">
+<g:form action="saveUpdate" id="${book.id}">
 
 <p class="no-border"><strong>Feel free to fill everything</strong></p>
-
-<p>
-	<label for="name">Name</label><br />
-	<g:textField name="name" value="${book?.name}" />
-</p>
 
 <p>
 	<label for="title">Book Title</label><br />
@@ -37,21 +32,10 @@
 	<g:textField name="cover" value="${book?.cover}" />
 </p>
 
-<p>
-	<label for="type">Repository Type</label><br />
-	<g:select name="type"
-		from="${RepoType?.values()}"
-		value="${book.type?.toString()}"
-		noSelection="['':'']" />
-</p>
-
-<p>
-	<label for="url">Repository URL</label><br />
-	<g:textField name="url" value="${book?.url}" />
-</p>
-
 <p class="no-border">
-	<g:submitButton name="create" value="Create" class="button" />
+	<g:submitButton name="create" value="Update" class="button" />
+
+	<g:link action="show" id="${book.id}">Cancel</g:link>
 </p>
 
 </g:form>

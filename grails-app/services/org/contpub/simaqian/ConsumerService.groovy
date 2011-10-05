@@ -23,6 +23,7 @@ class ConsumerService {
 					if (msg.epub) {
 						book.urlToEpub = msg.epub
 					}
+					book.isCooking = false
 					book.save()
 				}
 			}
