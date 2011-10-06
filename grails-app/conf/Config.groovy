@@ -105,6 +105,13 @@ rabbitmq {
   }
 }
 
+// Amazon S3
+aws {
+	domain = 's3.amazonaws.com'
+	accessKey = 'accessKey'
+	secretKey = 'secretKey'
+	bucketName = 'bucketName'
+}
 
 // Application configuration
 appConf.title = 'Continuous Publishing'
@@ -112,3 +119,10 @@ appConf.subTitle = 'Now everyone can publish ...'
 appConf.cook.exchangeName = ''
 appConf.cook.version = 1.0
 appConf.cook.routingKey = 'RepoCook'
+
+// Secure Passwords in private config file
+grails.config.locations = [
+	"file:${userHome}/.grails/${appName}-config.properties",
+	"file:${userHome}/.grails/${appName}-config.groovy"]
+
+

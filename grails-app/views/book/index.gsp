@@ -9,13 +9,11 @@
 	border: 1px solid black;
 	background: url(${createLinkTo(dir: 'images', file: 'bookshelf_600px.png')})
 }
-
 #bookshelf .inner {
 	border: 0;
 	margin: 55px 0 0 27px;
 	padding: 0 auto;
 }
-
 #bookshelf a {
 	border: 0;
 	padding: 0;
@@ -32,7 +30,6 @@
 	text-align: center;
 }
 #bookshelf a:hover .box {
-	background: #ffffff;
 }
 #bookshelf a .empty {
 	display: block;
@@ -64,12 +61,12 @@
 
 <div id="bookshelf"><div class="inner">
 <g:each in="${books}" var="book">
-<g:link action="show" id="${book.id}"><div class="box">
+<g:link action="show" id="${book.id}" title="${book.title}"><div class="box">
 <g:if test="${book.cover==null||book.cover.equals('')}">
 <span class="empty">${book.title}</span>
 </g:if>
 <g:else>
-<img src="${book.cover}" />
+<img src="${book.cover}" alt="${book.title}" />
 </g:else>
 </div>
 </g:link>
