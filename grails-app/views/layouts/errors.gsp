@@ -13,7 +13,7 @@
 	<meta name="keywords" content="keywords, here" />
 	<meta name="robots" content="index, follow, noarchive" />
 	<meta name="googlebot" content="noarchive" />
-	<title><g:layoutTitle default="Home" /> - ${grailsApplication.config.appConf.title}</title>
+	<title><g:layoutTitle default="Errors" /> - ${grailsApplication.config.appConf.title}</title>
 	<link rel="stylesheet" type="text/css" media="screen" href="${createLinkTo(dir: 'css', file: 'screen.css')}" />
 	<!--<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">-->
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
