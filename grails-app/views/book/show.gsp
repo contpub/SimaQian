@@ -12,6 +12,9 @@ img.book-icon {
 	width: 32px;
 	height: 32px;
 }
+table.downloads td {
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -57,26 +60,30 @@ img.book-icon {
 </table>
 
 <g:if test="${book?.isCooking==false}">
-<h3>Download</h3>
-<table width="600">
-	<g:if test="${book?.urlToPdf!=null}">
+<h3>Downloads</h3>
+
+<table width="600" class="downloads">
 	<tr>
-		<th width="100">PDF</th>
-		<td>
-			<a href="<g:createBookDownloadLink book='${book}' ext='pdf' />">${book?.name}.pdf</a>
-			<!--
-			|
-			<a href="http://docs.google.com/viewer?url=${URLEncoder.encode(book.urlToPdf)}&embedded=true" target="_blank">線上檢視</a>
-			-->
-		</td>
+		<g:if test="${book?.urlToPdf!=null}">
+			<td>
+				<a href="<g:createBookDownloadLink book='${book}' ext='pdf' />">
+					<img src="${createLinkTo(dir: 'icons', file: 'mime-pdf.png')}" alt="pdf-icon" border="0" /><br/>
+					${book?.name}.pdf
+				</a>
+				<!--
+				|
+				<a href="http://docs.google.com/viewer?url=${URLEncoder.encode(book.urlToPdf)}&embedded=true" target="_blank">線上檢視</a>
+				-->
+			</td>
+		</g:if>
+		<g:if test="${book?.urlToEpub!=null}">
+			<td>
+				<a href="<g:createBookDownloadLink book='${book}' ext='epub' />">
+					<img src="${createLinkTo(dir: 'icons', file: 'mime-epub.png')}" alt="epub-icon" border="0" /><br/>${book?.name}.epub
+				</a>
+			</td>
+		</g:if>
 	</tr>
-	</g:if>
-	<g:if test="${book?.urlToEpub!=null}">
-	<tr>
-		<th>EPUB</th>
-		<td><a href="<g:createBookDownloadLink book='${book}' ext='epub' />">${book?.name}.epub</a></td>
-	</tr>
-	</g:if>
 </table>
 <p align="right">
 <g:link action="cook" id="${book?.id}" class="clickable">Cook It</g:link> (Generate PDF, ePub, ...)

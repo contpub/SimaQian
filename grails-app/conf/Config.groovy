@@ -94,22 +94,22 @@ log4j = {
 
 // RabbitMQ configuration
 rabbitmq {
-  connectionfactory {
-    username = 'guest'
-    password = 'guest'
-    hostname = 'localhost'
-    consumers = 5
-  }
-  queues = {
-    CookBack()
-  }
+	connectionfactory {
+		username = 'guest'
+		password = 'guest'
+		hostname = 'localhost'
+		consumers = 5
+	}
+	queues = {
+		CookBack()		//CookBack is a "RoutingKey" for RepoCook callback
+	}
 }
 
 // Amazon S3
 aws {
 	domain = 's3.amazonaws.com'
-	accessKey = 'accessKey'
-	secretKey = 'secretKey'
+	accessKey = 'accessKey'			//Change this!!!
+	secretKey = 'secretKey'			//Change this!!!
 	bucketName = 'bucketName'
 }
 
