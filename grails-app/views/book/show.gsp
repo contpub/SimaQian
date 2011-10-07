@@ -15,6 +15,9 @@ img.book-icon {
 table.downloads td {
 	text-align: center;
 }
+div.advanced {
+	display: none;
+}
 </style>
 </head>
 <body>
@@ -59,6 +62,10 @@ table.downloads td {
 	</tr>
 </table>
 
+<p align="right">
+<g:link action="cook" id="${book?.id}" class="clickable">Publish Now!</g:link> (Generate PDF, ePub, ...)
+</p>
+
 <g:if test="${book?.isCooking==false}">
 <h3>Downloads</h3>
 
@@ -85,9 +92,6 @@ table.downloads td {
 		</g:if>
 	</tr>
 </table>
-<p align="right">
-<g:link action="cook" id="${book?.id}" class="clickable">Cook It</g:link> (Generate PDF, ePub, ...)
-</p>
 </g:if>
 
 <g:if test="${book?.isCooking}">
@@ -95,19 +99,23 @@ table.downloads td {
 <p>This book is printing, wait ...</p>
 </g:if>
 
-<h3>Repository</h3>
-<table width="600">
-	<tr>
-		<th width="120">Repository Type</th>
-		<td>${book?.type}</td>
-	</tr>
-	<tr>
-		<th>Repository URL</th>
-		<td>${book?.url}</td>
-	</tr>
-</table>
+<div class="advanced">
+	<h3>Repository</h3>
+	<table width="600">
+		<tr>
+			<th width="120">Repository Type</th>
+			<td>${book?.type}</td>
+		</tr>
+		<tr>
+			<th>Repository URL</th>
+			<td>${book?.url}</td>
+		</tr>
+	</table>
+</div>
 
-<g:link action="index">Back</g:link>
+<p align="right">
+<g:link action="index" class="clickable">Back</g:link>
+</p>
 
 </body>
 </html>
