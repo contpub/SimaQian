@@ -15,11 +15,21 @@ class UrlMappings {
 		"404"(controller: "errors", action: "notFound")
 		"500"(controller: "errors", action: "serverError")
 
-		"/$bookName" {
+		"/download/$bookName" {
+			controller = "book"
+			action = "download"
+			constraints {
+				//bookName (matches: /^[a-zA-Z0-9]+$/)
+				//userName(matches:/^((?!^css$)(?!^js$)(?!^images$)(?!^session$)(?!^page$)(?!^share$).)*$/)
+			}
+		}
+		
+		"/read/$bookName" {
 			controller = "book"
 			action = "lookup"
 			constraints {
-				bookName (matches:/^book:[a-zA-Z0-9]+$/)
+				//bookName (matches: /^[a-zA-Z0-9]+$/)
+				//userName(matches:/^((?!^css$)(?!^js$)(?!^images$)(?!^session$)(?!^page$)(?!^share$).)*$/)
 			}
 		}
 	}

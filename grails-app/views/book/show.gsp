@@ -27,7 +27,7 @@ img.book-icon {
 	</tr>
 	<tr>
 		<th>Permalinks</th>
-		<td>${createLink(url: book?.link, absolute: true)}</td>
+		<td><a href="<g:createBookLink book='${book}' />"><g:createBookLink book="${book}" /></a></td>
 	</tr>
 	<tr>
 		<th>Title</th>
@@ -63,21 +63,23 @@ img.book-icon {
 	<tr>
 		<th width="100">PDF</th>
 		<td>
-			<a href="${book?.urlToPdf}">${book?.name}.pdf</a>
+			<a href="<g:createBookDownloadLink book='${book}' ext='pdf' />">${book?.name}.pdf</a>
+			<!--
 			|
 			<a href="http://docs.google.com/viewer?url=${URLEncoder.encode(book.urlToPdf)}&embedded=true" target="_blank">線上檢視</a>
+			-->
 		</td>
 	</tr>
 	</g:if>
 	<g:if test="${book?.urlToEpub!=null}">
 	<tr>
 		<th>EPUB</th>
-		<td><a href="${book?.urlToEpub}">${book?.name}.epub</a></td>
+		<td><a href="<g:createBookDownloadLink book='${book}' ext='epub' />">${book?.name}.epub</a></td>
 	</tr>
 	</g:if>
 </table>
-<p>
-Click me: <g:link action="cook" id="${book?.id}">Cook (Generate PDF, ePub, ...)</g:link>
+<p align="right">
+<g:link action="cook" id="${book?.id}" class="clickable">Cook It</g:link> (Generate PDF, ePub, ...)
 </p>
 </g:if>
 

@@ -61,7 +61,7 @@
 
 <div id="bookshelf"><div class="inner">
 <g:each in="${books}" var="book">
-<a href="${createLink(url:book.link)}" title="${book.title}">
+<a href="<g:createBookLink book='${book}' />" title="${book.title}">
 <div class="box">
 <g:if test="${book.cover==null||book.cover.equals('')}">
 <span class="empty">${book.title}</span>
