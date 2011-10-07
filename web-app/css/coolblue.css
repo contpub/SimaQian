@@ -38,6 +38,20 @@ a:hover.more {
 	border: 1px solid #FF2B95;
 	background-color: #FF3399;
 }
+a:link.clickable, a:visited.clickable {
+	margin-top: 20px;
+	margin-right: 5px;
+	padding: 6px 8px;
+	border: 1px solid #2177A5;
+	background-color: #227bad;
+	text-decoration: none;
+	font-weight: bold;
+	color: #fff;
+}
+a:hover.clickable {
+	border: 1px solid #FF2B95;
+	background-color: #FF3399;
+}
 
 /* Headers */
 h1, h2, h3, h4 {

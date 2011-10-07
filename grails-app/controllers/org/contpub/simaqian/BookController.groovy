@@ -1,8 +1,15 @@
 package org.contpub.simaqian
 
 import groovy.json.*
+import org.grails.s3.S3Asset
+import org.grails.s3.S3AssetService
+import org.grails.s3.S3ClientService
+import org.jets3t.service.security.AWSCredentials
 
 class BookController {
+
+	S3AssetService s3AssetService
+	S3ClientService s3ClientService
 
 	def index = {
 		[books: RepoBook.findAll()]
@@ -72,7 +79,7 @@ class BookController {
 	def lookup = {
 		def bookName = params.bookName
 		
-		bookName = bookName?.substring(5)
+		//bookName = bookName?.substring(5)
 		def book = RepoBook.findByName(bookName)
 		
 		if (book) {
@@ -81,6 +88,37 @@ class BookController {
 		else {
 			redirect (action: 'index')
 		}
+	}
+	
+	def download = {
+		def bookName = params.bookName
 		
+		bookName = bookName.replaceFirst(~/\.[^\.]+$/, '')
+		
+		def book = RepoBook.findByName(bookName)
+		
+		if (book) {
+			def s3Service = s3ClientService.getS3(
+				grailsApplication.config.aws.accessKey,
+				grailsApplication.config.aws.secretKey
+			)
+			def awsCredentials = new AWSCredentials(
+				grailsApplication.config.aws.accessKey,
+				grailsApplication.config.aws.secretKey
+			)
+			def bucket = s3Service.getBucket(grailsApplication.config.aws.bucketName)
+			def bucketName = grailsApplication.config.aws.bucketName
+		
+			def cal = Calendar.instance
+			cal.add(Calendar.MINUTE, 5)
+			def expiryDate = cal.time
+		
+			def signedUrl = s3Service.createSignedGetUrl(bucketName, "${book.name}.pdf", awsCredentials, expiryDate, false);
+			
+			redirect (url: signedUrl)
+		}
+		else {
+			render (controller: 'errors', action: 'notFound')
+		}
 	}
 }

@@ -33,6 +33,6 @@ class ConsumerService {
 	}
 
     def serviceMethod() {
-
+		
     }
 }
