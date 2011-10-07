@@ -10,9 +10,9 @@
 			<g:if test="${session['user']}">
 				<li id="${controllerName.equals('book')&&actionName.equals('create')?'current':'candidate'}"><g:link controller="book" action="create">Publish</g:link></li>
 			</g:if>
-			<li id="${controllerName.equals('explorer')?'current':'candidate'}"><g:link controller="explorer">Explorer</g:link></li>
+			<!--<li id="${controllerName.equals('explorer')?'current':'candidate'}"><g:link controller="explorer">Explorer</g:link></li>
 			<li id="${controllerName.equals('support')?'current':'candidate'}"><g:link controller="support">Support</g:link></li>
-			<li id="${controllerName.equals('about')?'current':'candidate'}"><g:link controller="about">About</g:link></li>
+			<li id="${controllerName.equals('about')?'current':'candidate'}"><g:link controller="about">About</g:link></li>-->
 		</ul>
 	</div>
 	<p id="rss">
