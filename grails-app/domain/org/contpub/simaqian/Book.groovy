@@ -27,5 +27,8 @@ class Book {
 		urlToPdf (nullable: true)
 		urlToEpub (nullable: true)
 	}
-
+	
+	def getLink() {
+		new String("/book:${name}")
+	}
 }

@@ -11,7 +11,14 @@ import org.junit.*
 @TestFor(Book)
 class BookTests {
 
-    void testSomething() {
+	void testNewBook() {
+		def book = new Book()
+		assertNotNull book
+	}
 
-    }
+	void testBookLink() {
+		def book = new Book()
+		book.name = 'hello'
+		assertEquals '/book:hello', book.link
+	}
 }

@@ -61,7 +61,8 @@
 
 <div id="bookshelf"><div class="inner">
 <g:each in="${books}" var="book">
-<g:link action="show" id="${book.id}" title="${book.title}"><div class="box">
+<a href="${createLink(url:book.link)}" title="${book.title}">
+<div class="box">
 <g:if test="${book.cover==null||book.cover.equals('')}">
 <span class="empty">${book.title}</span>
 </g:if>
@@ -69,7 +70,7 @@
 <img src="${book.cover}" alt="${book.title}" />
 </g:else>
 </div>
-</g:link>
+</a>
 </g:each>
 <!--
 <a href="#"><div class="box"><img src="http://freeebooksearch.net/pics/ce839_java_51IJ8LZqxmL.jpg" /></div></a>

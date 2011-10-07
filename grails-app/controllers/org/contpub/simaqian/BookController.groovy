@@ -68,5 +68,19 @@ class BookController {
 			render (view: 'update', model: [book: book])
 		}
 	}
-
+	
+	def lookup = {
+		def bookName = params.bookName
+		
+		bookName = bookName?.substring(5)
+		def book = RepoBook.findByName(bookName)
+		
+		if (book) {
+			render (view: 'show', model: [book: book])
+		}
+		else {
+			redirect (action: 'index')
+		}
+		
+	}
 }
