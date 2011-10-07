@@ -15,6 +15,22 @@ environments {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:h2:mem:devDb"
+            
+            dbCreate = "update"
+			pooled = true
+			driverClassName = "com.mysql.jdbc.Driver"
+			username = "contpub"
+			password = "contpub"
+			url = "jdbc:mysql://localhost/contpub?useUnicode=true&characterEncoding=UTF8"
+			properties {
+				minEvictableIdleTimeMillis=1800000
+				timeBetweenEvictionRunsMillis=1800000
+				numTestsPerEvictionRun=3
+				testOnBorrow=true
+				testWhileIdle=true
+				testOnReturn=true
+				validationQuery="SELECT 1"
+			}
         }
     }
     test {
