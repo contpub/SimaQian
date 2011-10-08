@@ -6,6 +6,9 @@ class User {
 	String email
 	String account
 	String password
+	
+	Date dateCreated		//建立日期
+	Date lastUpdated		//修改日期
 
     static constraints = {
     	name (nullable: false, blank: false)

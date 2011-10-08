@@ -24,4 +24,10 @@ class LayoutTagLib {
 			}
 		}
 	}
+	
+	def isUser = { attr, body ->
+		if (session['user']) {
+			out << body()
+		}
+	}
 }

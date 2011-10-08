@@ -8,7 +8,7 @@
 <div id="footer-bottom">
 <p class="bottom-left">
 	&copy; 2011 <strong>Copyright &copy; StrongSoft</strong>&nbsp; &nbsp; &nbsp;
-	Powered by <strong>SimaQian</strong>&nbsp; &nbsp; &nbsp;
+	Powered by <strong>SimaQian</strong>&nbsp; &nbsp; &nbsp;<br/>
 	Design by <a href="http://www.styleshout.com/">styleshout</a>
 </p>
 <p class="bottom-right">

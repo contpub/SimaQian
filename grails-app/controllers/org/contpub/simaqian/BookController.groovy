@@ -12,15 +12,15 @@ class BookController {
 	S3ClientService s3ClientService
 
 	def index = {
-		[books: RepoBook.findAll()]
+		[books: Book.findAll()]
 	}
 
 	def show = {
-		[book: RepoBook.get(params.id)]
+		[book: Book.get(params.id)]
 	}
 	
 	def cook = {
-		def book = RepoBook.get(params.id)
+		def book = Book.get(params.id)
 		
 		book.isCooking = true
 		book.countCook ++
@@ -29,7 +29,23 @@ class BookController {
 		def json = new JsonBuilder()
 		def version = grailsApplication.config.appConf.cook.version
 		
-		json id: book.id, url: book.url, type: book.type, name: book.name, version: version
+		def contents = """
+.. ${book.title}
+   @project: ${book.title}
+   @copyright: 2011, ContPub
+   @version: 1.0
+   @release: 1.0
+   @epub_basename: ${book.name}
+   @latex_paper_size: a4
+   @latex_font_size: 12pt
+   @latex_documents_target_name: ${book.name}.tex
+   @latex_documents_title: ${book.title}
+   @latex_documents_author: ContPub
+   
+${book.contents}
+"""
+
+		json id: book.id, url: book.url, type: book.type, name: book.name, contents: contents, version: version
 		
 		def routingKey = grailsApplication.config.appConf.cook.routingKey
 		def msgContent = json?.toString()
@@ -41,14 +57,14 @@ class BookController {
 	}
 
 	def create = {
-		[book: new RepoBook()]
+		[book: new Book()]
 	}
 	
 	def save = {
-		def book = new RepoBook(params)
+		def book = new Book(params)
 
 		if (book.save()) {
-			redirect (action: 'show', id: book.id)
+			redirect (action: 'write', id: book.id)
 		}
 		else {
 			render (view: 'create', model: [book: book])
@@ -56,11 +72,11 @@ class BookController {
 	}
 	
 	def update = {
-		[book: RepoBook.get(params.id)]
+		[book: Book.get(params.id)]
 	}
 
 	def saveUpdate = {
-		def book = RepoBook.get(params.id)
+		def book = Book.get(params.id)
 		
 		book.title = params.title
 		book.description = params.description
@@ -80,7 +96,7 @@ class BookController {
 		def bookName = params.bookName
 		
 		//bookName = bookName?.substring(5)
-		def book = RepoBook.findByName(bookName)
+		def book = Book.findByName(bookName)
 		
 		if (book) {
 			render (view: 'show', model: [book: book])
@@ -95,7 +111,7 @@ class BookController {
 		
 		bookName = bookName.replaceFirst(~/\.[^\.]+$/, '')
 		
-		def book = RepoBook.findByName(bookName)
+		def book = Book.findByName(bookName)
 		
 		if (book) {
 			def s3Service = s3ClientService.getS3(
@@ -120,6 +136,23 @@ class BookController {
 		}
 		else {
 			render (controller: 'errors', action: 'notFound')
+		}
+	}
+	
+	def write = {
+		[book: Book.get(params.id)]
+	}
+	
+	def saveWrite = {
+		def book = Book.get(params.id)
+		
+		book.contents = params.contents
+		
+		if (book.save(flush: true)) {
+			redirect (action: 'write', id: book.id)
+		}
+		else {
+			render (view: 'write', model: [book: book])
 		}
 	}
 }

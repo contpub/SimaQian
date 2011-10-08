@@ -1,5 +1,11 @@
 package org.contpub.simaqian
 
+public enum RepoType {
+	EMBED,
+	GIT,
+	SVN;
+}
+
 class Book {
 	String name				//書籍名稱（代碼，例：MyBook1）
 	String title			//書籍標題
@@ -8,11 +14,16 @@ class Book {
 	String icon				//縮圖（小圖示）
 	String cover			//書籍的封面圖片（使用外部相簿位址）
 	
+	String contents			//embedded content
+	
 	String urlToPdf
 	String urlToEpub
 	
 	Boolean isCooking = false	//是否正在處理轉換中
 	Integer countCook = 0		//計算處理次數
+
+	RepoType type
+	String url
 
 	Date dateCreated		//建立日期
 	Date lastUpdated		//修改日期
@@ -26,6 +37,11 @@ class Book {
 		cover (url: true)
 		urlToPdf (nullable: true)
 		urlToEpub (nullable: true)
+    	url (url: true)
+	}
+	
+	def getTypeList() {
+		RepoType.values()
 	}
 	
 	def getLink() {

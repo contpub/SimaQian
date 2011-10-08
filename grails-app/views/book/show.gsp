@@ -42,29 +42,35 @@ div.advanced {
 	<tr>
 		<th>Description</th>
 		<td>${book?.description}</td>
-	</tr>	
-	<tr>
-		<th>Homepage</th>
-		<td>${book?.homepage}</td>
 	</tr>
+	<g:if test="${book?.homepage}">	
+		<tr>
+			<th>Homepage</th>
+			<td>${book?.homepage}</td>
+		</tr>
+	</g:if>
+	<g:if test="${book?.type}">	
+		<tr>
+			<th>Type</th>
+			<td>${book?.type}</td>
+		</tr>
+	</g:if>
 	<tr>
 		<th>Author(s)</th>
 		<td></td>
 	</tr>
 	<tr>
 		<td colspan="2">
-			<div style="text-align:right">
-			<g:link action="update" id="${book?.id}">Modify</g:link>
-			|
-			Blah
-			</div>
+			<g:isUser>
+				<div style="text-align:right">
+					<g:link action="update" id="${book?.id}" class="clickable">Modify</g:link>
+					<g:link action="write" id="${book?.id}" class="clickable">Write</g:link>
+					<g:link action="cook" id="${book?.id}" class="clickable">Publish Now!</g:link> (Generate PDF, ePub, ...)
+				</div>
+			</g:isUser>
 		</td>
 	</tr>
 </table>
-
-<p align="right">
-<g:link action="cook" id="${book?.id}" class="clickable">Publish Now!</g:link> (Generate PDF, ePub, ...)
-</p>
 
 <g:if test="${book?.isCooking==false}">
 <h3>Downloads</h3>
