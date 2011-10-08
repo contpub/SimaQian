@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Publish</title>
-<style>
+<style style="text/css">
 form #name {
 	width: 200px;
 }
