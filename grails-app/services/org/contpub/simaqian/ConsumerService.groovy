@@ -15,7 +15,7 @@ class ConsumerService {
 	    	def slurper = new JsonSlurper()
 	    	def msg = slurper.parseText(msgPlain)
 			if (msg.id) {
-				def book = RepoBook.get(msg.id)
+				def book = Book.get(msg.id)
 				if (book) {
 					if (msg.pdf) {
 						book.urlToPdf = msg.pdf
@@ -24,7 +24,7 @@ class ConsumerService {
 						book.urlToEpub = msg.epub
 					}
 					book.isCooking = false
-					book.save()
+					book.save(flush: true)
 				}
 			}
 		} catch (e) {

@@ -6,8 +6,13 @@ class LayoutTagLib {
 		out << resource(a)
 	}
 	def baseURL = {
-		out << "${request.scheme}://${request.serverName}:${request.serverPort}"
+		out << "${request.scheme}://${request.serverName}"
+		
+		if (request.serverPort != 80) {
+			out << ":${request.serverPort}"
+		}
 	}
+	
 	def createBookLink = { attr, body ->
 		out << baseURL()
 		if (attr.book) {
