@@ -107,9 +107,15 @@ ${book.contents}
 	}
 	
 	def download = {
-		def bookName = params.bookName
+		def bookNameSrc = params.bookName
 		
-		bookName = bookName.replaceFirst(~/\.[^\.]+$/, '')
+		def dotPos = bookNameSrc.lastIndexOf('.')
+
+		def fileExt = bookNameSrc.substring(dotPos)
+
+		def bookName = bookNameSrc.substring(0, dotPos)
+		
+		//bookName = bookName.replaceFirst(~/\.[^\.]+$/, '')
 		
 		def book = Book.findByName(bookName)
 		
