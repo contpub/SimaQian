@@ -34,7 +34,8 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
-        runtime 'mysql:mysql-connector-java:5.1.16'
+        runtime 'mysql:mysql-connector-java:5.1.16'	//for mysql datasource
+        runtime 'org.nuiton.jrst:jrst:1.4'			//for rst2html
     }
 
     plugins {

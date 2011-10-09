@@ -1,7 +1,5 @@
 package org.contpub.simaqian
 
-
-
 import grails.test.mixin.*
 import org.junit.*
 
@@ -19,6 +17,13 @@ class BookTests {
 	void testBookLink() {
 		def book = new Book()
 		book.name = 'hello'
-		assertEquals '/book:hello', book.link
+		assertEquals '/read/hello', book.link
+	}
+	
+	void testBookDownloadLink() {
+		def book = new Book()
+		book.name = 'hello'
+		assertEquals '/download/hello.pdf', book.downloadLink
+		assertEquals '/download/hello.pdf', book.getDownloadLink('epub')
 	}
 }
