@@ -39,4 +39,42 @@ class HomeController {
         flash.message = 'Thanks for sign-up.'
         redirect (action: 'index')
     }
+    
+	/**
+	 * Personal account management
+	 */
+	def account() {
+		def user = User.get(session['user']?.id)
+		
+		if (!user) {
+			response.sendError(403)
+			return
+		}
+		
+		[user: user]		
+	}
+	
+	/**
+	 * Save account modifications
+	 */
+	def accountSave() {
+		def user = User.get(params.id)
+		
+		if (!user) {
+			response.sendError(403)
+			return
+		}
+		
+		user.name = params.name
+		user.password = params.password
+		
+		if (user.save(flush: true)) {
+			
+		}
+		else {
+			
+		}
+		
+		render(view: 'account', model: [user: user])
+	}
 }

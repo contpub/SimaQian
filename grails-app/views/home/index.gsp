@@ -57,7 +57,8 @@
 		<div class="sidemenu">
 			<h3>Sidebar Menu</h3>
 			<ul>
-				<g:if test="${session['user']}"><li><g:link action="logout" onclick="return confirm('Are you sure???');">Logout</g:link></li></g:if>
+				<g:isUser><li><g:link action="logout" onclick="return confirm('Are you sure???');">Logout</g:link></li></g:isUser>
+				<g:isUser><li><g:link action="account">Account</g:link></li></g:isUser>
 				<li><g:link action="signup">Sign up</g:link></li>
 				<li><a href="#">Archives</a></li>
 			</ul>

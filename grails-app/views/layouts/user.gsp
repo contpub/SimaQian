@@ -1,118 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 <head>
-<title><g:layoutTitle default="Book" /> - ${grailsApplication.config.appConf.title}</title>
-<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-<meta name="author" content="Erwin Aligam - styleshout.com" />
-<meta name="description" content="Site Description Here" />
-<meta name="keywords" content="keywords, here" />
-<meta name="robots" content="index, follow, noarchive" />
-<meta name="googlebot" content="noarchive" />
-<link rel="stylesheet" type="text/css" media="screen" href="${createLinkTo(dir: 'css', file: 'screen.css')}" />
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-<g:layoutHead />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Erwin Aligam - styleshout.com" />
+	<meta name="description" content="Site Description Here" />
+	<meta name="keywords" content="keywords, here" />
+	<meta name="robots" content="index, follow, noarchive" />
+	<meta name="googlebot" content="noarchive" />
+	<title><g:layoutTitle default="Home" /> - ${grailsApplication.config.appConf.title}</title>
+	<link rel="stylesheet" type="text/css" media="screen" href="${createLinkTo(dir: 'css', file: 'screen.css')}" />
+	<!--<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">-->
+	<!--<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">-->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
+	<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
+	<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
+	<g:layoutHead/>
 </head>
 <body>
-<!--header -->
-<div id="header-wrap"><div id="header">
-	<a name="top"></a>
-	<h1 id="logo-text"><a href="#" title="">${grailsApplication.config.appConf.title}</a></h1>
-	<p id="slogan">${grailsApplication.config.appConf.subTitle}</p>
-
-	<div  id="nav">
-		<ul>
-			<li><a href="#">Home</a></li>
-			<li id="${actionName!='create'?'current':'candidate'}"><a href="${createLink('/')}">Books</a></li>
-			<li id="${actionName=='create'?'current':'candidate'}"><a href="${createLink(action: 'create')}">Publish</a></li>
-			<li><a href="#">Explorer</a></li>
-			<li><a href="#">Support</a></li>
-			<li><a href="#">About</a></li>
-		</ul>
-	</div>
-   <p id="rss">
-      <a href="#">Grab the RSS feed</a>
-   </p>
-   <form id="quick-search" method="get" action="#">
-      <fieldset class="search">
-         <label for="qsearch">Search:</label>
-         <input class="tbox" id="qsearch" type="text" name="qsearch" value="Search..." title="Start typing and hit ENTER" />
-         <button class="btn" title="Submit Search">Search</button>
-      </fieldset>
-   </form>
-<!--/header-->
-</div></div>
-	
-<!-- content-outer -->
-<div id="content-wrap" class="clear" >
-
-	<!-- content -->
-   <div id="content">
-
-   <!--main-->
-   <div id="main"><g:layoutBody /></div>
-   <!--main-->
-
-      <!-- sidebar -->
-		<div id="sidebar">
-
-      	<div class="about-me">
-
-         	<h3>我的書櫃</h3>
-		      <p>
-		      <a href="#"><img src="images/gravatar.jpg" width="40" height="40" alt="firefox" class="float-left" /></a>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.
-			   Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu
-			   posuere nunc justo tempus leo <a href="#">Learn more...</a>
-				</p>
-
-         </div>
-
-      <!-- /sidebar -->
-		</div>
-
-    <!-- content -->
-	</div>
-
-<!-- /content-out -->
-</div>
-		
-<!-- footer-outer -->
-<div id="footer-outer" class="clear"><div id="footer-wrap">
-
-<div id="gallery" class="clear">
-<h3>Flickr Photos </h3>
-<p class="thumbs">
-	<a href="#"><img src="${createLinkTo(dir: 'images', file: 'thumb.jpg')}" width="40" height="40" alt="thumbnail" /></a>
-	<a href="#"><img src="${createLinkTo(dir: 'images', file: 'thumb.jpg')}" width="40" height="40" alt="thumbnail" /></a>
-	<a href="#"><img src="${createLinkTo(dir: 'images', file: 'thumb.jpg')}" width="40" height="40" alt="thumbnail" /></a>
-	<a href="#"><img src="${createLinkTo(dir: 'images', file: 'thumb.jpg')}" width="40" height="40" alt="thumbnail" /></a>
-	<a href="#"><img src="${createLinkTo(dir: 'images', file: 'thumb.jpg')}" width="40" height="40" alt="thumbnail" /></a>
-	<a href="#"><img src="${createLinkTo(dir: 'images', file: 'thumb.jpg')}" width="40" height="40" alt="thumbnail" /></a>
-	<a href="#"><img src="${createLinkTo(dir: 'images', file: 'thumb.jpg')}" width="40" height="40" alt="thumbnail" /></a>
-	<a href="#"><img src="${createLinkTo(dir: 'images', file: 'thumb.jpg')}" width="40" height="40" alt="thumbnail" /></a>
-	<a href="#"><img src="${createLinkTo(dir: 'images', file: 'thumb.jpg')}" width="40" height="40" alt="thumbnail" /></a>
-	<a href="#"><img src="${createLinkTo(dir: 'images', file: 'thumb.jpg')}" width="40" height="40" alt="thumbnail" /></a>
-</p>
-</div>
-<!-- /footer-outer -->
-</div></div>
-
-<!-- footer-bottom -->
-<div id="footer-bottom">
-<p class="bottom-left">
-	&copy; 2010 <strong>Copyright Info</strong>&nbsp; &nbsp; &nbsp;
-	Design by <a href="http://www.styleshout.com/">styleshout</a>
-</p>
-<p class="bottom-right">
-	<a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> |
-	<a href="http://validator.w3.org/check/referer">XHTML</a>	|
-	<a href="#">Home</a> |
-	<a href="#">Sitemap</a> |
-	<a href="#">RSS Feed</a> |
-	<strong><a href="#top">Back to Top</a></strong>
-</p>
-<!-- /footer-bottom-->
-</div>
-
+	<g:applyLayout name="pageHeader"></g:applyLayout>
+	<g:applyLayout name="pageContent">
+		<g:layoutBody/>
+		<!--Sidebar define by each view-->
+		<content tag="sidebar">
+			<g:pageProperty name="page.sidebar" />
+		</content>
+	</g:applyLayout>
+	<g:applyLayout name="pageFooter"></g:applyLayout>
+	<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+	<g:javascript library="application"/>
 </body>
 </html>

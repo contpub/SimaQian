@@ -11,9 +11,9 @@ class UrlMappings {
 		'/publish' (controller: 'book', action: 'create')
 		
 		//'500' (view: '/error')
-		"403"(controller: "errors", action: "forbidden")
-		"404"(controller: "errors", action: "notFound")
-		"500"(controller: "errors", action: "serverError")
+		'403' (controller: 'errors', action: 'forbidden')
+		'404' (controller: 'errors', action: 'notFound')
+		'500' (controller: 'errors', action: 'serverError')
 
 		"/download/$bookName" {
 			controller = "book"

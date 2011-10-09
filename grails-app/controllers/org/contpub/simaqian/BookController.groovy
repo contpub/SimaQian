@@ -145,17 +145,35 @@ ${book.contents}
 		}
 	}
 	
+	/**
+	 * Change book contents (EMBED)
+	 */
 	def write = {
 		[book: Book.get(params.id)]
 	}
 	
+	/**
+	 * Save contents changes
+	 */
 	def saveWrite = {
 		def book = Book.get(params.id)
 		
 		book.contents = params.contents
 		
 		if (book.save(flush: true)) {
-			redirect (action: 'write', id: book.id)
+			
+			switch (params.save) {
+				case 'Save':
+					flash.message = "Contents saved. ${new Date().format('yyyy-MM-dd HH:mm:ss')}"
+					redirect (action: 'write', id: book.id)
+				break;
+				case 'Done':
+					redirect (action: 'show', id: book.id)
+				break;
+				case 'Publish':
+					redirect (action: 'cook', id: book.id)				
+				break;
+			}
 		}
 		else {
 			render (view: 'write', model: [book: book])

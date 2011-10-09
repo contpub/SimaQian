@@ -21,21 +21,31 @@ $(function() {
 </script>
 </head>
 <body>
-<h2>Wait a moment ...</h2>
-
-<p>
-<pre>
-正在製作 PDF, ePub 檔案，
-過程大概需要三分鐘左右，
-如果您覺得這實在太慢，
-請多多贊助頻寬、主機費用，謝謝...
-</pre>
-</p>
-
-<p>
-剩餘 <span id="countdown">30</span> 秒 ...
-</p>
-
-<g:link action="show" id="${book.id}">Back</g:link>
+	<div class="breadcrumbs">
+		<g:link action="index">Books</g:link>
+		&gt;
+		<g:link action="show" id="${book.id}">${book.title}</g:link>		
+		&gt;
+		Writing
+	</div>
+	
+	<h2>Wait a moment ...</h2>
+	
+	<p>
+		<pre>
+		正在製作 PDF, ePub 檔案，
+		過程大概需要三分鐘左右，
+		如果您覺得這實在太慢，
+		請多多贊助頻寬、主機費用，謝謝...
+		</pre>
+	</p>
+	
+	<p>
+	剩餘 <span id="countdown">30</span> 秒 ...
+	</p>
+	
+	<p align="right">
+		<g:link action="show" id="${book.id}" class="clickable">Back</g:link>
+	</p>
 </body>
 </html>
