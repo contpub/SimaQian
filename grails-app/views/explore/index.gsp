@@ -47,8 +47,6 @@
 	}
 	#bookshelf .book {
 		clear: both;
-		width: 48%;
-		display: inline-block;
 	}
 	#bookshelf h3 {
 		font-size: 1.2em;
