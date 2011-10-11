@@ -142,6 +142,6 @@ social {
 		screen_name = 'FollowContpub'
 	}
 	facebook {
-		like.href = 'http://www.facebook.com/pages/contpub/210042899063054'
+		like.href = 'http://facebook.com/contpub'
 	}
 }
