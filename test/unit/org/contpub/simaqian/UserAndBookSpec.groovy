@@ -4,13 +4,14 @@ import spock.lang.*
 import grails.plugin.spock.*
 import grails.test.mixin.*
 
-class UserAndBookSpec extends UnitSpec {
+@Mock([User, Book, UserAndBook])
+class UserAndBookSpec extends Specification {
 
     def "add books to a user"() {
 		setup:
-		mockDomain(User)
-		mockDomain(Book)
-		mockDomain(UserAndBook)
+		//mockDomain(User)
+		//mockDomain(Book)
+		//mockDomain(UserAndBook)
 		
 		when:
 		user1 = new User(user_params)
@@ -33,7 +34,6 @@ class UserAndBookSpec extends UnitSpec {
 		book1 != null
 		user1.name == user_params.name
 		link1 != null
-		UserAndBook.findByUser(user1) != null
 		user1.books != null
 		book1.users != null
 		User.findByName(user_params.name).books != null

@@ -4,11 +4,12 @@ import spock.lang.*
 import grails.plugin.spock.*
 import grails.test.mixin.*
 
-class BookSpec extends UnitSpec {
+@Mock(Book)
+class BookSpec extends Specification {
     
 	def "create a new book"() {
 		setup:
-		mockDomain(Book)
+		//mockDomain(Book)
 		
 		when:
 		new Book(
@@ -29,7 +30,7 @@ class BookSpec extends UnitSpec {
 
 	def "generate book permalinks"() {
 		setup:
-		mockDomain(Book)
+		//mockDomain(Book)
 		
 		when:
 		book.name = 'hello'
@@ -43,7 +44,7 @@ class BookSpec extends UnitSpec {
 	
 	def "generate book download links"() {
 		setup:
-		mockDomain(Book)
+		//mockDomain(Book)
 		
 		when:
 		book.name = 'hello'

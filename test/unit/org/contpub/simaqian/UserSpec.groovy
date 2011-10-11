@@ -4,14 +4,12 @@ import spock.lang.*
 import grails.plugin.spock.*
 import grails.test.mixin.*
 
-class UserSpec extends UnitSpec {
-	void mockDomain(Class cls, List lst) {
-		parent.mockDomain(cls, lst)
-	}
+@Mock(User)
+class UserSpec extends Specification {
 
 	def "create a user"() {
 		setup:
-		mockDomain(User)
+		//mockDomain(User)
 		
 		when:
 		new User(
@@ -33,7 +31,7 @@ class UserSpec extends UnitSpec {
 	
 	def "delete a user"() {
 		setup:
-		mockDomain(User)
+		//mockDomain(User)
 		
 		when:
 		new User(
