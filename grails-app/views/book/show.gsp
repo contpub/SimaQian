@@ -157,7 +157,7 @@ p.cover-image img {
 			<div class="post-meta">
 				<!--<h4>Book Info</h4>-->
 				<ul>
-					<g:if test="${userBuyBook}">
+					<g:if test="${!userBuyBook&&!book?.isPublic}">
 						<li><g:link action="addToCart" id="${book.id}">Buy This Book</g:link></li>
 					</g:if>
 					<li>${book?.name}</li>
