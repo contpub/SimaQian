@@ -30,6 +30,9 @@ class Book {
 	
 	Boolean isCooking = false	//是否正在處理轉換中
 	Integer countCook = 0		//計算處理次數
+	
+	Boolean isAvailable = false		// Default is not available
+	Boolean isVisible = true		// Default is visible
 
 	RepoType type				// Repository Type (ex. GIT, SVN)
 	String url					// Repository URL (ex. git@github.com:user/project)

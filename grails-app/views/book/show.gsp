@@ -118,15 +118,6 @@ p.cover-image img {
 					</tr>
 				</table>
 			</div>
-			
-
-			<a name="comment"></a>
-			<!-- Comments using Disqus services -->
-			<div class="comments">
-				<h3>Comments</h3>
-				<g:socialDisqus shortname="" />
-			</div>
-			
 		</div>
 		<div class="left">
 			<p class="icon">
@@ -145,6 +136,12 @@ p.cover-image img {
 			</div>
 		</div>
 	<!--end post-->
+		<a name="comment"></a>
+		<!-- Comments using Disqus services -->
+		<div class="comments">
+			<!--<h3>Comments</h3>-->
+			<g:socialDisqus shortname="" />
+		</div>
 	</div>
 	
 	<p align="right">

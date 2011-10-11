@@ -39,14 +39,14 @@ grails.project.dependency.resolution = {
 		
 		//for rst2html
 		runtime ('org.nuiton.jrst:jrst:1.4') {
-			//for rst2html
 			//transitive = false
 			//excludes "xml-apis", "saxon", "fop"
 			excludes "fop", "saxon"
 		}
 		
 		//runtime 'commons-collections:commons-collections:3.2.1'
-		//runtime "net.java.dev.jets3t:jets3t:0.8.1"
+		
+		runtime "net.java.dev.jets3t:jets3t:0.8.1"
 	}
 
     plugins {

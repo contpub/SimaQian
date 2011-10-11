@@ -5,7 +5,7 @@
 	</style>
 </head>
 <body>
-	<h2>Welcome</h2>
+	<h2>現在起，人人都可以出版</h2>
 	<p>ContPub (continuous publishing) is the easiest way to publish your own books!</p>
 	<p>ContPub （持續出版系統）是您自行出版專屬書籍的最簡易方式！</p>
 	<ol>
@@ -33,17 +33,9 @@
 	
 	<content tag="sidebar">
 		<div class="sidemenu">
-			<h3>Workflow</h3>
-			<ol>
-				<li><a href="#">Thinking</a></li>
-				<li><a href="#">Writing</a></li>
-				<li><a href="#">Publishing</a></li>
-			</ol>
-		</div>
-		<div class="sidemenu">
 			<h3>Social</h3>
 			<g:socialTwitterFollow />
-			<g:socialFacebookLike width="240" header="false" border_color="#ffffff" />
+			<g:socialFacebookLike width="240" header="false" stream="false" border_color="#ffffff" />
 		</div>
 	</content>
 </body>

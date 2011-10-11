@@ -1,24 +1,25 @@
 package org.contpub.simaqian
 
-import org.grails.s3.S3Asset
-import org.grails.s3.S3AssetService
-import org.grails.s3.S3ClientService
+import org.jets3t.service.*
+import org.jets3t.service.model.S3Object
+import org.jets3t.service.security.AWSCredentials
+import org.jets3t.service.impl.rest.httpclient.RestS3Service
 
 class StorageController {
 
-	S3AssetService s3AssetService
-	S3ClientService s3ClientService
+	//S3AssetService s3AssetService
+	//S3ClientService s3ClientService
 	
     def index() { }
     
 	def list = {
 		
-		def s3Asset = new S3Asset()
-		
-		def s3Service = s3ClientService.getS3(
+		def awsCredentials = new AWSCredentials(
 			grailsApplication.config.aws.accessKey,
 			grailsApplication.config.aws.secretKey
 		)
+		
+		def s3Service = new RestS3Service(awsCredentials)
 		
 		def bucket = s3Service.getBucket(grailsApplication.config.aws.bucketName)
 		

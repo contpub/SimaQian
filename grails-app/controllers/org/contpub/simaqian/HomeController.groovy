@@ -24,12 +24,18 @@ class HomeController {
 		redirect (action: 'index')
 	}
     
+    /*
+     * Sign-up for new registers
+     */
     def signup() {
     	def user = new User()
     	
     	[user: user]
 	}
 	
+	/**
+	 * Save sign-up form data
+	 */
     def signupSave() {
         def user = new User(params)
         if (!user.save(flush: true)) {
@@ -41,7 +47,14 @@ class HomeController {
         //redirect(action: "show", id: user.id)
         
         flash.message = 'Thanks for sign-up.'
-        redirect (action: 'index')
+        redirect (action: 'welcome')
+    }
+    
+    /**
+     * Welcome new registers
+     */
+    def welcome() {
+    	
     }
     
 	/**

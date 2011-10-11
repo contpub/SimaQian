@@ -1,17 +1,19 @@
 package org.contpub.simaqian
 
 import groovy.json.*
-import org.grails.s3.S3Asset
-import org.grails.s3.S3AssetService
-import org.grails.s3.S3ClientService
+
+import org.jets3t.service.*
+import org.jets3t.service.model.S3Object
 import org.jets3t.service.security.AWSCredentials
+import org.jets3t.service.impl.rest.httpclient.RestS3Service
 
 import org.nuiton.jrst.*
 
 class BookController {
 
-	S3AssetService s3AssetService
-	S3ClientService s3ClientService
+	// Grails S3 Services is not working
+	//S3AssetService s3AssetService
+	//S3ClientService s3ClientService
 
 	def index = {
 		[books: Book.findAll()]
@@ -119,6 +121,9 @@ ${book.contents}
 		}
 	}
 	
+	/**
+	 * Permalinks for Download Books, redirect to Amazon S3 Signed URL
+	 */
 	def download = {
 		def bookNameSrc = params.bookName
 		
@@ -133,21 +138,20 @@ ${book.contents}
 		def book = Book.findByName(bookName)
 		
 		if (book) {
-			def s3Service = s3ClientService.getS3(
-				grailsApplication.config.aws.accessKey,
-				grailsApplication.config.aws.secretKey
-			)
 			def awsCredentials = new AWSCredentials(
 				grailsApplication.config.aws.accessKey,
 				grailsApplication.config.aws.secretKey
 			)
+			
+			def s3Service = new RestS3Service(awsCredentials)
+
 			def bucket = s3Service.getBucket(grailsApplication.config.aws.bucketName)
 			def bucketName = grailsApplication.config.aws.bucketName
-		
+			
 			def cal = Calendar.instance
 			cal.add(Calendar.MINUTE, 5)
 			def expiryDate = cal.time
-		
+			
 			def signedUrl = s3Service.createSignedGetUrl(bucketName, "${book.name}.pdf", awsCredentials, expiryDate, false);
 			
 			redirect (url: signedUrl)
