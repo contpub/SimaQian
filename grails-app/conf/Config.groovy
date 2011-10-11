@@ -139,7 +139,7 @@ social {
 		shortname = 'contpub'
 	}	
 	twitter {
-		screen_name = 'contpub_org'
+		screen_name = 'FollowContpub'
 	}
 	facebook {
 		like.href = 'http://www.facebook.com/pages/contpub/210042899063054'
