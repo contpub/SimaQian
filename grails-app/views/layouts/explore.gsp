@@ -39,7 +39,7 @@
 		
 		<!--Sidebar define by each view-->
 		<content tag="sidebar">
-			<div class="sidemenu usermenu">
+			<div class="sidemenu">
 				<h3>User</h3>
 				<g:layoutUserBox />
 			</div>

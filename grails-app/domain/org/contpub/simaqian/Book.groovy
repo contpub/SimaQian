@@ -28,28 +28,37 @@ class Book {
 	String urlToPdf				// pdf url (amazon s3)
 	String urlToEpub				// epub url (amazon s3)
 	
-	Boolean isCooking = false	//是否正在處理轉換中
-	Integer countCook = 0		//計算處理次數
+	Boolean isCooking		= false		//是否正在處理轉換中
+	Integer countCook		= 0			//計算處理次數
 	
-	Boolean isAvailable = false		// Default is not available
-	Boolean isVisible = true		// Default is visible
+	Boolean isAvailable		= false		// Default is not available
+	Boolean isVisible		= true		// Default is visible
+	Boolean isPublic		= true		// Public Book => 公版書/免費書
 
-	RepoType type				// Repository Type (ex. GIT, SVN)
-	String url					// Repository URL (ex. git@github.com:user/project)
+	RepoType type = RepoType.GIT	// Repository Type (ex. GIT, SVN)
+	String url						// Repository URL (ex. git@github.com:user/project)
 
 	Date dateCreated				//建立日期
 	Date lastUpdated				//修改日期
+	
+	static hasMany = [
+		users: UserAndBook
+	]
 
 	static constraints = {
 		name (nullable: false, blank: false, size: 5..30, unique: true, matches: /[a-zA-Z0-9\-\_]+/)
 		title (nullable: false, blank: false)
-		homepage (url: true)
-		description (nullable: false, blank: true)
-		icon (url: true)
-		cover (url: true)
+		description (nullable: true, blank: true)
+		htmlDescription (nullable: true, blank: true)
+		contents (nullable: true, blank: true)
+		htmlContents (nullable: true, blank: true)
+		homepage (nullable: true, url: true)
+		icon (nullable: true, url: true)
+		cover (nullable: true, url: true)
 		urlToPdf (nullable: true)
 		urlToEpub (nullable: true)
-		url (url: true)
+		type (nullable: true)
+		url (nullable: true, url: true)
 	}
 
 	/**

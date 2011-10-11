@@ -50,6 +50,11 @@ span.required {
 		<label for="cover">Cover Image</label><br />
 		<g:textField name="cover" value="${book?.cover}" />
 	</p>
+	
+	<p>
+		<label for="isPublic">Public?</label><br/>
+		<g:checkBox name="isPublic" value="${book?.isPublic}" />
+	</p>
 
 	<p class="no-border">
 		<g:submitButton name="create" value="Update" class="button" />

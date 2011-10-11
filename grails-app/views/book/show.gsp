@@ -22,6 +22,8 @@ div.advanced {
 }
 p.download-link {
 	text-align: center;
+	width: 40%;
+	display: inline-block;
 }
 p.download-link img {
 	width: 64px;
@@ -35,6 +37,9 @@ p.cover-image img {
 }
 .sidemenu.usermenu {
 	display: none;
+}
+.comments {
+	clear: both;
 }
 </style>
 </head>
@@ -64,6 +69,32 @@ p.cover-image img {
 					<g:link action="cook" id="${book?.id}" class="clickable">Publish Now!</g:link> (Generate PDF, ePub, ...)
 				</div>
 			</g:isUser>
+			
+			<g:if test="${userBuyBook||book.isPublic}">
+				<a name="download"></a>
+				<g:if test="${book?.isCooking}">
+					<h3>Downloads</h3>
+					<p><strong>Unavailable</strong>. This book is printing, please wait ...</p>
+				</g:if>
+				<g:else>
+					<h3>Downloads</h3>
+					<g:if test="${book?.urlToPdf!=null}">
+						<p class="download-link">
+							<a href="<g:createBookDownloadLink book='${book}' ext='pdf' />">
+								<img src="${createLinkTo(dir: 'icons', file: 'mime-pdf.png')}" alt="pdf-icon" border="0" /><br/>
+								${book?.name}.pdf
+							</a>
+						</p>
+					</g:if>	
+					<g:if test="${book?.urlToEpub!=null}">
+						<p class="download-link">
+							<a href="<g:createBookDownloadLink book='${book}' ext='epub' />">
+								<img src="${createLinkTo(dir: 'icons', file: 'mime-epub.png')}" alt="epub-icon" border="0" /><br/>${book?.name}.epub
+							</a>
+						</p>
+					</g:if>
+				</g:else>
+			</g:if>
 			
 			<a name="permalink"></a>			
 			<h3>Permalinks</h3>
@@ -124,18 +155,23 @@ p.cover-image img {
 				<img src="${createLinkTo(dir: 'images', file: 'book_icon.png')}" class="book-icon" />
 			</p>
 			<div class="post-meta">
-				<h4>Book Info</h4>
+				<!--<h4>Book Info</h4>-->
 				<ul>
+					<g:if test="${userBuyBook}">
+						<li><g:link action="addToCart" id="${book.id}">Buy This Book</g:link></li>
+					</g:if>
 					<li>${book?.name}</li>
 					<li>${book?.type}</li>
 					<li class="time">${book.dateCreated.format('yyyy-MM-dd')}</li>
 					<li class="comment"><a href="#comment">Comments</a></li>
 					<li class="permalink"><a href="#permalink">Permalinks</a></li>
-					<li class="permalink"><a href="#download">Downloads</a></li>
+					<g:if test="${userBuyBook||book.isPublic}">
+						<li class="permalink"><a href="#download">Downloads</a></li>
+					</g:if>
 				</ul>
 			</div>
 		</div>
-	<!--end post-->
+	
 		<a name="comment"></a>
 		<!-- Comments using Disqus services -->
 		<div class="comments">
@@ -156,30 +192,6 @@ p.cover-image img {
 				<img src="${book?.cover}" />
 			</p>
 		</g:if>
-		
-		<a name="download"></a>
-		<g:if test="${book?.isCooking}">
-			<h3>Downloads</h3>
-			<p><strong>Unavailable</strong>. This book is printing, please wait ...</p>
-		</g:if>
-		<g:else>
-			<h3>Downloads</h3>
-			<g:if test="${book?.urlToPdf!=null}">
-				<p class="download-link">
-					<a href="<g:createBookDownloadLink book='${book}' ext='pdf' />">
-						<img src="${createLinkTo(dir: 'icons', file: 'mime-pdf.png')}" alt="pdf-icon" border="0" /><br/>
-						${book?.name}.pdf
-					</a>
-				</p>
-			</g:if>	
-			<g:if test="${book?.urlToEpub!=null}">
-				<p class="download-link">
-					<a href="<g:createBookDownloadLink book='${book}' ext='epub' />">
-						<img src="${createLinkTo(dir: 'icons', file: 'mime-epub.png')}" alt="epub-icon" border="0" /><br/>${book?.name}.epub
-					</a>
-				</p>
-			</g:if>
-		</g:else>
 
 	</content>
 

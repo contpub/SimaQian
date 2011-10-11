@@ -16,11 +16,30 @@ class BookController {
 	//S3ClientService s3ClientService
 
 	def index = {
-		[books: Book.findAll()]
+		def user = User.get(session['user']?.id)
+		
+		[books: user?.books*.book]
 	}
 
 	def show = {
-		[book: Book.get(params.id)]
+		def user = User.get(session['user']?.id)
+		def book = Book.get(params.id)
+		
+		def userBuyBook = false
+		def userOwnBook = false
+		
+		def link = UserAndBook.findByUserAndBook(user, book)
+		
+		if (link) {
+			userBuyBook = link.linkType.equals(UserAndBookLinkType.BUYER)
+			userOwnBook = link.linkType.equals(UserAndBookLinkType.OWNER)
+		}
+
+		[
+			book: book,
+			userBuyBook: userBuyBook,
+			userOwnBook: userOwnBook
+		]
 	}
 	
 	def cook = {
@@ -194,6 +213,54 @@ ${book.contents}
 		}
 		else {
 			render (view: 'write', model: [book: book])
+		}
+	}
+	
+	/**
+	 * Add a book to shopping cart
+	 */
+	def addToCart = {
+		def book = Book.get(params.id)
+		
+		if (book) {
+			//checkout
+			redirect (action: 'checkout', id: params.id)
+		}
+		else {
+			redirect (action: 'index')
+		}
+	}
+	
+	/**
+	 * Checkout
+	 */
+	def checkout = {
+		def book = Book.get(params.id)
+		[book: book]
+	}
+	
+	/**
+	 * Checkout Save
+	 */
+	def checkoutSave = {
+		def user = User.get(session['user']?.id)
+		def book = Book.get(params.id)
+		
+		if (book) {
+			def link = new UserAndBook(
+				user: user,
+				book: book
+			)
+			link.save(flush: true)
+			user.addToBooks(link)
+			book.addToUsers(link)
+			user.save(flush: true)
+			book.save(flush: true)
+			
+			redirect (action: 'show', id: book.id)
+		}
+		else {
+			redirect (action: 'index')
 		}
 	}
 }

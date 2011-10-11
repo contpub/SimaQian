@@ -23,7 +23,7 @@ class User {
 	Date lastUpdated		//修改日期
 	
 	static hasMany = [
-		books: Book
+		books: UserAndBook
 	]
 
 	static constraints = {

@@ -49,12 +49,15 @@ grails.project.dependency.resolution = {
 		runtime "net.java.dev.jets3t:jets3t:0.8.1"
 	}
 
-    plugins {
-        compile ":hibernate:$grailsVersion"
-        compile ":jquery:1.6.1.1"
-        compile ":resources:1.0.2"
-        compile ":spock:0.6-SNAPSHOT"
+	plugins {
+		compile ":hibernate:$grailsVersion"
+		compile ":jquery:1.6.1.1"
+		compile ":resources:1.0.2"
+		
+		// either compile & test require latest spock plugin, or UnitSpec compile failed
+		compile ":spock:0.6-SNAPSHOT"
+		test ":spock:0.6-SNAPSHOT"
 
-        build ":tomcat:$grailsVersion"
-    }
+		build ":tomcat:$grailsVersion"
+	}
 }
