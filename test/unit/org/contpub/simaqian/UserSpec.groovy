@@ -5,6 +5,9 @@ import grails.plugin.spock.*
 import grails.test.mixin.*
 
 class UserSpec extends UnitSpec {
+	void mockDomain(Class cls, List lst) {
+		parent.mockDomain(cls, lst)
+	}
 
 	def "create a user"() {
 		setup:
