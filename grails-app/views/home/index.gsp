@@ -2,18 +2,6 @@
 <head>
 	<title>Welcome</title>
 	<style tyle="text/css">
-		.login-form {
-			margin: 0;
-			padding: 10px;
-			width: 200px;
-			border: none;
-			background: none;
-		}
-		.login-form #email, .login-form #password {
-			font-size: 1.125em;
-			padding: .25em;
-			width: 200px;
-		}
 	</style>
 </head>
 <body>
@@ -45,23 +33,17 @@
 	
 	<content tag="sidebar">
 		<div class="sidemenu">
-			<g:if test="${!session['user']}">
-				<h3>Login</h3>
-				<g:form action="login" class="login-form">
-					E-mail: <br /><g:textField name="email" value="" /><br />
-					Password: <br /><g:passwordField name="password" value="" /><br />
-					<g:submitButton name="login" value="Login" class="button" />
-				</g:form>
-			</g:if>
+			<h3>Workflow</h3>
+			<ol>
+				<li><a href="#">Thinking</a></li>
+				<li><a href="#">Writing</a></li>
+				<li><a href="#">Publishing</a></li>
+			</ol>
 		</div>
 		<div class="sidemenu">
-			<h3>Sidebar Menu</h3>
-			<ul>
-				<g:isUser><li><g:link action="logout" onclick="return confirm('Are you sure???');">Logout</g:link></li></g:isUser>
-				<g:isUser><li><g:link action="account">Account</g:link></li></g:isUser>
-				<li><g:link action="signup">Sign up</g:link></li>
-				<li><a href="#">Archives</a></li>
-			</ul>
+			<h3>Social</h3>
+			<g:socialTwitterFollow />
+			<g:socialFacebookLike width="240" header="false" border_color="#ffffff" />
 		</div>
 	</content>
 </body>

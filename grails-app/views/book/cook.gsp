@@ -47,5 +47,17 @@ $(function() {
 	<p align="right">
 		<g:link action="show" id="${book.id}" class="clickable">Back</g:link>
 	</p>
+	
+	<content tag="sidebar">
+		<div class="sidemenu">
+			<h3>Steps</h3>
+			<ol class="steps">
+				<li>Thinking</li>
+				<li>Writing</li>
+				<li><strong>Publishing</strong></li>
+			</ol>
+		</div>
+	</content>
+
 </body>
 </html>

@@ -15,6 +15,7 @@
 	<meta name="googlebot" content="noarchive" />
 	<title><g:layoutTitle default="Home" /> - ${grailsApplication.config.appConf.title}</title>
 	<link rel="stylesheet" type="text/css" media="screen" href="${createLinkTo(dir: 'css', file: 'screen.css')}" />
+	<link rel="stylesheet" type="text/css" media="screen" href="${createLinkTo(dir: 'css', file: 'layout.css')}" />
 	<!--<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">-->
 	<!--<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">-->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
@@ -29,6 +30,11 @@
 		<g:layoutBody/>
 		<!--Sidebar define by each view-->
 		<content tag="sidebar">
+			<div class="sidemenu">
+				<h3>User</h3>
+				<g:layoutUserBox />
+			</div>
+
 			<g:pageProperty name="page.sidebar" />
 		</content>
 	</g:applyLayout>

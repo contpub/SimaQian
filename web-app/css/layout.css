@@ -1,0 +1,28 @@
+.login-form {
+	margin: 0;
+	padding: 10px;
+	width: 200px;
+	border: none;
+	background: none;
+}
+.login-form #email, .login-form #password {
+	font-size: 1.125em;
+	padding: .25em;
+	width: 200px;
+}
+.login-form .button {
+	padding: 0 10px;
+}
+.userBox img.avatar {
+	float: left;
+	margin: 5px;
+}
+.userBox ul {
+	clear: both;
+}
+.userBox .user-info {
+	padding: 5px;
+}
+.button.wide {
+	padding: 0 10px;
+}

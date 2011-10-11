@@ -8,12 +8,12 @@ grails.project.war.file = "target/${appName}.war"
 //grails.server.port.http=8000
 
 grails.project.dependency.resolution = {
-    // inherit Grails' default dependencies
-    inherits("global") {
-        // uncomment to disable ehcache
-        // excludes 'ehcache'
-    }
-    log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
+	// inherit Grails' default dependencies
+	inherits("global") {
+		// uncomment to disable ehcache
+		// excludes 'ehcache'
+	}
+    log 'warn' // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
 
     repositories {
@@ -31,17 +31,25 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
     }
-    dependencies {
-        // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-
-        runtime 'mysql:mysql-connector-java:5.1.16'	//for mysql datasource
-        runtime 'org.nuiton.jrst:jrst:1.4'			//for rst2html
-    }
+	dependencies {
+		// specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
+		
+		runtime 'mysql:mysql-connector-java:5.1.16'	//for mysql datasource
+		runtime ('org.nuiton.jrst:jrst:1.4') {
+			//for rst2html
+			//transitive = false
+			excludes "xml-apis", "saxon", "fop"
+		}
+		runtime 'commons-collections:commons-collections:3.2.1'
+		
+		runtime "net.java.dev.jets3t:jets3t:0.8.1"
+	}
 
     plugins {
         compile ":hibernate:$grailsVersion"
         compile ":jquery:1.6.1.1"
         compile ":resources:1.0.2"
+        compile ":spock:0.6-SNAPSHOT"
 
         build ":tomcat:$grailsVersion"
     }

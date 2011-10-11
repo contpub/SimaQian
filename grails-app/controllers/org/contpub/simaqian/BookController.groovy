@@ -6,6 +6,8 @@ import org.grails.s3.S3AssetService
 import org.grails.s3.S3ClientService
 import org.jets3t.service.security.AWSCredentials
 
+import org.nuiton.jrst.*
+
 class BookController {
 
 	S3AssetService s3AssetService
@@ -78,14 +80,25 @@ ${book.contents}
 	def saveUpdate = {
 		def book = Book.get(params.id)
 		
+		//println params.description
+		def descReader = new StringReader(params.description)
+		
 		book.title = params.title
 		book.description = params.description
+		book.htmlDescription = JRST.generateString(
+			JRST.TYPE_HTML_INNER_BODY,
+			descReader
+		)
 		book.homepage = params.homepage
 		book.icon = params.icon
 		book.cover = params.cover
 		
-		if (book.save()) {
-			redirect (action: 'show', id: book.id)
+		descReader.close()
+		
+		if (book.save(flush: true)) {
+			//redirect (action: 'show', id: book.id)
+			redirect (uri: "/read/${book.name}")
+			return
 		}
 		else {
 			render (view: 'update', model: [book: book])

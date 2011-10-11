@@ -89,7 +89,7 @@ span.required {
 	<content tag="sidebar">
 		<div class="sidemenu">
 			<h3>Steps</h3>
-			<ol>
+			<ol class="steps">
 				<li><strong>Thinking</strong></li>
 				<li>Writing</li>
 				<li>Publishing</li>

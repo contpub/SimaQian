@@ -16,26 +16,26 @@ grails.app.context = '/'
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
-grails.mime.types = [ html: ['text/html','application/xhtml+xml'],
-                      xml: ['text/xml', 'application/xml'],
-                      text: 'text/plain',
-                      js: 'text/javascript',
-                      rss: 'application/rss+xml',
-                      atom: 'application/atom+xml',
-                      css: 'text/css',
-                      csv: 'text/csv',
-                      all: '*/*',
-                      json: ['application/json','text/json'],
-                      form: 'application/x-www-form-urlencoded',
-                      multipartForm: 'multipart/form-data'
-                    ]
+grails.mime.types = [
+	html: ['text/html','application/xhtml+xml'],
+	xml: ['text/xml', 'application/xml'],
+	text: 'text/plain',
+	js: 'text/javascript',
+	rss: 'application/rss+xml',
+	atom: 'application/atom+xml',
+	css: 'text/css',
+	csv: 'text/csv',
+	all: '*/*',
+	json: ['application/json','text/json'],
+	form: 'application/x-www-form-urlencoded',
+	multipartForm: 'multipart/form-data'
+]
 
 // URL Mapping Cache Max Size, defaults to 5000
 //grails.urlmapping.cache.maxsize = 1000
 
 // What URL patterns should be processed by the resources plugin
 grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
-
 
 // The default codec used to encode data with ${}
 grails.views.default.codec = "none" // none, html, base64
@@ -123,6 +123,25 @@ appConf.cook.routingKey = 'RepoCook'
 // Secure Passwords in private config file
 grails.config.locations = [
 	"file:${userHome}/.grails/${appName}-config.properties",
-	"file:${userHome}/.grails/${appName}-config.groovy"]
+	"file:${userHome}/.grails/${appName}-config.groovy"
+]
 
+// Gravatar
+avatarPlugin {
+	defaultGravatarUrl='http://contpub.org/static/images/gravatar.jpg'
+	gravatarRating="G"
+}
 
+// Social features
+social {
+	// Disqus: discover your community
+	disqus {
+		shortname = 'contpub'
+	}	
+	twitter {
+		screen_name = 'contpub_org'
+	}
+	facebook {
+		like.href = 'http://www.facebook.com/pages/contpub/210042899063054'
+	}
+}

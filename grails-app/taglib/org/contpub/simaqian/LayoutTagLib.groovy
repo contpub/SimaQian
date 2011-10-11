@@ -35,4 +35,18 @@ class LayoutTagLib {
 			out << body()
 		}
 	}
+	
+	def isNotUser = { attr, body ->
+		if (!session['user']) {
+			out << body()
+		}
+	}
+	
+	def layoutLoginBox = { attr, body ->
+		out << render (template: '/_layout/loginBox', model: [])
+	}
+	
+	def layoutUserBox = { attr, body ->
+		out << render (template: '/_layout/userBox', model: [])
+	}
 }

@@ -5,17 +5,35 @@
 table {
 	clear:both;
 }
+p.icon {
+	text-align: right;
+	padding: 10px;
+	margin: 0;
+}
 img.book-icon {
 	border: 0;
-	margin: 5px;
-	float: left;
-	width: 32px;
-	height: 32px;
-}
-table.downloads td {
-	text-align: center;
+	margin: 0;
+	padding: 5px;
+	width: 64px;
+	height: 64px;
 }
 div.advanced {
+	display: none;
+}
+p.download-link {
+	text-align: center;
+}
+p.download-link img {
+	width: 64px;
+	height: 64px;
+}
+p.cover-image {
+	text-align: center;
+}
+p.cover-image img {
+	width: 150px;
+}
+.sidemenu.usermenu {
 	display: none;
 }
 </style>
@@ -28,107 +46,145 @@ div.advanced {
 		${book.title}
 	</div>
 
+	<div class="post">
+		<div class="right">			
+			<h2>${book?.title}</h2>
+			<p class="post-info">
+				Updated: ${book.lastUpdated.format('yyyy-MM-dd')}
+			</p>
+			
+			<div class="description">
+				<!--${book?.description}-->
+				${book?.htmlDescription}
+			</div>
+			<g:isUser>
+				<div style="text-align:right">
+					<g:link action="update" id="${book?.id}" class="clickable">Modify</g:link>
+					<g:link action="write" id="${book?.id}" class="clickable">Write</g:link>
+					<g:link action="cook" id="${book?.id}" class="clickable">Publish Now!</g:link> (Generate PDF, ePub, ...)
+				</div>
+			</g:isUser>
+			
+			<a name="permalink"></a>			
+			<h3>Permalinks</h3>
+			<p><a href="<g:createBookLink book='${book}' />"><g:createBookLink book="${book}" /></a></p>
 
-	<img src="${createLinkTo(dir: 'images', file: 'book_icon.png')}" class="book-icon" />
-	
-	<h2>${book?.title}</h2>
-	
-	<table width="600">
-		<tr>
-			<th width="100">Name</th>
-			<td>${book?.name}</td>
-		</tr>
-		<tr>
-			<th>Permalinks</th>
-			<td><a href="<g:createBookLink book='${book}' />"><g:createBookLink book="${book}" /></a></td>
-		</tr>
-		<tr>
-			<th>Title</th>
-			<td>${book?.title}</td>
-		</tr>
-		<tr>
-			<th>Description</th>
-			<td>${book?.description}</td>
-		</tr>
-		<g:if test="${book?.homepage}">	
-			<tr>
-				<th>Homepage</th>
-				<td>${book?.homepage}</td>
-			</tr>
-		</g:if>
-		<g:if test="${book?.type}">	
-			<tr>
-				<th>Type</th>
-				<td>${book?.type}</td>
-			</tr>
-		</g:if>
-		<tr>
-			<th>Author(s)</th>
-			<td></td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<g:isUser>
-					<div style="text-align:right">
-						<g:link action="update" id="${book?.id}" class="clickable">Modify</g:link>
-						<g:link action="write" id="${book?.id}" class="clickable">Write</g:link>
-						<g:link action="cook" id="${book?.id}" class="clickable">Publish Now!</g:link> (Generate PDF, ePub, ...)
-					</div>
-				</g:isUser>
-			</td>
-		</tr>
-	</table>
-	
-	<g:if test="${book?.isCooking==false}">
-	<h3>Downloads</h3>
-	
-	<table width="600" class="downloads">
-		<tr>
-			<g:if test="${book?.urlToPdf!=null}">
-				<td>
-					<a href="<g:createBookDownloadLink book='${book}' ext='pdf' />">
-						<img src="${createLinkTo(dir: 'icons', file: 'mime-pdf.png')}" alt="pdf-icon" border="0" /><br/>
-						${book?.name}.pdf
-					</a>
-					<!--
-					|
-					<a href="http://docs.google.com/viewer?url=${URLEncoder.encode(book.urlToPdf)}&embedded=true" target="_blank">線上檢視</a>
-					-->
-				</td>
-			</g:if>
-			<g:if test="${book?.urlToEpub!=null}">
-				<td>
-					<a href="<g:createBookDownloadLink book='${book}' ext='epub' />">
-						<img src="${createLinkTo(dir: 'icons', file: 'mime-epub.png')}" alt="epub-icon" border="0" /><br/>${book?.name}.epub
-					</a>
-				</td>
-			</g:if>
-		</tr>
-	</table>
-	</g:if>
-	
-	<g:if test="${book?.isCooking}">
-	<h3>Unavailable</h3>
-	<p>This book is printing, wait ...</p>
-	</g:if>
-	
-	<div class="advanced">
-		<h3>Repository</h3>
-		<table width="600">
-			<tr>
-				<th width="120">Repository Type</th>
-				<td>${book?.type}</td>
-			</tr>
-			<tr>
-				<th>Repository URL</th>
-				<td>${book?.url}</td>
-			</tr>
-		</table>
+			<div class="share-box clear">
+				<h4>Share This</h4>
+				<ul>
+					<li><a title="RSS" href="index.html" rel="nofollow">
+					<img alt="RSS" title="RSS" src="${createLinkTo(dir: 'images', file: 'rss_32.png')}" /></a>
+					</li>
+					<li><a title="del.icio.us" href="index.html" rel="nofollow">
+					<img alt="del.icio.us" title="del.icio.us" src="${createLinkTo(dir: 'images', file: 'delicious_32.png')}" /></a>
+					</li>
+					<li><a title="StumbleUpon" href="index.html" rel="nofollow">
+					<img alt="StumbleUpon" title="StumbleUpon" src="${createLinkTo(dir: 'images', file: 'stumbleupon_32.png')}" /></a>
+					</li>
+					<li><a title="Digg" href="index.html" rel="nofollow">
+					<img alt="Digg" title="Digg" src="${createLinkTo(dir: 'images', file: 'digg_32.png')}" /></a>
+					</li>
+					<li><a title="Facebook" href="index.html" rel="nofollow">
+					<img alt="Facebook" title="Facebook" src="${createLinkTo(dir: 'images', file: 'facebook_32.png')}" /></a>
+					</li>
+					<li><a title="Twitter" href="index.html" rel="nofollow">
+					<img alt="Twitter" title="Twitter" src="${createLinkTo(dir: 'images', file: 'twitter_32.png')}" /></a>
+					</li>
+					<li><a title="Technorati" href="index.html" rel="nofollow">
+					<img alt="Technorati" title="Technorati" src="${createLinkTo(dir: 'images', file: 'technorati_32.png')}" /></a>
+					</li>
+					<li><a title="NewsVine" href="index.html" rel="nofollow">
+					<img alt="NewsVine" title="NewsVine" src="${createLinkTo(dir: 'images', file: 'newsvine_32.png')}" /></a>
+					</li>
+					<li><a title="LinkedIn" href="index.html" rel="nofollow">
+					<img alt="LinkedIn" title="LinkedIn" src="${createLinkTo(dir: 'images', file: 'linkedin_32.png')}" /></a>
+					</li>
+					<li><a title="E-mail this story to a friend!" href="index.html" rel="nofollow">
+					<img alt="E-mail this story to a friend!" title="E-mail this story to a friend!" src="${createLinkTo(dir: 'images', file: 'email_32.png')}" /></a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="advanced">
+				<h3>Repository</h3>
+				<table width="400">
+					<tr>
+						<th width="120">Repository Type</th>
+						<td>${book?.type}</td>
+					</tr>
+					<tr>
+						<th>Repository URL</th>
+						<td>${book?.url}</td>
+					</tr>
+				</table>
+			</div>
+			
+
+			<a name="comment"></a>
+			<!-- Comments using Disqus services -->
+			<div class="comments">
+				<h3>Comments</h3>
+				<g:socialDisqus shortname="" />
+			</div>
+			
+		</div>
+		<div class="left">
+			<p class="icon">
+				<img src="${createLinkTo(dir: 'images', file: 'book_icon.png')}" class="book-icon" />
+			</p>
+			<div class="post-meta">
+				<h4>Book Info</h4>
+				<ul>
+					<li>${book?.name}</li>
+					<li>${book?.type}</li>
+					<li class="time">${book.dateCreated.format('yyyy-MM-dd')}</li>
+					<li class="comment"><a href="#comment">Comments</a></li>
+					<li class="permalink"><a href="#permalink">Permalinks</a></li>
+					<li class="permalink"><a href="#download">Downloads</a></li>
+				</ul>
+			</div>
+		</div>
+	<!--end post-->
 	</div>
 	
 	<p align="right">
 		<g:link action="index" class="clickable">Back</g:link>
 	</p>
+
+	<content tag="sidebar">
+	
+		<g:if test="${book?.cover}">
+			<a name="cover"></a>
+			<p class="cover-image">
+				<img src="${book?.cover}" />
+			</p>
+		</g:if>
+		
+		<a name="download"></a>
+		<g:if test="${book?.isCooking}">
+			<h3>Downloads</h3>
+			<p><strong>Unavailable</strong>. This book is printing, please wait ...</p>
+		</g:if>
+		<g:else>
+			<h3>Downloads</h3>
+			<g:if test="${book?.urlToPdf!=null}">
+				<p class="download-link">
+					<a href="<g:createBookDownloadLink book='${book}' ext='pdf' />">
+						<img src="${createLinkTo(dir: 'icons', file: 'mime-pdf.png')}" alt="pdf-icon" border="0" /><br/>
+						${book?.name}.pdf
+					</a>
+				</p>
+			</g:if>	
+			<g:if test="${book?.urlToEpub!=null}">
+				<p class="download-link">
+					<a href="<g:createBookDownloadLink book='${book}' ext='epub' />">
+						<img src="${createLinkTo(dir: 'icons', file: 'mime-epub.png')}" alt="epub-icon" border="0" /><br/>${book?.name}.epub
+					</a>
+				</p>
+			</g:if>
+		</g:else>
+
+	</content>
 
 </body>
 </html>

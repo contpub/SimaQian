@@ -36,12 +36,6 @@ form .form-controls li .button {
 	width: 100%;
 	height: 100%;
 }
-.steps {
-	font-size: 1.25em;
-}
-.steps strong {
-	color: blue;
-}
 </style>
 <script type="text/javascript">
 $(function() {
@@ -116,8 +110,8 @@ $(function() {
 		<div class="sidemenu">
 			<h3>Steps</h3>
 			<ol class="steps">
-				<li><strong>Thinking</strong></li>
-				<li>Writing</li>
+				<li>Thinking</li>
+				<li><strong>Writing</strong></li>
 				<li>Publishing</li>
 			</ol>
 		</div>

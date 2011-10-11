@@ -1,5 +1,7 @@
 package org.contpub.simaqian
 
+import org.nuiton.jrst.*
+
 class HomeController {
 
     def index() { }
@@ -9,9 +11,11 @@ class HomeController {
 		if (user) {
 			session['user'] = user
 			redirect (action: 'index')
+			return
 		}
 		else {
 			redirect (action: 'index')
+			return
 		}
 	}
 	
@@ -65,9 +69,21 @@ class HomeController {
 			return
 		}
 		
-		user.name = params.name
-		user.password = params.password
+		def descReader = new StringReader(params.description)
 		
+		user.name = params.name
+		user.description = params.description
+		user.htmlDescription = JRST.generateString(
+			JRST.TYPE_HTML_INNER_BODY,
+			descReader
+		)
+		user.homepage = params.homepage
+		user.blog = params.blog
+		
+		if (params.password) {
+			user.password = params.password
+		}
+						
 		if (user.save(flush: true)) {
 			
 		}

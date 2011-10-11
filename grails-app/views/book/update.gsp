@@ -32,10 +32,9 @@ span.required {
 	</p>
 
 	<p>
-		<label for="description">Brief Description</label><br />
+		<label for="description">Brief Description</label> (reStructuredText)<br />
 		<g:textArea name="description" value="${book?.description}" />
-	</p>
-
+	</p>	
 
 	<p>
 		<label for="homepage">Homepage</label><br />
