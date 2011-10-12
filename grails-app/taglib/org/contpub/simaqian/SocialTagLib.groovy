@@ -4,7 +4,11 @@ class SocialTagLib {
 	def socialDisqus = { attr, body ->
 		out << render (
 			template: '/_social/disqus',
-			model: [shortname: grailsApplication.config.social.disqus.shortname]
+			model: [
+				shortname: grailsApplication.config.social.disqus.shortname,
+				identifier: attr.identifier?attr.identifier:'',
+				url: attr.url?attr.url:''
+			]
 		)
 	}
 	

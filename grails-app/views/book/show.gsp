@@ -2,7 +2,7 @@
 <head>
     <meta property="og:title" content="${book?.title}"/>
     <meta property="og:type" content="book"/>
-    <meta property="og:url" content="http://contpub.org${book.link}"/>
+    <meta property="og:url" content="${createBookLink(book: book)}"/>
     <meta property="og:image" content="http://contpub.org/static/images/book_icon.png"/>
     <meta property="og:site_name" content="ContPub"/>
     <meta property="fb:admins" content="contpub"/>
@@ -47,6 +47,8 @@
 	}
 	.comments {
 		clear: both;
+		width: 80%;
+		margin: 0 auto;
 	}
 	.description pre, .description code {
 		width: 98%;
@@ -194,7 +196,7 @@
 		<!-- Comments using Disqus services -->
 		<div class="comments">
 			<!--<h3>Comments</h3>-->
-			<g:socialDisqus shortname="" />
+			<g:socialDisqus identifier="book-${book?.name}" url="${createBookLink(book: book)}" />
 		</div>
 	</div>
 	

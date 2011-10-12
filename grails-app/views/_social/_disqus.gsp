@@ -1,6 +1,8 @@
 <div id="disqus_thread"></div>
 <script type="text/javascript">
 	var disqus_shortname = '${shortname}'; 
+	var disqus_identifier = '${identifier}';
+	var disqus_url = '${url}';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
