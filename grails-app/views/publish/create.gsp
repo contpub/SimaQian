@@ -50,8 +50,6 @@
 		<g:hiddenField name="icon" value="" />
 		<g:hiddenField name="cover" value="" />
 		<g:hiddenField name="contents" value="" />
-		<g:hiddenField name="htmlContents" value="" />
-		<g:hiddenField name="htmlDescription" value="" />
 
 		<!--
 		<p>

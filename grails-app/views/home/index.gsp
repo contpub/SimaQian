@@ -35,7 +35,7 @@
 		<div class="sidemenu">
 			<h3>Social</h3>
 			<g:socialTwitterFollow />
-			<g:socialFacebookLike width="240" header="false" stream="false" border_color="#ffffff" />
+			<g:socialFacebookLikeBox width="240" header="false" stream="false" borderColor="#ffffff" />
 		</div>
 	</content>
 </body>

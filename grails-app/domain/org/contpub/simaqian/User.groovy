@@ -11,7 +11,6 @@ class User {
 	String password		// Password
 	
 	String description		// User's self introduction
-	String htmlDescription	// HTML output for description
 	
 	String homepage		// Homepage URL (About)
 	String blog			// Blog URL
@@ -34,7 +33,6 @@ class User {
 		lastLogin (nullable: true)
 		lastUserAgent (nullable: true)
 		description (nullable: true)
-		htmlDescription (nullable: true)
 		homepage (nullable: true, url: true)
 		blog (nullable: true, url: true)
 	}

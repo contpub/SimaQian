@@ -11,22 +11,42 @@ class SocialTagLib {
 	def socialTwitterFollow = { attr, body ->
 		out << render (
 			template: '/_social/twitterFollow',
-			model: [screen_name: grailsApplication.config.social.twitter.screen_name]
+			model: [screenName: grailsApplication.config.social.twitter.screenName]
+		)
+	}
+
+	def socialFacebookSDK = { attr, body ->
+		out << render (
+			template: '/_social/facebookSDK',
+			model: []
 		)
 	}
 	
-	def socialFacebookLike = { attr, body ->
+	def socialFacebookLikeBox = { attr, body ->
 		out << render (
-			template: '/_social/facebookLike',
+			template: '/_social/facebookLikeBox',
 			model: [
 				href: grailsApplication.config.social.facebook.like.href,
 				width: attr.width?attr.width:292,
 				height: attr.height?attr.height:590,
 				header: attr.header?attr.header:true,
 				stream: attr.stream?attr.stream:true,
-				show_faces: attr.show_faces?attr.show_faces:true,
+				showFaces: attr.showFaces?attr.showFaces:true,
 				colorscheme: attr.colorscheme?attr.colorscheme:'light',
-				border_color: attr.border_color?attr.border_color:''
+				borderColor: attr.borderColor?attr.borderColor:''
+			]
+		)
+	}
+	
+	def socialFacebookLikeButton = { attr, body ->
+		out << render (
+			template: '/_social/facebookLikeButton',
+			model: [
+				href: attr.href?attr.href:'',
+				send: attr.send?attr.send:true,
+				layout: attr.layout?attr.layout:'standard',
+				width: attr.width?attr.width:450,
+				showFaces: attr.showFaces?attr.showFaces:true
 			]
 		)
 	}

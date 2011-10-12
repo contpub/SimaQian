@@ -7,15 +7,23 @@ class HomeController {
     def index() { }
     
     def login() {
-    	def user = User.findByEmailAndPassword(params.email, params.password)
+    	def users = User.withCriteria {
+    		or {
+    			eq ('email', params.email)
+    			eq ('account', params.email)
+    		}
+    		eq ('password', params.password)
+    	}
+    	
+    	def user = users.size() > 0? users[0]: null
+    	
 		if (user) {
 			session['user'] = user
 			redirect (action: 'index')
-			return
 		}
 		else {
+			flash.loginErrors = 'E-mail or password not correct.'
 			redirect (action: 'index')
-			return
 		}
 	}
 	
@@ -86,10 +94,6 @@ class HomeController {
 		
 		user.name = params.name
 		user.description = params.description
-		user.htmlDescription = JRST.generateString(
-			JRST.TYPE_HTML_INNER_BODY,
-			descReader
-		)
 		user.homepage = params.homepage
 		user.blog = params.blog
 		

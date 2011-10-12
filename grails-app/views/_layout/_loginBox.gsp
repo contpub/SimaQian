@@ -5,4 +5,7 @@
 		<g:submitButton name="login" value="Login" class="button" />
 		or <g:link controller="home" action="signup">Sign up</g:link>
 	</g:form>
+	<g:if test="${flash.loginErrors}">
+		<p class="errors">${flash.loginErrors}</p>
+	</g:if>
 </div>

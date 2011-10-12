@@ -1,47 +1,64 @@
 <html>
 <head>
-<title>${book?.title}</title>
-<style type="text/css">
-table {
-	clear:both;
-}
-p.icon {
-	text-align: right;
-	padding: 10px;
-	margin: 0;
-}
-img.book-icon {
-	border: 0;
-	margin: 0;
-	padding: 5px;
-	width: 64px;
-	height: 64px;
-}
-div.advanced {
-	display: none;
-}
-p.download-link {
-	text-align: center;
-	width: 40%;
-	display: inline-block;
-}
-p.download-link img {
-	width: 64px;
-	height: 64px;
-}
-p.cover-image {
-	text-align: center;
-}
-p.cover-image img {
-	width: 150px;
-}
-.sidemenu.usermenu {
-	display: none;
-}
-.comments {
-	clear: both;
-}
-</style>
+    <meta property="og:title" content="${book?.title}"/>
+    <meta property="og:type" content="book"/>
+    <meta property="og:url" content="http://contpub.org${book.link}"/>
+    <meta property="og:image" content="http://contpub.org/static/images/book_icon.png"/>
+    <meta property="og:site_name" content="ContPub"/>
+    <meta property="fb:admins" content="contpub"/>
+    <meta property="og:description" content="${book?.description}"/>
+	<title>${book?.title}</title>
+	<style type="text/css">
+	table {
+		clear:both;
+	}
+	p.icon {
+		text-align: right;
+		padding: 10px;
+		margin: 0;
+	}
+	img.book-icon {
+		border: 0;
+		margin: 0;
+		padding: 5px;
+		width: 64px;
+		height: 64px;
+	}
+	div.advanced {
+		display: none;
+	}
+	p.download-link {
+		text-align: center;
+		width: 40%;
+		display: inline-block;
+	}
+	p.download-link img {
+		width: 64px;
+		height: 64px;
+	}
+	p.cover-image {
+		text-align: center;
+	}
+	p.cover-image img {
+		width: 150px;
+	}
+	.sidemenu.usermenu {
+		display: none;
+	}
+	.comments {
+		clear: both;
+	}
+	.description pre, .description code {
+		width: 98%;
+		height: 100%;
+		background: none;
+		border: 0;
+	}
+	.fb-like {
+		margin: 10px 25px;
+	}
+	</style>
+	<g:socialFacebookSDK />
 </head>
 <body>
 
@@ -58,10 +75,13 @@ p.cover-image img {
 				Updated: ${book.lastUpdated.format('yyyy-MM-dd')}
 			</p>
 			
-			<div class="description">
-				<!--${book?.description}-->
-				${book?.htmlDescription}
-			</div>
+			<p class="description">
+				${book?.description?.replace("\n", "<br />")}
+			</p>
+			
+			<g:socialFacebookLikeButton />
+
+			
 			<g:isUser>
 				<div style="text-align:right">
 					<g:link controller="publish" action="update" id="${book?.id}" class="clickable">Modify</g:link>

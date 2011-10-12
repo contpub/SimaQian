@@ -20,10 +20,8 @@ class Book {
 	String cover					//書籍的封面圖片（使用外部相簿位址）
 
 	String description			//簡述書籍內容
-	String htmlDescription		//簡述書籍內容
 
 	String contents				//embedded content
-	String htmlContents			//embedded content to HTML
 	
 	String urlToPdf				// pdf url (amazon s3)
 	String urlToEpub			// epub url (amazon s3)
@@ -49,9 +47,7 @@ class Book {
 		name (nullable: false, blank: false, size: 5..30, unique: true, matches: /[a-zA-Z0-9\-\_]+/)
 		title (nullable: false, blank: false)
 		description (nullable: true, blank: true)
-		htmlDescription (nullable: true, blank: true)
 		contents (nullable: true, blank: true)
-		htmlContents (nullable: true, blank: true)
 		homepage (nullable: true, url: true)
 		icon (nullable: true, url: true)
 		cover (nullable: true, url: true)

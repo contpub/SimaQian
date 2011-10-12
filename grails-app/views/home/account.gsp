@@ -42,8 +42,6 @@
 	</script>
 </head>
 <body>
-	<h2>My Account</h2>
-
 	<g:renderErrors bean="${user}" />
 
 	<g:form action="accountSave" id="${user.id}">
