@@ -48,7 +48,7 @@
 	.comments {
 		clear: both;
 		width: 80%;
-		margin: 0 auto;
+		margin: 15px auto;
 	}
 	.description pre, .description code {
 		width: 98%;
