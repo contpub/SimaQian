@@ -26,3 +26,7 @@
 .button.wide {
 	padding: 0 10px;
 }
+img.ajax-loader {
+	background: none;
+	border: 0;
+}

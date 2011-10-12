@@ -64,9 +64,7 @@ p.cover-image img {
 			</div>
 			<g:isUser>
 				<div style="text-align:right">
-					<g:link action="update" id="${book?.id}" class="clickable">Modify</g:link>
-					<g:link action="write" id="${book?.id}" class="clickable">Write</g:link>
-					<g:link action="cook" id="${book?.id}" class="clickable">Publish Now!</g:link> (Generate PDF, ePub, ...)
+					<g:link controller="publish" action="update" id="${book?.id}" class="clickable">Modify</g:link>
 				</div>
 			</g:isUser>
 			

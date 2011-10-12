@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title>Update book info</title>
+	<style style="text/css">
+	form #name {
+		width: 200px;
+	}
+	form #title, form #description, form #homepage, form #icon, form #cover {
+		width: 100%;
+	}
+	form #description {
+		height: 150px;
+	}
+	span.required {
+		color: red;
+		font-weight: bold;
+	}
+	</style>
+</head>
+<body>
+	<g:render template="breadcrumbs" model="[title: 'Basic settings']" />
+	
+	<div id="post">
+		<div class="right">
+			<g:renderErrors bean="${book}" />
+
+			<g:form action="saveUpdate" id="${book.id}">
+
+			<p class="no-border"><strong>Feel free to fill everything</strong></p>
+
+			<p>
+				<label for="title">Book Title</label><br />
+				<g:textField name="title" value="${book?.title}" />
+			</p>
+
+			<p>
+				<label for="description">Brief Description</label> (reStructuredText)<br />
+				<g:textArea name="description" value="${book?.description}" />
+			</p>	
+
+			<p>
+				<label for="homepage">Homepage</label><br />
+				<g:textField name="homepage" value="${book?.homepage}" />
+			</p>
+
+			<p>
+				<label for="icon">Icon</label><br />
+				<g:textField name="icon" value="${book?.icon}" />
+			</p>
+
+			<p>
+				<label for="cover">Cover Image</label><br />
+				<g:textField name="cover" value="${book?.cover}" />
+			</p>
+	
+			<p>
+				<label>Options</label><br/>
+				<g:checkBox name="isPublic" value="${book?.isPublic}" />
+				<label for="isPublic">Public? (開放式電子書)</label>
+			</p>
+
+			<p class="no-border">
+				<g:submitButton name="create" value="Update" class="button wide" />
+				<g:createLinkToBook book="${book}">Cancel</g:createLinkToBook>
+			</p>
+
+			</g:form>
+		</div>
+		<div class="left">
+			<g:render template="leftMenu"></g:render>
+		</div>
+	</div>
+</body>
+</html>

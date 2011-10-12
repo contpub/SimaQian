@@ -24,12 +24,24 @@
 	<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 	<g:layoutHead/>
 	<style type="text/css">
-		.steps {
-			font-size: 1.25em;
-		}
-		.steps strong {
-			color: blue;
-		}
+	.steps {
+		font-size: 1.25em;
+	}
+	.steps strong {
+		color: blue;
+	}
+	p.icon {
+		text-align: right;
+		padding: 10px;
+		margin: 0;
+	}
+	img.book-icon {
+		border: 0;
+		margin: 0;
+		padding: 5px;
+		width: 64px;
+		height: 64px;
+	}
 	</style>
 </head>
 <body>

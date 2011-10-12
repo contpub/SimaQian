@@ -1,21 +1,22 @@
 <html>
 <head>
 <title>Publish</title>
-<style style="text/css">
-form #name {
-	width: 200px;
-}
-form #title, form #description {
-	width: 100%;
-}
-form #description {
-	height: 150px;
-}
-span.required {
-	color: red;
-	font-weight: bold;
-}
-</style>
+	<meta name="current.action" content="publish" />
+	<style style="text/css">
+	form #name {
+		width: 200px;
+	}
+	form #title, form #description {
+		width: 100%;
+	}
+	form #description {
+		height: 150px;
+	}
+	span.required {
+		color: red;
+		font-weight: bold;
+	}
+	</style>
 </head>
 <body>
 
@@ -49,6 +50,8 @@ span.required {
 		<g:hiddenField name="icon" value="" />
 		<g:hiddenField name="cover" value="" />
 		<g:hiddenField name="contents" value="" />
+		<g:hiddenField name="htmlContents" value="" />
+		<g:hiddenField name="htmlDescription" value="" />
 
 		<!--
 		<p>

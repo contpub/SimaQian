@@ -1,13 +1,9 @@
 package org.contpub.simaqian
 
-import groovy.xml.MarkupBuilder
-
 class DebugController {
 
 	def index() {
-		def writer = new StringWriter()
-		def xml = new MarkupBuilder(writer)
-		xml.debug() {
+		render (contentType: 'text/xml', encoding: 'UTF-8') {
 			Runtime () {
 				TotalMemory {
 					bytes (Runtime.runtime.totalMemory())
@@ -26,10 +22,5 @@ class DebugController {
 				}
 			}
 		}
-		render (
-			text: writer.toString(),
-			contentType: 'text/xml',
-			encoding: 'UTF-8'
-		)
 	}
 }

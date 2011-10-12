@@ -26,7 +26,7 @@ class Book {
 	String htmlContents			//embedded content to HTML
 	
 	String urlToPdf				// pdf url (amazon s3)
-	String urlToEpub				// epub url (amazon s3)
+	String urlToEpub			// epub url (amazon s3)
 	
 	Boolean isCooking		= false		//是否正在處理轉換中
 	Integer countCook		= 0			//計算處理次數
