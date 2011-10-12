@@ -151,21 +151,33 @@ class BookController {
 	def embed = {
 		//Implement SecretKey here!!!
 		def book = Book.get(params.id)
-		def contents = """
-.. ${book.title}
-   @project: ${book.title}
+		def contents = ''
+		
+		if (params.index!=null) {
+
+			contents = """.. ${book.title}
+   @project: ${book.name}
+   @title: ${book.title}
    @copyright: 2011, ContPub
+   @authors: 2011, ContPub
    @version: 1.0
    @release: 1.0
-   @epub_basename: ${book.name}
-   @latex_paper_size: a4
-   @latex_font_size: 12pt
-   @latex_documents_target_name: ${book.name}.tex
-   @latex_documents_title: ${book.title}
-   @latex_documents_author: ContPub
+   @language: zh_TW
    
-${book.contents}
+####
+${book.title}
+####
+
+.. toctree::
+   :maxdepth: 1
+
+   contents
 """
+		}
+		else {
+			contents = book.contents
+		}
+		
 		render (contentType: 'text/plain', encoding: 'UTF-8', text: contents)
 	}
 }
