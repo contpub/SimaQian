@@ -1,9 +1,15 @@
 package org.contpub.simaqian
 
 class SocialTagLib {
-	def socialDisqus = { attr, body ->
+	
+	static namespace = 'socialTag'
+	
+	/**
+	 * <socialTag:disqus identifier="book-${book?.name}" url="${createBookLink(book: book)}" />
+	 */
+	def disqus = { attr, body ->
 		out << render (
-			template: '/_social/disqus',
+			template: '/tagLib/social/disqus',
 			model: [
 				shortname: grailsApplication.config.social.disqus.shortname,
 				identifier: attr.identifier?attr.identifier:'',
@@ -12,23 +18,23 @@ class SocialTagLib {
 		)
 	}
 	
-	def socialTwitterFollow = { attr, body ->
+	def twitterFollow = { attr, body ->
 		out << render (
-			template: '/_social/twitterFollow',
+			template: '/tagLib/social/twitterFollow',
 			model: [screenName: grailsApplication.config.social.twitter.screenName]
 		)
 	}
 
-	def socialFacebookSDK = { attr, body ->
+	def facebookSDK = { attr, body ->
 		out << render (
-			template: '/_social/facebookSDK',
+			template: '/tagLib/social/facebookSDK',
 			model: []
 		)
 	}
 	
-	def socialFacebookLikeBox = { attr, body ->
+	def facebookLikeBox = { attr, body ->
 		out << render (
-			template: '/_social/facebookLikeBox',
+			template: '/tagLib/social/facebookLikeBox',
 			model: [
 				href: grailsApplication.config.social.facebook.like.href,
 				width: attr.width?attr.width:292,
@@ -42,9 +48,9 @@ class SocialTagLib {
 		)
 	}
 	
-	def socialFacebookLikeButton = { attr, body ->
+	def facebookLikeButton = { attr, body ->
 		out << render (
-			template: '/_social/facebookLikeButton',
+			template: '/tagLib/social/facebookLikeButton',
 			model: [
 				href: attr.href?attr.href:'',
 				send: attr.send?attr.send:true,
@@ -52,6 +58,32 @@ class SocialTagLib {
 				width: attr.width?attr.width:450,
 				showFaces: attr.showFaces?attr.showFaces:true
 			]
+		)
+	}
+	
+	/**
+	 * <socialTag:websnapr href="${url}" size="t|s" />
+	 */
+	def websnapr = { attr, body ->
+		if (attr.href) {
+			out << render (
+				template: '/tagLib/social/websnapr',
+				model: [
+					apiKey: grailsApplication.config.social.websnapr.API_KEY,
+					href: attr.href,
+					size: attr.size?attr.size:'s'
+				]
+			)
+		}
+	}
+	
+	/**
+	 * <socialTag:websnaprSDK />
+	 */
+	def websnaprSDK = { attr, body ->
+		out << render (
+			template: '/tagLib/social/websnaprSDK',
+			model: []
 		)
 	}
 }

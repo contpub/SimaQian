@@ -34,8 +34,8 @@
 	<content tag="sidebar">
 		<div class="sidemenu">
 			<h3>Social</h3>
-			<g:socialTwitterFollow />
-			<g:socialFacebookLikeBox width="240" header="false" stream="false" borderColor="#ffffff" />
+			<socialTag:twitterFollow />
+			<socialTag:facebookLikeBox width="240" header="false" stream="false" borderColor="#ffffff" />
 		</div>
 	</content>
 </body>

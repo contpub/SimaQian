@@ -16,9 +16,13 @@ class BookController {
 	//S3ClientService s3ClientService
 
 	def index = {
-		def user = User.get(session['user']?.id)
+		//def user = User.get(session['user']?.id)
 		
-		[books: user?.books*.book]
+		//[books: user?.books*.book]
+		
+		def books = Book.findAll()
+		
+		[books: books]
 	}
 
 	def show = {

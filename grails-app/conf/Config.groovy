@@ -120,6 +120,8 @@ appConf.cook.exchangeName = ''
 appConf.cook.version = 1.0
 appConf.cook.routingKey = 'RepoCook'
 
+
+
 // Secure Passwords in private config file
 grails.config.locations = [
 	"file:${userHome}/.grails/${appName}-config.properties",
@@ -134,6 +136,10 @@ avatarPlugin {
 
 // Social features
 social {
+	// websnapr
+	websnapr {
+		API_KEY = 'qSm102nbhm1e'
+	}
 	// Disqus: discover your community
 	disqus {
 		shortname = 'contpub'

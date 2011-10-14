@@ -33,3 +33,31 @@ img.ajax-loader {
 p.errors {
 	color: red;
 }
+
+
+/* Book Cover Images */
+div.book-coverImage {
+	background: transparent;
+	border: 0;
+	width: 100px;
+	height: 115px;
+	text-align: center;
+}
+div.book-coverImage img.cover-image {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	height: 115px;
+	border-radius: 0;
+	background: none;
+}
+div.book-coverImage span.embedded-title {
+	width: 78px;
+	height: 105px;
+	position: absolute;
+	margin-left: 15px;
+	margin-top: 10px;
+	color: white;
+	text-shadow: 2px 2px 2px #000;
+	overflow: hidden;
+}

@@ -15,7 +15,15 @@
 		color: red;
 		font-weight: bold;
 	}
+	div.book-coverImage {
+		margin: 10px;
+		float: left;
+	}
+	.clear-both {
+		clear:both;
+	}
 	</style>
+	<socialTag:websnaprSDK />
 </head>
 <body>
 	<g:render template="breadcrumbs" model="[title: 'Basic settings']" />
@@ -41,6 +49,7 @@
 			<p>
 				<label for="homepage">Homepage</label><br />
 				<g:textField name="homepage" value="${book?.homepage}" />
+				<socialTag:websnapr href="${book?.homepage}" size="s" />
 			</p>
 
 			<p>
@@ -50,7 +59,10 @@
 
 			<p>
 				<label for="cover">Cover Image</label><br />
-				<g:textField name="cover" value="${book?.cover}" />
+				<bookTag:coverImage book="${book}" />
+				<!--<g:textField name="cover" value="${book?.cover}" />-->
+				<g:link action="cover">Upload</g:link> a new cover image
+				<div class="clear-both"></div>
 			</p>
 	
 			<p>
@@ -61,7 +73,7 @@
 
 			<p class="no-border">
 				<g:submitButton name="create" value="Update" class="button wide" />
-				<g:createLinkToBook book="${book}">Cancel</g:createLinkToBook>
+				<bookTag:link book="${book}">Cancel</bookTag:link>
 			</p>
 
 			</g:form>

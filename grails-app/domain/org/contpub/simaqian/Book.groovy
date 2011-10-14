@@ -65,16 +65,16 @@ class Book {
 	}
 	
 	/**
-	 * Generate Permalinks for Books
+	 * Generate permalinks for a book
 	 */
 	def getLink() {
 		new String("/read/${name}")
 	}
 	
 	/**
-	 * Generate Download Links for Books
+	 * Generate download links for a book
 	 */
-	def getDownloadLink(ext = 'pdf') {
-		new String("/download/${name}.${ext}")
+	def getDownloadLink(type = 'pdf') {
+		new String("/download/${name}.${type}")
 	}
 }

@@ -2,7 +2,7 @@
 <head>
     <meta property="og:title" content="${book?.title}"/>
     <meta property="og:type" content="book"/>
-    <meta property="og:url" content="${createBookLink(book: book)}"/>
+    <meta property="og:url" content="${bookTag.createLink(book: book)}"/>
     <meta property="og:image" content="http://contpub.org/static/images/book_icon.png"/>
     <meta property="og:site_name" content="ContPub"/>
     <meta property="fb:admins" content="contpub"/>
@@ -36,12 +36,6 @@
 		width: 64px;
 		height: 64px;
 	}
-	p.cover-image {
-		text-align: center;
-	}
-	p.cover-image img {
-		width: 150px;
-	}
 	.sidemenu.usermenu {
 		display: none;
 	}
@@ -60,7 +54,7 @@
 		margin: 10px 25px;
 	}
 	</style>
-	<g:socialFacebookSDK />
+	<socialTag:facebookSDK />
 </head>
 <body>
 
@@ -81,9 +75,8 @@
 				${book?.description?.replace("\n", "<br />")}
 			</p>
 			
-			<g:socialFacebookLikeButton />
+			<socialTag:facebookLikeButton />
 
-			
 			<g:isUser>
 				<div style="text-align:right">
 					<g:link controller="publish" action="update" id="${book?.id}" class="clickable">Modify</g:link>
@@ -100,25 +93,26 @@
 					<h3>Downloads</h3>
 					<g:if test="${book?.urlToPdf!=null}">
 						<p class="download-link">
-							<a href="<g:createBookDownloadLink book='${book}' ext='pdf' />">
+							<bookTag:downloadLink book="${book}" type="pdf">
 								<img src="${createLinkTo(dir: 'icons', file: 'mime-pdf.png')}" alt="pdf-icon" border="0" /><br/>
 								${book?.name}.pdf
-							</a>
+							</bookTag:downloadLink>
 						</p>
 					</g:if>	
 					<g:if test="${book?.urlToEpub!=null}">
 						<p class="download-link">
-							<a href="<g:createBookDownloadLink book='${book}' ext='epub' />">
+							<bookTag:downloadLink book="${book}" type="epub">
 								<img src="${createLinkTo(dir: 'icons', file: 'mime-epub.png')}" alt="epub-icon" border="0" /><br/>${book?.name}.epub
-							</a>
+							</bookTag:downloadLink>
 						</p>
 					</g:if>
 				</g:else>
 			</g:if>
-			
 			<a name="permalink"></a>			
 			<h3>Permalinks</h3>
-			<p><a href="<g:createBookLink book='${book}' />"><g:createBookLink book="${book}" /></a></p>
+			<p>
+				<bookTag:link book="${book}">${bookTag.createLink(book: book)}</bookTag:link>
+			</p>
 
 			<div class="share-box clear">
 				<h4>Share This</h4>
@@ -196,7 +190,6 @@
 		<!-- Comments using Disqus services -->
 		<div class="comments">
 			<!--<h3>Comments</h3>-->
-			<g:socialDisqus identifier="book-${book?.name}" url="${createBookLink(book: book)}" />
 		</div>
 	</div>
 	
@@ -208,9 +201,9 @@
 	
 		<g:if test="${book?.cover}">
 			<a name="cover"></a>
-			<p class="cover-image">
-				<img src="${book?.cover}" />
-			</p>
+			<div style="text-align: center">
+				<bookTag:coverImage book="${book}" />
+			</div>
 		</g:if>
 
 	</content>
