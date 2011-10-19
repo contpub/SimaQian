@@ -9,6 +9,9 @@ import org.jets3t.service.impl.rest.httpclient.RestS3Service
 
 import org.nuiton.jrst.*
 
+/**
+ * Book Controller
+ */
 class BookController {
 
 	// Grails S3 Services is not working
@@ -157,7 +160,7 @@ class BookController {
 		def book = Book.get(params.id)
 		def contents = ''
 		
-		if (params.index!=null) {
+		if (params.index != null) {
 
 			contents = """.. ${book.title}
    @project: ${book.name}
@@ -179,9 +182,9 @@ ${book.title}
 """
 		}
 		else {
-			contents = book.contents
+			contents = book.profile?.contents
 		}
 		
-		render (contentType: 'text/plain', encoding: 'UTF-8', text: contents)
+		render (contentType: 'text/plain', encoding: 'UTF-8', text: contents?contents:'')
 	}
 }

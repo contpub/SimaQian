@@ -8,19 +8,20 @@ import grails.test.mixin.*
 @TestMixin(CommonTagLib)
 @Mock(Book)
 class BookTagLibSpec extends Specification {
-
-    def "test "() {
+	def bookTag = new BookTagLib()
+	def commonTag = new CommonTagLib()
+	
+    def "test createLink"() {
 		setup:
 		
 		when:
-		book.name = 'test123'
+		new Book(name: name, title: title).save()
 
 		then:
-		bookTag.createLink(book: book)		| '/read/test123'
+		bookTag.createLink(book: Book.findByName(name)).toString().endsWith('/read/'+name)
 
 		where:
-		bookTag = new BookTagLib()
-		commonTag = new CommonTagLib()
-		book = new Book()
+		name = 'test123'
+		title = 'test 123'
     }
 }

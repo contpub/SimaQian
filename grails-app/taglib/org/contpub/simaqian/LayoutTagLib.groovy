@@ -4,14 +4,9 @@ class LayoutTagLib {
 	
 	static namespace = 'layoutTag'
 	
-	def loginBox = { attr, body ->
-		out << render (template: '/_layout/loginBox', model: [])
-	}
-	
-	def userBox = { attr, body ->
-		out << render (template: '/_layout/userBox', model: [])
-	}
-	
+	/**
+	 * Display Loading image for ajax events or page redirection
+	 */
 	def ajaxLoaderImage = { attr, body ->
 		def fileName = 'ajax-loader'
 		
@@ -26,4 +21,17 @@ class LayoutTagLib {
 		out << "<img src=\"${src}\" title=\"loading\" alt=\"ajax-loader\" border=\"0\" class=\"ajax-loader\" />"
 	}
 	
+	/**
+	 * Display Login widgets
+	 */
+	def loginBox = { attr, body ->
+		out << render (template: '/tagLib/layout/loginBox', model: [])
+	}
+
+	/**
+	 * Display User widgets
+	 */	
+	def userBox = { attr, body ->
+		out << render (template: '/tagLib/layout/userBox', model: [])
+	}
 }

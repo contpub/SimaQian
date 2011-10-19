@@ -32,7 +32,7 @@
 	
 	<div id="post">
 		<div class="right">
-			<g:layoutAjaxLoaderImage type="bar" />
+			<layoutTag:ajaxLoaderImage type="bar" />
 	
 			<p>Following files are publishing ...</p>
 			<ul>

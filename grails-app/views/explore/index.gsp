@@ -24,6 +24,18 @@
 		font-weight: bold;
 		color: #888888;
 	}
+	#bookshelf .description {
+		/*max-height: 110px;
+		overflow: hidden;*/
+	}
+	#bookshelf .book {
+		border-bottom: 1px solid #dadada;
+		width: 95%;
+	}
+	#bookshelf .book-command {
+		clear: both;
+		text-align: right;
+	}
 	div.book-coverImage {
 		float: left;
 		margin: 15px;
@@ -38,8 +50,11 @@
 					<bookTag:coverImage book="${book}" />
 				</bookTag:link>
 				<div class="book-info">
-					<h3 class="title">${book?.title}</h3>
-					<p class="description">${book?.description}</p>
+					<bookTag:link book="${book}"><h3 class="title">${book?.title}</h3></bookTag:link>
+					<p class="description">${book?.profile?.simpleDescription}</p>
+				</div>
+				<div class="book-command">
+					<bookTag:link book="${book}">Read more ...</bookTag:link>
 				</div>
 			</div>
 		</g:each>

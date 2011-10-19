@@ -19,13 +19,13 @@
 					<g:message code="layout.header.book.label" default="Books"/>
 				</g:link>
 			</li>
-			<g:isUser>
+			<userTag:isLogin>
 				<li id="${pageProperty(name: 'meta.current.action')=='publish'?'current':'candidate'}">
 					<g:link controller="publish">
 						<g:message code="layout.header.publish.label" default="Publish"/>
 					</g:link>
 				</li>
-			</g:isUser>
+			</userTag:isLogin>
 		</ul>
 	</div>
 	<p id="rss">

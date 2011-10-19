@@ -1,6 +1,6 @@
 <div class="book-coverImage">
-	<g:if test="${book.cover}">
-		<img class="cover-image" src="${book?.cover}" alt="${book?.title}" />
+	<g:if test="${book?.profile?.cover}">
+		<img class="cover-image" src="${book?.profile?.cover}" alt="${book?.title}" />
 	</g:if>
 	<g:else>
 		<span class="embedded-title">${book?.title}</span>

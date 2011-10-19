@@ -43,24 +43,23 @@
 
 			<p>
 				<label for="description">Brief Description</label> (reStructuredText)<br />
-				<g:textArea name="description" value="${book?.description}" />
+				<g:textArea name="description" value="${book?.profile?.description}" />
 			</p>	
 
 			<p>
 				<label for="homepage">Homepage</label><br />
-				<g:textField name="homepage" value="${book?.homepage}" />
-				<socialTag:websnapr href="${book?.homepage}" size="s" />
+				<g:textField name="homepage" value="${book?.profile?.homepage}" />
+				<socialTag:websnapr href="${book?.profile?.homepage}" size="s" />
 			</p>
 
 			<p>
 				<label for="icon">Icon</label><br />
-				<g:textField name="icon" value="${book?.icon}" />
+				<g:textField name="icon" value="${book?.profile?.icon}" />
 			</p>
 
 			<p>
 				<label for="cover">Cover Image</label><br />
 				<bookTag:coverImage book="${book}" />
-				<!--<g:textField name="cover" value="${book?.cover}" />-->
 				<g:link action="cover">Upload</g:link> a new cover image
 				<div class="clear-both"></div>
 			</p>

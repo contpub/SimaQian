@@ -93,9 +93,14 @@ class HomeController {
 		def descReader = new StringReader(params.description)
 		
 		user.name = params.name
-		user.description = params.description
-		user.homepage = params.homepage
-		user.blog = params.blog
+		
+		if (!user.profile) {
+			user.profile = new UserProfile(user: user)
+		}
+		
+		user.profile.description = params.description
+		user.profile.homepage = params.homepage
+		user.profile.blog = params.blog
 		
 		if (params.password) {
 			user.password = params.password

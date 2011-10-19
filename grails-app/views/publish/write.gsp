@@ -100,7 +100,7 @@
 				<p>
 					<label for="contents">Book contents</label><br />
 					<div id="fullscreen-area">
-						<g:textArea name="contents" value="${book?.contents}" />
+						<g:textArea name="contents" value="${book?.profile?.contents}" />
 					</div>
 				</p>
 

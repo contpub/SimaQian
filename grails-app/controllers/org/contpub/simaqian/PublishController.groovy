@@ -2,18 +2,42 @@ package org.contpub.simaqian
 
 import groovy.json.JsonBuilder
 
+/**
+ * Publish Controller
+ */
 class PublishController {
 
+	UserService userService
+
+	/**
+	 * Homepage, redirect to create a book
+	 */
     def index() {
     	redirect (action: 'create')
     }
     
+    /**
+     * Create a new book.
+     */
 	def create = {
-		[book: new Book()]
+		def book = new Book()
+		
+		def userAccount = session['user']?.account
+		def dateString = new Date().format('yyyyMMdd')
+		
+		book.name = "${userAccount}-${dateString}"
+		
+		[book: book]
 	}
 	
+	/**
+	 * Save a new book.
+	 */
 	def save = {
-		def book = new Book(params)
+		def book = new Book()
+		
+		book.name = params.name
+		book.title = params.title
 		
 		book.validate()
 
@@ -25,24 +49,33 @@ class PublishController {
 		}
 	}
 	
+	/**
+	 * Update a book by id.
+	 */
 	def update = {
 		[book: Book.get(params.id)]
 	}
 
+	/**
+	 * Save a updated book.
+	 */
 	def saveUpdate = {
 		def book = Book.get(params.id)
 		
-		//println params.description
-		def descReader = new StringReader(params.description)
-		
 		book.title = params.title
-		book.description = params.description
-		book.homepage = params.homepage
-		book.icon = params.icon
-		book.cover = params.cover
 		book.isPublic = (params.isPublic!=null)
 		
-		descReader.close()
+		def profile = book.profile
+		
+		if (!profile) {
+			profile = new BookProfile(book: book)
+			book.profile = profile
+		}
+		
+		profile.description = params.description
+		profile.homepage = params.homepage
+		profile.icon = params.icon
+		profile.cover = params.cover
 		
 		if (book.save(flush: true)) {
 			//redirect (action: 'show', id: book.id)
@@ -65,7 +98,14 @@ class PublishController {
 	def saveWrite = {
 		def book = Book.get(params.id)
 		
-		book.contents = params.contents
+		def profile = book.profile
+		
+		if (!profile) {
+			profile = new BookProfile(book: book)
+			book.profile = profile
+		}
+		
+		profile.contents = params.contents
 		
 		if (book.save(flush: true)) {
 			flash.message = "Contents saved. ${new Date().format('yyyy-MM-dd HH:mm:ss')}"
@@ -96,14 +136,21 @@ class PublishController {
 		
 			def json = new JsonBuilder()
 			def version = grailsApplication.config.appConf.cook.version
-			def embed = createLink(controller: 'book', action: 'embed', id: book.id, absolute: true)
 
+			def contentUrl
+			
+			if (book.type.equals(RepoType.EMBED)) {
+				contentUrl = createLink(controller: 'book', action: 'embed', id: book.id, absolute: true)
+			}
+			else {
+				contentUrl = book.url
+			}
+			
 			json (
 				id: book.id,
-				url: "${book.url}",
+				url: "${contentUrl}",
 				type: "${book.type}",
 				name: "${book.name}",
-				embed: "${embed}",
 				version: version
 			)
 			
@@ -128,5 +175,12 @@ class PublishController {
 		else {
 			redirect (url: book.link)
 		}
+	}
+	
+	/**
+	 * Upload a cover image for a book
+	 */
+	def cover = {
+	
 	}
 }

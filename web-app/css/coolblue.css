@@ -213,8 +213,8 @@ input.button {
 #header h1#logo-text a {
 	position: absolute;
 	margin: 0; padding: 0 5px 0 0;
-	font: bold 48px 'Trebuchet MS', 'Helvetica Neue', Arial, Sans-Serif;
-	letter-spacing: -4px;
+	font: bold 40px 'Trebuchet MS', 'Helvetica Neue', Arial, Sans-Serif;
+	letter-spacing: -3px;
 	color: #333;
 	text-decoration: none;
 
@@ -317,9 +317,9 @@ fieldset.search {
 #header #nav ul li a {
 	float:left;
 	margin: 0;
-	padding: 0 15px 29px 15px;
+	padding: 0 15px 26px 15px;
 	color: #baa7a7;
-	font: bold 12px 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+	font: bold 15px 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
 }
 #header #nav ul li a:hover, 
 #header #nav ul li a:active {

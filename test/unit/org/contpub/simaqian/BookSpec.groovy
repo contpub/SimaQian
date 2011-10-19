@@ -9,23 +9,19 @@ class BookSpec extends Specification {
     
 	def "create a new book"() {
 		setup:
-		//mockDomain(Book)
 		
 		when:
 		new Book(
 			name: name,
-			title: title,
-			description: description
+			title: title
 		).save()
 
 		then:
-		Book.findByName(name) != null
+		Book.findByName(name)
 
 		where:
-		result = 0
 		name = 'testbook'
 		title = 'Test Book'
-		description = 'desc'
 	}
 
 	def "generate book permalinks"() {
@@ -44,7 +40,6 @@ class BookSpec extends Specification {
 	
 	def "generate book download links"() {
 		setup:
-		//mockDomain(Book)
 		
 		when:
 		book.name = 'hello'

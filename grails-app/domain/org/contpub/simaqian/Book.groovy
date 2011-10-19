@@ -13,18 +13,10 @@ public enum RepoType {
  * Book domain object
  */
 class Book {
-	String name					//書籍名稱（代碼，例：MyBook1）
-	String title					//書籍標題
-	String homepage				//書籍網站（如有外部網站則可設定）
-	String icon					//縮圖（小圖示）
-	String cover					//書籍的封面圖片（使用外部相簿位址）
-
-	String description			//簡述書籍內容
-
-	String contents				//embedded content
+	String name				//書籍名稱（代碼，例：MyBook1）
+	String title			//書籍標題
 	
-	String urlToPdf				// pdf url (amazon s3)
-	String urlToEpub			// epub url (amazon s3)
+	BookProfile profile		//Profile
 	
 	Boolean isCooking		= false		//是否正在處理轉換中
 	Integer countCook		= 0			//計算處理次數
@@ -46,15 +38,9 @@ class Book {
 	static constraints = {
 		name (nullable: false, blank: false, size: 5..30, unique: true, matches: /[a-zA-Z0-9\-\_]+/)
 		title (nullable: false, blank: false)
-		description (nullable: true, blank: true)
-		contents (nullable: true, blank: true)
-		homepage (nullable: true, url: true)
-		icon (nullable: true, url: true)
-		cover (nullable: true, url: true)
-		urlToPdf (nullable: true)
-		urlToEpub (nullable: true)
 		type (nullable: true)
 		url (nullable: true, url: true)
+		profile (nullable: true)
 	}
 
 	/**

@@ -6,7 +6,7 @@
     <meta property="og:image" content="http://contpub.org/static/images/book_icon.png"/>
     <meta property="og:site_name" content="ContPub"/>
     <meta property="fb:admins" content="contpub"/>
-    <meta property="og:description" content="${book?.description}"/>
+    <meta property="og:description" content="${book?.profile?.description}"/>
 	<title>${book?.title}</title>
 	<style type="text/css">
 	table {
@@ -35,9 +35,6 @@
 	p.download-link img {
 		width: 64px;
 		height: 64px;
-	}
-	.sidemenu.usermenu {
-		display: none;
 	}
 	.comments {
 		clear: both;
@@ -68,88 +65,40 @@
 		<div class="right">			
 			<h2>${book?.title}</h2>
 			<p class="post-info">
-				Updated: ${book.lastUpdated.format('yyyy-MM-dd')}
+				${book.dateCreated.format('yyyy/MM/dd')}
 			</p>
 			
 			<p class="description">
-				${book?.description?.replace("\n", "<br />")}
+				${book?.profile?.description?.replace("\n", "<br />")}
 			</p>
 			
 			<socialTag:facebookLikeButton />
 
-			<g:isUser>
+			<userTag:isLogin>
 				<div style="text-align:right">
 					<g:link controller="publish" action="update" id="${book?.id}" class="clickable">Modify</g:link>
 				</div>
-			</g:isUser>
+			</userTag:isLogin>
 			
 			<g:if test="${userBuyBook||book.isPublic}">
 				<a name="download"></a>
 				<g:if test="${book?.isCooking}">
-					<h3>Downloads</h3>
 					<p><strong>Unavailable</strong>. This book is printing, please wait ...</p>
 				</g:if>
 				<g:else>
-					<h3>Downloads</h3>
-					<g:if test="${book?.urlToPdf!=null}">
-						<p class="download-link">
-							<bookTag:downloadLink book="${book}" type="pdf">
-								<img src="${createLinkTo(dir: 'icons', file: 'mime-pdf.png')}" alt="pdf-icon" border="0" /><br/>
-								${book?.name}.pdf
-							</bookTag:downloadLink>
-						</p>
-					</g:if>	
-					<g:if test="${book?.urlToEpub!=null}">
-						<p class="download-link">
-							<bookTag:downloadLink book="${book}" type="epub">
-								<img src="${createLinkTo(dir: 'icons', file: 'mime-epub.png')}" alt="epub-icon" border="0" /><br/>${book?.name}.epub
-							</bookTag:downloadLink>
-						</p>
-					</g:if>
+					<p class="download-link">
+						<bookTag:downloadLink book="${book}" type="pdf">
+							<img src="${createLinkTo(dir: 'icons', file: 'mime-pdf.png')}" alt="pdf-icon" border="0" /><br/>
+							${book?.name}.pdf
+						</bookTag:downloadLink>
+					</p>
+					<p class="download-link">
+						<bookTag:downloadLink book="${book}" type="epub">
+							<img src="${createLinkTo(dir: 'icons', file: 'mime-epub.png')}" alt="epub-icon" border="0" /><br/>${book?.name}.epub
+						</bookTag:downloadLink>
+					</p>
 				</g:else>
 			</g:if>
-			<a name="permalink"></a>			
-			<h3>Permalinks</h3>
-			<p>
-				<bookTag:link book="${book}">${bookTag.createLink(book: book)}</bookTag:link>
-			</p>
-
-			<div class="share-box clear">
-				<h4>Share This</h4>
-				<ul>
-					<li><a title="RSS" href="index.html" rel="nofollow">
-					<img alt="RSS" title="RSS" src="${createLinkTo(dir: 'images', file: 'rss_32.png')}" /></a>
-					</li>
-					<li><a title="del.icio.us" href="index.html" rel="nofollow">
-					<img alt="del.icio.us" title="del.icio.us" src="${createLinkTo(dir: 'images', file: 'delicious_32.png')}" /></a>
-					</li>
-					<li><a title="StumbleUpon" href="index.html" rel="nofollow">
-					<img alt="StumbleUpon" title="StumbleUpon" src="${createLinkTo(dir: 'images', file: 'stumbleupon_32.png')}" /></a>
-					</li>
-					<li><a title="Digg" href="index.html" rel="nofollow">
-					<img alt="Digg" title="Digg" src="${createLinkTo(dir: 'images', file: 'digg_32.png')}" /></a>
-					</li>
-					<li><a title="Facebook" href="index.html" rel="nofollow">
-					<img alt="Facebook" title="Facebook" src="${createLinkTo(dir: 'images', file: 'facebook_32.png')}" /></a>
-					</li>
-					<li><a title="Twitter" href="index.html" rel="nofollow">
-					<img alt="Twitter" title="Twitter" src="${createLinkTo(dir: 'images', file: 'twitter_32.png')}" /></a>
-					</li>
-					<li><a title="Technorati" href="index.html" rel="nofollow">
-					<img alt="Technorati" title="Technorati" src="${createLinkTo(dir: 'images', file: 'technorati_32.png')}" /></a>
-					</li>
-					<li><a title="NewsVine" href="index.html" rel="nofollow">
-					<img alt="NewsVine" title="NewsVine" src="${createLinkTo(dir: 'images', file: 'newsvine_32.png')}" /></a>
-					</li>
-					<li><a title="LinkedIn" href="index.html" rel="nofollow">
-					<img alt="LinkedIn" title="LinkedIn" src="${createLinkTo(dir: 'images', file: 'linkedin_32.png')}" /></a>
-					</li>
-					<li><a title="E-mail this story to a friend!" href="index.html" rel="nofollow">
-					<img alt="E-mail this story to a friend!" title="E-mail this story to a friend!" src="${createLinkTo(dir: 'images', file: 'email_32.png')}" /></a>
-					</li>
-				</ul>
-			</div>
-
 			<div class="advanced">
 				<h3>Repository</h3>
 				<table width="400">
@@ -164,10 +113,16 @@
 				</table>
 			</div>
 		</div>
+		
 		<div class="left">
-			<p class="icon">
+			<!--<p class="icon">
 				<img src="${createLinkTo(dir: 'images', file: 'book_icon.png')}" class="book-icon" />
+			</p>-->
+			
+			<p>
+				<bookTag:coverImage book="${book}" />
 			</p>
+			
 			<div class="post-meta">
 				<!--<h4>Book Info</h4>-->
 				<ul>
@@ -175,10 +130,6 @@
 						<li><g:link action="addToCart" id="${book.id}">Buy This Book</g:link></li>
 					</g:if>
 					<li>${book?.name}</li>
-					<li>${book?.type}</li>
-					<li class="time">${book.dateCreated.format('yyyy-MM-dd')}</li>
-					<li class="comment"><a href="#comment">Comments</a></li>
-					<li class="permalink"><a href="#permalink">Permalinks</a></li>
 					<g:if test="${userBuyBook||book.isPublic}">
 						<li class="permalink"><a href="#download">Downloads</a></li>
 					</g:if>
@@ -187,25 +138,10 @@
 		</div>
 	
 		<a name="comment"></a>
-		<!-- Comments using Disqus services -->
-		<div class="comments">
-			<!--<h3>Comments</h3>-->
-		</div>
+		<div class="comments"></div>
 	</div>
-	
-	<p align="right">
-		<g:link action="index" class="clickable">Back</g:link>
-	</p>
 
 	<content tag="sidebar">
-	
-		<g:if test="${book?.cover}">
-			<a name="cover"></a>
-			<div style="text-align: center">
-				<bookTag:coverImage book="${book}" />
-			</div>
-		</g:if>
-
 	</content>
 
 </body>

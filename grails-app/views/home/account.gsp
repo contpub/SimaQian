@@ -71,15 +71,15 @@
 		</p>
 		<p>
 			<label for="description">Description</label><br />
-			<g:textArea name="description" value="${user?.description}" />		
+			<g:textArea name="description" value="${user?.profile?.description}" />		
 		</p>	
 		<p>
 			<label for="homepage">Homepage</label> (ex. http://about.me/${user?.account})<br />
-			<g:textField name="homepage" value="${user?.homepage}" class="${hasErrors(bean: user, field: 'homepage', 'errors')}" />
-		</p>	
+			<g:textField name="homepage" value="${user?.profile?.homepage}" class="${hasErrors(bean: user, field: 'homepage', 'errors')}" />
+		</p>
 		<p>
 			<label for="blog">Blog</label><br />
-			<g:textField name="blog" value="${user?.blog}" class="${hasErrors(bean: user, field: 'blog', 'errors')}" />
+			<g:textField name="blog" value="${user?.profile?.blog}" class="${hasErrors(bean: user, field: 'blog', 'errors')}" />
 		</p>	
 		<p class="no-border">
 			<g:submitButton name="save" value="Save" class="button wide" />

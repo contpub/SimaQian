@@ -4,7 +4,10 @@
 	<meta name="current.action" content="publish" />
 	<style style="text/css">
 	form #name {
-		width: 200px;
+		width: 250px;
+		color: #000055;
+		font-weight: bold;
+		font-size: 1.25em;
 	}
 	form #title, form #description {
 		width: 100%;
@@ -20,8 +23,6 @@
 </head>
 <body>
 
-	<h2>Create a book</h2>
-	
 	<g:renderErrors bean="${book}" />
 
 	<g:form action="save">
@@ -38,48 +39,9 @@
 			<g:textField name="title" value="${book?.title}" />
 		</p>
 
-		<p>
-			<label for="description">Brief Description</label><br />
-			<g:textArea name="description" value="${book?.description}" />
-		</p>
-
 		<!-- Defaults -->
 		<g:hiddenField name="type" value="EMBED" />
 		<g:hiddenField name="url" value="" />
-		<g:hiddenField name="homepage" value="" />
-		<g:hiddenField name="icon" value="" />
-		<g:hiddenField name="cover" value="" />
-		<g:hiddenField name="contents" value="" />
-
-		<!--
-		<p>
-			<label for="homepage">Homepage</label><br />
-			<g:textField name="homepage" value="${book?.homepage}" />
-		</p>
-
-		<p>
-			<label for="icon">Icon</label><br />
-			<g:textField name="icon" value="${book?.icon}" />
-		</p>
-
-		<p>
-			<label for="cover">Cover Image</label><br />
-			<g:textField name="cover" value="${book?.cover}" />
-		</p>
-
-		<p>
-			<label for="type">Repository Type</label><br />
-			<g:select name="type"
-				from="${book.typeList}"
-				value="${book.type?.toString()}"
-				noSelection="['':'']" />
-		</p>
-
-		<p>
-			<label for="url">Repository URL</label><br />
-			<g:textField name="url" value="${book?.url}" />
-		</p>
-		-->
 
 		<p class="no-border">
 			<g:submitButton name="create" value="Create" class="button" />
@@ -88,14 +50,6 @@
 	</g:form>
 	
 	<content tag="sidebar">
-		<div class="sidemenu">
-			<h3>Steps</h3>
-			<ol class="steps">
-				<li><strong>Thinking</strong></li>
-				<li>Writing</li>
-				<li>Publishing</li>
-			</ol>
-		</div>
 	</content>
 </body>
 </html>

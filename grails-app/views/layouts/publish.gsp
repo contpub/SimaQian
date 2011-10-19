@@ -55,7 +55,7 @@
 		<content tag="sidebar">
 			<div class="sidemenu usermenu">
 				<h3>User</h3>
-				<g:layoutUserBox />
+				<layoutTag:userBox />
 			</div>
 
 			<g:pageProperty name="page.sidebar" />
