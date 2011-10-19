@@ -3,10 +3,10 @@
     <meta property="og:title" content="${book?.title}"/>
     <meta property="og:type" content="book"/>
     <meta property="og:url" content="${bookTag.createLink(book: book)}"/>
-    <meta property="og:image" content="http://contpub.org/static/images/book_icon.png"/>
+    <meta property="og:image" content="${book?.hasCover?bookTag.createCoverLink(book: book):'http://contpub.org/static/images/book_icon.png'}"/>
     <meta property="og:site_name" content="ContPub"/>
     <meta property="fb:admins" content="contpub"/>
-    <meta property="og:description" content="${book?.profile?.description}"/>
+    <meta property="og:description" content="${book?.profile?.simpleDescription}"/>
 	<title>${book?.title}</title>
 	<style type="text/css">
 	table {
@@ -73,12 +73,6 @@
 			</p>
 			
 			<socialTag:facebookLikeButton />
-
-			<userTag:isLogin>
-				<div style="text-align:right">
-					<g:link controller="publish" action="update" id="${book?.id}" class="clickable">Modify</g:link>
-				</div>
-			</userTag:isLogin>
 			
 			<g:if test="${userBuyBook||book.isPublic}">
 				<a name="download"></a>
@@ -135,6 +129,12 @@
 					</g:if>
 				</ul>
 			</div>
+			
+			<userTag:isLogin>
+				<div style="text-align:right">
+					<g:link controller="publish" action="update" id="${book?.id}" class="clickable">Modify</g:link>
+				</div>
+			</userTag:isLogin>
 		</div>
 	
 		<a name="comment"></a>

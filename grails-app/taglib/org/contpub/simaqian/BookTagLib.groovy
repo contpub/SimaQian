@@ -29,6 +29,14 @@ class BookTagLib {
 		out << "</a>"
 	}
 	
+	def createCoverLink = { attr, body ->
+		out << grailsApplication.config.aws.href
+		if (attr.book) {
+			out << attr.book.name
+		}
+		out << '.png'
+	}
+	
 	/**
 	 * <bookTag:createDownloadLink book=${book} />
 	 */

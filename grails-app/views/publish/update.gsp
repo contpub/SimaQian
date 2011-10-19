@@ -60,7 +60,7 @@
 			<p>
 				<label for="cover">Cover Image</label><br />
 				<bookTag:coverImage book="${book}" />
-				<g:link action="cover">Upload</g:link> a new cover image
+				<g:link action="cover" id="${book?.id}">Upload</g:link> a new cover image
 				<div class="clear-both"></div>
 			</p>
 	

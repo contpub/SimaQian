@@ -24,6 +24,8 @@ class Book {
 	Boolean isAvailable		= false		// Default is not available
 	Boolean isVisible		= true		// Default is visible
 	Boolean isPublic		= true		// Public Book => 公版書/免費書
+	
+	Boolean hasCover		= false		// Has cover or not
 
 	RepoType type = RepoType.GIT	// Repository Type (ex. GIT, SVN)
 	String url						// Repository URL (ex. git@github.com:user/project)

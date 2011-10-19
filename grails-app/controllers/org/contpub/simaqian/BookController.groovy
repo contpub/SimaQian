@@ -94,7 +94,7 @@ class BookController {
 			cal.add(Calendar.MINUTE, 5)
 			def expiryDate = cal.time
 			
-			def signedUrl = s3Service.createSignedGetUrl(bucketName, "${book.name}.${fileExt}", awsCredentials, expiryDate, false);
+			def signedUrl = s3Service.createSignedGetUrl(bucketName, "${book.name}.${fileExt}", awsCredentials, expiryDate, false)
 			
 			redirect (url: signedUrl)
 			//render ("${bucketName}/${book.name}.pdf")

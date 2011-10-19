@@ -43,6 +43,12 @@
 		<g:hiddenField name="type" value="EMBED" />
 		<g:hiddenField name="url" value="" />
 
+
+		<p>
+		條款
+		</p>
+		<g:checkBox />
+		
 		<p class="no-border">
 			<g:submitButton name="create" value="Create" class="button" />
 		</p>

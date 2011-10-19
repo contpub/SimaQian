@@ -111,6 +111,7 @@ aws {
 	accessKey = 'accessKey'			//Change this!!!
 	secretKey = 'secretKey'			//Change this!!!
 	bucketName = 'bucketName'
+	href = 'http://bucketName.s3.amazonaws.com/'
 }
 
 // Application configuration
@@ -119,7 +120,6 @@ appConf.subTitle = 'Now everyone can publish ...'
 appConf.cook.exchangeName = ''
 appConf.cook.version = 1.0
 appConf.cook.routingKey = 'RepoCook'
-
 
 
 // Secure Passwords in private config file

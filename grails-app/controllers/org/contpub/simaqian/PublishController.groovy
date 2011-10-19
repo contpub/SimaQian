@@ -7,6 +7,7 @@ import groovy.json.JsonBuilder
  */
 class PublishController {
 
+	BookService bookService
 	UserService userService
 
 	/**
@@ -75,7 +76,6 @@ class PublishController {
 		profile.description = params.description
 		profile.homepage = params.homepage
 		profile.icon = params.icon
-		profile.cover = params.cover
 		
 		if (book.save(flush: true)) {
 			//redirect (action: 'show', id: book.id)
@@ -181,6 +181,27 @@ class PublishController {
 	 * Upload a cover image for a book
 	 */
 	def cover = {
+		def book = Book.get(params.id)
+		[book: book]
+	}
 	
+	/**
+	 * Save a cover image
+	 */
+	def saveCover = {
+		def book = Book.get(params.id)
+		//println book
+		
+		def coverFile = request.getFile('coverFile')
+		if (!coverFile.isEmpty()) {
+			//println coverFile
+			def result = bookService.uploadCoverImage(coverFile, book.name)
+			if (result) {
+				book.hasCover = true
+				book.save(flush: true)
+			}
+		}
+		
+		redirect(action: 'cover', id: book?.id)
 	}
 }
