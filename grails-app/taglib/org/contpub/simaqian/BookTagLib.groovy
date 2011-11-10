@@ -30,11 +30,13 @@ class BookTagLib {
 	}
 	
 	def createCoverLink = { attr, body ->
-		out << grailsApplication.config.aws.href
 		if (attr.book) {
+			out << grailsApplication.config.aws.href
+			//out << attr.book.name.substring(0,1).toLowerCase()
+			//out << '/'
 			out << attr.book.name
+			out << '.png'
 		}
-		out << '.png'
 	}
 	
 	/**

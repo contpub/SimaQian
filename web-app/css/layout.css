@@ -63,3 +63,18 @@ div.book-coverImage span.embedded-title {
 	overflow: hidden;
 	text-align: center;
 }
+
+/* Paginate */
+.paginate {
+	text-align: center;
+	padding: 10px;
+}
+.paginate span, .paginate a {
+	padding: 5px;
+}
+
+/* Gravatar */
+.gravatar {
+	background:url(../images/gravatar.jpg);
+}
+

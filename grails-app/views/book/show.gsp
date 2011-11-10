@@ -64,9 +64,6 @@
 	<div class="post">
 		<div class="right">			
 			<h2>${book?.title}</h2>
-			<p class="post-info">
-				${book.dateCreated.format('yyyy/MM/dd')}
-			</p>
 			
 			<p class="description">
 				${book?.profile?.description?.replace("\n", "<br />")}
@@ -123,7 +120,6 @@
 					<g:if test="${!userBuyBook&&!book?.isPublic}">
 						<li><g:link action="addToCart" id="${book.id}">Buy This Book</g:link></li>
 					</g:if>
-					<li>${book?.name}</li>
 					<g:if test="${userBuyBook||book.isPublic}">
 						<li class="permalink"><a href="#download">Downloads</a></li>
 					</g:if>

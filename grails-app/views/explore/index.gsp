@@ -60,6 +60,8 @@
 		</g:each>
 		<div style="clear:both"></div>
 	</div></div>
-	<g:paginate next="Forward" prev="Back" maxsteps="0" max="5" total="${totalBooks}" />
+	<div class="paginate">
+		<g:paginate next="Forward" prev="Back" maxsteps="0" max="5" total="${totalBooks}" />
+	</div>
 </body>
 </html>

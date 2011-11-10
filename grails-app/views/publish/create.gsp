@@ -20,6 +20,26 @@
 		font-weight: bold;
 	}
 	</style>
+	<script type="text/javascript">
+	$(function () {
+		$('form #create').click(function () {
+			var result = true;
+			
+			return result;
+		});
+		
+		$('form #agree').click(function () {
+			if ($('form #agree').is(':checked')) {
+				$('form #create').show();
+			}
+			else {
+				$('form #create').hide();
+			}
+		});
+		
+		$('form input.errors').focus();
+	});
+	</script>
 </head>
 <body>
 
@@ -42,12 +62,10 @@
 		<!-- Defaults -->
 		<g:hiddenField name="type" value="EMBED" />
 		<g:hiddenField name="url" value="" />
-
-
+		
 		<p>
-		條款
+			<g:checkBox name="agree" value="${true}" /> I have read, understood, and agree to Publish Agreement
 		</p>
-		<g:checkBox />
 		
 		<p class="no-border">
 			<g:submitButton name="create" value="Create" class="button" />
