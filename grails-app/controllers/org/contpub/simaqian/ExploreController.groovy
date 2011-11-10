@@ -5,7 +5,10 @@ package org.contpub.simaqian
  */
 class ExploreController {
 
-    def index() {
-	    [books: Book.findAll()]
-    }
+	def index() {
+		[
+			books: Book.findAll([max: params.max?params.max:5, offset: params.offset]),
+			totalBooks: Book.count()
+		]
+	}
 }

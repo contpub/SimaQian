@@ -70,6 +70,7 @@ class PublishController {
 		
 		if (!profile) {
 			profile = new BookProfile(book: book)
+			profile.save(flush: true)
 			book.profile = profile
 		}
 		
