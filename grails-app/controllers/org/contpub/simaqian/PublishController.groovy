@@ -39,10 +39,25 @@ class PublishController {
 		
 		book.name = params.name
 		book.title = params.title
-		
-		book.validate()
 
-		if (book.save(flush: true)) {
+		if (book.validate() && book.save(flush: true)) {
+
+			/* Connect User and Book association */
+
+			//def user = User.get(session['user_id'])
+			//def link1 = new UserAndBook()
+
+			//link1.user = user
+			//link1.book = book
+			//link1.save(flush: true)
+			//link1.save()
+
+			//user.addToBooks(link1)
+			//book.addToUsers(link1)
+
+			//user.save(flush: true)
+			//book.save(flush: true)
+
 			redirect (action: 'write', id: book.id)
 		}
 		else {

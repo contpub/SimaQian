@@ -27,7 +27,7 @@ class Book {
 	
 	Boolean hasCover		= false		// Has cover or not
 
-	RepoType type = RepoType.GIT	// Repository Type (ex. GIT, SVN)
+	RepoType type = RepoType.EMBED	// Repository Type (ex. GIT, SVN)
 	String url						// Repository URL (ex. git@github.com:user/project)
 
 	Date dateCreated				//建立日期
