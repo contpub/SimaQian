@@ -55,7 +55,7 @@ grails.project.dependency.resolution = {
 		compile ":resources:1.0.2"
 		
 		// either compile & test require latest spock plugin, or UnitSpec compile failed
-		compile ":spock:0.6-SNAPSHOT"
+		//compile ":spock:0.6-SNAPSHOT"
 
 		build ":tomcat:$grailsVersion"
 	}
