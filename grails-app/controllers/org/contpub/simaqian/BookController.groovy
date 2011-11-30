@@ -19,13 +19,11 @@ class BookController {
 	//S3ClientService s3ClientService
 
 	def index = {
-		//def user = User.get(session['user']?.id)
-		
-		//[books: user?.books*.book]
-		
-		def books = Book.findAll()
-		
-		[books: books]
+		def user = User.get(session['user']?.id)
+
+		[
+			books: user?.books*.book
+		]
 	}
 
 	def show = {
@@ -56,7 +54,23 @@ class BookController {
 		def book = Book.findByName(bookName)
 		
 		if (book) {
-			render (view: 'show', model: [book: book])
+		
+			def user = User.get(session['user']?.id)
+			def userBuyBook = false
+			def userOwnBook = false
+	
+			def link = UserAndBook.findByUserAndBook(user, book)
+	
+			if (link) {
+				userBuyBook = link.linkType.equals(UserAndBookLinkType.BUYER)
+				userOwnBook = link.linkType.equals(UserAndBookLinkType.OWNER)
+			}
+		
+			render (view: 'show', model: [
+				book: book,
+				userBuyBook: userBuyBook,
+				userOwnBook: userOwnBook
+			])
 		}
 		else {
 			redirect (action: 'index')

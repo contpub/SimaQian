@@ -126,11 +126,13 @@
 				</ul>
 			</div>
 			
-			<userTag:isLogin>
-				<div style="text-align:right">
-					<g:link controller="publish" action="update" id="${book?.id}" class="clickable">Modify</g:link>
-				</div>
-			</userTag:isLogin>
+			<g:if test="${userOwnBook}">
+				<userTag:isLogin>
+					<div style="text-align:right">
+						<g:link controller="publish" action="update" id="${book?.id}" class="clickable">Modify</g:link>
+					</div>
+				</userTag:isLogin>
+			</g:if>
 		</div>
 	
 		<a name="comment"></a>

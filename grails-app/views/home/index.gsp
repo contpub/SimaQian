@@ -5,9 +5,9 @@
 	</style>
 </head>
 <body>
-	<h2>E-Books Made Easy</h2>
+	<!--<h2>E-Books Made Easy</h2>-->
     <h3>無痛製作電子書，您只需要學會打字就足夠</h3>
-	<pre style="width:80%;"><code>三分鐘發佈您的電子書
+	<pre style="width:90%;"><code>三分鐘發佈您的電子書
 ================
 
 使用「=」符號，將文字標記為「大標題」。
