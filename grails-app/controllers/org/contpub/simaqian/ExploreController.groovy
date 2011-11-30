@@ -14,7 +14,7 @@ class ExploreController {
 				firstResult(params.offset?params.offset:0)
 			},
 			//Book.findAll([max: params.max?params.max:5, offset: params.offset]),
-			totalBooks: Book.count()
+			totalBooks: 5
 		]
 	}
 }
