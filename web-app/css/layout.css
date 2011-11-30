@@ -78,3 +78,7 @@ div.book-coverImage span.embedded-title {
 	background:url(../images/gravatar.jpg);
 }
 
+#rss {
+	display: none;
+}
+
