@@ -44,19 +44,21 @@ class PublishController {
 
 			/* Connect User and Book association */
 
-			//def user = User.get(session['user_id'])
-			//def link1 = new UserAndBook()
+			def user = User.get(session['user'].id)
+			def link1 = new UserAndBook()
 
-			//link1.user = user
-			//link1.book = book
-			//link1.save(flush: true)
-			//link1.save()
+			link1.user = user
+			link1.book = book
+			link1.linkType = UserAndBookLinkType.OWNER
+			
+			link1.save(flush: true)
+			link1.save()
 
-			//user.addToBooks(link1)
-			//book.addToUsers(link1)
+			user.addToBooks(link1)
+			book.addToUsers(link1)
 
-			//user.save(flush: true)
-			//book.save(flush: true)
+			user.save(flush: true)
+			book.save(flush: true)
 
 			redirect (action: 'write', id: book.id)
 		}

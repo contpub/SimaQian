@@ -31,7 +31,7 @@
 	<p id="rss">
 		<a href="#">Grab the RSS feed</a>
 	</p>
-	<form id="quick-search" method="get" action="#">
+	<form id="quick-search" method="get" action="#" style="display:none">
 		<fieldset class="search">
 		<label for="qsearch">Search:</label>
 		<input class="tbox" id="qsearch" type="text" name="qsearch" value="Search..." title="Start typing and hit ENTER" />
