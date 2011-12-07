@@ -167,15 +167,14 @@ class BookController {
 		
 		if (params.index != null) {
 
-			contents = """.. ${book.title}
+			contents = """.. ${book.name}
    @project: ${book.name}
    @title: ${book.title}
    @copyright: 2011, ContPub
    @authors: 2011, ContPub
-   @version: 1.0
-   @release: 1.0
    @language: zh_TW
-   
+   @epub_theme: epub_simple
+
 ####
 ${book.title}
 ####
