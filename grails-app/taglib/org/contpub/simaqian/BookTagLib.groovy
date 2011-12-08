@@ -40,7 +40,7 @@ class BookTagLib {
 	}
 	
 	/**
-	 * <bookTag:createDownloadLink book=${book} />
+	 * <bookTag:createDownloadLink book=${book} type="pdf" />
 	 */
 	def createDownloadLink = { attr, body ->
 		out << _basehref()
@@ -50,7 +50,7 @@ class BookTagLib {
 	}
 	
 	/**
-	 * <bookTag:downloadLink book=${book} />
+	 * <bookTag:downloadLink book=${book} type="pdf" />
 	 */
 	def downloadLink = { attr, body ->
 		out << "<a href=\"${attr.book?createDownloadLink(book: attr.book, type: attr.type):'#'}\" title=\"${attr.book?.title}\">"

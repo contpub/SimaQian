@@ -4,7 +4,9 @@ import org.nuiton.jrst.*
 
 class HomeController {
 
-    def index() { }
+    def index() {
+    	[book: Book.get(12)]
+    }
     
     def login() {
     	def users = User.withCriteria {
