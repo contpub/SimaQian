@@ -29,7 +29,7 @@
 	}
 	p.download-link {
 		text-align: center;
-		width: 40%;
+		width: 120px;
 		display: inline-block;
 	}
 	p.download-link img {
@@ -77,17 +77,19 @@
 					<p><strong>Unavailable</strong>. This book is printing, please wait ...</p>
 				</g:if>
 				<g:else>
-					<p class="download-link">
-						<bookTag:downloadLink book="${book}" type="pdf">
-							<img src="${createLinkTo(dir: 'icons', file: 'mime-pdf.png')}" alt="pdf-icon" border="0" /><br/>
-							${book?.name}.pdf
-						</bookTag:downloadLink>
-					</p>
-					<p class="download-link">
-						<bookTag:downloadLink book="${book}" type="epub">
-							<img src="${createLinkTo(dir: 'icons', file: 'mime-epub.png')}" alt="epub-icon" border="0" /><br/>${book?.name}.epub
-						</bookTag:downloadLink>
-					</p>
+					<div style="text-align: center">
+						<p class="download-link">
+							<bookTag:downloadLink book="${book}" type="pdf">
+								<img src="${createLinkTo(dir: 'icons', file: 'mime-pdf.png')}" alt="pdf-icon" border="0" /><br/>
+								${book?.name}.pdf
+							</bookTag:downloadLink>
+						</p>
+						<p class="download-link">
+							<bookTag:downloadLink book="${book}" type="epub">
+								<img src="${createLinkTo(dir: 'icons', file: 'mime-epub.png')}" alt="epub-icon" border="0" /><br/>${book?.name}.epub
+							</bookTag:downloadLink>
+						</p>
+					</div>
 				</g:else>
 			</g:if>
 			<div class="advanced">
@@ -121,7 +123,7 @@
 						<li><g:link action="addToCart" id="${book.id}">Buy This Book</g:link></li>
 					</g:if>
 					<g:if test="${userBuyBook||book.isPublic}">
-						<li class="permalink"><a href="#download">Downloads</a></li>
+						<li class="permalink"><a href="#download">電子書下載</a></li>
 					</g:if>
 				</ul>
 			</div>
@@ -129,7 +131,8 @@
 			<g:if test="${userOwnBook}">
 				<userTag:isLogin>
 					<div style="text-align:right">
-						<g:link controller="publish" action="update" id="${book?.id}" class="clickable">Modify</g:link>
+						<g:link controller="publish" action="update" id="${book?.id}" class="clickable">設定</g:link>
+						<g:link controller="publish" action="editor" id="${book?.id}" class="clickable">編輯室</g:link>
 					</div>
 				</userTag:isLogin>
 			</g:if>

@@ -6,7 +6,8 @@ package org.contpub.simaqian
 public enum RepoType {
 	EMBED,
 	GIT,
-	SVN;
+	SVN,
+	DROPBOX;
 }
 
 /**
@@ -30,9 +31,10 @@ class Book {
 	RepoType type = RepoType.EMBED	// Repository Type (ex. GIT, SVN)
 	String url						// Repository URL (ex. git@github.com:user/project)
 
-	Date dateCreated				//建立日期
-	Date lastUpdated				//修改日期
-	
+	Date dateCreated				// Created Datetime
+	Date lastUpdated				// Modified Datetime
+	Date cookUpdated				// Publish Record Datetime
+
 	static hasMany = [
 		users: UserAndBook
 	]
@@ -43,6 +45,7 @@ class Book {
 		type (nullable: true)
 		url (nullable: true, url: true)
 		profile (nullable: true)
+		cookUpdated (nullable: true)
 	}
 
 	/**

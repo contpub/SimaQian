@@ -75,6 +75,13 @@ class PublishController {
 	}
 
 	/**
+	 * Editor
+	 */
+	def editor = {
+		[book: Book.get(params.id)]
+	}
+
+	/**
 	 * Save a updated book.
 	 */
 	def saveUpdate = {
@@ -221,5 +228,106 @@ class PublishController {
 		}
 		
 		redirect(action: 'cover', id: book?.id)
+	}
+
+	/**
+	 * Save Contents (Ajax)
+	 */
+	def ajaxSaveContents = {
+		def book = Book.get(params.id)
+		def successed = false
+
+		if (params.contents) {
+			book.profile.contents = params.contents
+			successed = book.save(flush: true)
+		}
+
+		render (contentType: 'text/json') {
+			result (successed: successed, message: "儲存成功 ${new Date().format('HH:mm:ss')}")
+		}
+	}
+
+	/**
+	 * Query Status (Ajax)
+	 */
+	def ajaxStatus = {
+		def book = Book.get(params.id)
+
+		render (contentType: 'text/json') {
+			result (
+				isCooking: book?.isCooking?'正在製作中':'已完成',
+				lastUpdated: book?.lastUpdated?.format('yyyy-MM-dd HH:mm:ss'),
+				cookUpdated: book?.cookUpdated?.format('yyyy-MM-dd HH:mm:ss'),
+				message: new Date().format('HH:mm:ss')
+			)
+		}
+	}
+
+	/**
+	 * Publish (Ajax)
+	 */
+	/**
+	 * Send event to RabbitMQ for book publishing
+	 */
+	def ajaxPublish = {
+		def successed = false
+		def message = ''
+
+		def book = Book.get(params.id)
+		
+		def cookExpired = false
+
+		if (!book.cookUpdated) {
+			cookExpired = true
+		}
+		else {
+			def diff = new Date().time - book.cookUpdated.time
+			if (diff >= 60*1000) {
+				cookExpired = true
+			}
+		}
+
+		if (book.isCooking == false || cookExpired) {
+			book.isCooking = true
+			book.countCook ++
+			book.cookUpdated = new Date()
+			book.save(flush: true)
+		
+			def json = new JsonBuilder()
+			def version = grailsApplication.config.appConf.cook.version
+
+			def contentUrl
+			
+			if (book.type.equals(RepoType.EMBED)) {
+				contentUrl = createLink(controller: 'book', action: 'embed', id: book.id, absolute: true)
+			}
+			else {
+				contentUrl = book.url
+			}
+			
+			json (
+				id: book.id,
+				url: "${contentUrl}",
+				type: "${book.type}",
+				name: "${book.name}",
+				version: version
+			)
+			
+			def routingKey = grailsApplication.config.appConf.cook.routingKey
+			def msgContent = json?.toString()
+		
+			// Send msg to RepoCook agents using RabbitMQ
+			rabbitSend routingKey, msgContent
+
+			successed = true
+			message = "電子書已開始製作 ${new Date().format('hh:mm:ss')}"
+		}
+		else {
+			successed = false
+			message = "前次發佈尚未完成 ${new Date().format('hh:mm:ss')}"
+		}
+		render (contentType: 'text/json') {
+			result (successed: successed, message: message)
+		}
 	}
 }

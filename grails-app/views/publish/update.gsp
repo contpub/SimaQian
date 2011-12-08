@@ -26,7 +26,7 @@
 	<socialTag:websnaprSDK />
 </head>
 <body>
-	<g:render template="breadcrumbs" model="[title: 'Basic settings']" />
+	<g:render template="breadcrumbs" model="[title: '基本設定']" />
 	
 	<div id="post">
 		<div class="right">
