@@ -24,7 +24,7 @@
 			<li><a href="#tabs-3">流程說明</a></li>
 		</ul>
 		<div id="tabs-1">
-			<iframe src="http://localhost:8080/book/embed/12?syntax=true" width="100%" height="480" style="border: none"></iframe>
+			<iframe src="http://contpub.org/book/embed/12?syntax=true" width="100%" height="480" style="border: none"></iframe>
 		</div>
 		<div id="tabs-2">
 			<!--
