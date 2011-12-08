@@ -1,6 +1,7 @@
 <html>
 <head>
 	<title>Writing</title>
+	<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" media="screen" href="${createLinkTo(dir: 'css', file: 'colorbox.css')}" />
 	<script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jquery.colorbox-min.js')}"></script>
 	<script src="${createLinkTo(dir: 'codemirror', file: 'codemirror.js')}"></script>
@@ -27,6 +28,9 @@
 	form .form-controls li .button {
 		padding: 0 20px;
 	}
+	.CodeMirror {
+		font-family: 'Droid Sans', sans-serif, Consolata, monospace;
+	}
 	#fullscreen {
 		float: right;
 	}
@@ -34,8 +38,8 @@
 		background-color: #fff;
 	}
 	#fullscreen-area .CodeMirror {
-		font-size: 1.125em;
-		line-height: 1.1em;
+		font-size: 12pt;
+		line-height: 1.25em;
 	}
 	#fullscreen-area .CodeMirror {
 		width: 100%;
@@ -48,7 +52,7 @@
 	#fullscreen-area.enable .CodeMirror {
 		width: 100%;
 		height: 100%;
-		font-size: 1.25em;
+		font-size: 12pt;
 		line-height: 1.25em;
 	}
 	</style>

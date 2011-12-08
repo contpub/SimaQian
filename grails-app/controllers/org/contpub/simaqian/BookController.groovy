@@ -175,6 +175,9 @@ class BookController {
 	 * Get embedded contents
 	 */
 	def embed = {
+
+		def contentType = 'text/plain'
+
 		//Implement SecretKey here!!!
 		def book = Book.get(params.id)
 		def contents = ''
@@ -199,10 +202,43 @@ ${book.title}
    contents
 """
 		}
+		else if (params.syntax != null) {
+			
+			def command = "pygmentize -O full,style=trac,linenos=1,encoding=utf-8 -l rst -f html"
+			def proc = command.execute()
+
+			proc.withWriter { writer ->
+				writer << book.profile?.contents
+			}
+
+			proc.waitForOrKill(3000)
+
+			contents = proc.text
+			contents = contents.replace('<style type="text/css">', '''
+<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/reset/reset-min.css">
+<style type="text/css">
+body {
+	font-size: 12pt;
+}
+.linenodiv {
+	color: #888888;
+	padding: 0 .25em;
+}
+.highlight {
+	padding: 0 .5em;
+}
+pre {
+	font-family: 'Droid Sans', sans-serif, Consolata, monospace;
+}
+'''
+			)
+			contentType = "text/html"
+		}
 		else {
 			contents = book.profile?.contents
 		}
 		
-		render (contentType: 'text/plain', encoding: 'UTF-8', text: contents?contents:'')
+		render (contentType: contentType, encoding: 'UTF-8', text: contents?contents:'')
 	}
 }

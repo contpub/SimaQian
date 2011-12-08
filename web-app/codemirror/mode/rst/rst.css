@@ -3,7 +3,7 @@
 }
 
 .cm-s-default span.cm-strong {
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .cm-s-default span.cm-interpreted {
@@ -20,7 +20,7 @@
 
 .cm-s-default span.cm-list {
     color: #cc0099;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .cm-s-default span.cm-body {
@@ -36,22 +36,22 @@
 }
 
 .cm-s-default span.cm-directive {
-    font-weight: bold;
+    font-weight: normal;
     color: #3399ff;
 }
 
 .cm-s-default span.cm-hyperlink {
-    font-weight: bold;
+    font-weight: normal;
     color: #3366ff;
 }
 
 .cm-s-default span.cm-footnote {
-    font-weight: bold;
+    font-weight: normal;
     color: #3333ff;
 }
 
 .cm-s-default span.cm-citation {
-    font-weight: bold;
+    font-weight: normal;
     color: #3300ff;
 }
 
@@ -60,16 +60,16 @@
 }
 
 .cm-s-default span.cm-section {
-    font-weight: bold;
+    font-weight: normal;
     color: #cc0099;
 }
 
 .cm-s-default span.cm-directive-marker {
-    font-weight: bold;
+    font-weight: normal;
     color: #3399ff;
 }
 
 .cm-s-default span.cm-verbatim-marker {
-    font-weight: bold;
+    font-weight: normal;
     color: #9900ff;
 }
