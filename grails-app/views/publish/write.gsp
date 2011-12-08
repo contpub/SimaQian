@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>Writing</title>
-	<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" media="screen" href="${createLinkTo(dir: 'css', file: 'colorbox.css')}" />
 	<script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jquery.colorbox-min.js')}"></script>
 	<script src="${createLinkTo(dir: 'codemirror', file: 'codemirror.js')}"></script>
@@ -29,7 +29,7 @@
 		padding: 0 20px;
 	}
 	.CodeMirror {
-		font-family: 'Droid Sans', sans-serif, Consolata, monospace;
+		font-family: 'Droid Sans Mono', sans-serif, Consolata, monospace;
 	}
 	#fullscreen {
 		float: right;

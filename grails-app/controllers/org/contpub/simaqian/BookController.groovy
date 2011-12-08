@@ -204,8 +204,15 @@ ${book.title}
 		}
 		else if (params.syntax != null) {
 
-			try {			
-				def command = "/usr/local/bin/pygmentize -O full,style=trac,linenos=1,encoding=utf-8 -l rst -f html"
+			try {
+				def pygmentize = grailsApplication.config.executable?.pygmentize
+
+				if (!pygmentize) {
+					pygmentize = "pygmentize"
+				}
+
+				def options = "full,style=trac,linenos=1,encoding=utf-8"
+				def command = "${pygmentize} -O ${options} -l rst -f html"
 				def proc = command.execute()
 
 				proc.withWriter { writer ->
@@ -216,7 +223,7 @@ ${book.title}
 
 				contents = proc.text
 				contents = contents.replace('<style type="text/css">', '''
-	<link href="http://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/reset/reset-min.css">
 	<style type="text/css">
 	body {
@@ -230,9 +237,9 @@ ${book.title}
 		padding: 0 .5em;
 	}
 	pre {
-		font-family: 'Droid Sans', sans-serif, Consolata, monospace;
+		font-family: 'Droid Sans Mono', sans-serif, Consolata, monospace;
 	}
-	'''
+'''
 				)
 				contentType = "text/html"
 			}

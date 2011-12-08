@@ -151,3 +151,8 @@ social {
 		like.href = 'http://facebook.com/contpub'
 	}
 }
+
+// Executable Bin Path
+executable {
+	pygmentize = "/usr/local/bin/pygmentize"
+}
