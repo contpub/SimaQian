@@ -205,7 +205,7 @@ ${book.title}
 		else if (params.syntax != null) {
 
 			try {			
-				def command = "pygmentize -O full,style=trac,linenos=1,encoding=utf-8 -l rst -f html"
+				def command = "/usr/local/bin/pygmentize -O full,style=trac,linenos=1,encoding=utf-8 -l rst -f html"
 				def proc = command.execute()
 
 				proc.withWriter { writer ->
