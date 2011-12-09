@@ -71,10 +71,10 @@
 			
 			<socialTag:facebookLikeButton />
 			
-			<g:if test="${userBuyBook||book.isPublic}">
+			<g:if test="${userOwnBook||userBuyBook||book.isPublic}">
 				<a name="download"></a>
 				<g:if test="${book?.isCooking}">
-					<p><strong>Unavailable</strong>. This book is printing, please wait ...</p>
+					<p><strong>無法下載</strong>. 電子書正在製作中 ...</p>
 				</g:if>
 				<g:else>
 					<div style="text-align: center">
@@ -119,9 +119,9 @@
 			<div class="post-meta">
 				<!--<h4>Book Info</h4>-->
 				<ul>
-					<g:if test="${!userBuyBook&&!book?.isPublic}">
+					<!--<g:if test="${!userBuyBook&&!book?.isPublic}">
 						<li><g:link action="addToCart" id="${book.id}">Buy This Book</g:link></li>
-					</g:if>
+					</g:if>-->
 					<g:if test="${userBuyBook||book.isPublic}">
 						<li class="permalink"><a href="#download">電子書下載</a></li>
 					</g:if>

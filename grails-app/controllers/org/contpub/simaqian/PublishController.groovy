@@ -52,7 +52,6 @@ class PublishController {
 			link1.linkType = UserAndBookLinkType.OWNER
 			
 			link1.save(flush: true)
-			link1.save()
 
 			user.addToBooks(link1)
 			book.addToUsers(link1)
@@ -228,6 +227,39 @@ class PublishController {
 		}
 		
 		redirect(action: 'cover', id: book?.id)
+	}
+
+	/**
+	 * Reader Management
+	 */
+	def reader = {
+		def book = Book.get(params.id)
+		[book: book]
+	}
+
+	def readerSave = {
+		def book = Book.get(params.id)
+
+		if (params.email) {
+			def user = User.findByEmail(params.email)
+
+			if (user) {
+				def link1 = new UserAndBook()
+
+				link1.user = user
+				link1.book = book
+				link1.linkType = UserAndBookLinkType.BUYER				
+				link1.save(flush: true)
+
+				user.addToBooks(link1)
+				book.addToUsers(link1)
+
+				user.save(flush: true)
+				book.save(flush: true)
+			}
+		}
+
+		redirect (action: 'reader', id: book?.id)
 	}
 
 	/**
