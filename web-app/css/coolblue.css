@@ -198,9 +198,9 @@ input.button {
 /* header */
 #header-wrap {
 	float: left;
-	height: 200px;
+	height: 150px;
 	width: 100%;
-	background: url(../images/header-bg.jpg) repeat-x;
+	background: url(../images/header-bg.png) repeat-x bottom;
 }
 #header {
 	position: relative;
@@ -213,13 +213,13 @@ input.button {
 #header h1#logo-text a {
 	position: absolute;
 	margin: 0; padding: 0 5px 0 0;
-	font: bold 40px 'Trebuchet MS', 'Helvetica Neue', Arial, Sans-Serif;
-	letter-spacing: -3px;
+	font: bold 32px 'Trebuchet MS', 'Helvetica Neue', Arial, Sans-Serif;
+	letter-spacing: -2px;
 	color: #333;
 	text-decoration: none;
 
   	/* change the values of top and left to adjust the position of the logo*/
-	top: 82px; left: 25px;
+	top: 80px; left: 25px;
 }
 #header p#slogan {
 	position: absolute;
@@ -233,7 +233,7 @@ input.button {
 	color: #0d6684;
 
 	/* change the values of top and left to adjust the position */
-	top: 142px; left: 30px;
+	top: 110px; left: 30px;
 }
 
 /* RSS */
@@ -300,26 +300,28 @@ fieldset.search {
 /*  navigation  */
 #header #nav {
 	position: absolute;
-	left: 15px;	top: 25px;
-	margin: 0; padding: 0;
+	left: 15px;
+	top: 15px;
+	margin: 0;
+	padding: 0;
 	/* width: 750px; */
 }
 #header #nav ul {
 	float: left;	
 	list-style: none;
 	margin: 0; padding: 0;
-	height: 45px;
+	height: 15px;
 }
 #header #nav ul li {
 	float: left;
 	margin: 0; padding: 0;			
 }
 #header #nav ul li a {
-	float:left;
+	float: left;
 	margin: 0;
-	padding: 0 15px 26px 15px;
+	padding: 0 15px 0 15px;
 	color: #baa7a7;
-	font: bold 13px 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+	font: normal 13px 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
 }
 #header #nav ul li a:hover, 
 #header #nav ul li a:active {
@@ -327,8 +329,8 @@ fieldset.search {
 	color: #fff;
 }
 #header #nav ul li#current a {
-	background: transparent url(../images/current.jpg) no-repeat center bottom;
 	color: #fff;
+	font-weight: bold;
 }
 
 /* content */
@@ -364,9 +366,8 @@ fieldset.search {
 }
 
 #main h2 {
-	font: bold 3.2em/1em 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+	font: bold 2.5em/1em 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
 	color: #333;
-	letter-spacing: -2.0px;
 	margin-bottom: 0;
 	padding-bottom: 0;
 }

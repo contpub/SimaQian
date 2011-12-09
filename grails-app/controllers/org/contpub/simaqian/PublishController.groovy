@@ -60,7 +60,7 @@ class PublishController {
 			user.save(flush: true)
 			book.save(flush: true)
 
-			redirect (action: 'write', id: book.id)
+			redirect (action: 'editor', id: book.id)
 		}
 		else {
 			render (view: 'create', model: [book: book])
@@ -231,6 +231,44 @@ class PublishController {
 	}
 
 	/**
+	 * Mode Setup Tool
+	 */
+	def mode = {
+		def book = Book.get(params.id)
+		[book: book]
+	}
+
+	/**
+	 * Change Mode Request
+	 */
+	def modeChange = {
+		def book = Book.get(params.id)
+
+		if (book) {
+			def newType = null
+			switch (params.type) {
+				case 'EMBED':
+					newType = RepoType.EMBED
+				break
+
+				case 'DROPBOX':
+					newType = RepoType.DROPBOX
+				break
+
+				case 'GIT':
+					newType = RepoType.GIT
+				break
+			}
+			if (newType) {
+				book.type = newType
+				book.save(flush: true)
+			}
+		}
+
+		redirect(action: 'mode', id: book?.id)
+	}
+
+	/**
 	 * Save Contents (Ajax)
 	 */
 	def ajaxSaveContents = {
@@ -296,15 +334,26 @@ class PublishController {
 			def json = new JsonBuilder()
 			def version = grailsApplication.config.appConf.cook.version
 
-			def contentUrl
-			
-			if (book.type.equals(RepoType.EMBED)) {
-				contentUrl = createLink(controller: 'book', action: 'embed', id: book.id, absolute: true)
+			def contentUrl = null
+
+			switch (book.type) {
+				case RepoType.EMBED:
+					contentUrl = createLink(
+						controller: 'book',
+						action: 'embed',
+						id: book.id,
+						absolute: true
+					)
+				break
+
+				case RepoType.DROPBOX:
+					contentUrl = "${grailsApplication.config.appConf.sysId}-${book.name}"
+				break
+
+				default:
+					contentUrl = book.url
 			}
-			else {
-				contentUrl = book.url
-			}
-			
+						
 			json (
 				id: book.id,
 				url: "${contentUrl}",
@@ -312,6 +361,8 @@ class PublishController {
 				name: "${book.name}",
 				version: version
 			)
+
+			println json
 			
 			def routingKey = grailsApplication.config.appConf.cook.routingKey
 			def msgContent = json?.toString()

@@ -24,7 +24,7 @@
 	<g:layoutHead/>
 </head>
 <body>
-	<g:applyLayout name="pageHeader"></g:applyLayout>
+	<g:applyLayout name="pageHeader" params="[currentAction: controllerName]" />
 	<g:applyLayout name="pageContent">
 		<g:layoutBody/>
 		<!--Sidebar define by each view-->

@@ -33,9 +33,7 @@
 	</style>
 </head>
 <body>
-	<g:applyLayout name="pageHeader">
-		<meta name="current.action" content="${controllerName}" />
-	</g:applyLayout>
+	<g:applyLayout name="pageHeader" params="[currentAction: controllerName]" />
 	<g:applyLayout name="pageContent">
 		<g:layoutBody/>
 		

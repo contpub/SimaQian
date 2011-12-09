@@ -115,6 +115,7 @@ aws {
 }
 
 // Application configuration
+appConf.sysId = 'contpub'
 appConf.title = 'Continuous Publishing'
 appConf.subTitle = 'Now everyone can publish ...'
 appConf.cook.exchangeName = ''
