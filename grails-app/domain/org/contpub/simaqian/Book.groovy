@@ -17,7 +17,7 @@ class Book {
 	String name				//書籍名稱（代碼，例：MyBook1）
 	String title			//書籍標題
 	
-	BookProfile profile		//Profile
+	BookProfile profile	= new BookProfile()	//Profile
 	
 	Boolean isCooking		= false		//是否正在處理轉換中
 	Integer countCook		= 0			//計算處理次數

@@ -308,7 +308,11 @@ class PublishController {
 		def successed = false
 
 		if (params.contents) {
+			if (!book.profile) {
+				book.profile = new BookProfile(book: book)
+			}
 			book.profile.contents = params.contents
+			book.profile.save(flush: true)
 			successed = book.save(flush: true)
 		}
 
