@@ -56,7 +56,7 @@
 			tabMode: 'shift', //indent
 			enterMode: 'keep', //indent
 			matchBrackets: true,
-			theme: 'default'	//=> default, night
+			theme: 'default'	//[default, night]
 		});
 
 		$('a.save-button').click(function() {
@@ -70,6 +70,7 @@
 				},
 				'json'
 			);
+			return false;
 		});
 
 		$('a.publish-button').click(function() {
