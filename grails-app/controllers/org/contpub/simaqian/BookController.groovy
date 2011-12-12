@@ -108,12 +108,13 @@ class BookController {
 			cal.add(Calendar.MINUTE, 5)
 			def expiryDate = cal.time
 			
-			
 			//def filepath = "${book.name.substring(0,1).toLowerCase()}/${book.name}.${fileExt}"
-			def filepath = "${book.name}.${fileExt}"
+			def filePath = "${book.name}.${fileExt}"
 			
-			def signedUrl = s3Service.createSignedGetUrl(bucketName, filepath, awsCredentials, expiryDate, false)
+			def signedUrl = s3Service.createSignedGetUrl(bucketName, filePath, awsCredentials, expiryDate, false)
 			
+			signedUrl = signedUrl.replace('https://', 'http://')
+
 			//render(filepath)
 			redirect (url: signedUrl)
 			//render ("${bucketName}/${book.name}.pdf")
