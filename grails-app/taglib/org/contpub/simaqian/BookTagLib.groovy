@@ -25,7 +25,12 @@ class BookTagLib {
 	 */
 	def link = { attr, body ->
 		out << "<a href=\"${attr.book?createLink(book: attr.book):'#'}\" title=\"${attr.book?.title}\">"
-		out << body()
+		if (body()) {
+			out << body()
+		}
+		else {
+			out << attr.book?.title
+		}
 		out << "</a>"
 	}
 	

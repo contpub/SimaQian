@@ -8,8 +8,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="author" content="Erwin Aligam - styleshout.com" />
-	<meta name="description" content="Site Description Here" />
+	<meta name="author" content="StrongSoft" />
+	<meta name="description" content="Now everyone can publish ..." />
 	<meta name="keywords" content="keywords, here" />
 	<meta name="robots" content="index, follow, noarchive" />
 	<meta name="googlebot" content="noarchive" />
@@ -25,6 +25,8 @@
 	<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
 	<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 	<g:layoutHead/>
+	<ga:trackPageview />
+	<g:woopraTrackingScript />
 </head>
 <body>
 	<g:applyLayout name="pageHeader" params="[currentAction: controllerName]" />

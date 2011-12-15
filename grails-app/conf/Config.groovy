@@ -122,7 +122,6 @@ appConf.cook.exchangeName = ''
 appConf.cook.version = 1.0
 appConf.cook.routingKey = 'RepoCook'
 
-
 // Secure Passwords in private config file
 grails.config.locations = [
 	"file:${userHome}/.grails/${appName}-config.properties",
@@ -162,3 +161,8 @@ executable {
 tomcat.deploy.username="manager"
 tomcat.deploy.password="secret"
 tomcat.deploy.url="http://myserver.com/manager"
+
+// Google Analytics
+google.analytics.webPropertyID = "UA-xxxxxx-x"
+google.analytics.enabled = true
+//google.analytics.traditional = true

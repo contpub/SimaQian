@@ -27,14 +27,10 @@
 	div.advanced {
 		display: none;
 	}
-	p.download-link {
+	div.download-link {
 		text-align: center;
-		width: 120px;
+		width: 200px;
 		display: inline-block;
-	}
-	p.download-link img {
-		width: 64px;
-		height: 64px;
 	}
 	.comments {
 		clear: both;
@@ -56,7 +52,12 @@
 <body>
 
 	<div class="breadcrumbs">
-		<g:link action="index">Books</g:link>
+		<userTag:isLogin>
+			<g:link action="index">Books</g:link>
+		</userTag:isLogin>
+		<userTag:isNotLogin>
+			Books
+		</userTag:isNotLogin>
 		&gt;
 		${book.title}
 	</div>
@@ -79,17 +80,21 @@
 				</g:if>
 				<g:else>
 					<div style="text-align: center">
-						<p class="download-link">
+						<div class="download-link">
 							<bookTag:downloadLink book="${book}" type="pdf">
-								<img src="${createLinkTo(dir: 'icons', file: 'mime-pdf.png')}" alt="pdf-icon" border="0" /><br/>
+								<img src="${createLinkTo(dir: 'icons', file: 'mime-pdf-64.png')}" alt="pdf-icon" border="0" /><br/>
 								${book?.name}.pdf
 							</bookTag:downloadLink>
-						</p>
-						<p class="download-link">
+							<br/>
+							<a href="http://docs.google.com/viewer?url=${bookTag.createDownloadLink(book: book, type: 'pdf').encodeAsURL()}&embedded=true" target="_blank">線上預覽</a>
+						</div>
+						<div class="download-link">
 							<bookTag:downloadLink book="${book}" type="epub">
-								<img src="${createLinkTo(dir: 'icons', file: 'mime-epub.png')}" alt="epub-icon" border="0" /><br/>${book?.name}.epub
+								<img src="${createLinkTo(dir: 'icons', file: 'mime-epub-64.png')}" alt="epub-icon" border="0" /><br/>${book?.name}.epub
 							</bookTag:downloadLink>
-						</p>
+							<br/>
+							無法預覽
+						</div>
 					</div>
 				</g:else>
 			</g:if>

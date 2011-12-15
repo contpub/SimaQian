@@ -6,15 +6,20 @@ package org.contpub.simaqian
 class ExploreController {
 
 	def index() {
+
+		def books = Book.withCriteria {
+			eq ('isPublic', true)
+			order ('lastUpdated', 'desc')
+			//maxResults (params.max?params.max:5)
+			//firstResult (params.offset?params.offset:0)
+		}
+
+		/*def totalBooks = Book.executeQuery(
+			'select count(b) from Book b where isPublic = true'
+		)*/
+
 		[
-			books: Book.withCriteria {
-				eq('isPublic', true)
-				order('lastUpdated')
-				maxResults(params.max?params.max:5)
-				firstResult(params.offset?params.offset:0)
-			},
-			//Book.findAll([max: params.max?params.max:5, offset: params.offset]),
-			totalBooks: 5
+			books: books
 		]
 	}
 }

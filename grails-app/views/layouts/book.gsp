@@ -8,7 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="author" content="ContPub" />
+	<meta name="author" content="StrongSoft" />
 	<meta name="description" content="Continuous Publishing" />
 	<meta name="keywords" content="" />
 	<meta name="robots" content="index, follow, noarchive" />
@@ -31,6 +31,8 @@
 			color: blue;
 		}
 	</style>
+	<ga:trackPageview />
+	<g:woopraTrackingScript />
 </head>
 <body>
 	<g:applyLayout name="pageHeader" params="[currentAction: controllerName]" />

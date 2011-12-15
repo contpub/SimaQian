@@ -1,7 +1,12 @@
 <div class="breadcrumbs">
-	<g:link controller="book" action="index">Books</g:link>
+	<userTag:isLogin>
+		<g:link controller="book" action="index">Books</g:link>
+	</userTag:isLogin>
+	<userTag:isNotLogin>
+		Books
+	</userTag:isNotLogin>
 	&gt;
-	<g:link controller="book" action="show" id="${book?.id}">${book?.title}</g:link>		
+	<bookTag:link book="${book}" />
 	&gt;
 	${title}
 </div>

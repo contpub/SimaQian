@@ -8,8 +8,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="author" content="Erwin Aligam - styleshout.com" />
-	<meta name="description" content="Site Description Here" />
+	<meta name="author" content="StrongSoft" />
+	<meta name="description" content="Now everyone can publish ..." />
 	<meta name="keywords" content="keywords, here" />
 	<meta name="robots" content="index, follow, noarchive" />
 	<meta name="googlebot" content="noarchive" />
@@ -45,6 +45,8 @@
 		height: 64px;
 	}
 	</style>
+	<ga:trackPageview />
+	<g:woopraTrackingScript />
 </head>
 <body>
 	<g:applyLayout name="pageHeader" params="[currentAction: controllerName]" />
