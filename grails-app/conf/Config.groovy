@@ -157,3 +157,8 @@ social {
 executable {
 	pygmentize = "/usr/local/bin/pygmentize"
 }
+
+// Tomcat
+tomcat.deploy.username="manager"
+tomcat.deploy.password="secret"
+tomcat.deploy.url="http://myserver.com/manager"

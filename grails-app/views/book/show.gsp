@@ -62,7 +62,7 @@
 	</div>
 
 	<div class="post">
-		<div class="right">			
+		<div class="right">
 			<h2>${book?.title}</h2>
 			
 			<p class="description">
@@ -72,6 +72,7 @@
 			<socialTag:facebookLikeButton />
 			
 			<g:if test="${userOwnBook||userBuyBook||book.isPublic}">
+				<h3>下載</h3>
 				<a name="download"></a>
 				<g:if test="${book?.isCooking}">
 					<p><strong>無法下載</strong>. 電子書正在製作中 ...</p>
@@ -92,6 +93,7 @@
 					</div>
 				</g:else>
 			</g:if>
+
 			<div class="advanced">
 				<h3>Repository</h3>
 				<table width="400">
@@ -122,8 +124,11 @@
 					<!--<g:if test="${!userBuyBook&&!book?.isPublic}">
 						<li><g:link action="addToCart" id="${book.id}">Buy This Book</g:link></li>
 					</g:if>-->
-					<g:if test="${userBuyBook||book.isPublic}">
+					<!--<g:if test="${userBuyBook||book.isPublic}">
 						<li class="permalink"><a href="#download">電子書下載</a></li>
+					</g:if>-->
+					<g:if test="${book?.cookUpdated}">
+						<li class="time">${book?.cookUpdated?.format('yyyy/MM/dd')}</li>
 					</g:if>
 				</ul>
 			</div>

@@ -113,6 +113,7 @@ class BookController {
 			
 			def signedUrl = s3Service.createSignedGetUrl(bucketName, filePath, awsCredentials, expiryDate, false)
 			
+			//dirty hack for https(ssl) auth failed
 			signedUrl = signedUrl.replace('https://', 'http://')
 
 			//render(filepath)
