@@ -20,7 +20,7 @@ class ConsumerService {
 					def sandbox = Sandbox.get(msg.id)
 					if (sandbox) {
 						sandbox.isCooking = false
-						book.save(flush: true)
+						sandbox.save(flush: true)
 					}
 				}
 			}
