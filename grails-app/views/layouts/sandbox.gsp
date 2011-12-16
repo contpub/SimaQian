@@ -5,12 +5,15 @@
 <!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml"><!--<![endif]-->
 <head>
+	<socialTag:openGraph title="${layoutTitle(default: 'Sandbox')}" />
 	<layoutTag:normalMeta />
-	<title><g:layoutTitle default="Book" /> - ${grailsApplication.config.appConf.title}</title>
+	<title><g:layoutTitle default="Sandbox" /> - ${grailsApplication.config.appConf.title}</title>
 	<layoutTag:normalHead />
 	<layoutTag:normalIcon />
 	<layoutTag:jquery />
 	<layoutTag:jqueryUI />
+	<ga:trackPageview />
+	<g:woopraTrackingScript />
 	<g:layoutHead/>
 	<style type="text/css">
 	.steps {
@@ -32,8 +35,6 @@
 		height: 64px;
 	}
 	</style>
-	<ga:trackPageview />
-	<g:woopraTrackingScript />
 </head>
 <body>
 	<g:applyLayout name="pageHeader" params="[currentAction: controllerName]" />

@@ -1,14 +1,22 @@
 <html>
 <head>
 	<title>Welcome</title>
+	<layoutTag:webFonts family="Droid Sans Mono" />
+	<layoutTag:codemirror />
 	<style tyle="text/css">
 	#tabs {
 		width: 90%;
 		margin: 15px auto;
 	}
+	.CodeMirror {
+		font-family: 'Droid Sans Mono', sans-serif, Consolata, monospace;
+		font-size: 12pt;
+		line-height: 1.25em;
+	}
 	</style>
 	<script type="text/javascript">
 		$(function() {
+			$('#code').codemirrorHighlight({mode: 'text/x-rst'});
 			$('#tabs').tabs();
 		});
 	</script>
@@ -24,7 +32,9 @@
 			<li><a href="#tabs-3">流程說明</a></li>
 		</ul>
 		<div id="tabs-1">
-			<iframe src="${createLink(controller: 'book', action: 'embed', id: book?.id, params: [syntax: true])}" width="100%" height="480" style="border: none"></iframe>
+			<!--<iframe src="${createLink(controller: 'book', action: 'embed', id: book?.id, params: [syntax: true])}" width="100%" height="480" style="border: none"></iframe>-->
+			<textarea id="code" style="display:none">${book?.profile?.contents}</textarea>
+			<noscript>${book?.profile?.contents}</noscript>
 		</div>
 		<div id="tabs-2">
 			<!--

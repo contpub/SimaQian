@@ -89,4 +89,30 @@ class SocialTagLib {
 			model: []
 		)
 	}
+
+	/**
+	 * <socialTag:openGraph title="" type="" url="" image="" description="" />
+	 */
+	def openGraph = { attr, body ->
+		if (request.getAttribute('_hasog')=='1') {
+			return
+		}
+		request.setAttribute('_hasog', '1')
+
+		if (!attr.title) attr.title = grailsApplication.config.appConf.title
+		if (!attr.description) attr.description = grailsApplication.config.appConf.subTitle
+		if (!attr.type) attr.type = 'website'
+		if (!attr.url) attr.url = "${baseURL()}${request.forwardURI}"
+
+		out << """<!--Open Graph-->
+	<meta property="og:title" content="${attr.title}"/>
+	<meta property="og:description" content="${attr.description}"/>	
+	<meta property="og:type" content="${attr.type}"/>
+	<meta property="og:url" content="${attr.url}"/>
+	<meta property="og:image" content="${attr.image}"/>
+	<meta property="og:site_name" content="${grailsApplication.config.appConf.sysId}"/>
+	<meta property="fb:app_id" content="${grailsApplication.config.social.facebook.appId}"/>
+	<meta property="fb:admins" content="${grailsApplication.config.social.facebook.admins}"/>
+	<meta property="fb:page_id" content="${grailsApplication.config.social.facebook.pageId}"/>"""
+	}
 }

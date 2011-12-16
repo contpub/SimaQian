@@ -1,14 +1,6 @@
 <html>
 <head>
-    <meta property="og:title" content="${sandbox?.title}"/>
-    <meta property="og:type" content="book"/>
-    <meta property="og:url" content="${createLink(action: 'show', id: sandbox?.id)}"/>
-    <meta property="og:image" content="${createLinkTo(dir: 'icons', file: 'book.png')}"/>
-    <meta property="og:site_name" content="${grailsApplication.config.appConf.sysId}"/>
-    <meta property="fb:app_id" content="${grailsApplication.config.social.facebook.appId}"/>
-    <meta property="fb:admins" content="${grailsApplication.config.social.facebook.admins}"/>
-    <meta property="fb:page_id" content="${grailsApplication.config.social.facebook.pageId}"/>
-	<meta property="og:description" content="這是一本開放源碼電子書，歡迎下載。"/>	
+	<socialTag:openGraph title="${sandbox?.title}" type="book" url="${createLink(action: 'show', id: sandbox?.id)}" image="${createLinkTo(dir: 'icons', file: 'book.png')}" description="這是一本開放源碼電子書，歡迎下載。" />
 	<title>${sandbox?.title}</title>
 	<layoutTag:webFonts family="Droid Sans Mono" />
 	<layoutTag:codemirror />
@@ -16,6 +8,11 @@
 	#tabs {
 		width: 90%;
 		margin: 15px auto;
+	}
+	.CodeMirror {
+		font-family: 'Droid Sans Mono', sans-serif, Consolata, monospace;
+		font-size: 12pt;
+		line-height: 1.25em;
 	}
 	</style>
 	<script type="text/javascript">
@@ -35,7 +32,8 @@
 			<li><a href="#tabs-3">流程說明</a></li>
 		</ul>
 		<div id="tabs-1">
-			<textarea id="code">${sandbox?.contents}</textarea>
+			<textarea id="code" style="display:none">${sandbox?.contents}</textarea>
+			<noscript>${sandbox?.contents}</noscript>
 		</div>
 		<div id="tabs-2">
 			<p>檔案下載：</p>
