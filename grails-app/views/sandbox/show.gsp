@@ -1,6 +1,6 @@
 <html>
 <head>
-	<socialTag:openGraph title="${sandbox?.title}" type="book" url="${createLink(action: 'show', id: sandbox?.id)}" image="${createLinkTo(dir: 'icons', file: 'book.png', absolute: true)}" description="這是一本開放源碼電子書，歡迎下載。" />
+	<socialTag:openGraph title="${sandbox?.title}" type="book" url="${createLink(action: 'show', id: sandbox?.id, absolute: true)}" image="${createLinkTo(dir: 'icons', file: 'book.png', absolute: true)}" description="這是一本開放源碼電子書，歡迎下載。" />
 	<title>${sandbox?.title}</title>
 	<layoutTag:webFonts family="Droid Sans Mono" />
 	<layoutTag:codemirror />
