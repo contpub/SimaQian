@@ -43,7 +43,6 @@
 	</style>
 </head>
 <body>
-	<socialTag:facebookSDK />
 	<div class="breadcrumbs">
 		<userTag:isLogin>
 			<g:link action="index">Books</g:link>

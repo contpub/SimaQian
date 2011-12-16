@@ -17,6 +17,7 @@
 	<g:layoutHead/>
 </head>
 <body>
+	<socialTag:facebookSDK />
 	<g:applyLayout name="pageHeader"></g:applyLayout>
 	<g:applyLayout name="pageContent">
 		<g:layoutBody/>

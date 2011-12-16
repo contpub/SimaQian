@@ -46,7 +46,7 @@ class SocialTagLib {
 				stream: attr.stream?attr.stream:true,
 				showFaces: attr.showFaces?attr.showFaces:true,
 				colorscheme: attr.colorscheme?attr.colorscheme:'light',
-				borderColor: attr.borderColor?attr.borderColor:''
+				borderColor: attr.borderColor?attr.borderColor:'#ffffff'
 			]
 		)
 	}

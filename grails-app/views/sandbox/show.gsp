@@ -23,7 +23,6 @@
 	</script>
 </head>
 <body>
-	<socialTag:facebookSDK />
     <h2>${sandbox?.title}</h2>
 	<div id="tabs">
 		<ul>
