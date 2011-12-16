@@ -2,7 +2,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>發佈成功</title>
-<meta http-equiv="refresh" content="10; url=${createLink(action: 'resultCheck', id: sandbox?.id)}" />
 </head>
 <body>
 下載電子書...
