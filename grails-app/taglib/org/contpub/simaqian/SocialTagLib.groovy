@@ -55,7 +55,7 @@ class SocialTagLib {
 		out << render (
 			template: '/tagLib/social/facebookLikeButton',
 			model: [
-				href: attr.href?attr.href:'',
+				href: attr.href?attr.href:null,
 				send: attr.send?attr.send:true,
 				layout: attr.layout?attr.layout:'standard',
 				width: attr.width?attr.width:450,

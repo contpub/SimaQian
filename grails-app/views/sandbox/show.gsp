@@ -6,7 +6,9 @@
     <meta property="og:image" content="${createLinkTo(dir: 'icons', file: 'book.png')}"/>
     <meta property="og:site_name" content="${grailsApplication.config.appConf.sysId}"/>
     <meta property="fb:app_id" content="${grailsApplication.config.social.facebook.appId}"/>
-    <meta property="og:description" content="這是一本開放源碼電子書，歡迎下載。"/>	
+    <meta property="fb:admins" content="${grailsApplication.config.social.facebook.admins}"/>
+    <meta property="fb:page_id" content="${grailsApplication.config.social.facebook.pageId}"/>
+	<meta property="og:description" content="這是一本開放源碼電子書，歡迎下載。"/>	
 	<title>${sandbox?.title}</title>
 	<layoutTag:webFonts family="Droid Sans Mono" />
 	<layoutTag:codemirror />

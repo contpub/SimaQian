@@ -158,8 +158,9 @@ social {
 		screenName = 'FollowContpub'
 	}
 	facebook {
-		admins = 'lyhcode'
+		admins = '10150315861069433'
 		appId = '175500369215845'
+		pageId = '242547115812632'
 		appSecret = ''
 		channelUrl = 'contpub.org'
 		like.href = 'http://facebook.com/contpub'
