@@ -16,7 +16,7 @@
 	<g:woopraTrackingScript />
 	<g:layoutHead/>
 </head>
-<body
+<body>
 	<socialTag:facebookSDK />
 	<g:applyLayout name="pageHeader" params="[currentAction: controllerName]" />
 	<g:applyLayout name="pageContent">
