@@ -44,9 +44,9 @@
 <body>
 	<g:renderErrors bean="${user}" />
 
-	<g:form action="accountSave" id="${user.id}">
+	<g:form action="accountSave" id="${user?.id}">
 		<p class="no-border"><strong>Change your account setting</strong></p>
-		<avatar:gravatar email="${session['user'].email}" size="48" />
+		<avatar:gravatar email="${user?.email}" size="48" />
 		<p class="avatar-info">
 			Change your avatar at <a href="gravatar.com" title="gravatar">gravatar.com</a><br/>
 			We’re using lyhcode@gmail.com

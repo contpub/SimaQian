@@ -25,14 +25,16 @@ class LayoutTagLib {
 	 * Display Login widgets
 	 */
 	def loginBox = { attr, body ->
-		out << render (template: '/tagLib/layout/loginBox', model: [])
+		def user = User.get(session.userId)
+		out << render (template: '/tagLib/layout/loginBox', model: [user: user])
 	}
 
 	/**
 	 * Display User widgets
 	 */	
 	def userBox = { attr, body ->
-		out << render (template: '/tagLib/layout/userBox', model: [])
+		def user = User.get(session.userId)
+		out << render (template: '/tagLib/layout/userBox', model: [user: user])
 	}
 
 	/**

@@ -19,7 +19,7 @@ class BookController {
 	//S3ClientService s3ClientService
 
 	def index = {
-		def user = User.get(session['user']?.id)
+		def user = User.get(session.userId)
 
 		[
 			books: user?.books*.book
@@ -27,7 +27,7 @@ class BookController {
 	}
 
 	def show = {
-		def user = User.get(session['user']?.id)
+		def user = User.get(session.userId)
 		def book = Book.get(params.id)
 		
 		def userBuyBook = false
@@ -55,7 +55,7 @@ class BookController {
 		
 		if (book) {
 		
-			def user = User.get(session['user']?.id)
+			def user = User.get(session.userId)
 			def userBuyBook = false
 			def userOwnBook = false
 	
@@ -152,7 +152,7 @@ class BookController {
 	 * Checkout Save
 	 */
 	def checkoutSave = {
-		def user = User.get(session['user']?.id)
+		def user = User.get(session.userId)
 		def book = Book.get(params.id)
 		
 		if (book) {

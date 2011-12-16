@@ -22,8 +22,9 @@ class PublishController {
      */
 	def create = {
 		def book = new Book()
-		
-		def userAccount = session['user']?.account
+		def user = User.get(session.userId)
+
+		def userAccount = user?.account
 		def dateString = new Date().format('yyyyMMdd')
 		
 		book.name = "${userAccount}-${dateString}"
@@ -44,7 +45,7 @@ class PublishController {
 
 			/* Connect User and Book association */
 
-			def user = User.get(session['user'].id)
+			def user = User.get(session.userId)
 			def link1 = new UserAndBook()
 
 			link1.user = user

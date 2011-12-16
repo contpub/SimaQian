@@ -8,7 +8,7 @@ class UserTagLib {
 	 * If user is login, output body text
 	 */
 	def isLogin = { attr, body ->
-		if (session['user']) {
+		if (session.userId) {
 			out << body()
 		}
 	}
@@ -17,9 +17,8 @@ class UserTagLib {
 	 * If user is not login, output body text
 	 */
 	def isNotLogin = { attr, body ->
-		if (!session['user']) {
+		if (!session.userId) {
 			out << body()
 		}
 	}
-	
 }

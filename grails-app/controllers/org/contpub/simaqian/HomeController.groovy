@@ -20,7 +20,8 @@ class HomeController {
     	def user = users.size() > 0? users[0]: null
     	
 		if (user) {
-			session['user'] = user
+			session.user = user
+			session.userId = user.id
 			redirect (action: 'index')
 		}
 		else {
@@ -30,7 +31,9 @@ class HomeController {
 	}
 	
 	def logout() {
-		session.invalidate()
+		//session.invalidate()
+		session.user = null
+		session.userId = null
 		redirect (action: 'index')
 	}
     
@@ -71,7 +74,7 @@ class HomeController {
 	 * Personal account management
 	 */
 	def account() {
-		def user = User.get(session['user']?.id)
+		def user = User.get(session.userId)
 		
 		if (!user) {
 			response.sendError(403)
