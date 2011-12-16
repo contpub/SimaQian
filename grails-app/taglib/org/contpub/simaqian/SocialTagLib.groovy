@@ -28,7 +28,10 @@ class SocialTagLib {
 	def facebookSDK = { attr, body ->
 		out << render (
 			template: '/tagLib/social/facebookSDK',
-			model: []
+			model: [
+				appId: grailsApplication.config.social.facebook.appId,
+				channelUrl: grailsApplication.config.social.facebook.channelUrl
+			]
 		)
 	}
 	

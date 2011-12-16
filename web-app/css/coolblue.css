@@ -339,6 +339,12 @@ fieldset.search {
 	color: #fff;
 	font-weight: bold;
 }
+#header #nav ul li a.highlight {
+	color: #ffff00;
+}
+#header #nav ul li a .new {
+	color: #ff0000;
+}
 
 /* content */
 #content-wrap {

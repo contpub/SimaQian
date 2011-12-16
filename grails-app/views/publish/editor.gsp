@@ -1,15 +1,8 @@
 <html>
 <head>
 	<title>Writing</title>
-	<link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" media="screen" href="${createLinkTo(dir: 'css', file: 'colorbox.css')}" />
-	<script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jquery.colorbox-min.js')}"></script>
-	<script src="${createLinkTo(dir: 'codemirror', file: 'codemirror.js')}"></script>
-	<script src="${createLinkTo(dir: 'codemirror/mode/rst', file: 'rst.js')}"></script>
-	<link rel="stylesheet" href="${createLinkTo(dir: 'codemirror/mode/rst', file: 'rst.css')}">
-	<link rel="stylesheet" href="${createLinkTo(dir: 'codemirror', file: 'codemirror.css')}">
-	<link rel="stylesheet" href="${createLinkTo(dir: 'codemirror/theme', file: 'default.css')}">
-	<link rel="stylesheet" href="${createLinkTo(dir: 'codemirror/theme', file: 'night.css')}">
+	<layoutTag:webFonts family="Droid Sans Mono" />
+	<layoutTag:codemirror />
 	<style type="text/css">
 	#save.button {
 		padding: 0 20px;

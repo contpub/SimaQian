@@ -4,8 +4,8 @@
     <meta property="og:type" content="book"/>
     <meta property="og:url" content="${bookTag.createLink(book: book)}"/>
     <meta property="og:image" content="${book?.hasCover?bookTag.createCoverLink(book: book):'http://contpub.org/static/images/book_icon.png'}"/>
-    <meta property="og:site_name" content="ContPub"/>
-    <meta property="fb:admins" content="contpub"/>
+    <meta property="og:site_name" content="${grailsApplication.config.appConf.sysId}"/>
+    <meta property="fb:admins" content="${grailsApplication.config.social.facebook.admins}"/>
     <meta property="og:description" content="${book?.profile?.simpleDescription}"/>
 	<title>${book?.title}</title>
 	<style type="text/css">
@@ -47,10 +47,9 @@
 		margin: 10px 25px;
 	}
 	</style>
-	<socialTag:facebookSDK />
 </head>
 <body>
-
+	<socialTag:facebookSDK />
 	<div class="breadcrumbs">
 		<userTag:isLogin>
 			<g:link action="index">Books</g:link>

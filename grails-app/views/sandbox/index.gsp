@@ -1,15 +1,9 @@
 <html>
 <head>
 	<title>Sandbox</title>
-	<link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" media="screen" href="${createLinkTo(dir: 'css', file: 'colorbox.css')}" />
-	<script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jquery.colorbox-min.js')}"></script>
-	<script src="${createLinkTo(dir: 'codemirror', file: 'codemirror.js')}"></script>
-	<script src="${createLinkTo(dir: 'codemirror/mode/rst', file: 'rst.js')}"></script>
-	<link rel="stylesheet" href="${createLinkTo(dir: 'codemirror/mode/rst', file: 'rst.css')}">
-	<link rel="stylesheet" href="${createLinkTo(dir: 'codemirror', file: 'codemirror.css')}">
-	<link rel="stylesheet" href="${createLinkTo(dir: 'codemirror/theme', file: 'default.css')}">
-	<link rel="stylesheet" href="${createLinkTo(dir: 'codemirror/theme', file: 'night.css')}">
+	<layoutTag:webFonts family="Droid Sans Mono" />
+	<layoutTag:jqueryColorbox />
+	<layoutTag:codemirror />
 	<style type="text/css">
 	#title { width: 360px; }
 	#authors { width: 200px; }
@@ -58,6 +52,11 @@
 		
 		var tabs = $('#tabs').tabs();
 
+		$('.goto-editor').click(function() {
+			tabs.tabs('select', 1);
+			return false;
+		});
+
 		$('a.publish-button').click(function() {
 			$.post(
 				"${createLink(action: 'ajaxPublish')}",
@@ -96,22 +95,25 @@
 				作者：<g:textField name="authors" value="${sandbox?.authors}" /><br/>
 				紙張大小（PDF）：<g:select name="pdfPaperSize" from="${pdfPaperSizeList}" value="${sandbox?.pdfPaperSize}" /><br/>
 				字體大小（PDF）：<g:select name="pdfFontSize" from="${pdfFontSizeList}" value="${sandbox?.pdfFontSize}" /><br/>
-				驗證碼：<br/>
+				<!--驗證碼：<br/>
 				<recaptcha:ifEnabled>
 					<recaptcha:recaptcha theme="clean"/>
 					<recaptcha:ifFailed>CAPTCHA Failed</recaptcha:ifFailed>
-				</recaptcha:ifEnabled>
+				</recaptcha:ifEnabled>-->
+				<p><span style="color:red">＊</span>設定完成後，請編輯電子書「<a class="goto-editor" href="#tabs-2">原始碼</a>」。</p>
 			</div>
 		</div>
 		<div id="tabs-2">
 			<div class="toolbar">
 				<a href="#" class="publish-button"><img src="${createLinkTo(dir: 'icons/silk', file: 'printer.png')}" border="0" /><span>發佈</span></a>
-				<span class="status"></span>
+				<span class="status">
+					<span style="color:red">＊</span>請按「發佈」開始製作電子書。
+				</span>
 				<g:textArea name="contents" value="${sandbox?.contents}" />
 			</div>
 		</div>
 		<div id="tabs-3">
-			<iframe id="result-iframe" src="${createLink(action: 'empty', params: ['_t':new Date().time])}" border="0" width="100%" height="250" style="width:100%;height:250px"></iframe>
+			<iframe id="result-iframe" src="${createLink(action: 'empty', params: ['_t':new Date().time])}" border="0" width="100%" height="320" style="width:100%;height:320px"></iframe>
 		</div>
 		<div id="tabs-4">
 			<p>使用<strong>沙盒測試</strong>體驗電子書製作，您可以不必註冊帳號。</p>

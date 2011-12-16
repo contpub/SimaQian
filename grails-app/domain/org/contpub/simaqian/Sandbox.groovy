@@ -10,6 +10,7 @@ class Sandbox {
 	String pdfFontSize = "12pt"			// pdf font size
 
 	Boolean isCooking = false	//是否正在處理轉換中
+	Boolean isSample = false	// in sample catalog
 
 	Date dateCreated				// Created Datetime
 	Date lastUpdated				// Modified Datetime

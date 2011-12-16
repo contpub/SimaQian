@@ -27,11 +27,12 @@
 					</g:link>
 				</li>
 			</userTag:isLogin>
-			<!--<li id="${pageProperty(name: 'currentAction')=='sandbox'?'current':'candidate'}">
-				<g:link controller="sandbox">
+			<li id="${pageProperty(name: 'currentAction')=='sandbox'?'current':'candidate'}">
+				<g:link controller="sandbox" class="highlight">
 					<g:message code="layout.header.sandbox.label" default="Sandbox"/>
+					<span class="new">New</span>
 				</g:link>
-			</li>-->
+			</li>
 		</ul>
 	</div>
 	<p id="rss">

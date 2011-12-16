@@ -30,6 +30,19 @@ class SandboxController {
 		]
 	}
 
+	def show() {
+		def sandbox = Sandbox.get(params.id)
+
+		if (!sandbox) {
+			response.status = 404
+			return
+		}
+
+		[
+			sandbox: sandbox
+		]
+	}
+
 	def empty = {
 		render (template: 'empty')
 	}
@@ -104,7 +117,7 @@ class SandboxController {
 				successed = saveResult?true:false
 				sandboxId = sandbox?.id
 				resultUrl = createLink(action: 'result', id: sandbox?.id, params: ['_t':new Date().time])
-				message = new Date().time
+				message = "發佈時間 ${new Date().format('yyyy/MM/dd')}"
 		}
 	}
 

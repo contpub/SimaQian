@@ -158,6 +158,10 @@ social {
 		screenName = 'FollowContpub'
 	}
 	facebook {
+		admins = 'lyhcode'
+		appId = '175500369215845'
+		appSecret = ''
+		channelUrl = 'contpub.org'
 		like.href = 'http://facebook.com/contpub'
 	}
 }
