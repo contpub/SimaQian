@@ -33,8 +33,9 @@
 		</ul>
 		<div id="tabs-1">
 			<!--<iframe src="${createLink(controller: 'book', action: 'embed', id: book?.id, params: [syntax: true])}" width="100%" height="480" style="border: none"></iframe>-->
-			<textarea id="code" style="display:none">${book?.profile?.contents}</textarea>
-			<noscript>${book?.profile?.contents}</noscript>
+			<div style="overflow:auto">
+				<textarea id="code" style="display:none">${book?.profile?.contents}</textarea>
+			</div>
 		</div>
 		<div id="tabs-2">
 			<!--

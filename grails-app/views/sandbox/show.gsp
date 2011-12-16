@@ -1,6 +1,6 @@
 <html>
 <head>
-	<socialTag:openGraph title="${sandbox?.title}" type="book" url="${createLink(action: 'show', id: sandbox?.id)}" image="${createLinkTo(dir: 'icons', file: 'book.png')}" description="這是一本開放源碼電子書，歡迎下載。" />
+	<socialTag:openGraph title="${sandbox?.title}" type="book" url="${createLink(action: 'show', id: sandbox?.id)}" image="${createLinkTo(dir: 'icons', file: 'book.png', absolute: true)}" description="這是一本開放源碼電子書，歡迎下載。" />
 	<title>${sandbox?.title}</title>
 	<layoutTag:webFonts family="Droid Sans Mono" />
 	<layoutTag:codemirror />
@@ -31,8 +31,9 @@
 			<li><a href="#tabs-3">流程說明</a></li>
 		</ul>
 		<div id="tabs-1">
-			<textarea id="code" style="display:none">${sandbox?.contents}</textarea>
-			<noscript>${sandbox?.contents}</noscript>
+			<div style="overflow:auto">
+				<textarea id="code" style="display:none">${sandbox?.contents}</textarea>
+			</div>
 		</div>
 		<div id="tabs-2">
 			<p>檔案下載：</p>

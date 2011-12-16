@@ -1,6 +1,6 @@
 <html>
 <head>
-	<socialTag:openGraph title="${book?.title}" type="book" url="${bookTag.createLink(book: book)}" image="${book?.hasCover?bookTag.createCoverLink(book: book):'http://contpub.org/static/images/book_icon.png'}" description="${book?.profile?.simpleDescription}" />
+	<socialTag:openGraph title="${book?.title}" type="book" url="${bookTag.createLink(book: book)}" image="${book?.hasCover?bookTag.createCoverLink(book: book):createLinkTo(dir: 'icons', file: 'book.png', absolute: true)}" description="${book?.profile?.simpleDescription}" />
 	<title>${book?.title}</title>
 	<style type="text/css">
 	table {

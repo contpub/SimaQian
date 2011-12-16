@@ -20,7 +20,7 @@ class SandboxController {
 
 			sandbox.title = '免費製作一本電子書'
 			sandbox.authors = '無名氏'
-			sandbox.contents = "**********\n電子書的定義\n**********\n\n電子書又稱為electronic book、digital book、e-book。\n簡單的說，所謂的電子書是，必須透過特殊的閱讀軟體( reader )，\n以電子文件的型式，透過網路連結下載至一般常見的平台，\n例如：個人計算機( PC ) 、筆記型計算機( Note-book )，甚至是個人數字助理( PDA )、WAP手機，\n或是任何可大量儲存數字閱讀數據( digi-tal reading material )的閱讀器上閱讀的書籍，\n是一種傳統紙質圖書的替代品。\n（資料來源：維基百科 http://goo.gl/fHbz0 ）\n\n輸入你的內容！\n\n"
+			sandbox.contents = "**********\n電子書的定義\n**********\n\n電子書又稱為 electronic book、digital book、e-book。\n簡單的說，所謂的電子書是，必須透過特殊的閱讀軟體，\n以電子文件的型式，透過網路連結下載至一般常見的平台，\n例如：個人計算機、筆記型計算機，甚至是個人數字助理、WAP手機，\n或是任何可大量儲存數字閱讀數據的閱讀器上閱讀的書籍，\n是一種傳統紙質圖書的替代品。\n（資料來源：維基百科 http://goo.gl/fHbz0 ）\n\n輸入你的內容！\n\n"
 		}
 
 		[
