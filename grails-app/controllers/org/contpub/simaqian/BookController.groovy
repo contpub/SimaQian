@@ -3,9 +3,9 @@ package org.contpub.simaqian
 import groovy.json.JsonBuilder
 
 import org.jets3t.service.*
-import org.jets3t.service.model.S3Object
-import org.jets3t.service.security.AWSCredentials
-import org.jets3t.service.impl.rest.httpclient.RestS3Service
+import org.jets3t.service.model.*
+import org.jets3t.service.security.*
+import org.jets3t.service.impl.rest.httpclient.*
 
 import org.nuiton.jrst.*
 
@@ -182,11 +182,19 @@ class BookController {
 
 		//Implement SecretKey here!!!
 		def book = Book.get(params.id)
-		def contents = ''
 		
 		if (params.index != null) {
+			return renderIndex(book)
+		}
+		else if (params.syntax != null) {
+			return renderSyntax(book)
+		}
+		
+		render (contentType: contentType, encoding: 'UTF-8', text: book.profile?.contents)
+	}
 
-			contents = """.. ${book.name}
+	def renderIndex(book) {
+		def contents = """.. ${book.name}
    @project: ${book.name}
    @title: ${book.title}
    @copyright: 2011, ContPub
@@ -203,56 +211,38 @@ ${book.title}
 
    contents
 """
-		}
-		else if (params.syntax != null) {
-
-			try {
-				def pygmentize = grailsApplication.config.executable?.pygmentize
-
-				if (!pygmentize) {
-					pygmentize = "pygmentize"
-				}
-
-				def options = "full,style=trac,linenos=1,encoding=utf-8"
-				def command = "${pygmentize} -O ${options} -l rst -f html"
-				def proc = command.execute()
-
-				proc.withWriter { writer ->
-					writer << book.profile?.contents
-				}
-
-				proc.waitForOrKill(3000)
-
-				contents = proc.text
-				contents = contents.replace('<style type="text/css">', '''
-	<link href="http://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/reset/reset-min.css">
-	<style type="text/css">
-	body {
-		font-size: 12pt;
+		render (contentType: 'text/plain', encoding: 'UTF-8', text: contents)
 	}
-	.linenodiv {
-		color: #888888;
-		padding: 0 .25em;
+
+	//using codemirror layout
+	def renderSyntax(book) {
+		return render (template: 'codemirror', model: [contents: book.profile?.contents])
 	}
-	.highlight {
-		padding: 0 .5em;
-	}
-	pre {
-		font-family: 'Droid Sans Mono', sans-serif, Consolata, monospace;
-	}
-'''
-				)
-				contentType = "text/html"
+
+	//using pygments layout
+	def renderSyntax2(book) {
+		try {
+			def pygmentize = grailsApplication.config.executable?.pygmentize
+
+			if (!pygmentize) {
+				pygmentize = "pygmentize"
 			}
-			catch (e) {
-				contents = e.message
+
+			//def options = "full,style=trac,linenos=1,encoding=utf-8"
+			def options = "linenos=1,encoding=utf-8"
+			def command = "${pygmentize} -O ${options} -l rst -f html"
+			def proc = command.execute()
+
+			proc.withWriter { writer ->
+				writer << book.profile?.contents
 			}
+
+			proc.waitForOrKill(3000)
+
+			return render (template: 'pygments', model: [contents: proc.text])
 		}
-		else {
-			contents = book.profile?.contents
+		catch (e) {
+			return render (contentType: 'text/plain', encoding: 'UTF-8', text: e.message)
 		}
-		
-		render (contentType: contentType, encoding: 'UTF-8', text: contents?contents:'')
 	}
 }

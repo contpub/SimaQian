@@ -235,6 +235,13 @@ input.button {
 	/* change the values of top and left to adjust the position */
 	top: 110px; left: 30px;
 }
+#header span.beta {
+	position: absolute;
+	top: 90px; left: 330px;
+	color: red;
+	font-size: 18px;
+	font-weight: bold;
+}
 
 /* RSS */
 #header p#rss {

@@ -1,5 +1,6 @@
 <div id="header-wrap"><div id="header">
 	<a name="top"></a>
+	<span class="beta">beta</span>
 	<h1 id="logo-text"><a href="${createLink(controller: 'home')}" title="Index">${grailsApplication.config.appConf.title}</a></h1>
 	<p id="slogan">${grailsApplication.config.appConf.subTitle}</p>
 	<div id="nav">
@@ -26,6 +27,11 @@
 					</g:link>
 				</li>
 			</userTag:isLogin>
+			<!--<li id="${pageProperty(name: 'currentAction')=='sandbox'?'current':'candidate'}">
+				<g:link controller="sandbox">
+					<g:message code="layout.header.sandbox.label" default="Sandbox"/>
+				</g:link>
+			</li>-->
 		</ul>
 	</div>
 	<p id="rss">

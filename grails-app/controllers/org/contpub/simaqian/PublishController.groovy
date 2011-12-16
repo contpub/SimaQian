@@ -338,10 +338,7 @@ class PublishController {
 	}
 
 	/**
-	 * Publish (Ajax)
-	 */
-	/**
-	 * Send event to RabbitMQ for book publishing
+	 * Publish (Ajax), Send event to RabbitMQ for book publishing
 	 */
 	def ajaxPublish = {
 		def successed = false

@@ -13,25 +13,53 @@
 	<meta name="keywords" content="keywords, here" />
 	<meta name="robots" content="index, follow, noarchive" />
 	<meta name="googlebot" content="noarchive" />
-	<title><g:layoutTitle default="Errors" /> - ${grailsApplication.config.appConf.title}</title>
+	<title><g:layoutTitle default="Book" /> - ${grailsApplication.config.appConf.title}</title>
 	<link rel="stylesheet" type="text/css" media="screen" href="${createLinkTo(dir: 'css', file: 'screen.css')}" />
 	<link rel="stylesheet" type="text/css" media="screen" href="${createLinkTo(dir: 'css', file: 'layout.css')}" />
 	<!--<link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">-->
 	<link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
 	<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
 	<link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
 	<link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
 	<g:layoutHead/>
+	<style type="text/css">
+	.steps {
+		font-size: 1.25em;
+	}
+	.steps strong {
+		color: blue;
+	}
+	p.icon {
+		text-align: right;
+		padding: 10px;
+		margin: 0;
+	}
+	img.book-icon {
+		border: 0;
+		margin: 0;
+		padding: 5px;
+		width: 64px;
+		height: 64px;
+	}
+	</style>
 	<ga:trackPageview />
 	<g:woopraTrackingScript />
 </head>
 <body>
-	<g:applyLayout name="pageHeader"></g:applyLayout>
+	<g:applyLayout name="pageHeader" params="[currentAction: controllerName]" />
 	<g:applyLayout name="pageContent">
 		<g:layoutBody/>
+		
 		<!--Sidebar define by each view-->
 		<content tag="sidebar">
+			<div class="sidemenu usermenu">
+				<h3>User</h3>
+				<layoutTag:userBox />
+			</div>
+
 			<g:pageProperty name="page.sidebar" />
 		</content>
 	</g:applyLayout>
