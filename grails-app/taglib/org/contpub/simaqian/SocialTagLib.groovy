@@ -103,6 +103,7 @@ class SocialTagLib {
 		if (!attr.description) attr.description = grailsApplication.config.appConf.subTitle
 		if (!attr.type) attr.type = 'website'
 		if (!attr.url) attr.url = "${baseURL()}${request.forwardURI}"
+		if (!attr.image) attr.image = createLinkTo(dir: 'icons', file: 'book.png', absolute: true)
 
 		out << """<!--Open Graph-->
 	<meta property="og:title" content="${attr.title}"/>
