@@ -101,6 +101,7 @@
 					<recaptcha:ifFailed>CAPTCHA Failed</recaptcha:ifFailed>
 				</recaptcha:ifEnabled>-->
 				<p><span style="color:red">＊</span>設定完成後，請編輯電子書「<a class="goto-editor" href="#tabs-2">原始碼</a>」。</p>
+				<p><span style="color:red">＊</span>此為沙盒測試模式，您編輯的電子書原始碼及產生的檔案將會公開。</p>
 			</div>
 		</div>
 		<div id="tabs-2">
