@@ -18,21 +18,23 @@ class HomeController {
     	}
     	
     	def user = users.size() > 0? users[0]: null
-    	
+    
 		if (user) {
-			session.user = user
 			session.userId = user.id
-			redirect (action: 'index')
 		}
 		else {
 			flash.loginErrors = 'E-mail or password not correct.'
+		}
+		if (!params.forwardURI) {
 			redirect (action: 'index')
+		}
+		else {
+			redirect (url: params.forwardURI)
 		}
 	}
 	
 	def logout() {
 		//session.invalidate()
-		session.user = null
 		session.userId = null
 		redirect (action: 'index')
 	}

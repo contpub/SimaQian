@@ -9,8 +9,32 @@ import groovy.json.JsonBuilder
 
 class SandboxController {
 
-    def index() {
-		def sandbox
+	/**
+	 * Set session sandbox to new one
+	 */
+	def renew = {
+		session.sandboxId = null
+		redirect (action: 'index')
+	}
+
+	/**
+	 * Set session sandbox to sepcify one
+	 */
+	def update = {
+		def sandbox = Sandbox.get(params.id)
+		def user = User.get(session.userId)
+
+		if (sandbox && sandbox.owner==user) {
+			session.sandboxId = sandbox.id
+		}
+		redirect (action: 'index')
+	}
+
+    def index = {
+		def sandbox = new Sandbox()
+		def mySandboxList
+
+		def user = User.get(session.userId)
 		
 		if (session.sandboxId) {
 			sandbox = Sandbox.get(session.sandboxId)
@@ -18,13 +42,25 @@ class SandboxController {
 		else {
 			sandbox = new Sandbox()
 
-			sandbox.title = '免費製作一本電子書'
-			sandbox.authors = '無名氏'
-			sandbox.contents = "**********\n電子書的定義\n**********\n\n電子書又稱為 electronic book、digital book、e-book。\n簡單的說，所謂的電子書是，必須透過特殊的閱讀軟體，\n以電子文件的型式，透過網路連結下載至一般常見的平台，\n例如：個人計算機、筆記型計算機，甚至是個人數字助理、WAP手機，\n或是任何可大量儲存數字閱讀數據的閱讀器上閱讀的書籍，\n是一種傳統紙質圖書的替代品。\n（資料來源：維基百科 http://goo.gl/fHbz0 ）\n\n輸入你的內容！\n\n"
+			def samples = Sandbox.findAllByIsSample(true)
+			def sample = samples[new Random(12345).nextInt(samples.size())]
+
+			sandbox.title = sample.title
+			sandbox.authors = sample.authors
+			sandbox.contents = sample.contents
+		}
+
+		//儲存到session
+		session.sandboxId = sandbox?.id
+		
+		if (session.userId) {
+			mySandboxList = Sandbox.findAllByOwner(user)
 		}
 
 		[
 			sandbox: sandbox,
+			mySandboxList: mySandboxList,
+			sampleList: Sandbox.findAllByIsSample(true),
 			pdfPaperSizeList: Sandbox.pdfPaperSizeList,
 			pdfFontSizeList: Sandbox.pdfFontSizeList
 		]
@@ -32,6 +68,7 @@ class SandboxController {
 
 	def show() {
 		def sandbox = Sandbox.get(params.id)
+		def user = User.get(session.userId)
 
 		if (!sandbox) {
 			response.status = 404
@@ -39,7 +76,8 @@ class SandboxController {
 		}
 
 		[
-			sandbox: sandbox
+			sandbox: sandbox,
+			user: user
 		]
 	}
 
@@ -79,6 +117,19 @@ class SandboxController {
 	}
 
 	/**
+	 * Sample (Ajax), Read sample sandbox
+	 */
+	def ajaxSample = {
+		def sandbox = Sandbox.get(params.id)
+		
+		render (contentType: 'text/json') {
+			title = sandbox?.title
+			authors = sandbox?.authors
+			contents = sandbox?.contents
+		}
+	}
+
+	/**
 	 * Publish (Ajax), Send event to RabbitMQ for book publishing
 	 */
 	def ajaxPublish = {
@@ -91,8 +142,10 @@ class SandboxController {
 		else {
 			sandbox = new Sandbox(params)
 		}
-		
+	
+		sandbox.owner = User.get(session.userId)
 		sandbox.isCooking = true //set cooking
+
 		def saveResult = sandbox.save(flush: true)
 		
 		if (sandbox) {

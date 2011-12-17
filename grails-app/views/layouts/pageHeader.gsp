@@ -33,6 +33,14 @@
 					<span class="new">New</span>
 				</g:link>
 			</li>
+			<userTag:isLogin>
+			
+				<li>
+					<g:link controller="home" action="logout" onclick="return confirm('${message(code: 'home.logout.confirm', default: 'Are you sure???')}');">
+						<g:message code="layout.header.logout.label" default="Logout" />
+					</g:link>
+				</li>
+			</userTag:isLogin>
 		</ul>
 	</div>
 	<p id="rss">

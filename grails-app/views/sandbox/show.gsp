@@ -14,6 +14,11 @@
 		font-size: 12pt;
 		line-height: 1.25em;
 	}
+	.commands {
+		float:right;
+		text-align: right;
+		padding: 5px 2em;
+	}
 	</style>
 	<script type="text/javascript">
 	$(function() {
@@ -23,6 +28,11 @@
 	</script>
 </head>
 <body>
+	<div class="commands">
+		<g:if test="${sandbox.owner==user}">
+			<g:link action="update" id="${sandbox.id}">編輯</g:link>
+		</g:if>
+	</div>
     <h2>${sandbox?.title}</h2>
 	<div id="tabs">
 		<ul>

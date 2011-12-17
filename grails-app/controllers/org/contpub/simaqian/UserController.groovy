@@ -6,6 +6,12 @@ class UserController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+	def reset = {
+		session.invalidate()
+		redirect (controller: 'home')
+	}
+
+
     def index() {
         redirect(action: "list", params: params)
     }
