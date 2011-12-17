@@ -1,6 +1,6 @@
 <html>
 <head>
-	<socialTag:openGraph title="${sandbox?.title}" type="book" url="${createLink(action: 'show', id: sandbox?.id, absolute: true)}" image="${createLinkTo(dir: 'icons', file: 'book.png', absolute: true)}" description="這是一本開放源碼電子書，歡迎下載。" />
+	<socialTag:openGraph title="${sandbox?.title}" type="book" url="${createLink(action: 'show', id: sandbox?.id, absolute: true)}" image="${createLinkTo(dir: 'icons', file: 'book.png', absolute: true)}" description="您也可以使用「沙盒」輕鬆製作一本電子書，趕快來體驗開放源碼電子書。" />
 	<title>${sandbox?.title}</title>
 	<layoutTag:webFonts family="Droid Sans Mono" />
 	<layoutTag:codemirror />
