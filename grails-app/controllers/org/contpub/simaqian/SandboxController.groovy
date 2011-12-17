@@ -43,11 +43,15 @@ class SandboxController {
 			sandbox = new Sandbox()
 
 			def samples = Sandbox.findAllByIsSample(true)
-			def sample = samples[new Random(12345).nextInt(samples.size())]
+			def random = new Random(new Date().time)
 
-			sandbox.title = sample.title
-			sandbox.authors = sample.authors
-			sandbox.contents = sample.contents
+			if (samples) {
+				def sample = samples[random.nextInt(samples.size())]
+
+				sandbox.title = sample.title
+				sandbox.authors = sample.authors
+				sandbox.contents = sample.contents
+			}
 		}
 
 		//儲存到session
