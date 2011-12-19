@@ -26,7 +26,7 @@
 			<tbody>
 			<g:each in="${userInstanceList}" status="i" var="userInstance">
 				<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					<td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "email")}</g:link></td>
+					<td>${fieldValue(bean: userInstance, field: "email")}</td>
 					<td>${fieldValue(bean: userInstance, field: "account")}</td>
 				</tr>
 			</g:each>
