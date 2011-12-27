@@ -64,6 +64,14 @@ div.book-coverImage span.embedded-title {
 	text-align: center;
 }
 
+/* Images */
+img.pure-image {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background: none;
+}
+
 /* Paginate */
 .paginate {
 	text-align: center;

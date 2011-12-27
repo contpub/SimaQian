@@ -57,7 +57,7 @@ class SandboxController {
 		//儲存到session
 		session.sandboxId = sandbox?.id
 		
-		if (session.userId) {
+		if (user) {
 			mySandboxList = Sandbox.findAllByOwner(user)
 		}
 
@@ -70,7 +70,21 @@ class SandboxController {
 		]
 	}
 
-	def show() {
+	/**
+	 * Show User's Sandboxes
+	 */
+	def user = {
+		def user = User.get(session.userId)
+
+		[
+			sandboxList: user?Sandbox.findAllByOwner(user):[]
+		]
+	}
+
+	/**
+	 * Show Sandbox
+	 */
+	def show = {
 		def sandbox = Sandbox.get(params.id)
 		def user = User.get(session.userId)
 

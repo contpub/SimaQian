@@ -52,9 +52,6 @@
 		background: #cccccc;
 		color: #333333;
 	}
-	#tabs {
-		width: 95%;
-	}
 	.preview-table th {
 		background: none;
 		border: none;
@@ -71,6 +68,13 @@
 	.preview-table td input, .preview-table td textarea {
 		width: 90%;
 	}
+	#tabs {
+		width: 95%;
+	}
+	#toolbar {
+		width: 95%;
+		margin-bottom: 5px;
+	}
 	</style>
 	<script type="text/javascript">
 	$(function() {
@@ -85,6 +89,46 @@
 		});
 		
 		var tabs = $('#tabs').tabs();
+
+		$('#dialog-template').dialog({
+			autoOpen: false,
+			modal: true,
+			width: '640',
+			minWidth: '400',
+			maxWidth: '800'
+		});
+
+		$('#dialog-help').dialog({
+			autoOpen: false
+		});
+
+		$('#button-template').button({
+			icons: {
+				primary: 'ui-icon-folder-open'
+			}
+		}).click(function() {
+			$('#dialog-template').dialog('open');
+		});
+
+		$( "#save" ).button({
+			icons: {
+				primary: "ui-icon-disk"
+			}
+		});
+		$( "#publish" ).button({
+			icons: {
+				primary: "ui-icon-print"
+			}
+		});
+
+		$('#help').button({
+			text: false,
+			icons: {
+				primary: 'ui-icon-help'
+			}
+		}).click(function(){
+			$('#dialog-help').dialog('open');
+		});
 
 		$('.goto-editor').click(function() {
 			tabs.tabs('select', 1);
@@ -108,7 +152,11 @@
 			);
 		});
 
-		$('#apply').click(function() {
+		$('#button-apply-template').button({
+			icons: {
+				primary: "ui-icon-circle-check"
+			}
+		}).click(function() {
 			if (confirm('是否套用範本？')) {
 				$('#title').val($('#previewTitle').val());
 				$('#authors').val($('#previewAuthors').val());
@@ -145,30 +193,29 @@
 </head>
 <body>
 	<a name="editing"></a>
+
+	<div id="toolbar" class="ui-widget-header ui-corner-all">
+		<button id="save"><g:message code="common.save" default="Save" /></button>
+		<button id="publish"><g:message code="common.publish" default="Publish" /></button>
+		<button id="help"><g:message code="common.help" default="Help" /></button>
+		<span class="status">
+			<span style="color:red">＊</span>請按「發佈」開始製作電子書。
+		</span>
+	</div>
+
 	<div id="tabs">
 		<ul>
 			<li><a href="#tabs-1">原始碼</a></li>
 			<li><a href="#tabs-2">設定</a></li>
 			<li><a href="#tabs-3">電子書</a></li>
-			<li><a href="#tabs-4">範本</a></li>
-			<li><a href="#tabs-5">我的沙盒</a></li>
-			<li><a href="#tabs-6">說明</a></li>
 		</ul>
 		<div id="tabs-1">
-			<div class="toolbar">
-				<ul class="items">
-					<li class="item">
-						<a href="#" class="publish-button"><img src="${createLinkTo(dir: 'icons/silk', file: 'printer.png')}" border="0" /><span>發佈</span></a>
-					</li>
-				</ul>
-				<span class="status">
-					<span style="color:red">＊</span>請按「發佈」開始製作電子書。
-				</span>
-			</div>
 			<g:textArea name="contents" value="${sandbox?.contents}" />
 		</div>
 		<div id="tabs-2">
 			<div>
+				<button id="button-template">載入範本</button><br/>
+
 				書名：<g:textField name="title" value="${sandbox?.title}" /><br/>
 				作者：<g:textField name="authors" value="${sandbox?.authors}" /><br/>
 				紙張大小（PDF）：<g:select name="pdfPaperSize" from="${pdfPaperSizeList}" value="${sandbox?.pdfPaperSize}" /><br/>
@@ -190,59 +237,43 @@
 			</div>
 		</div>
 		<div id="tabs-3">
-			<iframe id="result-iframe" src="${createLink(action: 'empty', params: ['_t':new Date().time])}" border="0" width="100%" height="320" style="width:100%;height:320px"></iframe>
+			<!--<iframe id="result-iframe" src="${createLink(action: 'empty', params: ['_t':new Date().time])}" border="0" width="100%" height="320" style="width:100%;height:320px"></iframe>-->
+			<div id="publish-status-container">
+				<img src="${createLinkTo(dir: 'images', file: 'ajax-loader-big.gif')}" border="0" class="pure-image" />
+			</div>
 		</div>
-		<div id="tabs-4">
-			從範本載入：<g:select name="sample" from="${sampleList}" optionKey="id" optionValue="title" noSelection="${['null':'請選擇']}" />
-			<button id="apply">套用範本</button>
-			<br/>
-			<table width="90%" cellpadding="0" cellspacing="0" class="preview-table">
-				<tr>
-					<th width="90">書名</th>
-					<td>
-						<g:textField name="previewTitle" value="" readonly="readonly" />
-					</td>
-				</tr>
-				<tr>
-					<th>作者</th>
-					<td>
-						<g:textField name="previewAuthors" value="" readonly="readonly" />
-					</td>
-				</tr>
-				<tr>
-					<th>原始碼</th>
-					<td>
-						<g:textArea name="previewContents" value="" rows="8" readonly="readonly" />
-					</td>
-				</tr>
-			</table>
-		</div>
-		<div id="tabs-5">
-			<g:if test="${mySandboxList?.size()>0}">
-			<ul>
-				<g:each in="${mySandboxList}" var="mySandbox">
-					<li>
-						<g:link action="show" id="${mySandbox?.id}">${mySandbox?.title}</g:link>
-						<g:link action="update" id="${mySandbox?.id}">[編輯]</g:link>
-					</li>
-				</g:each>
-			</ul>
-			</g:if>
-			<g:else>
-				<p>沙盒櫃是空的！</p>
-			</g:else>
-			<userTag:isLogin>
-				<p><g:link action="renew">新建一個</g:link></p>
-			</userTag:isLogin>
-			<userTag:isNotLogin>
-				<p>以您的個人帳號登入，可以擁有自己的沙盒櫃，日後可以繼續編輯、發佈沙盒的電子書。</p>
-			</userTag:isNotLogin>
-		</div>
-		<div id="tabs-6">
-			<p>使用<strong>沙盒測試</strong>體驗電子書製作，您可以不必註冊帳號。</p>
-			<p>在<strong>原始碼</strong>編輯器，輸入書籍內容，並按下「<strong>發佈</strong>」立即產生一本電子書。</p>
-			<p><font color="red">請注意！</font>沙盒測試產生的電子書，系統會定期進行清理，不會永久保存。如果您需要留存檔案資料，請自行下載存放。</p>
-		</div>
+	</div>
+
+	<div id="dialog-template" title="範本">
+		從範本載入：<g:select name="sample" from="${sampleList}" optionKey="id" optionValue="title" noSelection="${['null':'請選擇']}" />
+		<button id="button-apply-template">套用範本</button>
+		<br/>
+		<table width="90%" cellpadding="0" cellspacing="0" class="preview-table">
+			<tr>
+				<th width="90">書名</th>
+				<td>
+					<g:textField name="previewTitle" value="" readonly="readonly" />
+				</td>
+			</tr>
+			<tr>
+				<th>作者</th>
+				<td>
+					<g:textField name="previewAuthors" value="" readonly="readonly" />
+				</td>
+			</tr>
+			<tr>
+				<th>原始碼</th>
+				<td>
+					<g:textArea name="previewContents" value="" rows="8" readonly="readonly" />
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="dialog-help" title="${message(code: 'common.help', default: 'Help')}">
+		<p>使用<strong>沙盒測試</strong>體驗電子書製作，您可以不必註冊帳號。</p>
+		<p>在<strong>原始碼</strong>編輯器，輸入書籍內容，並按下「<strong>發佈</strong>」立即產生一本電子書。</p>
+		<p><font color="red">請注意！</font>沙盒測試產生的電子書，系統會定期進行清理，不會永久保存。如果您需要留存檔案資料，請自行下載存放。</p>
 	</div>
 </body>
 </html>

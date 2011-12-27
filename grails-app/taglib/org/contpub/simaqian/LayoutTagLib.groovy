@@ -84,9 +84,12 @@ class LayoutTagLib {
 	 * <layoutTag:jqueryUI />
 	 */
 	def jqueryUI = { attr, body ->
-		out << '<!--jQuery UI-->'
-		out << '<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all" />'
-		out << '<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>'
+		def cdn = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16'
+		def theme = 'start' //base,redmond,cupertino,start
+		out << """<!--jQuery UI-->
+<link rel="stylesheet" href="${cdn}/themes/${theme}/jquery-ui.css" type="text/css" media="all" />
+<script type="text/javascript" src="${cdn}/jquery-ui.js"></script>
+"""
 	}
 
 	/**

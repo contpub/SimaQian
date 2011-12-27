@@ -22,7 +22,10 @@
 	</style>
 	<script type="text/javascript">
 	$(function() {
-		$('#code').codemirrorHighlight({mode: 'text/x-rst'});
+		$('#code').codemirror({
+			mode: 'text/x-rst',
+			runmode: true
+		});
 		$('#tabs').tabs();
 	});
 	</script>
