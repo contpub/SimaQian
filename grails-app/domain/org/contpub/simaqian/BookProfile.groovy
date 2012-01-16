@@ -12,8 +12,8 @@ class BookProfile {
     static constraints = {
 		description (nullable: true, blank: true)
 		contents (nullable: true, blank: true)
-		homepage (nullable: true, url: true)
-		icon (nullable: true, url: true)
+		homepage (nullable: true, blank: true, url: true)
+		icon (nullable: true, blank: true, url: true)
     }
     
     String getSimpleDescription() {

@@ -36,16 +36,25 @@ class PublishController {
 	 * Save a new book.
 	 */
 	def save = {
+		def user = User.get(session.userId)
+
 		def book = new Book()
 		
 		book.name = params.name
 		book.title = params.title
 
+		// Save Book!!!
 		if (book.validate() && book.save(flush: true)) {
+			
+			// Create book profile
+			book.profile = new BookProfile(book: book)
+
+			// Save BookProfile first!!!
+			if (book.profile.validate()) {
+				book.profile.save(flush: true)
+			}
 
 			/* Connect User and Book association */
-
-			def user = User.get(session.userId)
 			def link1 = new UserAndBook()
 
 			link1.user = user

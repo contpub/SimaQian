@@ -4,7 +4,7 @@ import spock.lang.*
 import grails.plugin.spock.*
 import grails.test.mixin.*
 
-@Mock(Book)
+@Mock([Book, BookProfile])
 class BookSpec extends Specification {
     
 	def "create a new book"() {
@@ -50,6 +50,27 @@ class BookSpec extends Specification {
 		
 		where:
 		book = new Book()
+	}
+
+	def "create book profile"() {
+		setup:
+
+		when:
+		
+		book.profile = profile
+		profile.book = book
+		profile.save()
+		book.save()
+
+		then:
+		Book.findByName('book-with-profile').profile != null
+
+		where:
+		book = new Book(
+			name: 'book-with-profile',
+			title: 'Book With Profile'
+		)
+		profile = new BookProfile()
 	}
 }
 
