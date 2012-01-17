@@ -109,7 +109,7 @@ class BookController {
 			def expiryDate = cal.time
 			
 			//def filepath = "${book.name.substring(0,1).toLowerCase()}/${book.name}.${fileExt}"
-			def filePath = "${book.name}.${fileExt}"
+			def filePath = "book/${book.name}.${fileExt}"
 			
 			def signedUrl = s3Service.createSignedGetUrl(bucketName, filePath, awsCredentials, expiryDate, false)
 			

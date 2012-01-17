@@ -21,10 +21,17 @@
 	div.advanced {
 		display: none;
 	}
-	div.download-link {
+	div.download-links {
 		text-align: center;
-		width: 200px;
-		display: inline-block;
+	}
+	div.download-links a {
+		font-family: Arial;
+		font-weight: bold;
+		color: #080000;
+		border: 1px solid #F9C90F;
+		background-color: #FAD441;
+		padding: 4px 10px;
+		border-radius: 4px;
 	}
 	.comments {
 		clear: both;
@@ -65,28 +72,21 @@
 			<socialTag:facebookLikeButton />
 			
 			<g:if test="${userOwnBook||userBuyBook||book.isPublic}">
-				<h3>下載</h3>
+				<h3><g:message code="common.download.ebook" default="Download eBook"/></h3>
 				<a name="download"></a>
 				<g:if test="${book?.isCooking}">
 					<p><strong>無法下載</strong>. 電子書正在製作中 ...</p>
 				</g:if>
 				<g:else>
-					<div style="text-align: center">
-						<div class="download-link">
-							<bookTag:downloadLink book="${book}" type="pdf">
-								<img src="${createLinkTo(dir: 'icons', file: 'mime-pdf-64.png')}" alt="pdf-icon" border="0" /><br/>
-								${book?.name}.pdf
-							</bookTag:downloadLink>
-							<br/>
-							<a href="http://docs.google.com/viewer?url=${bookTag.createDownloadLink(book: book, type: 'pdf').encodeAsURL()}&embedded=true" target="_blank">線上預覽</a>
-						</div>
-						<div class="download-link">
-							<bookTag:downloadLink book="${book}" type="epub">
-								<img src="${createLinkTo(dir: 'icons', file: 'mime-epub-64.png')}" alt="epub-icon" border="0" /><br/>${book?.name}.epub
-							</bookTag:downloadLink>
-							<br/>
-							無法預覽
-						</div>
+					<div class="download-links">
+						<bookTag:downloadLink book="${book}" type="epub">ePub</bookTag:downloadLink>
+
+						<bookTag:downloadLink book="${book}" type="mobi">Mobi</bookTag:downloadLink>
+
+						<bookTag:downloadLink book="${book}" type="pdf">PDF</bookTag:downloadLink>
+
+						<a href="http://docs.google.com/viewer?url=${bookTag.createDownloadLink(book: book, type: 'pdf').encodeAsURL()}&embedded=true" target="_blank"><g:message code="common.preview" default="Preview"/></a>
+
 					</div>
 				</g:else>
 			</g:if>
