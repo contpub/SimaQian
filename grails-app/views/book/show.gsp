@@ -41,7 +41,7 @@
 						<div class="download-links">
 							<bookTag:downloadLink book="${book}" type="epub">ePub</bookTag:downloadLink>
 
-							<bookTag:downloadLink book="${book}" type="mobi">Mobi</bookTag:downloadLink>
+							<bookTag:downloadLink book="${book}" type="mobi">Kindle</bookTag:downloadLink>
 
 							<bookTag:downloadLink book="${book}" type="pdf">PDF</bookTag:downloadLink>
 
