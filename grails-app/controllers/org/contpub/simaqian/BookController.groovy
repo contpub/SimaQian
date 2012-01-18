@@ -25,56 +25,37 @@ class BookController {
 			books: user?.books*.book
 		]
 	}
-
-	def show = {
-		def user = User.get(session.userId)
-		def book = Book.get(params.id)
-		
-		def userBuyBook = false
-		def userOwnBook = false
-		
-		def link = UserAndBook.findByUserAndBook(user, book)
-		
-		if (link) {
-			userBuyBook = link.linkType.equals(UserAndBookLinkType.BUYER)
-			userOwnBook = link.linkType.equals(UserAndBookLinkType.OWNER)
-		}
-
-		[
-			book: book,
-			userBuyBook: userBuyBook,
-			userOwnBook: userOwnBook
-		]
-	}
 	
-	def lookup = {
+	/**
+	 * Show a book
+	 */
+	def show = {
 		def bookName = params.bookName
 		
 		//bookName = bookName?.substring(5)
 		def book = Book.findByName(bookName)
 		
-		if (book) {
-		
-			def user = User.get(session.userId)
-			def userBuyBook = false
-			def userOwnBook = false
-	
-			def link = UserAndBook.findByUserAndBook(user, book)
-	
-			if (link) {
-				userBuyBook = link.linkType.equals(UserAndBookLinkType.BUYER)
-				userOwnBook = link.linkType.equals(UserAndBookLinkType.OWNER)
-			}
-		
-			render (view: 'show', model: [
-				book: book,
-				userBuyBook: userBuyBook,
-				userOwnBook: userOwnBook
-			])
-		}
-		else {
+		if (!book) {
 			redirect (action: 'index')
+			return
 		}
+		
+		def user = User.get(session.userId)
+		def userBuyBook = false
+		def userOwnBook = false
+
+		def link = UserAndBook.findByUserAndBook(user, book)
+
+		if (link) {
+			userBuyBook = link.linkType.equals(UserAndBookLinkType.BUYER)
+			userOwnBook = link.linkType.equals(UserAndBookLinkType.OWNER)
+		}
+	
+		render (view: 'show', model: [
+			book: book,
+			userBuyBook: userBuyBook,
+			userOwnBook: userOwnBook
+		])
 	}
 	
 	/**

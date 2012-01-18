@@ -14,8 +14,10 @@ public enum RepoType {
  * Book domain object
  */
 class Book {
-	String name				//書籍名稱（代碼，例：MyBook1）
-	String title			//書籍標題
+	String name				//book name (code, eg. MyBook1)
+	String title			//book title
+	String subtitle			//book sub-title
+	String authors			//book authors
 	
 	BookProfile profile		//Profile
 	
@@ -42,6 +44,8 @@ class Book {
 	static constraints = {
 		name (nullable: false, blank: false, size: 5..30, unique: true, matches: /[a-zA-Z0-9\-\_]+/)
 		title (nullable: false, blank: false)
+		subtitle (nullable: true, blank: true)
+		authors (nullable: true, blank: true)
 		type (nullable: true)
 		url (nullable: true, url: true)
 		profile (nullable: true)

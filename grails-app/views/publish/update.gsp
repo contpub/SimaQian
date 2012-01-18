@@ -1,80 +1,49 @@
 <html>
 <head>
-	<title>Update book info</title>
-	<style style="text/css">
-	form #name {
-		width: 200px;
-	}
-	form #title, form #description, form #homepage, form #icon, form #cover {
-		width: 100%;
-	}
-	form #description {
-		height: 150px;
-	}
-	span.required {
-		color: red;
-		font-weight: bold;
-	}
-	div.book-coverImage {
-		margin: 10px;
-		float: left;
-	}
-	.clear-both {
-		clear:both;
-	}
-	</style>
-	<socialTag:websnaprSDK />
+<title>Update book info</title>
+<socialTag:websnaprSDK />
+<resource:richTextEditor />
 </head>
 <body>
-	<g:render template="breadcrumbs" model="[title: '基本設定']" />
-	
+	<g:render template="breadcrumbs" model="[title: message(code: 'view.publish.menu.update', default: 'Basic settings')]" />
 	<div id="post">
 		<div class="right">
-			<g:renderErrors bean="${book}" />
+			<g:form action="updateSave" id="${book?.id}">
+				
+				<layoutTag:flashMessage />
+				
+				<!--display errors-->
+				<div class="form-errors">
+					<g:renderErrors bean="${book}" as="list" />
+				</div>
 
-			<g:form action="saveUpdate" id="${book.id}">
-
-			<p class="no-border"><strong>Feel free to fill everything</strong></p>
-
-			<p>
-				<label for="title">Book Title</label><br />
-				<g:textField name="title" value="${book?.title}" />
-			</p>
-
-			<p>
-				<label for="description">Brief Description</label> (reStructuredText)<br />
-				<g:textArea name="description" value="${book?.profile?.description}" />
-			</p>	
-
-			<p>
-				<label for="homepage">Homepage</label><br />
-				<g:textField name="homepage" value="${book?.profile?.homepage}" />
-				<socialTag:websnapr href="${book?.profile?.homepage}" size="s" />
-			</p>
-
-			<p>
-				<label for="icon">Icon</label><br />
-				<g:textField name="icon" value="${book?.profile?.icon}" />
-			</p>
-
-			<p>
-				<label for="cover">Cover Image</label><br />
-				<bookTag:coverImage book="${book}" />
-				<g:link action="cover" id="${book?.id}">Upload</g:link> a new cover image
-				<div class="clear-both"></div>
-			</p>
-	
-			<p>
-				<label>Options</label><br/>
-				<g:checkBox name="isPublic" value="${book?.isPublic}" />
-				<label for="isPublic">Public? (開放式電子書)</label>
-			</p>
-
-			<p class="no-border">
-				<g:submitButton name="create" value="Update" class="button wide" />
-				<bookTag:link book="${book}">Cancel</bookTag:link>
-			</p>
-
+				<!--form emelments-->
+				<p class="no-border"><span class="required">*</span> = required</p>
+				<p>
+					<label for="title">Book Title</label><span class="required">*</span><br />
+					<g:textField name="title" value="${book?.title}" class="w90p" />
+				</p>
+				<p>
+					<label for="title">Subtitle</label><br />
+					<g:textField name="subtitle" value="${book?.subtitle}" class="w90p" />
+				</p>
+				<p>
+					<label for="authors">Authors</label><br />
+					<g:textField name="authors" value="${book?.authors}" class="w90p" />
+				</p>
+				<p>
+					<label for="description">Brief Description</label><br />
+					<richui:richTextEditor name="description" value="${book?.profile?.description}" width="450" />
+				</p>
+				<g:if test="${book?.type==org.contpub.simaqian.RepoType.GIT}">
+					<p>
+						<label for="url">Url</label><br/>
+						<g:textField name="url" value="${book?.url}" class="w90p" />
+					</p>
+				</g:if>
+				<p class="no-border">
+					<g:submitButton name="create" value="${message(code: 'common.update', default: 'Update')}" class="fancy-button-submit" />
+				</p>
 			</g:form>
 		</div>
 		<div class="left">

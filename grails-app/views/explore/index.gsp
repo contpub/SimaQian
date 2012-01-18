@@ -44,19 +44,30 @@
 </head>
 <body>
 	<div id="bookshelf"><div class="inner">
-		<g:each in="${books}" var="book">
-			<div class="book">
-				<bookTag:link book="${book}">
-					<bookTag:coverImage book="${book}" />
-				</bookTag:link>
-				<div class="book-info">
-					<bookTag:link book="${book}"><h3 class="title">${book?.title}</h3></bookTag:link>
-					<p class="description">${book?.profile?.simpleDescription}</p>
+		<g:each status="i" in="${books}" var="book">
+
+			<g:if test="${i<3}">
+				<div class="book">
+					<bookTag:link book="${book}">
+						<bookTag:coverImage book="${book}" />
+					</bookTag:link>
+					<div class="book-info">
+						<bookTag:link book="${book}"><h3 class="title">${book?.title}</h3></bookTag:link>
+						<p class="description">${book?.subtitle}</p>
+					</div>
+					<div class="book-command">
+						<bookTag:link book="${book}">Read more ...</bookTag:link>
+					</div>
 				</div>
-				<div class="book-command">
-					<bookTag:link book="${book}">Read more ...</bookTag:link>
+			</g:if>
+			<g:else>
+				<div class="book">
+					<div class="book-info">
+						<bookTag:link book="${book}"><h3 class="title">${book?.title}</h3></bookTag:link>
+						<p class="description">${book?.subtitle}</p>
+					</div>
 				</div>
-			</div>
+			</g:else>
 		</g:each>
 		<div style="clear:both"></div>
 	</div></div>

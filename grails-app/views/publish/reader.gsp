@@ -26,7 +26,7 @@
 	<socialTag:websnaprSDK />
 </head>
 <body>
-	<g:render template="breadcrumbs" model="[title: '讀者管理']" />
+	<g:render template="breadcrumbs" model="[title: message(code: 'view.publish.menu.reader', default: 'Readers')]" />
 	
 	<div id="post">
 		<div class="right">

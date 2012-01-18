@@ -2,7 +2,6 @@
 <head>
 	<title>Writing</title>
 	<layoutTag:webFonts family="Droid Sans Mono" />
-	<layoutTag:codemirror />
 	<style type="text/css">
 	#save.button {
 		padding: 0 20px;

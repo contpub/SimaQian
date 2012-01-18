@@ -5,7 +5,7 @@ class SocialTagLib {
 	static namespace = 'socialTag'
 	
 	/**
-	 * <socialTag:disqus identifier="book-${book?.name}" url="${createBookLink(book: book)}" />
+	 * <socialTag:disqus identifier="book-${book?.name}" url="${bookTag.createLink(book: book)}" />
 	 */
 	def disqus = { attr, body ->
 		out << render (

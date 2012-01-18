@@ -1,9 +1,3 @@
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>發佈成功</title>
-</head>
-<body>
 下載電子書...
 <ul>
 	<li>
@@ -16,5 +10,3 @@
 <ul>
 	<li><g:link action="show" id="${sandbox?.id}" target="_top">電子書專頁</g:link></li>
 </ul>
-</body>
-</html>

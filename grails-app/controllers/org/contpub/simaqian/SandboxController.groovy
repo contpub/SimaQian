@@ -99,41 +99,6 @@ class SandboxController {
 		]
 	}
 
-	def empty = {
-		render (template: 'empty')
-	}
-
-	def result = {
-		def sandbox = Sandbox.get(params.id)
-		render (template: 'result', model: [sandbox: sandbox])
-	}
-
-	def resultCheck = {
-		def sandbox = Sandbox.get(params.id)
-
-		//long polling
-		def c = 0
-		while (sandbox.isCooking) {
-			if (c++ >= 6) break
-			sleep(5000)
-			sandbox.refresh()
-		}
-
-		if (sandbox.isCooking) {
-			//still in cooking
-			redirect (action: 'result', id: sandbox.id, params: ['_t':new Date().time])
-		}
-		else {
-			//available
-			redirect (action: 'success', id: sandbox.id, params: ['_t':new Date().time])
-		}
-	}
-
-	def success = {
-		def sandbox = Sandbox.get(params.id)
-		render (template: 'success', model: [sandbox: sandbox])
-	}
-
 	/**
 	 * Sample (Ajax), Read sample sandbox
 	 */
@@ -183,12 +148,33 @@ class SandboxController {
 		
 		// Send msg to RepoCook agents using RabbitMQ
 		rabbitSend grailsApplication.config.appConf.cook.routingKey, json?.toString()
-
+		
 		render (contentType: 'text/json') {
 				successed = saveResult?true:false
 				sandboxId = sandbox?.id
 				resultUrl = createLink(action: 'result', id: sandbox?.id, params: ['_t':new Date().time])
+				htmlText = g.render (template: 'result', model: [sandbox: sandbox])
 				message = "發佈時間 ${new Date().format('yyyy/MM/dd')}"
+		}
+	}
+
+	/* Ajax Checker for Publishing Status */
+	def ajaxCheck = {
+		def sandbox = Sandbox.get(params.id)
+
+		//long polling (wait for 90 secs)
+		def c = 0
+		while (sandbox.isCooking) {
+			if (c++ >= 18) break
+			sleep(5000)
+			sandbox.refresh()
+		}
+
+		if (sandbox.isCooking) {
+			render (template: 'timeout', model: [sandbox: sandbox])
+		}
+		else {
+			render (template: 'success', model: [sandbox: sandbox])
 		}
 	}
 

@@ -26,9 +26,9 @@
 	<socialTag:websnaprSDK />
 </head>
 <body>
-	<g:render template="breadcrumbs" model="[title: '切換編輯模式']" />
+	<g:render template="breadcrumbs" model="[title: message(code: 'view.publish.menu.mode', default: 'Authoring modes')]" />
 	
-	<div id="post">
+	<div id="post" class="clearlook">
 		<div class="right">
 			<h2>編輯模式</h2>
 			<!--已啟用模式：${book?.type}-->

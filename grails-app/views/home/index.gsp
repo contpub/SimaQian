@@ -2,7 +2,6 @@
 <head>
 	<title>Welcome</title>
 	<layoutTag:webFonts family="Droid Sans Mono" />
-	<layoutTag:codemirror />
 	<style tyle="text/css">
 	#tabs {
 		width: 90%;
@@ -14,7 +13,7 @@
 		line-height: 1.25em;
 	}
 	</style>
-	<script type="text/javascript">
+	<r:script>
 		$(function() {
 			$('#code').codemirror({
 				mode: 'text/x-rst',
@@ -22,7 +21,7 @@
 			});
 			$('#tabs').tabs();
 		});
-	</script>
+	</r:script>
 </head>
 <body>
 	<!--<h2>E-Books Made Easy</h2>-->

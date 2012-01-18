@@ -15,13 +15,4 @@ class BookProfile {
 		homepage (nullable: true, blank: true, url: true)
 		icon (nullable: true, blank: true, url: true)
     }
-    
-    String getSimpleDescription() {
-    	if (description) {
-    		description?.split("\n")[0]
-    	}
-    	else {
-    		""
-		}
-    }
 }

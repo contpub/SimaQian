@@ -1,12 +1,3 @@
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>製作中</title>
-<meta http-equiv="refresh" content="10; url=${createLink(action: 'resultCheck', id: sandbox?.id)}" />
-</head>
-<body>
-<img src="${createLinkTo(dir: 'icons', file: 'printer-128.png')}" />
-<img src="${createLinkTo(dir: 'images', file: 'ajax-loader-big.gif')}" />
-<p>電子書製作中...</p>
-</body>
-</html>
+<img src="${createLinkTo(dir: 'icons', file: 'printer-128.png')}" alt="printer" class="clear" />
+<img src="${createLinkTo(dir: 'images', file: 'ajax-loader-bar.gif')}" alt="loader" class="clear" />
+<p>電子書製作中... ${new Date().format('yyyy/MM/dd HH:mm:ss')}</p>

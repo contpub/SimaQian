@@ -84,39 +84,48 @@ class PublishController {
 	}
 
 	/**
+	 * Save a updated book.
+	 */
+	def updateSave = {
+		def book = Book.get(params.id)
+		
+		if (!book) {
+			response.sendError 404
+			return
+		}
+
+		book.title = params.title
+		book.subtitle = params.subtitle
+		book.authors = params.authors
+		book.url = params.url
+
+		if (!book.profile) {
+			book.profile = new BookProfile(book: book)
+		}
+		book.profile.description = params.description
+
+		if (book.profile.save(flush: true)
+			&& book.save(flush: true)) {
+
+			//flash messages
+			flash.message = 'common.flash.message.saved'
+			flash.args = [new Date(), book.title]
+			flash.default = '{1} saved {0}'
+			flash.type = 'notes'
+
+
+			redirect(action: 'update', id: book?.id)
+		}
+		else {
+			render(view: 'update', model: [book: book])
+		}
+	}
+
+	/**
 	 * Editor
 	 */
 	def editor = {
 		[book: Book.get(params.id)]
-	}
-
-	/**
-	 * Save a updated book.
-	 */
-	def saveUpdate = {
-		def book = Book.get(params.id)
-		
-		book.title = params.title
-		book.isPublic = (params.isPublic!=null)
-		
-		def profile = book.profile
-		
-		if (!profile) {
-			profile = new BookProfile(book: book)
-			profile.save(flush: true)
-			book.profile = profile
-		}
-		
-		profile.description = params.description
-		profile.homepage = params.homepage
-		profile.icon = params.icon
-		
-		if (book.save(flush: true)) {
-			//redirect (action: 'show', id: book.id)
-			//redirect (uri: "/read/${book.name}")
-		}
-		
-		render (view: 'update', model: [book: book])
 	}
 	
 	/**
@@ -308,6 +317,37 @@ class PublishController {
 		}
 
 		redirect(action: 'mode', id: book?.id)
+	}
+
+	/**
+	 * Permissions
+	 */
+	def permission = {
+		def book = Book.get(params.id)
+		[book: book]
+	}
+
+	/**
+	 * Change Mode Request
+	 */
+	def permissionSave = {
+		def book = Book.get(params.id)
+
+		if (!book) {
+			response.sendError 404
+			return
+		}
+
+		book.isPublic = params.isPublic=='on'
+		book.save(flush: true)
+
+		//flash messages
+		flash.message = 'common.flash.message.saved'
+		flash.args = [new Date(), book.title]
+		flash.default = '{1} saved {0}'
+		flash.type = 'notes'
+
+		redirect (action: 'permission', id: book?.id)
 	}
 
 	/**
