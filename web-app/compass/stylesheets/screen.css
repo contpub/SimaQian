@@ -1,0 +1,1955 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* incase an inverted custom gradient isn't specified */
+/* line 177, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class, #controller-book.action-show .download-links a, .fancy-button-submit {
+  font-family: "Lucida Grande", Lucida, Arial, sans-serif;
+  background: url('/images/button_bg.png?1326776211') repeat-x bottom left;
+  margin: 0;
+  width: auto;
+  overflow: visible;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  border-style: solid;
+  font-weight: bold;
+}
+/* line 165, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class::-moz-focus-inner, #controller-book.action-show .download-links a::-moz-focus-inner, .fancy-button-submit::-moz-focus-inner {
+  border: none;
+  padding: 0;
+}
+/* line 168, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class:focus, #controller-book.action-show .download-links a:focus, .fancy-button-submit:focus {
+  outline: none;
+}
+
+/* line 17, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* line 20, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+}
+
+/* line 22, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 24, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 26, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 28, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 101, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 30, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 114, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* main themes */
+/* line 3, ../sass/coolblue.scss */
+body {
+  font: 13px/170% "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, Sans-Serif;
+  color: #777;
+  margin: 0;
+  padding: 0;
+  background: url(../../images/bg.jpg);
+}
+
+/* links */
+/* line 10, ../sass/coolblue.scss */
+a:link, a:visited {
+  text-decoration: none;
+  color: #FF409F;
+}
+
+/* line 14, ../sass/coolblue.scss */
+a:hover {
+  color: #147DB6;
+}
+
+/* line 15, ../sass/coolblue.scss */
+a:link.more, a:visited.more {
+  float: left;
+  margin-top: 20px;
+  margin-right: 5px;
+  padding: 6px 8px;
+  border: 1px solid #2177A5;
+  background-color: #227bad;
+  text-transform: lowercase;
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* line 27, ../sass/coolblue.scss */
+a:hover.more {
+  border: 1px solid #FF2B95;
+  background-color: #FF3399;
+}
+
+/* line 31, ../sass/coolblue.scss */
+a:link.clickable, a:visited.clickable {
+  margin-top: 20px;
+  margin-right: 5px;
+  padding: 6px 8px;
+  border: 1px solid #2177A5;
+  background-color: #227bad;
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* line 41, ../sass/coolblue.scss */
+a:hover.clickable {
+  border: 1px solid #FF2B95;
+  background-color: #FF3399;
+}
+
+/* Headers */
+/* line 47, ../sass/coolblue.scss */
+h1, h2, h3, h4 {
+  font: bold 1em/1.5em "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, Sans-Serif;
+  color: #555;
+  margin: 8px 25px;
+}
+
+/* line 52, ../sass/coolblue.scss */
+h1 {
+  font-size: 3.7em;
+  font-weight: normal;
+  letter-spacing: -2px;
+}
+
+/* line 53, ../sass/coolblue.scss */
+h2 {
+  font-size: 2.8em;
+  font-weight: normal;
+}
+
+/* line 54, ../sass/coolblue.scss */
+h3 {
+  font-size: 2.2em;
+  font-weight: normal;
+  letter-spacing: -0.5px;
+  padding-top: 15px;
+}
+
+/* line 55, ../sass/coolblue.scss */
+h4 {
+  font-size: 1.5em;
+}
+
+/* lists */
+/* line 58, ../sass/coolblue.scss */
+ul, ol {
+  margin: 10px 25px;
+  padding: 0 20px;
+}
+
+/* line 62, ../sass/coolblue.scss */
+ul {
+  list-style: disc;
+}
+
+/* line 63, ../sass/coolblue.scss */
+ol {
+  list-style: decimal;
+}
+
+/* line 65, ../sass/coolblue.scss */
+dt {
+  font-weight: bold;
+  color: #1980AF;
+}
+
+/* line 69, ../sass/coolblue.scss */
+dd {
+  padding-left: 20px;
+}
+
+/* line 73, ../sass/coolblue.scss */
+p, dl {
+  margin: 10px 25px;
+}
+
+/* images */
+/* line 76, ../sass/coolblue.scss */
+img {
+  background: #F3F4F5;
+  border: 1px solid #E2E4E7;
+  padding: 10px;
+}
+
+/* line 81, ../sass/coolblue.scss */
+img.float-right {
+  margin: 5px 0px 10px 10px;
+}
+
+/* line 82, ../sass/coolblue.scss */
+img.float-left {
+  margin: 5px 10px 10px 0px;
+}
+
+/* line 84, ../sass/coolblue.scss */
+code {
+  margin: 3px 0;
+  padding: 20px;
+  text-align: left;
+  display: block;
+  overflow: auto;
+  font: 500 1em/1.5em "Lucida Console", "Courier New", Monospace;
+  /* white-space: pre; */
+  border: 1px solid #F0F0F0;
+  background: #F8F8F8;
+  color: #555;
+}
+
+/* line 96, ../sass/coolblue.scss */
+acronym {
+  cursor: help;
+  border-bottom: 1px dotted #777;
+}
+
+/* line 100, ../sass/coolblue.scss */
+blockquote {
+  margin: 10px 25px;
+  padding: 10px 20px 10px 32px;
+  border: 1px solid #F0F0F0;
+  background: #f8f8f8 url(../../images/quote.gif) no-repeat 12px 12px;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 1.5em;
+  font-style: italic;
+  font-family: Georgia, 'Times New Roman', Times, Serif;
+  color: #555;
+}
+
+/* line 112, ../sass/coolblue.scss */
+strong {
+  font-weight: bold;
+}
+
+/* table */
+/* line 115, ../sass/coolblue.scss */
+table {
+  border-collapse: collapse;
+  margin: 10px 25px;
+}
+
+/* line 119, ../sass/coolblue.scss */
+th, td {
+  text-align: left;
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* line 124, ../sass/coolblue.scss */
+th {
+  padding: .8em 1em;
+  background: #2C76A6;
+  border-color: #308ABA #308ABA #246F97 #308ABA;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* line 131, ../sass/coolblue.scss */
+td {
+  border-color: #E9E9E9;
+  padding: .7em 1em;
+}
+
+/* form elements */
+/* line 137, ../sass/coolblue.scss */
+form {
+  margin: 10px 25px 10px 25px;
+  padding: 10px 25px 25px 25px;
+  background: #F3F4F5;
+  border: 1px solid #E2E4E7;
+  width: 477px;
+}
+
+/* line 144, ../sass/coolblue.scss */
+form p {
+  border-bottom: 1px solid #E6E6E6;
+  padding: 12px 0 5px 0;
+  margin: 0;
+  color: #2C76A6;
+}
+
+/* line 149, ../sass/coolblue.scss */
+label {
+  font-weight: bold;
+  color: #666666;
+}
+
+/* line 153, ../sass/coolblue.scss */
+input, select, textarea {
+  margin: 5px 0;
+  padding: 7px 6px;
+  color: #6A6969;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #D4D4D4 #EBEBEB #EBEBEB #D4D4D4;
+  font: 11px 'Lucida Grande', Verdana, Helvetica, sans-serif;
+}
+
+/* line 162, ../sass/coolblue.scss */
+input:focus, select:focus, textarea:focus {
+  color: #19465D;
+  background: #EEF8FB;
+}
+
+/* line 166, ../sass/coolblue.scss */
+#name, #email, #message, #website {
+  width: 460px;
+}
+
+/* line 169, ../sass/coolblue.scss */
+input.button {
+  font: bold 12px Arial, Sans-serif;
+  height: 30px;
+  margin: 0;
+  padding: 2px 3px;
+  color: #FFF;
+  background: #2C76A6;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #86BBDF #245F86 #245F86 #86BBDF;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------------------------
+    L A Y O U T
+--------------------------------------------------------------------------------- */
+/* header */
+/* line 188, ../sass/coolblue.scss */
+#header-wrap {
+  float: left;
+  height: 150px;
+  width: 100%;
+  background: url(../../images/header-bg.png) repeat-x bottom;
+}
+
+/* line 194, ../sass/coolblue.scss */
+#header {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1000px;
+  /*	width: 1000px;*/
+}
+
+/* line 201, ../sass/coolblue.scss */
+#header h1#logo-text {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 202, ../sass/coolblue.scss */
+#header h1#logo-text a {
+  position: absolute;
+  margin: 0;
+  padding: 0 5px 0 0;
+  font: bold 32px 'Trebuchet MS', 'Helvetica Neue', Arial, Sans-Serif;
+  letter-spacing: -2px;
+  color: #333;
+  text-decoration: none;
+  /* change the values of top and left to adjust the position of the logo*/
+  top: 75px;
+  left: 25px;
+}
+
+/* line 213, ../sass/coolblue.scss */
+#header p#slogan {
+  position: absolute;
+  margin: 0;
+  padding: 0 5px 0 0;
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 1.8em;
+  font-style: normal;
+  letter-spacing: -0.5px;
+  color: #0d6684;
+  /* change the values of top and left to adjust the position */
+  top: 105px;
+  left: 30px;
+}
+
+/* line 227, ../sass/coolblue.scss */
+#header span.beta {
+  position: absolute;
+  top: 90px;
+  left: 330px;
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* RSS */
+/* line 236, ../sass/coolblue.scss */
+#header p#rss {
+  position: absolute;
+  width: 175px;
+  height: 50px;
+  top: 15px;
+  right: 17px;
+  padding: 0;
+  margin: 0;
+  text-align: right;
+}
+
+/* line 244, ../sass/coolblue.scss */
+#header p#rss a {
+  background: transparent url(../../images/rss.gif) no-repeat left center;
+  color: #baa7a7;
+  height: 30px;
+  font: bold 12px 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+  margin: 0;
+  padding: 10px 0 0 30px;
+  display: block;
+}
+
+/* line 253, ../sass/coolblue.scss */
+#header p#rss a:hover {
+  color: #fff;
+}
+
+/* Quick Search */
+/* line 256, ../sass/coolblue.scss */
+form#quick-search {
+  position: absolute;
+  top: 95px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: 250px;
+}
+
+/* line 264, ../sass/coolblue.scss */
+fieldset.search {
+  border: none;
+  width: 250px;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  background: url(../../images/search.gif) no-repeat;
+}
+
+/* line 270, ../sass/coolblue.scss */
+.search input {
+  border: none;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 275, ../sass/coolblue.scss */
+.search button {
+  border: none;
+  float: right;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 280, ../sass/coolblue.scss */
+.search label {
+  display: none;
+}
+
+/* line 281, ../sass/coolblue.scss */
+.search input.tbox {
+  color: #7d8285;
+  font-weight: bold;
+  margin: 15px 0 10px 10px;
+  background: transparent;
+  width: 200px;
+}
+
+/* line 288, ../sass/coolblue.scss */
+.search button.btn {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  text-indent: -9999px;
+  background: #fbc900 url(../../images/search.gif) no-repeat top right;
+}
+
+/*  navigation  */
+/* line 297, ../sass/coolblue.scss */
+#header #nav {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  margin: 0;
+  padding: 0;
+  /* width: 750px; */
+}
+
+/* line 305, ../sass/coolblue.scss */
+#header #nav ul {
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 15px;
+}
+
+/* line 311, ../sass/coolblue.scss */
+#header #nav ul li {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 315, ../sass/coolblue.scss */
+#header #nav ul li a {
+  float: left;
+  margin: 0;
+  padding: 0 15px 0 15px;
+  color: #baa7a7;
+  font: normal 13px 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+}
+
+/* line 323, ../sass/coolblue.scss */
+#header #nav ul li a:hover,
+#header #nav ul li a:active {
+  border: none;
+  color: #fff;
+}
+
+/* line 327, ../sass/coolblue.scss */
+#header #nav ul li#current a {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* line 331, ../sass/coolblue.scss */
+#header #nav ul li a.highlight {
+  color: #ffff00;
+}
+
+/* line 334, ../sass/coolblue.scss */
+#header #nav ul li a .new {
+  color: #ff0000;
+}
+
+/* content */
+/* line 339, ../sass/coolblue.scss */
+#content-wrap {
+  clear: both;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  width: 100%;
+  float: left;
+}
+
+/* line 346, ../sass/coolblue.scss */
+#content {
+  /*	width: 1000px;*/
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 0 20px 0;
+  background: white url(../../images/content.gif) repeat-y center top;
+  overflow: hidden;
+}
+
+/* columns */
+/* line 356, ../sass/coolblue.scss */
+#main {
+  float: left;
+  margin: 0;
+  padding: 25px 0 0 0;
+  width: 740px;
+}
+
+/* line 362, ../sass/coolblue.scss */
+#sidebar {
+  width: 245px;
+  float: right;
+  margin: 0;
+  padding: 15px 0;
+  font-size: .95em;
+}
+
+/* line 370, ../sass/coolblue.scss */
+#main h2 {
+  font: bold 2.5em/1em "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, Sans-Serif;
+  color: #333;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* line 376, ../sass/coolblue.scss */
+#main h2 a {
+  color: #333;
+}
+
+/* line 377, ../sass/coolblue.scss */
+#sidebar h3 {
+  font: bold 1.7em 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+  letter-spacing: .2px;
+  margin-left: 10px;
+  color: #333;
+}
+
+/* line 383, ../sass/coolblue.scss */
+#sidebar h3, #sidebar p {
+  margin-left: 10px;
+}
+
+/* line 386, ../sass/coolblue.scss */
+#sidebar img {
+  padding: 8px;
+}
+
+/* sidemenu */
+/* line 389, ../sass/coolblue.scss */
+.sidemenu ul {
+  text-align: left;
+  margin: 10px 15px 10px 8px;
+  padding: 0;
+  border-top: 1px solid #EFEFEF;
+}
+
+/* line 395, ../sass/coolblue.scss */
+.sidemenu ul li {
+  list-style: none;
+  font-size: 11px;
+  margin: 0;
+  padding: 7px 5px;
+  border-bottom: 1px solid #EFEFEF;
+}
+
+/* line 402, ../sass/coolblue.scss */
+* html body .sidemenu ul li {
+  height: 1%;
+}
+
+/* line 404, ../sass/coolblue.scss */
+.sidemenu ul li a:link,
+.sidemenu ul li a:visited {
+  color: #33799B;
+  padding-left: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* line 410, ../sass/coolblue.scss */
+.sidemenu ul li a span {
+  color: #959595;
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+  font-style: normal;
+  font-weight: normal;
+  text-transform: none;
+}
+
+/* line 417, ../sass/coolblue.scss */
+.sidemenu ul li a:hover {
+  color: #000;
+}
+
+/* line 418, ../sass/coolblue.scss */
+.sidemenu ul ul {
+  margin: 0 0 0 5px;
+  padding: 0;
+}
+
+/* line 419, ../sass/coolblue.scss */
+.sidemenu ul ul li {
+  border: none;
+}
+
+/* popular */
+/* line 422, ../sass/coolblue.scss */
+.popular ul {
+  text-align: left;
+  margin: 10px 15px 10px 8px;
+  padding: 0;
+  border-top: 1px solid #EFEFEF;
+}
+
+/* line 428, ../sass/coolblue.scss */
+.popular ul li {
+  list-style: none;
+  border-bottom: 1px solid #EFEFEF;
+  font-size: 12px;
+  line-height: 1.5em;
+  padding: 8px 5px 8px 20px;
+  margin: 0;
+  background: url(../../images/document.gif) no-repeat 3px 11px;
+}
+
+/* line 437, ../sass/coolblue.scss */
+* html body .popular ul li {
+  height: 1%;
+}
+
+/* line 439, ../sass/coolblue.scss */
+.popular ul li a:link,
+.popular ul li a:visited {
+  color: #33799B;
+  padding-left: 0;
+  font-weight: bold;
+  text-transform: none;
+}
+
+/* line 445, ../sass/coolblue.scss */
+.popular ul li span {
+  color: #888;
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+  font-style: normal;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 1.7em;
+}
+
+/* line 454, ../sass/coolblue.scss */
+.popular ul li a:hover {
+  color: #000;
+}
+
+/* footer */
+/* line 457, ../sass/coolblue.scss */
+#footer-outer {
+  clear: both;
+  text-align: left;
+  width: 100%;
+  font-size: .9em;
+  color: #C2DBE7;
+  padding-bottom: 30px;
+  border-top: #1a5d8a;
+}
+
+/* line 466, ../sass/coolblue.scss */
+#footer-wrap {
+  /*	width: 1000px;*/
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* line 473, ../sass/coolblue.scss */
+#footer-wrap a:link,
+#footer-wrap a:visited {
+  color: #fff;
+}
+
+/* line 474, ../sass/coolblue.scss */
+#footer-wrap a:hover {
+  color: #99CCFF;
+}
+
+/* line 475, ../sass/coolblue.scss */
+#footer-wrap h3 {
+  font: bold 1.7em 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+  letter-spacing: .2px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+/* gallery */
+/* line 483, ../sass/coolblue.scss */
+#footer-wrap #gallery {
+  padding: 0 0 10px 0;
+  margin: 0;
+  width: 100%;
+  background: url(../../images/footer-line.gif) repeat-x left bottom;
+  /* border-bottom: 1px solid #326B8D;  */
+}
+
+/* line 491, ../sass/coolblue.scss */
+#footer-wrap #gallery h3 {
+  float: left;
+  display: inline;
+  width: 200px;
+  margin: 30px 0 0 20px;
+  padding: 0;
+}
+
+/* line 498, ../sass/coolblue.scss */
+#footer-wrap #gallery p.thumbs {
+  float: right;
+  display: inline;
+  width: 730px;
+  margin: 20px 0 0 0;
+  padding: 0;
+}
+
+/* line 505, ../sass/coolblue.scss */
+p.thumbs img {
+  position: relative;
+  padding: 8px;
+  margin: 10px 10px 10px 0;
+  background: #FAFAFA;
+  border: 1px solid #EDEDED;
+}
+
+/* footer columns */
+/* line 514, ../sass/coolblue.scss */
+#footer-wrap .col-a {
+  width: 250px;
+  float: left;
+}
+
+/* line 518, ../sass/coolblue.scss */
+#footer-wrap .col-b {
+  width: 245px;
+  float: right;
+}
+
+/* recent comments */
+/* line 524, ../sass/coolblue.scss */
+.recent-comments ul {
+  text-align: left;
+  margin-left: 20px;
+  padding: 0;
+  background: url(../../images/footer-line.gif) repeat-x left top;
+}
+
+/* line 530, ../sass/coolblue.scss */
+.recent-comments ul li {
+  list-style: none;
+  font-size: 12px;
+  line-height: 1.5em;
+  padding: 7px 5px 7px 20px;
+  background: url(../../images/speech_bubble.gif) no-repeat 3px 11px;
+}
+
+/* line 537, ../sass/coolblue.scss */
+* html body .recent-comments ul li {
+  height: 1%;
+}
+
+/* line 539, ../sass/coolblue.scss */
+.recent-comments ul li a:link,
+.recent-comments ul li a:visited {
+  padding-left: 0;
+}
+
+/* line 540, ../sass/coolblue.scss */
+.recent-comments ul li cite {
+  font-size: .9em;
+  font-style: normal;
+}
+
+/* footer-list */
+/* line 546, ../sass/coolblue.scss */
+.footer-list ul {
+  background: url(../../images/footer-line.gif) repeat-x left top;
+  list-style: none;
+  padding: 0;
+  margin-left: 20px;
+}
+
+/* line 552, ../sass/coolblue.scss */
+.footer-list ul li {
+  border-bottom: 1px solid #326B8D;
+}
+
+/* line 554, ../sass/coolblue.scss */
+.footer-list ul li a:link,
+.footer-list ul li a:visited {
+  display: block;
+  width: 98%;
+  line-height: 2em;
+  padding: 5px 0 5px 5px;
+  margin-left: 0;
+  color: #fff;
+}
+
+/* line 562, ../sass/coolblue.scss */
+.footer-list ul li a:hover {
+  color: #99CCFF;
+}
+
+/* subscribe stuff */
+/* line 565, ../sass/coolblue.scss */
+ul.subscribe-stuff {
+  list-style: none;
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+/* line 569, ../sass/coolblue.scss */
+ul.subscribe-stuff li {
+  float: left;
+  margin: 0 3px 0 0;
+  padding: 0;
+}
+
+/* line 573, ../sass/coolblue.scss */
+ul.subscribe-stuff li img {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+}
+
+/* footer-bottom */
+/* line 580, ../sass/coolblue.scss */
+#footer-bottom {
+  clear: both;
+  /*	width: 1000px;*/
+  max-width: 1000px;
+  font-size: .9em;
+  margin: 0 auto;
+  padding-top: 10px;
+  font-family: 'Trebuchet MS', 'Helvetica Neue', Arial, sans-serif;
+  font-size: .9em;
+  color: #C2DBE7;
+  overflow: hidden;
+  background: url(../../images/footer-line.gif) repeat-x left top;
+}
+
+/* line 594, ../sass/coolblue.scss */
+#footer-bottom a {
+  color: #fff;
+}
+
+/* line 595, ../sass/coolblue.scss */
+#footer-bottom a:hover {
+  color: #99CCFF;
+}
+
+/* line 597, ../sass/coolblue.scss */
+#footer-bottom p.bottom-left {
+  float: left;
+  display: inline;
+  margin: 0 0 30px 20px;
+  padding: 0;
+  width: 600px;
+  text-align: left;
+}
+
+/* line 605, ../sass/coolblue.scss */
+#footer-bottom p.bottom-right {
+  float: right;
+  display: inline;
+  margin: 0 30px 30px 0;
+  padding: 0;
+  width: 320px;
+  text-align: right;
+}
+
+/* ------------------------------------------------------------------------------
+		B L O G   P O S T
+--------------------------------------------------------------------------------- */
+/* line 617, ../sass/coolblue.scss */
+.post {
+  margin: 5px 0 20px 0;
+  padding: 0 0 20px 0;
+  width: 740px;
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
+}
+
+/* line 624, ../sass/coolblue.scss */
+.right {
+  width: 560px;
+  float: right;
+  display: inline;
+  padding-right: 15px;
+}
+
+/* line 630, ../sass/coolblue.scss */
+.left {
+  position: relative;
+  width: 150px;
+  float: right;
+  display: inline;
+}
+
+/* line 636, ../sass/coolblue.scss */
+.right .image-section {
+  clear: both;
+  display: block;
+  margin: 25px 0 10px 20px;
+  padding: 0;
+}
+
+/* line 642, ../sass/coolblue.scss */
+.right .image-section img {
+  background: #F3F4F5;
+  border: 1px solid #E2E3E7;
+  padding: 12px;
+}
+
+/* line 647, ../sass/coolblue.scss */
+.right h2 {
+  margin-top: 0;
+}
+
+/* share */
+/* line 650, ../sass/coolblue.scss */
+.right .share-box {
+  margin: 20px 12px 0 20px;
+  padding: 0 10px 10px 20px;
+  background: #FAFAFA;
+  border: 1px solid #EAECEE;
+  overflow: hidden;
+  width: 494px;
+}
+
+/* line 658, ../sass/coolblue.scss */
+.right .share-box h4 {
+  margin-left: 0;
+}
+
+/* line 661, ../sass/coolblue.scss */
+.right .share-box ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 665, ../sass/coolblue.scss */
+.right .share-box ul li {
+  float: left;
+  margin-right: 5px;
+}
+
+/* line 669, ../sass/coolblue.scss */
+.right .share-box ul li a:hover {
+  cursor: pointer;
+}
+
+/* line 670, ../sass/coolblue.scss */
+.right .share-box ul li img {
+  margin: 0;
+  padding: 5px;
+  background: #fff;
+}
+
+/* dateinfo */
+/* line 677, ../sass/coolblue.scss */
+.left p.dateinfo {
+  background: url(../../images/date-bg.gif) no-repeat;
+  height: 83px;
+  width: 68px;
+  margin: 12px 0 0 70px;
+  padding: 8px 0 0 1px;
+  font: bold 15px Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+/* line 689, ../sass/coolblue.scss */
+.left p.dateinfo span {
+  font: bold 30px Arial, Helvetica, sans-serif;
+  display: block;
+  color: #555;
+  margin: 8px 0 0 0;
+  padding: 0;
+  letter-spacing: 0;
+}
+
+/* post meta */
+/* line 699, ../sass/coolblue.scss */
+.left .post-meta {
+  width: 140px;
+  font-size: .9em;
+  margin: 5px 0 20px 0;
+  padding: 0;
+}
+
+/* line 705, ../sass/coolblue.scss */
+.left .post-meta h4 {
+  text-align: right;
+  margin: 0 5px 10px 5px;
+  padding: 0;
+  color: #555;
+}
+
+/* line 711, ../sass/coolblue.scss */
+.left .post-meta ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #F1F1F1;
+}
+
+/* line 716, ../sass/coolblue.scss */
+.left .post-meta ul li {
+  list-style: none;
+  border-bottom: 1px solid #F1F1F1;
+  padding: 3px 5px;
+  margin: 0;
+  text-align: right;
+  color: #147DB6;
+}
+
+/* line 724, ../sass/coolblue.scss */
+* html body .left .post-meta ul li {
+  height: 1%;
+}
+
+/* line 726, ../sass/coolblue.scss */
+.left .post-meta ul.tags li {
+  background: url(../../images/tag.gif) no-repeat 2px center;
+}
+
+/* line 727, ../sass/coolblue.scss */
+.left .post-meta ul li.user {
+  background: url(../../images/user.gif) no-repeat 2px center;
+}
+
+/* line 728, ../sass/coolblue.scss */
+.left .post-meta ul li.time {
+  background: url(../../images/clock.gif) no-repeat 2px center;
+}
+
+/* line 729, ../sass/coolblue.scss */
+.left .post-meta ul li.comment {
+  background: url(../../images/comment.gif) no-repeat 2px center;
+}
+
+/* line 730, ../sass/coolblue.scss */
+.left .post-meta ul li.permalink {
+  background: url(../../images/permalink.gif) no-repeat 2px center;
+}
+
+/* line 732, ../sass/coolblue.scss */
+.left .post-meta ul li a {
+  color: #147DB6;
+}
+
+/* line 733, ../sass/coolblue.scss */
+.left .post-meta ul li a:hover {
+  color: #333;
+}
+
+/* post bottom */
+/* line 736, ../sass/coolblue.scss */
+.post-bottom-section {
+  position: relative;
+  margin: 10px 0 20px 0;
+  padding: 0 0 20px 0;
+  width: 740px;
+  overflow: hidden;
+  border-bottom: 1px solid #eeeeee;
+}
+
+/* line 744, ../sass/coolblue.scss */
+.post-bottom-section h4 {
+  position: absolute;
+  left: 0px;
+  top: 5px;
+  text-align: right;
+  width: 135px;
+}
+
+/* line 750, ../sass/coolblue.scss */
+.post-bottom-section .right form {
+  position: relative;
+  top: 15px;
+  left: 20px;
+  margin: 0 0 20px 0;
+}
+
+/* post info */
+/* line 757, ../sass/coolblue.scss */
+.post-info {
+  margin-top: 3px;
+}
+
+/* line 759, ../sass/coolblue.scss */
+.post .post-info a:link,
+.post .post-info a:visited {
+  color: #1372a8;
+  border: none;
+  font-size: .9em;
+}
+
+/* comments list */
+/* line 766, ../sass/coolblue.scss */
+ol.commentlist {
+  margin: 12px 12px 12px 20px;
+  padding: 0;
+  background: #FAFAFA;
+  border-top: 1px solid #EAECEE;
+}
+
+/* line 772, ../sass/coolblue.scss */
+.commentlist li {
+  list-style: none;
+  margin: 0;
+  padding: 12px 0 0 0;
+  border: 1px solid #EAECEE;
+  border-width: 0 1px 1px 1px;
+  overflow: hidden;
+}
+
+/* line 781, ../sass/coolblue.scss */
+.commentlist li a:link,
+.commentlist li a:visited {
+  color: #227bad;
+}
+
+/* line 784, ../sass/coolblue.scss */
+.commentlist li .comment-info {
+  width: 99%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* line 789, ../sass/coolblue.scss */
+.commentlist li .comment-info img {
+  float: right;
+  margin: 3px 13px 0 0;
+  background: #fff;
+  border: 1px solid #E8EAEC;
+  display: inline;
+}
+
+/* line 796, ../sass/coolblue.scss */
+.commentlist li .comment-info cite {
+  display: block;
+  margin: 0;
+  padding: 5px 65px 5px 20px;
+  font-style: normal;
+  font-weight: bold;
+}
+
+/* line 802, ../sass/coolblue.scss */
+.commentlist li .comment-info cite .comment-data {
+  font-size: .8em;
+  font-weight: normal;
+}
+
+/* line 806, ../sass/coolblue.scss */
+.commentlist li .comment-text {
+  clear: both;
+  margin: 0;
+  padding: 0 20px 25px 20px;
+}
+
+/* line 810, ../sass/coolblue.scss */
+.commentlist li .comment-text p {
+  margin: 5px 0 20px 0;
+  padding: 0;
+}
+
+/* line 814, ../sass/coolblue.scss */
+.commentlist li .comment-text .reply a {
+  padding: 5px;
+  border: 1px solid #2177A5;
+  background-color: #227bad;
+  font-weight: bold;
+  font-size: 11px;
+  color: #fff;
+}
+
+/* line 822, ../sass/coolblue.scss */
+.commentlist li ul.children {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 824, ../sass/coolblue.scss */
+.commentlist li ul.children li.depth-2,
+.commentlist li ul.children li.depth-3 {
+  margin-left: 40px;
+  border-style: solid;
+  border-color: #E1E6E8;
+  border-width: 1px 0 0 1px;
+}
+
+/* line 830, ../sass/coolblue.scss */
+.commentlist li.thread-alt {
+  background: #F3F4F5;
+  border-color: #E2E4E7;
+}
+
+/* ------------------------------------------------------------------------------
+    A R C H I V E S
+--------------------------------------------------------------------------------- */
+/* line 838, ../sass/coolblue.scss */
+ul.archive {
+  margin: 10px 30px 10px 20px;
+  padding: 0;
+  border-top: 1px solid #eeeeee;
+}
+
+/* line 843, ../sass/coolblue.scss */
+ul.archive li {
+  margin: 0;
+  padding: 12px 5px;
+  border-bottom: 1px solid #eeeeee;
+  list-style: none;
+}
+
+/* line 849, ../sass/coolblue.scss */
+ul.archive li .post-title {
+  margin: 0;
+  padding: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* line 855, ../sass/coolblue.scss */
+ul.archive li .post-title a:link,
+ul.archive li .post-title a:visited {
+  color: #444;
+}
+
+/* line 858, ../sass/coolblue.scss */
+ul.archive li .post-title a:hover {
+  border: none;
+  color: #000;
+}
+
+/* line 862, ../sass/coolblue.scss */
+ul.archive li .post-details {
+  margin-left: 0;
+  margin-top: 0;
+  font-size: .9em;
+}
+
+/* line 868, ../sass/coolblue.scss */
+ul.archive li .post-details a:link,
+ul.archive li .post-details a:visited {
+  color: #1372a8;
+}
+
+/* pagenavigation */
+/* line 873, ../sass/coolblue.scss */
+.navigation {
+  margin: 10px 20px;
+  padding: 0;
+  width: 560px;
+}
+
+/* line 878, ../sass/coolblue.scss */
+.navigation a:link,
+.navigation a:visited {
+  float: left;
+  display: block;
+  margin: 10px 10px 0 0;
+  padding: 5px 7px;
+  text-transform: lowercase;
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+  background: #2C76A6;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #86BBDF #245F86 #245F86 #86BBDF;
+}
+
+/* line 892, ../sass/coolblue.scss */
+.navigation a:hover {
+  background: #FF3399;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #FF75BA #EA0075 #EA0075 #FF75BA;
+}
+
+/* ------------------------------------------------------------------------------
+		M I S C
+--------------------------------------------------------------------------------- */
+/* alignment classes & additional classes */
+/* line 904, ../sass/coolblue.scss */
+.float-left {
+  float: left;
+}
+
+/* line 905, ../sass/coolblue.scss */
+.float-right {
+  float: right;
+}
+
+/* line 906, ../sass/coolblue.scss */
+.align-left {
+  text-align: left;
+}
+
+/* line 907, ../sass/coolblue.scss */
+.align-right {
+  text-align: right;
+}
+
+/* line 908, ../sass/coolblue.scss */
+.no-border {
+  border: none;
+}
+
+/* line 909, ../sass/coolblue.scss */
+.no-bg {
+  background: none;
+}
+
+/* clearing */
+/* line 912, ../sass/coolblue.scss */
+.fix {
+  clear: both;
+  height: 1px;
+  margin: -1px 0 0;
+  overflow: hidden;
+}
+
+/* line 918, ../sass/coolblue.scss */
+.clear {
+  display: inline-block;
+}
+
+/* line 919, ../sass/coolblue.scss */
+.clear:after {
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0;
+  content: " ";
+}
+
+/* css3 design enhancements */
+/* line 4, ../sass/enhancements.scss */
+a:link.more, a:visited.more {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* line 11, ../sass/enhancements.scss */
+a:link.clickable, a:visited.clickable {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* line 18, ../sass/enhancements.scss */
+img {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 23, ../sass/enhancements.scss */
+#header h1#logo-text a {
+  text-shadow: #acacac 1px 1px 2px;
+}
+
+/* line 27, ../sass/enhancements.scss */
+#header #nav ul,
+#header p#rss a {
+  text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.9);
+}
+
+/* line 31, ../sass/enhancements.scss */
+#footer-outer,
+#footer-bottom {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+/* line 34, ../sass/enhancements.scss */
+p.thumbs img {
+  -moz-box-shadow: 1px 1px 3px #184569;
+  -webkit-box-shadow: 1px 1px 3px #184569;
+  box-shadow: 1px 1px 3px #184569;
+}
+
+/* line 39, ../sass/enhancements.scss */
+.right .image-section img {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -moz-box-shadow: 3px 3px 3px #f3f4f5, -3px -3px 3px #f3f4f5;
+  -webkit-box-shadow: 3px 3px 3px #f3f4f5, -3px -3px 3px #f3f4f5;
+  box-shadow: 3px 3px 3px #f3f4f5, -3px -3px 3px #f3f4f5;
+}
+
+/* line 48, ../sass/enhancements.scss */
+.left p.dateinfo {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+/* line 49, ../sass/enhancements.scss */
+.left p.dateinfo span {
+  text-shadow: none;
+}
+
+/* customization */
+/* Form Elements */
+/* line 4, ../sass/layout.scss */
+form .form-errors {
+  color: red;
+  text-shadow: #aaaaaa 1px 1px 2px;
+}
+
+/* line 9, ../sass/layout.scss */
+.login-form {
+  margin: 0;
+  padding: 10px;
+  width: 200px;
+  border: none;
+  background: none;
+}
+
+/* line 16, ../sass/layout.scss */
+.login-form #email, .login-form #password {
+  font-size: 1.125em;
+  padding: .25em;
+  width: 200px;
+}
+
+/* line 21, ../sass/layout.scss */
+.login-form .button {
+  padding: 0 10px;
+}
+
+/* line 24, ../sass/layout.scss */
+.userBox img.avatar {
+  float: left;
+  margin: 5px;
+}
+
+/* line 28, ../sass/layout.scss */
+.userBox ul {
+  clear: both;
+}
+
+/* line 31, ../sass/layout.scss */
+.userBox .user-info {
+  padding: 5px;
+}
+
+/* line 34, ../sass/layout.scss */
+.button.wide {
+  padding: 0 10px;
+}
+
+/* line 37, ../sass/layout.scss */
+img.ajax-loader {
+  background: none;
+  border: 0;
+}
+
+/* line 41, ../sass/layout.scss */
+p.errors {
+  color: red;
+}
+
+/* messages */
+/* line 49, ../sass/layout.scss */
+.errors {
+  color: red;
+}
+
+/* line 53, ../sass/layout.scss */
+.warnings {
+  color: orange;
+}
+
+/* line 57, ../sass/layout.scss */
+.notes {
+  color: blue;
+}
+
+/* Post Adjust */
+/* line 64, ../sass/layout.scss */
+#post.clearlook h2, #post.clearlook h3 {
+  text-shadow: #afafaf 1px 1px 2px;
+}
+/* line 67, ../sass/layout.scss */
+#post.clearlook h2 {
+  font-size: 22px;
+  color: #080000;
+}
+/* line 71, ../sass/layout.scss */
+#post.clearlook h3 {
+  font-size: 18px;
+  color: #080505;
+}
+/* line 75, ../sass/layout.scss */
+#post.clearlook p {
+  font-size: 1.125em;
+}
+
+/* Book Cover Images */
+/* line 82, ../sass/layout.scss */
+div.book-coverImage {
+  background: transparent;
+  border: 0;
+  width: 100px;
+  height: 115px;
+  position: relative;
+}
+
+/* line 89, ../sass/layout.scss */
+div.book-coverImage img.cover-image {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  background: none;
+  position: absolute;
+  bottom: 0;
+}
+
+/* line 98, ../sass/layout.scss */
+div.book-coverImage span.embedded-title {
+  width: 78px;
+  height: 105px;
+  position: absolute;
+  margin-left: 15px;
+  margin-top: 10px;
+  color: #dadada;
+  text-shadow: 2px 2px 2px #000;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Images */
+/* 清除圖片不必要的設定 */
+/* line 113, ../sass/layout.scss */
+img.clear {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+
+/* Paginate */
+/* line 121, ../sass/layout.scss */
+.paginate {
+  text-align: center;
+  padding: 10px;
+}
+
+/* line 125, ../sass/layout.scss */
+.paginate span, .paginate a {
+  padding: 5px;
+}
+
+/* Gravatar */
+/* line 130, ../sass/layout.scss */
+.gravatar {
+  background: url(../../images/gravatar.jpg);
+}
+
+/* line 134, ../sass/layout.scss */
+#rss {
+  display: none;
+}
+
+/* Table */
+/* line 140, ../sass/layout.scss */
+table.form-layout th {
+  background: none;
+  border: none;
+  color: #333333;
+  text-align: right;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+/* line 150, ../sass/layout.scss */
+table.form-layout td {
+  border: none;
+}
+
+/* Disqus Comments */
+/* line 158, ../sass/layout.scss */
+#disqus_thread img {
+  border: none;
+  padding: 0;
+  background: none;
+}
+/* line 163, ../sass/layout.scss */
+#disqus_thread h3 {
+  font-size: 18px;
+}
+
+/* controller specify customization */
+/* incase an inverted custom gradient isn't specified */
+/* line 177, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class, #controller-book.action-show .download-links a, .fancy-button-submit {
+  font-family: "Lucida Grande", Lucida, Arial, sans-serif;
+  background: url('/images/button_bg.png?1326776211') repeat-x bottom left;
+  margin: 0;
+  width: auto;
+  overflow: visible;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  border-style: solid;
+  font-weight: bold;
+}
+/* line 165, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class::-moz-focus-inner, #controller-book.action-show .download-links a::-moz-focus-inner, .fancy-button-submit::-moz-focus-inner {
+  border: none;
+  padding: 0;
+}
+/* line 168, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class:focus, #controller-book.action-show .download-links a:focus, .fancy-button-submit:focus {
+  outline: none;
+}
+
+/* line 8, ../sass/controller_book.scss */
+#controller-book.action-show .title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #080000;
+}
+/* line 13, ../sass/controller_book.scss */
+#controller-book.action-show .subtitle {
+  font-size: 18px;
+  color: #333333;
+}
+/* line 17, ../sass/controller_book.scss */
+#controller-book.action-show .downloads {
+  clear: both;
+}
+/* line 19, ../sass/controller_book.scss */
+#controller-book.action-show .downloads h3 {
+  font-size: 18px;
+}
+/* line 23, ../sass/controller_book.scss */
+#controller-book.action-show .download-links {
+  margin: 2.5em auto;
+  text-align: center;
+}
+/* line 27, ../sass/controller_book.scss */
+#controller-book.action-show .download-links a {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.2em;
+  padding: 0.3em 1em;
+  border-width: 1px;
+  background-color: #004c9b;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5aa0e9), color-stop(10%, #1b72cd), color-stop(50%, #10447b), color-stop(50%, #0e3d6e), color-stop(100%, #14569b));
+  background-image: -webkit-linear-gradient(#5aa0e9, #1b72cd 10%, #10447b 50%, #0e3d6e 50%, #14569b);
+  background-image: -moz-linear-gradient(#5aa0e9, #1b72cd 10%, #10447b 50%, #0e3d6e 50%, #14569b);
+  background-image: -o-linear-gradient(#5aa0e9, #1b72cd 10%, #10447b 50%, #0e3d6e 50%, #14569b);
+  background-image: -ms-linear-gradient(#5aa0e9, #1b72cd 10%, #10447b 50%, #0e3d6e 50%, #14569b);
+  background-image: linear-gradient(#5aa0e9, #1b72cd 10%, #10447b 50%, #0e3d6e 50%, #14569b);
+  border-color: #092645;
+  text-shadow: #000d1b 0px 1px 1px;
+  -moz-box-shadow: rgba(255, 255, 255, 0.304) 0 0 0.1em 1px inset;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.304) 0 0 0.1em 1px inset;
+  -o-box-shadow: rgba(255, 255, 255, 0.304) 0 0 0.1em 1px inset;
+  box-shadow: rgba(255, 255, 255, 0.304) 0 0 0.1em 1px inset;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  -o-background-clip: padding-box;
+  -ms-background-clip: padding-box;
+  -khtml-background-clip: padding-box;
+  background-clip: padding-box;
+}
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+#controller-book.action-show .download-links a, #controller-book.action-show .download-links a:visited {
+  color: white;
+}
+/* line 31, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+#controller-book.action-show .download-links a:hover, #controller-book.action-show .download-links a:focus {
+  background-color: #00448c;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4c98e8), color-stop(10%, #196abf), color-stop(50%, #0e3d6e), color-stop(50%, #0d3560), color-stop(100%, #134f8e));
+  background-image: -webkit-linear-gradient(#4c98e8, #196abf 10%, #0e3d6e 50%, #0d3560 50%, #134f8e);
+  background-image: -moz-linear-gradient(#4c98e8, #196abf 10%, #0e3d6e 50%, #0d3560 50%, #134f8e);
+  background-image: -o-linear-gradient(#4c98e8, #196abf 10%, #0e3d6e 50%, #0d3560 50%, #134f8e);
+  background-image: -ms-linear-gradient(#4c98e8, #196abf 10%, #0e3d6e 50%, #0d3560 50%, #134f8e);
+  background-image: linear-gradient(#4c98e8, #196abf 10%, #0e3d6e 50%, #0d3560 50%, #134f8e);
+  border-color: #071f38;
+  text-shadow: #00060c 0px 1px 1px;
+}
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+#controller-book.action-show .download-links a:hover, #controller-book.action-show .download-links a:hover:visited, #controller-book.action-show .download-links a:focus, #controller-book.action-show .download-links a:focus:visited {
+  color: white;
+}
+/* line 36, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+#controller-book.action-show .download-links a:active {
+  background-color: #003d7c;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0e3d6e), color-stop(30%, #104277), color-stop(50%, #0d3865), color-stop(50%, #0b3057), color-stop(100%, #135192));
+  background-image: -webkit-linear-gradient(#0e3d6e, #104277 30%, #0d3865 50%, #0b3057 50%, #135192);
+  background-image: -moz-linear-gradient(#0e3d6e, #104277 30%, #0d3865 50%, #0b3057 50%, #135192);
+  background-image: -o-linear-gradient(#0e3d6e, #104277 30%, #0d3865 50%, #0b3057 50%, #135192);
+  background-image: -ms-linear-gradient(#0e3d6e, #104277 30%, #0d3865 50%, #0b3057 50%, #135192);
+  background-image: linear-gradient(#0e3d6e, #104277 30%, #0d3865 50%, #0b3057 50%, #135192);
+  border-color: #06172a;
+  text-shadow: black 0px -1px -1px;
+  -moz-box-shadow: #092645 0 0.08em 0.2em 1px inset;
+  -webkit-box-shadow: #092645 0 0.08em 0.2em 1px inset;
+  -o-box-shadow: #092645 0 0.08em 0.2em 1px inset;
+  box-shadow: #092645 0 0.08em 0.2em 1px inset;
+}
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+#controller-book.action-show .download-links a:active, #controller-book.action-show .download-links a:active:visited {
+  color: white;
+}
+/* line 31, ../sass/controller_book.scss */
+#controller-book.action-show .comments {
+  margin-left: 25px;
+}
+/* line 34, ../sass/controller_book.scss */
+#controller-book.action-show .description pre, #controller-book.action-show .description code {
+  width: 98%;
+  height: 100%;
+  background: none;
+  border: 0;
+}
+/* line 40, ../sass/controller_book.scss */
+#controller-book.action-show .fb-like {
+  margin: 10px 25px;
+}
+
+/* line 6, ../sass/controller_publish.scss */
+#controller-publish.action-update span.required {
+  color: red;
+  font-weight: bold;
+}
+/* line 10, ../sass/controller_publish.scss */
+#controller-publish.action-update div.book-coverImage {
+  margin: 10px;
+  float: left;
+}
+/* line 14, ../sass/controller_publish.scss */
+#controller-publish.action-update .clear-both {
+  clear: both;
+}
+
+/* line 20, ../sass/screen.scss */
+.fancy-button-submit {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.2em;
+  padding: 0.3em 1em;
+  border-width: 1px;
+  background-color: #004c9b;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #5aa0e9), color-stop(10%, #1b72cd), color-stop(50%, #10447b), color-stop(50%, #0e3d6e), color-stop(100%, #14569b));
+  background-image: -webkit-linear-gradient(#5aa0e9, #1b72cd 10%, #10447b 50%, #0e3d6e 50%, #14569b);
+  background-image: -moz-linear-gradient(#5aa0e9, #1b72cd 10%, #10447b 50%, #0e3d6e 50%, #14569b);
+  background-image: -o-linear-gradient(#5aa0e9, #1b72cd 10%, #10447b 50%, #0e3d6e 50%, #14569b);
+  background-image: -ms-linear-gradient(#5aa0e9, #1b72cd 10%, #10447b 50%, #0e3d6e 50%, #14569b);
+  background-image: linear-gradient(#5aa0e9, #1b72cd 10%, #10447b 50%, #0e3d6e 50%, #14569b);
+  border-color: #092645;
+  text-shadow: #000d1b 0px 1px 1px;
+  -moz-box-shadow: rgba(255, 255, 255, 0.304) 0 0 0.1em 1px inset;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.304) 0 0 0.1em 1px inset;
+  -o-box-shadow: rgba(255, 255, 255, 0.304) 0 0 0.1em 1px inset;
+  box-shadow: rgba(255, 255, 255, 0.304) 0 0 0.1em 1px inset;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  -o-background-clip: padding-box;
+  -ms-background-clip: padding-box;
+  -khtml-background-clip: padding-box;
+  background-clip: padding-box;
+}
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-submit, .fancy-button-submit:visited {
+  color: white;
+}
+/* line 31, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-submit:hover, .fancy-button-submit:focus {
+  background-color: #00448c;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4c98e8), color-stop(10%, #196abf), color-stop(50%, #0e3d6e), color-stop(50%, #0d3560), color-stop(100%, #134f8e));
+  background-image: -webkit-linear-gradient(#4c98e8, #196abf 10%, #0e3d6e 50%, #0d3560 50%, #134f8e);
+  background-image: -moz-linear-gradient(#4c98e8, #196abf 10%, #0e3d6e 50%, #0d3560 50%, #134f8e);
+  background-image: -o-linear-gradient(#4c98e8, #196abf 10%, #0e3d6e 50%, #0d3560 50%, #134f8e);
+  background-image: -ms-linear-gradient(#4c98e8, #196abf 10%, #0e3d6e 50%, #0d3560 50%, #134f8e);
+  background-image: linear-gradient(#4c98e8, #196abf 10%, #0e3d6e 50%, #0d3560 50%, #134f8e);
+  border-color: #071f38;
+  text-shadow: #00060c 0px 1px 1px;
+}
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-submit:hover, .fancy-button-submit:hover:visited, .fancy-button-submit:focus, .fancy-button-submit:focus:visited {
+  color: white;
+}
+/* line 36, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-submit:active {
+  background-color: #003d7c;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0e3d6e), color-stop(30%, #104277), color-stop(50%, #0d3865), color-stop(50%, #0b3057), color-stop(100%, #135192));
+  background-image: -webkit-linear-gradient(#0e3d6e, #104277 30%, #0d3865 50%, #0b3057 50%, #135192);
+  background-image: -moz-linear-gradient(#0e3d6e, #104277 30%, #0d3865 50%, #0b3057 50%, #135192);
+  background-image: -o-linear-gradient(#0e3d6e, #104277 30%, #0d3865 50%, #0b3057 50%, #135192);
+  background-image: -ms-linear-gradient(#0e3d6e, #104277 30%, #0d3865 50%, #0b3057 50%, #135192);
+  background-image: linear-gradient(#0e3d6e, #104277 30%, #0d3865 50%, #0b3057 50%, #135192);
+  border-color: #06172a;
+  text-shadow: black 0px -1px -1px;
+  -moz-box-shadow: #092645 0 0.08em 0.2em 1px inset;
+  -webkit-box-shadow: #092645 0 0.08em 0.2em 1px inset;
+  -o-box-shadow: #092645 0 0.08em 0.2em 1px inset;
+  box-shadow: #092645 0 0.08em 0.2em 1px inset;
+}
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-submit:active, .fancy-button-submit:active:visited {
+  color: white;
+}
+
+/* line 24, ../sass/screen.scss */
+.w100p {
+  width: 100%;
+}
+
+/* line 27, ../sass/screen.scss */
+.w90p {
+  width: 90%;
+}
+
+/* line 30, ../sass/screen.scss */
+.w80p {
+  width: 80%;
+}

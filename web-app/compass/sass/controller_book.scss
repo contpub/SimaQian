@@ -1,0 +1,43 @@
+@import "fancy-buttons";
+
+#controller-book {
+	
+}
+
+#controller-book.action-show {
+	.title {
+		font-size: 20px;
+		font-weight: bold;
+		color: #080000;
+	}
+	.subtitle {
+		font-size: 18px;
+		color: #333333;
+	}
+	.downloads {
+		clear: both;
+		h3 {
+			font-size: 18px;
+		}
+	}
+	.download-links {
+		margin: 2.5em auto;
+		text-align: center;
+
+		a {
+			@include fancy-button(#124c89, 16px, 4px, 1px);
+		}
+	}
+	.comments {
+		margin-left: 25px;
+	}
+	.description pre, .description code {
+		width: 98%;
+		height: 100%;
+		background: none;
+		border: 0;
+	}
+	.fb-like {
+		margin: 10px 25px;
+	}	
+}

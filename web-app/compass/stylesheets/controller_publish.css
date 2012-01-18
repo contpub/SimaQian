@@ -1,0 +1,14 @@
+/* line 6, ../sass/controller_publish.scss */
+#controller-publish.action-update span.required {
+  color: red;
+  font-weight: bold;
+}
+/* line 10, ../sass/controller_publish.scss */
+#controller-publish.action-update div.book-coverImage {
+  margin: 10px;
+  float: left;
+}
+/* line 14, ../sass/controller_publish.scss */
+#controller-publish.action-update .clear-both {
+  clear: both;
+}

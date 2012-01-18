@@ -1,0 +1,1 @@
+<div id="flash-message" class="${flash.type}"><g:message code="${flash.message}" args="${flash.args}" default="${flash.default}"/></div>

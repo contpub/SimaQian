@@ -1,0 +1,191 @@
+/* Form Elements */
+/* line 4, ../sass/layout.scss */
+form .form-errors {
+  color: red;
+  text-shadow: #aaaaaa 1px 1px 2px;
+}
+
+/* line 9, ../sass/layout.scss */
+.login-form {
+  margin: 0;
+  padding: 10px;
+  width: 200px;
+  border: none;
+  background: none;
+}
+
+/* line 16, ../sass/layout.scss */
+.login-form #email, .login-form #password {
+  font-size: 1.125em;
+  padding: .25em;
+  width: 200px;
+}
+
+/* line 21, ../sass/layout.scss */
+.login-form .button {
+  padding: 0 10px;
+}
+
+/* line 24, ../sass/layout.scss */
+.userBox img.avatar {
+  float: left;
+  margin: 5px;
+}
+
+/* line 28, ../sass/layout.scss */
+.userBox ul {
+  clear: both;
+}
+
+/* line 31, ../sass/layout.scss */
+.userBox .user-info {
+  padding: 5px;
+}
+
+/* line 34, ../sass/layout.scss */
+.button.wide {
+  padding: 0 10px;
+}
+
+/* line 37, ../sass/layout.scss */
+img.ajax-loader {
+  background: none;
+  border: 0;
+}
+
+/* line 41, ../sass/layout.scss */
+p.errors {
+  color: red;
+}
+
+/* messages */
+/* line 49, ../sass/layout.scss */
+.errors {
+  color: red;
+}
+
+/* line 53, ../sass/layout.scss */
+.warnings {
+  color: orange;
+}
+
+/* line 57, ../sass/layout.scss */
+.notes {
+  color: blue;
+}
+
+/* Post Adjust */
+/* line 64, ../sass/layout.scss */
+#post.clearlook h2, #post.clearlook h3 {
+  text-shadow: #afafaf 1px 1px 2px;
+}
+/* line 67, ../sass/layout.scss */
+#post.clearlook h2 {
+  font-size: 22px;
+  color: #080000;
+}
+/* line 71, ../sass/layout.scss */
+#post.clearlook h3 {
+  font-size: 18px;
+  color: #080505;
+}
+/* line 75, ../sass/layout.scss */
+#post.clearlook p {
+  font-size: 1.125em;
+}
+
+/* Book Cover Images */
+/* line 82, ../sass/layout.scss */
+div.book-coverImage {
+  background: transparent;
+  border: 0;
+  width: 100px;
+  height: 115px;
+  position: relative;
+}
+
+/* line 89, ../sass/layout.scss */
+div.book-coverImage img.cover-image {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  background: none;
+  position: absolute;
+  bottom: 0;
+}
+
+/* line 98, ../sass/layout.scss */
+div.book-coverImage span.embedded-title {
+  width: 78px;
+  height: 105px;
+  position: absolute;
+  margin-left: 15px;
+  margin-top: 10px;
+  color: #dadada;
+  text-shadow: 2px 2px 2px #000;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Images */
+/* 清除圖片不必要的設定 */
+/* line 113, ../sass/layout.scss */
+img.clear {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+
+/* Paginate */
+/* line 121, ../sass/layout.scss */
+.paginate {
+  text-align: center;
+  padding: 10px;
+}
+
+/* line 125, ../sass/layout.scss */
+.paginate span, .paginate a {
+  padding: 5px;
+}
+
+/* Gravatar */
+/* line 130, ../sass/layout.scss */
+.gravatar {
+  background: url(../../images/gravatar.jpg);
+}
+
+/* line 134, ../sass/layout.scss */
+#rss {
+  display: none;
+}
+
+/* Table */
+/* line 140, ../sass/layout.scss */
+table.form-layout th {
+  background: none;
+  border: none;
+  color: #333333;
+  text-align: right;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+/* line 150, ../sass/layout.scss */
+table.form-layout td {
+  border: none;
+}
+
+/* Disqus Comments */
+/* line 158, ../sass/layout.scss */
+#disqus_thread img {
+  border: none;
+  padding: 0;
+  background: none;
+}
+/* line 163, ../sass/layout.scss */
+#disqus_thread h3 {
+  font-size: 18px;
+}
