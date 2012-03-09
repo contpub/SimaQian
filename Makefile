@@ -1,3 +1,6 @@
+server:
+	grails run-app
+
 commit:
 	#git checkout
 	git commit . -m 'development update'

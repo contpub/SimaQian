@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Update book info</title>
+<title>Permissions</title>
 <socialTag:websnaprSDK />
 <resource:richTextEditor />
 </head>

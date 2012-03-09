@@ -48,33 +48,36 @@
 				</div>
 			</div>
 			<div style="clear:both">
+				<h3>Git 版本控制</h3>
+				<div style="float: left; padding: 0 20px">
+					<img src="${createLinkTo(dir: 'images', file: 'mode_git.png')}" class="icon" /><br/>
+					<img src="${createLinkTo(dir: 'images', file: 'mode_github.png')}" class="icon" />
+				</div>
+				<p>適用開放源碼電子書，可由多位作者協同編輯內容。由於需要額外的 Git 軟體操作，此模式較適合進階使用者。您可以利用免費的 GitHub 服務建立 Git 電子書專案，並邀請其他作者一起參與協作。使用 Git 模式的優點包括，可以將各章節拆為不同檔案，並更容易附加圖片、程式碼等。</p>
+				<div style="text-align: right">
+					<g:if test="${book?.type.toString()=='GIT'}">
+						<strong>已啟用</strong>
+						|
+						<g:link action="setupGit" id="${book?.id}">設定</g:link>
+					</g:if>
+					<g:else>
+						<g:link action="modeChange" id="${book?.id}" params="[type: 'GIT']">啟用</g:link>
+					</g:else>
+				</div>
+			</div>
+			<div style="clear:both">
 				<h3>Dropbox 雲端儲存服務</h3>
 				<div style="float: left; padding: 0 20px">
 					<img src="${createLinkTo(dir: 'images', file: 'mode_dropbox.png')}" class="icon" />
 				</div>
 				<p>利用 Dropbox 服務儲存電子書原始碼，讓您可以使用喜愛的文字編輯器輕鬆撰寫電子書原始碼，同時也適用於 iPad 平板電腦。此模式可以將章節拆為不同檔案，並附帶圖片、程式碼。本模式變更完成後，必須等待服務人員幫您建立 Dropbox 共享資料夾。</p>
+				<p style="color:red">這項功能目前為測試階段，需要聯繫系統管理員協助設定。</p>
 				<div style="text-align: right">
 					<g:if test="${book?.type.toString()=='DROPBOX'}">
 						<strong>已啟用</strong>
 					</g:if>
 					<g:else>
 						<g:link action="modeChange" id="${book?.id}" params="[type: 'DROPBOX']">啟用</g:link>
-					</g:else>
-				</div>
-			</div>
-			<div style="clear:both">
-				<h3>Git 版本控制</h3>
-				<div style="float: left; padding: 0 20px">
-					<img src="${createLinkTo(dir: 'images', file: 'mode_git.png')}" class="icon" /><br/>
-					<img src="${createLinkTo(dir: 'images', file: 'mode_github.png')}" class="icon" />
-				</div>
-				<p>適合開放原始碼電子書，由多位作者協同編輯內容，適合進階使用者。您可以利用免費的 GitHub 服務建立 Git 電子書專案，並邀請其他作者一起加入。可以將各章節拆為不同檔案，並附帶圖片、程式碼等。</p>
-				<div style="text-align: right">
-					<g:if test="${book?.type.toString()=='GIT'}">
-						<strong>已啟用</strong>
-					</g:if>
-					<g:else>
-						<g:link action="modeChange" id="${book?.id}" params="[type: 'GIT']">啟用</g:link>
 					</g:else>
 				</div>
 			</div>

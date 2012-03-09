@@ -320,6 +320,37 @@ class PublishController {
 	}
 
 	/**
+	 * Setup GIT
+	 */
+	def setupGit = {
+		def book = Book.get(params.id)
+		[book: book]
+	}
+
+	/**
+	 * Change Mode Request
+	 */
+	def setupGitSave = {
+		def book = Book.get(params.id)
+
+		if (!book) {
+			response.sendError 404
+			return
+		}
+
+		book.url = params.url
+		book.save(flush: true)
+
+		//flash messages
+		flash.message = 'common.flash.message.saved'
+		flash.args = [new Date(), book.title]
+		flash.default = '{1} saved {0}'
+		flash.type = 'notes'
+
+		redirect (action: 'setupGit', id: book?.id)
+	}
+
+	/**
 	 * Permissions
 	 */
 	def permission = {
