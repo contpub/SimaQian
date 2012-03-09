@@ -107,6 +107,7 @@
 			<div class="toolbar">
 				<a href="#" class="save-button"><img src="${createLinkTo(dir: 'icons/silk', file: 'page_save.png')}" border="0" /><span>儲存</span></a>
 				<a href="#" class="publish-button"><img src="${createLinkTo(dir: 'icons/silk', file: 'printer.png')}" border="0" /><span>發佈</span></a>
+				<a href="${bookTag.createDownloadLink(book: book, type: 'log')}" target="_blank" title="檢視記錄檔"><img src="${createLinkTo(dir: 'icons/silk', file: 'page_white_text.png')}" border="0" /><span>記錄檔</span></a>
 				<span class="status"></span>
 			</div>
 			<g:if test="${book?.type==org.contpub.simaqian.RepoType.GIT}">

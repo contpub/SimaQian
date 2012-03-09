@@ -50,7 +50,7 @@
 							<br/>
 							<br/>
 
-							<bookTag:downloadLink book="${book}" type="html">HTML</bookTag:downloadLink>
+							<bookTag:downloadLink book="${book}" type="zip">HTML</bookTag:downloadLink>
 
 							<bookTag:downloadLink book="${book}" type="cdn">On-Line</bookTag:downloadLink>
 						</div>
