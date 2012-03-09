@@ -51,6 +51,7 @@ class BookTagLib {
 		if (attr.book) {
 			if (attr.type=='cdn') {
 				out << grailsApplication.config.appConf.cdn.href
+				out << "public/"
 				out << attr.book.name //cdn link
 			}
 			else {
