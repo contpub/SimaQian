@@ -66,6 +66,7 @@ dt {
 	font-weight: bold;
 	color: #1980AF;	
 }
+
 dd {
 	padding-left: 20px;
 }
@@ -73,12 +74,12 @@ dd {
 p, dl { margin: 10px 25px; }
 
 /* images */
-img {
+img.coolblue {
 	background: #F3F4F5;
 	border: 1px solid #E2E4E7;
 	padding: 10px;
 }
-img.float-right {	margin: 5px 0px 10px 10px; }
+img.float-right { margin: 5px 0px 10px 10px; }
 img.float-left { margin: 5px 10px 10px 0px; }
 
 code {

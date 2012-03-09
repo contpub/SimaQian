@@ -116,4 +116,14 @@ class SocialTagLib {
 	<meta property="fb:admins" content="${grailsApplication.config.social.facebook.admins}"/>
 	<meta property="fb:page_id" content="${grailsApplication.config.social.facebook.pageId}"/>"""
 	}
+
+	/**
+	 * <socialTag:userecho />
+	 */
+	def userecho = { attr, body ->
+		out << render (
+			template: '/tagLib/social/userecho',
+			model: []
+		)
+	}
 }

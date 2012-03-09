@@ -131,6 +131,7 @@ appConf.subTitle = 'Now everyone can publish ...'
 appConf.cook.exchangeName = ''
 appConf.cook.version = 1.0
 appConf.cook.routingKey = 'RepoCook'
+appConf.cdn.href = 'http://cdn.contpub.org/'
 
 // Secure Passwords in private config file
 grails.config.locations = [

@@ -23,9 +23,9 @@
 			<p>By ${book?.authors}<br/>
 			Released: ${book?.cookUpdated?.format('MMM yyyy')}</p>
 
-			<p class="description">
-				${book?.profile?.description?.replace("\n", "<br />")}
-			</p>
+			<div class="description">
+				${book?.profile?.description}
+			</div>
 			
 			<socialTag:facebookLikeButton />
 
@@ -47,6 +47,12 @@
 
 							<a href="http://docs.google.com/viewer?url=${bookTag.createDownloadLink(book: book, type: 'pdf').encodeAsURL()}&embedded=true" target="_blank"><g:message code="common.preview" default="Preview"/></a>
 
+							<br/>
+							<br/>
+
+							<bookTag:downloadLink book="${book}" type="html">HTML</bookTag:downloadLink>
+
+							<bookTag:downloadLink book="${book}" type="cdn">On-Line</bookTag:downloadLink>
 						</div>
 					</g:else>
 				</g:if>
