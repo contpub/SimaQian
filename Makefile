@@ -7,7 +7,7 @@ update:
 	git pull
 
 war:
-	grails clean
+	#grails clean
 	grails war
 
 deploy:
