@@ -53,6 +53,7 @@ class BookTagLib {
 				out << grailsApplication.config.appConf.cdn.href
 				out << "public/"
 				out << attr.book.name //cdn link
+				out << "/index.html"
 			}
 			else {
 				out << _basehref()
