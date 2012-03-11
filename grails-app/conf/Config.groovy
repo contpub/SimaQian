@@ -130,15 +130,18 @@ aws {
 }
 
 // Application configuration
-appConf.sysId = 'contpub'
-appConf.title = 'Continuous Publishing'
-appConf.subTitle = 'Now everyone can publish ...'
-appConf.cook.exchangeName = ''
-appConf.cook.version = 1.0
-appConf.cook.routingKey = 'RepoCook'
-appConf.cdn.href = 'http://cdn.contpub.org/'
-appConf.vhost.host = 'vhost.contpub.org'
-appConf.vhost.href = 'http://vhost.contpub.org/'
+appConf {
+	baseUrl = 'http://contpub.org/'
+	sysId = 'contpub'
+	title = 'Continuous Publishing'
+	subTitle = 'Now everyone can publish ...'
+	cook.exchangeName = ''
+	cook.version = 1.0
+	cook.routingKey = 'RepoCook'
+	cdn.href = 'http://cdn.contpub.org/'
+	vhost.host = 'vhost.contpub.org'
+	vhost.href = 'http://vhost.contpub.org/'
+}
 
 // Secure Passwords in private config file
 grails.config.locations = [
@@ -158,13 +161,16 @@ social {
 	websnapr {
 		API_KEY = 'qSm102nbhm1e'
 	}
+
 	// Disqus: discover your community
 	disqus {
 		shortname = 'contpub'
 	}	
+	
 	twitter {
 		screenName = 'FollowContpub'
 	}
+
 	facebook {
 		admins = '584879432'
 		appId = '175500369215845'

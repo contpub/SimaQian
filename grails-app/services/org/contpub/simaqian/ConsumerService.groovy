@@ -42,21 +42,22 @@ class ConsumerService {
 						//re-generate cname contents
 						log.info "generate contents for ${book.cname}"
 
+						def baseUrl = grailsApplication.appConf.baseUrl
+						def vhostUrl = grailsApplication.config.appConf.vhost.href
 
 						def options = [
 							h: book.cname,
-							f: bookTag.createDownloadLink(book: book, type: 'zip'),
+							f: "${baseUrl}download/${book.name}.zip",
 							t: new Date().time
 						]
 
-						def url = new URIBuilder(grailsApplication.config.appConf.vhost.href)
-							.setQuery(options)
-
-						println "access url ${url}"
+						def url = new URIBuilder(vhostUrl).setQuery(options)
 
 						log.info "access url ${url}"
 
-						log.info new URL(url.toString()).text
+						def result = new URL(url.toString()).text
+						
+						log.info result
 					}
 				}
 			}
