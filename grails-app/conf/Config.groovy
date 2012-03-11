@@ -67,6 +67,10 @@ environments {
 			enabled = true
 			useSecureAPI = true
 		}
+
+		log4j = {
+			info "grails.app"
+		}
 	}
     production {
         grails.logging.jul.usebridge = false
@@ -132,6 +136,8 @@ appConf.cook.exchangeName = ''
 appConf.cook.version = 1.0
 appConf.cook.routingKey = 'RepoCook'
 appConf.cdn.href = 'http://cdn.contpub.org/'
+appConf.vhost.host = 'vhost.contpub.org'
+appConf.vhost.href = 'http://vhost.contpub.org/'
 
 // Secure Passwords in private config file
 grails.config.locations = [
@@ -197,4 +203,5 @@ mailhide {
 	publicKey = ""
 	privateKey = ""
 }
+
 

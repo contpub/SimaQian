@@ -32,6 +32,7 @@ class Book {
 
 	RepoType type = RepoType.EMBED	// Repository Type (ex. GIT, SVN)
 	String url						// Repository URL (ex. git@github.com:user/project)
+	String cname
 
 	Date dateCreated				// Created Datetime
 	Date lastUpdated				// Modified Datetime
@@ -48,6 +49,7 @@ class Book {
 		authors (nullable: true, blank: true)
 		type (nullable: true)
 		url (nullable: true, url: true)
+		cname (nullable: true, blank: true)
 		profile (nullable: true)
 		cookUpdated (nullable: true)
 	}

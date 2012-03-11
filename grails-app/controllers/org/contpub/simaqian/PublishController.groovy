@@ -1,6 +1,7 @@
 package org.contpub.simaqian
 
 import groovy.json.JsonBuilder
+import groovyx.net.http.URIBuilder
 
 /**
  * Publish Controller
@@ -246,6 +247,41 @@ class PublishController {
 		}
 		
 		redirect(action: 'cover', id: book?.id)
+	}
+
+	/**
+	 * Media types
+	 */
+	def media = {
+		def book = Book.get(params.id)
+		[book: book]
+	}
+
+	def mediaSave = {
+		def book = Book.get(params.id)
+
+		book.cname = params.cname
+		book.save(flush: true)
+
+		if (book.cname && params.generate=='on') {
+			//re-generate cname contents
+			log.info "generate contents for ${book.cname}"
+
+			def url = new URIBuilder(grailsApplication.config.appConf.vhost.href)
+				.setQuery([h: book.cname, f:bookTag.createDownloadLink(book: book, type: 'zip')])
+
+			log.info "access url ${url}"
+
+			log.info new URL(url.toString()).text
+		}
+
+		//flash messages
+		flash.message = 'common.flash.message.saved'
+		flash.args = [new Date(), book.title]
+		flash.default = '{1} saved {0}'
+		flash.type = 'notes'
+
+		redirect (action: 'media', id: book?.id)
 	}
 
 	/**

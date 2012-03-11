@@ -1,6 +1,8 @@
 package org.contpub.simaqian
 
-import groovy.json.*
+import groovy.json.JsonBuilder
+import groovy.json.JsonSlurper
+import groovyx.net.http.URIBuilder
 
 class ConsumerService {
 	
@@ -25,11 +27,25 @@ class ConsumerService {
 				}
 			}
 			else {
+				// Normal Book
 				if (msg.id) {
 					def book = Book.get(msg.id)
 					if (book) {
 						book.isCooking = false
 						book.save(flush: true)
+					}
+
+					// generate contents for virtual host
+					if (book.cname) {
+						//re-generate cname contents
+						log.info "generate contents for ${book.cname}"
+
+						def url = new URIBuilder(grailsApplication.config.appConf.vhost.href)
+							.setQuery([h: book.cname, f:bookTag.createDownloadLink(book: book, type: 'zip')])
+
+						log.info "access url ${url}"
+
+						log.info new URL(url.toString()).text
 					}
 				}
 			}

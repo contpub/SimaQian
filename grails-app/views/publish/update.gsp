@@ -24,7 +24,7 @@
 					<g:textField name="title" value="${book?.title}" class="w90p" />
 				</p>
 				<p>
-					<label for="title">Subtitle</label><br />
+					<label for="subtitle">Subtitle</label><br />
 					<g:textField name="subtitle" value="${book?.subtitle}" class="w90p" />
 				</p>
 				<p>
