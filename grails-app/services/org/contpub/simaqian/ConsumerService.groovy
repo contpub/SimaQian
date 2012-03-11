@@ -42,8 +42,17 @@ class ConsumerService {
 						//re-generate cname contents
 						log.info "generate contents for ${book.cname}"
 
+
+						def options = [
+							h: book.cname,
+							f: bookTag.createDownloadLink(book: book, type: 'zip'),
+							t: new Date().time
+						]
+
 						def url = new URIBuilder(grailsApplication.config.appConf.vhost.href)
-							.setQuery([h: book.cname, f:bookTag.createDownloadLink(book: book, type: 'zip')])
+							.setQuery(options)
+
+						println "access url ${url}"
 
 						log.info "access url ${url}"
 
