@@ -75,7 +75,8 @@ environments {
     production {
         grails.logging.jul.usebridge = false
         grails.serverURL = "http://contpub.org"
-		log4j.appender.'errors.File'="/tmp/stacktrace.log"
+
+		//log4j.appender.'errors.File'="/tmp/stacktrace.log"
 
 		recaptcha {
 			enabled = true
@@ -141,7 +142,7 @@ appConf.vhost.href = 'http://vhost.contpub.org/'
 
 // Secure Passwords in private config file
 grails.config.locations = [
-	"file:${userHome}/.grails/${appName}-config.properties",
+	//"file:${userHome}/.grails/${appName}-config.properties",
 	"file:${userHome}/.grails/${appName}-config.groovy"
 ]
 
