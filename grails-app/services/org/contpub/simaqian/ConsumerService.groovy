@@ -42,7 +42,7 @@ class ConsumerService {
 						//re-generate cname contents
 						log.info "generate contents for ${book.cname}"
 
-						def baseUrl = grailsApplication.appConf.baseUrl
+						def baseUrl = grailsApplication.config.appConf.baseUrl
 						def vhostUrl = grailsApplication.config.appConf.vhost.href
 
 						def options = [
