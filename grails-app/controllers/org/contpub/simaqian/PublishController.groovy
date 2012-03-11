@@ -173,37 +173,8 @@ class PublishController {
 	def cook = {
 		def book = Book.get(params.id)
 		
-		if (book.isCooking == false) {
-			book.isCooking = true
-			book.countCook ++
-			book.save()
-		
-			def json = new JsonBuilder()
-			def version = grailsApplication.config.appConf.cook.version
+		sendCookMessage(book)
 
-			def contentUrl
-			
-			if (book.type.equals(RepoType.EMBED)) {
-				contentUrl = createLink(controller: 'book', action: 'embed', id: book.id, absolute: true)
-			}
-			else {
-				contentUrl = book.url
-			}
-			
-			json (
-				id: book.id,
-				url: "${contentUrl}",
-				type: "${book.type}",
-				name: "${book.name}",
-				version: version
-			)
-			
-			def routingKey = grailsApplication.config.appConf.cook.routingKey
-			def msgContent = json?.toString()
-		
-			// Send msg to RepoCook agents using RabbitMQ
-			rabbitSend routingKey, msgContent
-		}
 		[book: book]
 	}
 	
@@ -530,5 +501,55 @@ class PublishController {
 		render (contentType: 'text/json') {
 			result (successed: successed, message: message)
 		}
+	}
+
+	def ping = {
+		def book = Book.findByName(params.bookName)
+		
+		if (book) {
+			sendCookMessage(book)
+		}
+
+		render (contentType: 'text/json') {
+			result (id: book?.id, name: book?.name, message: 'ok', date: new Date().format('yyyy-MM-dd HH:mm:ss'))
+		}
+	}
+
+	private boolean sendCookMessage(book) {
+		if (book.isCooking == false) {
+			book.isCooking = true
+			book.countCook ++
+			book.save()
+		
+			def json = new JsonBuilder()
+			def version = grailsApplication.config.appConf.cook.version
+
+			def contentUrl
+			
+			if (book.type.equals(RepoType.EMBED)) {
+				contentUrl = createLink(controller: 'book', action: 'embed', id: book.id, absolute: true)
+			}
+			else {
+				contentUrl = book.url
+			}
+			
+			json (
+				id: book.id,
+				url: "${contentUrl}",
+				type: "${book.type}",
+				name: "${book.name}",
+				version: version
+			)
+			
+			def routingKey = grailsApplication.config.appConf.cook.routingKey
+			def msgContent = json?.toString()
+		
+			// Send msg to RepoCook agents using RabbitMQ
+			rabbitSend routingKey, msgContent
+
+			return true
+		}
+
+		return false
 	}
 }

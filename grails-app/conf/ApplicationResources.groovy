@@ -4,16 +4,24 @@ modules = {
     }
 
     compass {
-    	resource url: [dir: '/compass/stylesheets', file: 'screen.css'],
-    		attrs: [media: 'screen, projection']
-    	resource url: [dir: '/compass/stylesheets', file: 'print.css'],
-    		attrs: [media: 'print']
-    	resource url: [dir: '/compass/stylesheets', file: 'ie.css'],
-    		attrs: [media: 'screen'],
-    		wrapper: { s -> "<!--[if IE]>$s<![endif]-->" }
+        resource url: [dir: '/compass/stylesheets', file: 'screen.css'],
+            attrs: [media: 'screen, projection']
+        resource url: [dir: '/compass/stylesheets', file: 'print.css'],
+            attrs: [media: 'print']
+        resource url: [dir: '/compass/stylesheets', file: 'ie.css'],
+            attrs: [media: 'screen'],
+            wrapper: { s -> "<!--[if IE]>$s<![endif]-->" }
         resource url: [dir: '/compass/stylesheets', file: 'ie6.css'],
             attrs: [media: 'screen'],
             wrapper: { s -> "<!--[if lt IE 7]>$s<![endif]-->" }
+    }
+
+    reset {
+        resource url: [
+            dir: '/compass/stylesheets',
+            file: 'reset.css'],
+            attrs: [media: 'screen'
+        ]
     }
 
     colorbox {
@@ -22,10 +30,10 @@ modules = {
     }
 
     codemirror {
-    	resource url: [dir: '/codemirror/lib', file: 'codemirror.css'],
-    		attrs: [media: 'screen']
-		resource url: [dir: '/codemirror/lib', file: 'codemirror.js']
-		resource url: [dir: '/codemirror/mode/rst', file: 'rst.js']
+        resource url: [dir: '/codemirror/lib', file: 'codemirror.css'],
+            attrs: [media: 'screen']
+        resource url: [dir: '/codemirror/lib', file: 'codemirror.js']
+        resource url: [dir: '/codemirror/mode/rst', file: 'rst.js']
         resource url: [dir: '/js', file: 'jquery.codemirror.js']
         resource url: [dir: '/codemirror/lib/util', file: 'runmode.js']
     }

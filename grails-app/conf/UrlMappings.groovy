@@ -28,8 +28,15 @@ class UrlMappings {
 			controller = "book"
 			action = "show"
 			constraints {
-				//bookName (matches: /^[a-zA-Z0-9]+$/)
+				//bookName(matches:/^[a-zA-Z0-9]+$/)
 				//userName(matches:/^((?!^css$)(?!^js$)(?!^images$)(?!^session$)(?!^page$)(?!^share$).)*$/)
+			}
+		}
+
+		"/ping/$bookName" {
+			controller = "publish"
+			action = "ping"
+			constraints {
 			}
 		}
 	}

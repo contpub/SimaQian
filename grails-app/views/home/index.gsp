@@ -1,31 +1,31 @@
 <html>
 <head>
-	<title>Welcome</title>
-	<layoutTag:webFonts family="Droid Sans Mono" />
-	<style tyle="text/css">
-	#tabs {
-		width: 90%;
-		margin: 15px auto;
-	}
-	.CodeMirror {
-		font-family: 'Droid Sans Mono', sans-serif, Consolata, monospace;
-		font-size: 12pt;
-		line-height: 1.25em;
-	}
-	</style>
-	<r:script>
-		$(function() {
-			$('#code').codemirror({
-				mode: 'text/x-rst',
-				runmode: true
-			});
-			$('#tabs').tabs();
+<title>Welcome</title>
+<layoutTag:webFonts family="Droid Sans Mono" />
+<style tyle="text/css">
+#tabs {
+	width: 90%;
+	margin: 15px auto;
+}
+.CodeMirror {
+	font-family: 'Droid Sans Mono', sans-serif, Consolata, monospace;
+	font-size: 12pt;
+	line-height: 1.25em;
+}
+</style>
+<r:script>
+	$(function() {
+		$('#tabs').tabs();
+		$('#code').codemirror({
+			mode: 'text/x-rst',
+			runmode: true
 		});
-	</r:script>
+	});
+</r:script>
 </head>
 <body>
 	<!--<h2>E-Books Made Easy</h2>-->
-    <h2>無痛製作電子書</h2>
+	<h2>無痛製作電子書</h2>
 
 	<div id="tabs">
 		<ul>
@@ -84,7 +84,6 @@
 			</div>
 		</div>
 	</div>
-
 	<content tag="sidebar">
 		<div class="sidemenu">
 			<h3>Social</h3>
