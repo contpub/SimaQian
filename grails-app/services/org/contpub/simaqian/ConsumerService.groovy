@@ -5,6 +5,8 @@ import groovy.json.JsonSlurper
 import groovyx.net.http.URIBuilder
 
 class ConsumerService {
+
+	def grailsApplication
 	
 	static rabbitQueue = 'CookBack'
 	
