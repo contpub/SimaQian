@@ -48,12 +48,19 @@ class BookTagLib {
 	 * <bookTag:createDownloadLink book=${book} type="pdf" />
 	 */
 	def createDownloadLink = { attr, body ->
-		if (attr.book) {
+		def book = attr.book
+
+		if (book) {
 			if (attr.type=='cdn') {
-				out << grailsApplication.config.appConf.cdn.href
-				out << "public/"
-				out << attr.book.name //cdn link
-				out << "/index.html"
+				if (book.cname) {
+					out << "http://${book.cname}/"
+				}
+				else {
+					out << grailsApplication.config.appConf.cdn.href
+					out << "public/"
+					out << book.name //cdn link
+					out << "/index.html"
+				}
 			}
 			else {
 				out << _basehref()
