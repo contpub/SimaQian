@@ -532,12 +532,27 @@ class PublishController {
 			else {
 				contentUrl = book.url
 			}
-			
+
+			def vhost
+
+			// generate contents for virtual host
+			if (book.cname) {
+				def baseUrl = grailsApplication.config.appConf.baseUrl
+				def vhostUrl = grailsApplication.config.appConf.vhost.href
+				def options = [
+					h: book.cname,
+					f: "${baseUrl}download/${book.name}.zip",
+					t: new Date().time
+				]
+				vhost = new URIBuilder(vhostUrl).setQuery(options).toString()
+			}
+
 			json (
 				id: book.id,
 				url: "${contentUrl}",
 				type: "${book.type}",
 				name: "${book.name}",
+				vhost: "${vhost}",
 				version: version
 			)
 			

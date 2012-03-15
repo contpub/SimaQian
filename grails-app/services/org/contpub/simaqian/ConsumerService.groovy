@@ -36,29 +36,6 @@ class ConsumerService {
 						book.isCooking = false
 						book.save(flush: true)
 					}
-
-					// generate contents for virtual host
-					if (book.cname) {
-						//re-generate cname contents
-						log.info "generate contents for ${book.cname}"
-
-						def baseUrl = grailsApplication.config.appConf.baseUrl
-						def vhostUrl = grailsApplication.config.appConf.vhost.href
-
-						def options = [
-							h: book.cname,
-							f: "${baseUrl}download/${book.name}.zip",
-							t: new Date().time
-						]
-
-						def url = new URIBuilder(vhostUrl).setQuery(options)
-
-						log.info "access url ${url}"
-
-						def result = new URL(url.toString()).text
-						
-						log.info result
-					}
 				}
 			}
 		} catch (e) {
