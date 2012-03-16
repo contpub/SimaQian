@@ -31,4 +31,8 @@ class User {
 		lastLogin (nullable: true)
 		lastUserAgent (nullable: true)
 	}
+
+	static mapping = {
+        books sort: 'dateCreated', order: 'desc'
+    }
 }

@@ -81,7 +81,45 @@ class PublishController {
 	 * Update a book by id.
 	 */
 	def update = {
-		[book: Book.get(params.id)]
+		def book = Book.get(params.id)
+		def user = User.get(session.userId)
+		def link = UserAndBook.findByBookAndUser(book, user)
+
+		if (!book) {
+			response.sendError 404
+		}
+		if (link?.linkType != UserAndBookLinkType.OWNER) {
+			response.sendError 403
+		}
+
+		[book: book]
+	}
+
+	/**
+	 * permanent remove book contents
+	 */
+	def delete = {
+		def book = Book.get(params.id)
+		def user = User.get(session.userId)
+		def link = UserAndBook.findByBookAndUser(book, user)
+
+		if (!book) {
+			response.sendError 404
+		}
+		if (link?.linkType != UserAndBookLinkType.OWNER) {
+			response.sendError 403
+		}
+
+		if (params.confirm=='yes') {
+			book.isDeleted = true
+			book.save(flush: true)
+			redirect(action: 'deleted')
+		}
+
+		[book: book]
+	}
+
+	def deleted = {
 	}
 
 	/**

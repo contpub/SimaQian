@@ -1,6 +1,6 @@
 /* incase an inverted custom gradient isn't specified */
 /* line 177, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
-.fancy-button-reset-base-class, #controller-book.action-show .download-links a {
+.fancy-button-reset-base-class, #controller-book.action-read .download-links a {
   font-family: "Lucida Grande", Lucida, Arial, sans-serif;
   background: url('/images/button_bg.png?1326776211') repeat-x bottom left;
   margin: 0;
@@ -13,41 +13,41 @@
   font-weight: bold;
 }
 /* line 165, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
-.fancy-button-reset-base-class::-moz-focus-inner, #controller-book.action-show .download-links a::-moz-focus-inner {
+.fancy-button-reset-base-class::-moz-focus-inner, #controller-book.action-read .download-links a::-moz-focus-inner {
   border: none;
   padding: 0;
 }
 /* line 168, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
-.fancy-button-reset-base-class:focus, #controller-book.action-show .download-links a:focus {
+.fancy-button-reset-base-class:focus, #controller-book.action-read .download-links a:focus {
   outline: none;
 }
 
 /* line 8, ../sass/controller_book.scss */
-#controller-book.action-show .title {
+#controller-book.action-read .title {
   font-size: 20px;
   font-weight: bold;
   color: #080000;
 }
 /* line 13, ../sass/controller_book.scss */
-#controller-book.action-show .subtitle {
+#controller-book.action-read .subtitle {
   font-size: 18px;
   color: #333333;
 }
 /* line 17, ../sass/controller_book.scss */
-#controller-book.action-show .downloads {
+#controller-book.action-read .downloads {
   clear: both;
 }
 /* line 19, ../sass/controller_book.scss */
-#controller-book.action-show .downloads h3 {
+#controller-book.action-read .downloads h3 {
   font-size: 18px;
 }
 /* line 23, ../sass/controller_book.scss */
-#controller-book.action-show .download-links {
+#controller-book.action-read .download-links {
   margin: 2.5em auto;
   text-align: center;
 }
 /* line 27, ../sass/controller_book.scss */
-#controller-book.action-show .download-links a {
+#controller-book.action-read .download-links a {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -o-border-radius: 4px;
@@ -79,11 +79,11 @@
   background-clip: padding-box;
 }
 /* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
-#controller-book.action-show .download-links a, #controller-book.action-show .download-links a:visited {
+#controller-book.action-read .download-links a, #controller-book.action-read .download-links a:visited {
   color: white;
 }
 /* line 31, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
-#controller-book.action-show .download-links a:hover, #controller-book.action-show .download-links a:focus {
+#controller-book.action-read .download-links a:hover, #controller-book.action-read .download-links a:focus {
   background-color: #00448c;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4c98e8), color-stop(10%, #196abf), color-stop(50%, #0e3d6e), color-stop(50%, #0d3560), color-stop(100%, #134f8e));
   background-image: -webkit-linear-gradient(#4c98e8, #196abf 10%, #0e3d6e 50%, #0d3560 50%, #134f8e);
@@ -95,11 +95,11 @@
   text-shadow: #00060c 0px 1px 1px;
 }
 /* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
-#controller-book.action-show .download-links a:hover, #controller-book.action-show .download-links a:hover:visited, #controller-book.action-show .download-links a:focus, #controller-book.action-show .download-links a:focus:visited {
+#controller-book.action-read .download-links a:hover, #controller-book.action-read .download-links a:hover:visited, #controller-book.action-read .download-links a:focus, #controller-book.action-read .download-links a:focus:visited {
   color: white;
 }
 /* line 36, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
-#controller-book.action-show .download-links a:active {
+#controller-book.action-read .download-links a:active {
   background-color: #003d7c;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0e3d6e), color-stop(30%, #104277), color-stop(50%, #0d3865), color-stop(50%, #0b3057), color-stop(100%, #135192));
   background-image: -webkit-linear-gradient(#0e3d6e, #104277 30%, #0d3865 50%, #0b3057 50%, #135192);
@@ -115,26 +115,26 @@
   box-shadow: #092645 0 0.08em 0.2em 1px inset;
 }
 /* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
-#controller-book.action-show .download-links a:active, #controller-book.action-show .download-links a:active:visited {
+#controller-book.action-read .download-links a:active, #controller-book.action-read .download-links a:active:visited {
   color: white;
 }
 /* line 31, ../sass/controller_book.scss */
-#controller-book.action-show .comments {
+#controller-book.action-read .comments {
   margin-left: 25px;
 }
 /* line 34, ../sass/controller_book.scss */
-#controller-book.action-show .description pre, #controller-book.action-show .description code {
+#controller-book.action-read .description pre, #controller-book.action-read .description code {
   width: 98%;
   height: 100%;
   background: none;
   border: 0;
 }
 /* line 40, ../sass/controller_book.scss */
-#controller-book.action-show .fb-like {
+#controller-book.action-read .fb-like {
   margin: 10px 25px;
 }
 /* line 44, ../sass/controller_book.scss */
-#controller-book.action-show .post .description {
+#controller-book.action-read .post .description {
   font-size: 1.25em;
   color: #333333;
 }

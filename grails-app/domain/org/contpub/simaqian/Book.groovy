@@ -24,6 +24,7 @@ class Book {
 	Boolean isCooking		= false		//是否正在處理轉換中
 	Integer countCook		= 0			//計算處理次數
 	
+	Boolean isDeleted		= false		// book deleted?
 	Boolean isAvailable		= false		// Default is not available
 	Boolean isVisible		= true		// Default is visible
 	Boolean isPublic		= true		// Public Book => 公版書/免費書

@@ -9,6 +9,7 @@ class ExploreController {
 
 		def books = Book.withCriteria {
 			eq ('isPublic', true)
+			eq ('isDeleted', false)
 			order ('lastUpdated', 'desc')
 			//maxResults (params.max?params.max:5)
 			//firstResult (params.offset?params.offset:0)

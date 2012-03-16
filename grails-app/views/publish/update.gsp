@@ -44,6 +44,9 @@
 				<p class="no-border">
 					<g:submitButton name="create" value="${message(code: 'common.update', default: 'Update')}" class="fancy-button-submit" />
 				</p>
+				<p>
+					<g:link action="delete" id="${book?.id}">Delete this book</g:link> (This action will permanent remove book contents.)
+				</p>
 			</g:form>
 		</div>
 		<div class="left">
