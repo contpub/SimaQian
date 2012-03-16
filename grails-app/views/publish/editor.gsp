@@ -49,7 +49,8 @@
 			tabMode: 'shift', //indent
 			enterMode: 'keep', //indent
 			matchBrackets: true,
-			theme: 'default'	//[default, night]
+			theme: 'default',	//[default, night]
+			lineWrapping: true
 		});
 
 		$('a.save-button').click(function() {
