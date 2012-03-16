@@ -17,6 +17,10 @@
 @import "controller_book.scss";
 @import "controller_publish.scss";
 
+.fancy-button {
+	@include fancy-button(#124c89, 16px, 4px, 1px);
+}
+
 .fancy-button-submit {
 	@include fancy-button(#124c89, 16px, 4px, 1px);
 }

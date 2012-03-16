@@ -22,16 +22,16 @@
 					</g:link>
 				</li>
 				<li id="${pageProperty(name: 'currentAction')=='publish'?'current':'candidate'}">
-					<g:link controller="publish">
+					<g:link controller="publish" class="highlight">
 						<g:message code="layout.header.publish.label" default="Publish"/>
 					</g:link>
 				</li>
-				<li id="${pageProperty(name: 'currentAction')=='sandbox'?'current':'candidate'}">
+				<!--<li id="${pageProperty(name: 'currentAction')=='sandbox'?'current':'candidate'}">
 					<g:link controller="sandbox" class="highlight">
 						<g:message code="layout.header.sandbox.label" default="Sandbox"/>
 						<span class="new">New</span>
 					</g:link>
-				</li>
+				</li>-->
 				<li>
 					<g:link controller="home" action="logout" onclick="return confirm('${message(code: 'home.logout.confirm', default: 'Are you sure???')}');">
 						<g:message code="layout.header.logout.label" default="Logout" />
