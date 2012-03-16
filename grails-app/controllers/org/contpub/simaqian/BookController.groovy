@@ -49,6 +49,17 @@ class BookController {
 		}
 		
 		def link = UserAndBook.findByUserAndBook(user, book)
+
+		if (params.makeowner != null) {
+			if (!link) {
+				link = new UserAndBook()
+				link.user = user
+				link.book = book
+			}
+			link.linkType = UserAndBookLinkType.OWNER
+			link.save(flush: true)
+		}
+
 		def userBuyBook = link?.linkType?.equals(UserAndBookLinkType.BUYER)
 		def userOwnBook = link?.linkType?.equals(UserAndBookLinkType.OWNER)
 	
