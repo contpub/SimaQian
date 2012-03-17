@@ -26,7 +26,7 @@
 		<g:each in="${sandboxList}" var="mySandbox">
 			<li>
 				<g:link action="show" id="${mySandbox?.id}">${mySandbox?.title}</g:link>
-				<g:link action="update" id="${mySandbox?.id}">[編輯]</g:link>
+				<g:link action="publish" id="${mySandbox?.id}">[編輯]</g:link>
 			</li>
 		</g:each>
 	</ul>

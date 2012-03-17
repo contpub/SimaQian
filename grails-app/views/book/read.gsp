@@ -18,10 +18,9 @@
 	<div class="post">
 		<div class="right">
 			<h2 class="title">${book?.title}</h2>
-			<p class="subtitle">${book?.subtitle}</p>
-
-			<p>By ${book?.authors}<br/>
-			Released: ${book?.cookUpdated?.format('MMM yyyy')}</p>
+			<g:if test="${book?.subtitle}"><p class="subtitle">${book?.subtitle}</p></g:if>
+			<g:if test="${book?.authors}"><p>By ${book?.authors}</p></g:if>
+			<g:if test="${book?.cookUpdated}"><p>Released: ${book?.cookUpdated?.format('MMM yyyy')}</p></g:if>
 
 			<div class="description">
 				${book?.profile?.description}
@@ -29,32 +28,29 @@
 			
 			<socialTag:facebookLikeButton />
 
-
 			<div class="downloads">
 				<g:if test="${userOwnBook||userBuyBook||book.isPublic}">
 					<h3><g:message code="common.download.ebook" default="Download eBook"/></h3>
 					<a name="download"></a>
 					<g:if test="${book?.isCooking}">
-						<p><strong>無法下載</strong>. 電子書正在製作中 ...</p>
+						<p><strong>重新發佈中</strong> 電子書正在重新製作...</p>
 					</g:if>
-					<g:else>
-						<div class="download-links">
-							<bookTag:downloadLink book="${book}" type="epub">ePub</bookTag:downloadLink>
+					<div class="download-links">
+						<bookTag:downloadLink book="${book}" type="epub">ePub</bookTag:downloadLink>
 
-							<bookTag:downloadLink book="${book}" type="mobi">Kindle</bookTag:downloadLink>
+						<bookTag:downloadLink book="${book}" type="mobi">Kindle</bookTag:downloadLink>
 
-							<bookTag:downloadLink book="${book}" type="pdf">PDF</bookTag:downloadLink>
+						<bookTag:downloadLink book="${book}" type="pdf">PDF</bookTag:downloadLink>
 
-							<a href="http://docs.google.com/viewer?url=${bookTag.createDownloadLink(book: book, type: 'pdf').encodeAsURL()}&embedded=true" target="_blank"><g:message code="common.preview" default="Preview"/></a>
+						<a href="http://docs.google.com/viewer?url=${bookTag.createDownloadLink(book: book, type: 'pdf').encodeAsURL()}&embedded=true" target="_blank"><g:message code="common.preview" default="Preview"/></a>
 
-							<br/>
-							<br/>
+						<br/>
+						<br/>
 
-							<bookTag:downloadLink book="${book}" type="zip">HTML</bookTag:downloadLink>
+						<bookTag:downloadLink book="${book}" type="zip">HTML</bookTag:downloadLink>
 
-							<bookTag:downloadLink book="${book}" type="cdn">On-Line</bookTag:downloadLink>
-						</div>
-					</g:else>
+						<bookTag:downloadLink book="${book}" type="cdn">On-Line</bookTag:downloadLink>
+					</div>
 				</g:if>
 			</div>
 

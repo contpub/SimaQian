@@ -9,37 +9,47 @@ import groovy.json.JsonBuilder
 
 class SandboxController {
 
-	/**
-	 * Set session sandbox to new one
-	 */
-	def renew = {
-		session.sandboxId = null
-		redirect (action: 'index')
+	def index = {
+		redirect(action: 'publish')
 	}
 
-	/**
-	 * Set session sandbox to sepcify one
-	 */
-	def update = {
+	def list = {
+		def user = User.get(session.userId)
+		def sandboxList = Sandbox.findAll()
+
+		if (params.user) {
+			def owner = User.get(params.user)
+			if (owner) {
+				sandboxList = Sandbox.findAllByOwner(owner)
+			}
+		}
+
+		[
+			sandboxList: sandboxList,
+			user: user
+		]
+	}
+
+    def publish = {
+		def user = User.get(session.userId)
 		def sandbox = Sandbox.get(params.id)
-		def user = User.get(session.userId)
 
-		if (sandbox && sandbox.owner==user) {
-			session.sandboxId = sandbox.id
+		//process params.create=true
+		//process params.id
+
+		if (!user) {
+			response.sendError 403
 		}
-		redirect (action: 'index')
-	}
 
-    def index = {
-		def sandbox = new Sandbox()
-		def mySandboxList
-
-		def user = User.get(session.userId)
-		
-		if (session.sandboxId) {
-			sandbox = Sandbox.get(session.sandboxId)
+		if (sandbox && sandbox.owner != user) {
+			response.sendError 403
 		}
-		else {
+
+		if (!sandbox) {
+			sandbox = Sandbox.findByOwner(user)
+		}
+
+		if (!sandbox || params.create) {
 			sandbox = new Sandbox()
 
 			def samples = Sandbox.findAllByIsSample(true)
@@ -53,17 +63,9 @@ class SandboxController {
 				sandbox.contents = sample.contents
 			}
 		}
-
-		//儲存到session
-		session.sandboxId = sandbox?.id
 		
-		if (user) {
-			mySandboxList = Sandbox.findAllByOwner(user)
-		}
-
 		[
 			sandbox: sandbox,
-			mySandboxList: mySandboxList,
 			sampleList: Sandbox.findAllByIsSample(true),
 			pdfPaperSizeList: Sandbox.pdfPaperSizeList,
 			pdfFontSizeList: Sandbox.pdfFontSizeList
@@ -75,10 +77,7 @@ class SandboxController {
 	 */
 	def user = {
 		def user = User.get(session.userId)
-
-		[
-			sandboxList: user?Sandbox.findAllByOwner(user):[]
-		]
+		redirect(action: 'list', params: [user: user.id])
 	}
 
 	/**
@@ -118,8 +117,8 @@ class SandboxController {
 	def ajaxPublish = {
 		def sandbox
 		
-		if (session.sandboxId) {
-			sandbox = Sandbox.get(session.sandboxId)
+		if (params.id) {
+			sandbox = Sandbox.get(params.id)
 			sandbox.properties = params
 		}
 		else {
@@ -131,10 +130,6 @@ class SandboxController {
 
 		def saveResult = sandbox.save(flush: true)
 		
-		if (sandbox) {
-			session.sandboxId = sandbox.id
-		}
-
 		def url = createLink(action: 'embed', id: sandbox.id, absolute: true)
 		
 		def json = new JsonBuilder()
