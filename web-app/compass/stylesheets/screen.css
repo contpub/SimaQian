@@ -6,7 +6,7 @@
 /* line 177, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class, #controller-book.action-read .download-links a, .fancy-button, .fancy-button-submit {
   font-family: "Lucida Grande", Lucida, Arial, sans-serif;
-  background: url('/images/button_bg.png?1326776211') repeat-x bottom left;
+  background: url('/compass/images/button_bg.png?1326776211') repeat-x bottom left;
   margin: 0;
   width: auto;
   overflow: visible;
@@ -1719,7 +1719,7 @@ table.form-layout td {
 /* line 177, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class, #controller-book.action-read .download-links a, .fancy-button, .fancy-button-submit {
   font-family: "Lucida Grande", Lucida, Arial, sans-serif;
-  background: url('/images/button_bg.png?1326776211') repeat-x bottom left;
+  background: url('/compass/images/button_bg.png?1326776211') repeat-x bottom left;
   margin: 0;
   width: auto;
   overflow: visible;
@@ -1875,7 +1875,7 @@ table.form-layout td {
 /* line 177, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class, #controller-book.action-read .download-links a, .fancy-button, .fancy-button-submit {
   font-family: "Lucida Grande", Lucida, Arial, sans-serif;
-  background: url('/images/button_bg.png?1326776211') repeat-x bottom left;
+  background: url('/compass/images/button_bg.png?1326776211') repeat-x bottom left;
   margin: 0;
   width: auto;
   overflow: visible;
