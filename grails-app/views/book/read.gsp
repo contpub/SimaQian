@@ -28,9 +28,9 @@
 			
 			<socialTag:facebookLikeButton />
 
+			<h3><g:message code="common.download.ebook" default="Download eBooks"/></h3>
 			<div class="downloads">
 				<g:if test="${userOwnBook||userBuyBook||book.isPublic}">
-					<h3><g:message code="common.download.ebook" default="Download eBook"/></h3>
 					<a name="download"></a>
 					<g:if test="${book?.isCooking}">
 						<p><strong>重新發佈中</strong> 電子書正在重新製作...</p>

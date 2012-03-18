@@ -22,31 +22,33 @@
   outline: none;
 }
 
-/* line 8, ../sass/controller_book.scss */
+/* line 9, ../sass/controller_book.scss */
+#controller-book.action-read #main h3 {
+  font-size: 1.25em;
+  border-bottom: 3px solid #e0e0e0;
+  text-shadow: #aaaaaa 1px 1px 1px;
+}
+/* line 16, ../sass/controller_book.scss */
 #controller-book.action-read .title {
   font-size: 20px;
   font-weight: bold;
   color: #080000;
 }
-/* line 13, ../sass/controller_book.scss */
+/* line 21, ../sass/controller_book.scss */
 #controller-book.action-read .subtitle {
   font-size: 18px;
   color: #333333;
 }
-/* line 17, ../sass/controller_book.scss */
+/* line 25, ../sass/controller_book.scss */
 #controller-book.action-read .downloads {
   clear: both;
 }
-/* line 19, ../sass/controller_book.scss */
-#controller-book.action-read .downloads h3 {
-  font-size: 18px;
-}
-/* line 23, ../sass/controller_book.scss */
+/* line 28, ../sass/controller_book.scss */
 #controller-book.action-read .download-links {
   margin: 2.5em auto;
   text-align: center;
 }
-/* line 27, ../sass/controller_book.scss */
+/* line 32, ../sass/controller_book.scss */
 #controller-book.action-read .download-links a {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -118,22 +120,22 @@
 #controller-book.action-read .download-links a:active, #controller-book.action-read .download-links a:active:visited {
   color: white;
 }
-/* line 31, ../sass/controller_book.scss */
+/* line 36, ../sass/controller_book.scss */
 #controller-book.action-read .comments {
   margin-left: 25px;
 }
-/* line 34, ../sass/controller_book.scss */
+/* line 39, ../sass/controller_book.scss */
 #controller-book.action-read .description pre, #controller-book.action-read .description code {
   width: 98%;
   height: 100%;
   background: none;
   border: 0;
 }
-/* line 40, ../sass/controller_book.scss */
+/* line 45, ../sass/controller_book.scss */
 #controller-book.action-read .fb-like {
   margin: 10px 25px;
 }
-/* line 44, ../sass/controller_book.scss */
+/* line 49, ../sass/controller_book.scss */
 #controller-book.action-read .post .description {
   font-size: 1.25em;
   color: #333333;

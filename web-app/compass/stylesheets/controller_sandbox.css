@@ -23,8 +23,9 @@
 }
 
 /* line 9, ../sass/controller_sandbox.scss */
-#controller-sandbox.action-show #content h3 {
+#controller-sandbox.action-show #main h3 {
   font-size: 1.25em;
   border-bottom: 3px solid #e0e0e0;
+  padding: 0;
   text-shadow: #aaaaaa 1px 1px 1px;
 }

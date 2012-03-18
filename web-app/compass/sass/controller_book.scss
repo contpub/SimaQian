@@ -5,6 +5,14 @@
 }
 
 #controller-book.action-read {
+	#main {
+		h3 {
+			font-size: 1.25em;
+			border-bottom: 3px solid #e0e0e0;
+
+			@include single-text-shadow(#aaaaaa, 1px, 1px, 1px)
+		}
+	}
 	.title {
 		font-size: 20px;
 		font-weight: bold;
@@ -16,9 +24,6 @@
 	}
 	.downloads {
 		clear: both;
-		h3 {
-			font-size: 18px;
-		}
 	}
 	.download-links {
 		margin: 2.5em auto;
