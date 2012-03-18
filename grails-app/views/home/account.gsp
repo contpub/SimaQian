@@ -48,7 +48,7 @@
 		<p class="no-border"><strong>Change your account setting</strong></p>
 		<avatar:gravatar email="${user?.email}" size="48" />
 		<p class="avatar-info">
-			Change your avatar at <a href="gravatar.com" title="gravatar">gravatar.com</a><br/>
+			Change your avatar at <a href="http://gravatar.com/" target="_blank" title="gravatar">gravatar.com</a><br/>
 			We’re using lyhcode@gmail.com
 			<div style="clear:both"></div>
 		</p>
