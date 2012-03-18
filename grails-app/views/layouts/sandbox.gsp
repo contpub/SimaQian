@@ -36,7 +36,7 @@ img.book-icon {
 }
 </style>
 </head>
-<body>
+<body id="controller-${controllerName}" class="action-${actionName}">
 	<socialTag:facebookSDK />
 	<g:applyLayout name="pageHeader" params="[currentAction: controllerName]" />
 	<g:applyLayout name="pageContent">

@@ -3,7 +3,7 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /* incase an inverted custom gradient isn't specified */
-/* line 177, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 177, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class, #controller-book.action-read .download-links a, .fancy-button, .fancy-button-submit {
   font-family: "Lucida Grande", Lucida, Arial, sans-serif;
   background: url('/images/button_bg.png?1326776211') repeat-x bottom left;
@@ -16,17 +16,17 @@
   border-style: solid;
   font-weight: bold;
 }
-/* line 165, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 165, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class::-moz-focus-inner, #controller-book.action-read .download-links a::-moz-focus-inner, .fancy-button::-moz-focus-inner, .fancy-button-submit::-moz-focus-inner {
   border: none;
   padding: 0;
 }
-/* line 168, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 168, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class:focus, #controller-book.action-read .download-links a:focus, .fancy-button:focus, .fancy-button-submit:focus {
   outline: none;
 }
 
-/* line 17, /opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -48,51 +48,51 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 20, /opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 20, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 body {
   line-height: 1;
 }
 
-/* line 22, /opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 24, /opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 26, /opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 28, /opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 101, /opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 101, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 30, /opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 114, /opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 114, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/compass-0.11.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
 /* main themes */
-/* line 3, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 3, ../sass/coolblue.scss */
 body {
   font: 13px/170% "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, Sans-Serif;
   color: #777;
@@ -102,18 +102,18 @@ body {
 }
 
 /* links */
-/* line 10, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 10, ../sass/coolblue.scss */
 a:link, a:visited {
   text-decoration: none;
   color: #FF409F;
 }
 
-/* line 14, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 14, ../sass/coolblue.scss */
 a:hover {
   color: #147DB6;
 }
 
-/* line 15, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 15, ../sass/coolblue.scss */
 a:link.more, a:visited.more {
   float: left;
   margin-top: 20px;
@@ -127,13 +127,13 @@ a:link.more, a:visited.more {
   color: #fff;
 }
 
-/* line 27, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 27, ../sass/coolblue.scss */
 a:hover.more {
   border: 1px solid #FF2B95;
   background-color: #FF3399;
 }
 
-/* line 31, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 31, ../sass/coolblue.scss */
 a:link.clickable, a:visited.clickable {
   margin-top: 20px;
   margin-right: 5px;
@@ -145,34 +145,34 @@ a:link.clickable, a:visited.clickable {
   color: #fff;
 }
 
-/* line 41, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 41, ../sass/coolblue.scss */
 a:hover.clickable {
   border: 1px solid #FF2B95;
   background-color: #FF3399;
 }
 
 /* Headers */
-/* line 47, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 47, ../sass/coolblue.scss */
 h1, h2, h3, h4 {
   font: bold 1em/1.5em "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, Sans-Serif;
   color: #555;
   margin: 8px 25px;
 }
 
-/* line 52, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 52, ../sass/coolblue.scss */
 h1 {
   font-size: 3.7em;
   font-weight: normal;
   letter-spacing: -2px;
 }
 
-/* line 53, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 53, ../sass/coolblue.scss */
 h2 {
   font-size: 2.8em;
   font-weight: normal;
 }
 
-/* line 54, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 54, ../sass/coolblue.scss */
 h3 {
   font-size: 2.2em;
   font-weight: normal;
@@ -180,63 +180,63 @@ h3 {
   padding-top: 15px;
 }
 
-/* line 55, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 55, ../sass/coolblue.scss */
 h4 {
   font-size: 1.5em;
 }
 
 /* lists */
-/* line 58, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 58, ../sass/coolblue.scss */
 ul, ol {
   margin: 10px 25px;
   padding: 0 20px;
 }
 
-/* line 62, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 62, ../sass/coolblue.scss */
 ul {
   list-style: disc;
 }
 
-/* line 63, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 63, ../sass/coolblue.scss */
 ol {
   list-style: decimal;
 }
 
-/* line 65, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 65, ../sass/coolblue.scss */
 dt {
   font-weight: bold;
   color: #1980AF;
 }
 
-/* line 70, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 70, ../sass/coolblue.scss */
 dd {
   padding-left: 20px;
 }
 
-/* line 74, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 74, ../sass/coolblue.scss */
 p, dl {
   margin: 10px 25px;
 }
 
 /* images */
-/* line 77, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 77, ../sass/coolblue.scss */
 img.coolblue {
   background: #F3F4F5;
   border: 1px solid #E2E4E7;
   padding: 10px;
 }
 
-/* line 82, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 82, ../sass/coolblue.scss */
 img.float-right {
   margin: 5px 0px 10px 10px;
 }
 
-/* line 83, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 83, ../sass/coolblue.scss */
 img.float-left {
   margin: 5px 10px 10px 0px;
 }
 
-/* line 85, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 85, ../sass/coolblue.scss */
 code {
   margin: 3px 0;
   padding: 20px;
@@ -250,13 +250,13 @@ code {
   color: #555;
 }
 
-/* line 97, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 97, ../sass/coolblue.scss */
 acronym {
   cursor: help;
   border-bottom: 1px dotted #777;
 }
 
-/* line 101, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 101, ../sass/coolblue.scss */
 blockquote {
   margin: 10px 25px;
   padding: 10px 20px 10px 32px;
@@ -270,26 +270,26 @@ blockquote {
   color: #555;
 }
 
-/* line 113, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 113, ../sass/coolblue.scss */
 strong {
   font-weight: bold;
 }
 
 /* table */
-/* line 116, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 116, ../sass/coolblue.scss */
 table {
   border-collapse: collapse;
   margin: 10px 25px;
 }
 
-/* line 120, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 120, ../sass/coolblue.scss */
 th, td {
   text-align: left;
   border-width: 1px;
   border-style: solid;
 }
 
-/* line 125, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 125, ../sass/coolblue.scss */
 th {
   padding: .8em 1em;
   background: #2C76A6;
@@ -298,14 +298,14 @@ th {
   font-weight: bold;
 }
 
-/* line 132, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 132, ../sass/coolblue.scss */
 td {
   border-color: #E9E9E9;
   padding: .7em 1em;
 }
 
 /* form elements */
-/* line 138, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 138, ../sass/coolblue.scss */
 form {
   margin: 10px 25px 10px 25px;
   padding: 10px 25px 25px 25px;
@@ -314,7 +314,7 @@ form {
   width: 477px;
 }
 
-/* line 145, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 145, ../sass/coolblue.scss */
 form p {
   border-bottom: 1px solid #E6E6E6;
   padding: 12px 0 5px 0;
@@ -322,13 +322,13 @@ form p {
   color: #2C76A6;
 }
 
-/* line 150, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 150, ../sass/coolblue.scss */
 label {
   font-weight: bold;
   color: #666666;
 }
 
-/* line 154, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 154, ../sass/coolblue.scss */
 input, select, textarea {
   margin: 5px 0;
   padding: 7px 6px;
@@ -339,18 +339,18 @@ input, select, textarea {
   font: 11px 'Lucida Grande', Verdana, Helvetica, sans-serif;
 }
 
-/* line 163, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 163, ../sass/coolblue.scss */
 input:focus, select:focus, textarea:focus {
   color: #19465D;
   background: #EEF8FB;
 }
 
-/* line 167, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 167, ../sass/coolblue.scss */
 #name, #email, #message, #website {
   width: 460px;
 }
 
-/* line 170, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 170, ../sass/coolblue.scss */
 input.button {
   font: bold 12px Arial, Sans-serif;
   height: 30px;
@@ -368,7 +368,7 @@ input.button {
     L A Y O U T
 --------------------------------------------------------------------------------- */
 /* header */
-/* line 189, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 189, ../sass/coolblue.scss */
 #header-wrap {
   float: left;
   height: 150px;
@@ -376,7 +376,7 @@ input.button {
   background: url(../../images/header-bg.png) repeat-x bottom;
 }
 
-/* line 195, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 195, ../sass/coolblue.scss */
 #header {
   position: relative;
   margin: 0 auto;
@@ -384,13 +384,13 @@ input.button {
   /*	width: 1000px;*/
 }
 
-/* line 202, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 202, ../sass/coolblue.scss */
 #header h1#logo-text {
   margin: 0;
   padding: 0;
 }
 
-/* line 203, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 203, ../sass/coolblue.scss */
 #header h1#logo-text a {
   position: absolute;
   margin: 0;
@@ -404,7 +404,7 @@ input.button {
   left: 25px;
 }
 
-/* line 214, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 214, ../sass/coolblue.scss */
 #header p#slogan {
   position: absolute;
   margin: 0;
@@ -421,7 +421,7 @@ input.button {
   left: 30px;
 }
 
-/* line 228, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 228, ../sass/coolblue.scss */
 #header span.beta {
   position: absolute;
   top: 90px;
@@ -432,7 +432,7 @@ input.button {
 }
 
 /* RSS */
-/* line 237, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 237, ../sass/coolblue.scss */
 #header p#rss {
   position: absolute;
   width: 175px;
@@ -444,7 +444,7 @@ input.button {
   text-align: right;
 }
 
-/* line 245, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 245, ../sass/coolblue.scss */
 #header p#rss a {
   background: transparent url(../../images/rss.gif) no-repeat left center;
   color: #baa7a7;
@@ -455,13 +455,13 @@ input.button {
   display: block;
 }
 
-/* line 254, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 254, ../sass/coolblue.scss */
 #header p#rss a:hover {
   color: #fff;
 }
 
 /* Quick Search */
-/* line 257, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 257, ../sass/coolblue.scss */
 form#quick-search {
   position: absolute;
   top: 95px;
@@ -473,7 +473,7 @@ form#quick-search {
   width: 250px;
 }
 
-/* line 265, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 265, ../sass/coolblue.scss */
 fieldset.search {
   border: none;
   width: 250px;
@@ -483,7 +483,7 @@ fieldset.search {
   background: url(../../images/search.gif) no-repeat;
 }
 
-/* line 271, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 271, ../sass/coolblue.scss */
 .search input {
   border: none;
   float: left;
@@ -491,7 +491,7 @@ fieldset.search {
   margin: 0;
 }
 
-/* line 276, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 276, ../sass/coolblue.scss */
 .search button {
   border: none;
   float: right;
@@ -499,12 +499,12 @@ fieldset.search {
   margin: 0;
 }
 
-/* line 281, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 281, ../sass/coolblue.scss */
 .search label {
   display: none;
 }
 
-/* line 282, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 282, ../sass/coolblue.scss */
 .search input.tbox {
   color: #7d8285;
   font-weight: bold;
@@ -513,7 +513,7 @@ fieldset.search {
   width: 200px;
 }
 
-/* line 289, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 289, ../sass/coolblue.scss */
 .search button.btn {
   width: 40px;
   height: 40px;
@@ -523,7 +523,7 @@ fieldset.search {
 }
 
 /*  navigation  */
-/* line 298, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 298, ../sass/coolblue.scss */
 #header #nav {
   position: absolute;
   left: 15px;
@@ -533,7 +533,7 @@ fieldset.search {
   /* width: 750px; */
 }
 
-/* line 306, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 306, ../sass/coolblue.scss */
 #header #nav ul {
   float: left;
   list-style: none;
@@ -542,14 +542,14 @@ fieldset.search {
   height: 15px;
 }
 
-/* line 312, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 312, ../sass/coolblue.scss */
 #header #nav ul li {
   float: left;
   margin: 0;
   padding: 0;
 }
 
-/* line 316, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 316, ../sass/coolblue.scss */
 #header #nav ul li a {
   float: left;
   margin: 0;
@@ -558,31 +558,31 @@ fieldset.search {
   font: normal 13px 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
 }
 
-/* line 324, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 324, ../sass/coolblue.scss */
 #header #nav ul li a:hover,
 #header #nav ul li a:active {
   border: none;
   color: #fff;
 }
 
-/* line 328, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 328, ../sass/coolblue.scss */
 #header #nav ul li#current a {
   color: #fff;
   font-weight: bold;
 }
 
-/* line 332, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 332, ../sass/coolblue.scss */
 #header #nav ul li a.highlight {
   color: #ffff00;
 }
 
-/* line 335, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 335, ../sass/coolblue.scss */
 #header #nav ul li a .new {
   color: #ff0000;
 }
 
 /* content */
-/* line 340, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 340, ../sass/coolblue.scss */
 #content-wrap {
   clear: both;
   margin: 0;
@@ -592,7 +592,7 @@ fieldset.search {
   float: left;
 }
 
-/* line 347, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 347, ../sass/coolblue.scss */
 #content {
   /*	width: 1000px;*/
   max-width: 1000px;
@@ -603,7 +603,7 @@ fieldset.search {
 }
 
 /* columns */
-/* line 357, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 357, ../sass/coolblue.scss */
 #main {
   float: left;
   margin: 0;
@@ -611,7 +611,7 @@ fieldset.search {
   width: 740px;
 }
 
-/* line 363, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 363, ../sass/coolblue.scss */
 #sidebar {
   width: 245px;
   float: right;
@@ -620,7 +620,7 @@ fieldset.search {
   font-size: .95em;
 }
 
-/* line 371, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 371, ../sass/coolblue.scss */
 #main h2 {
   font: bold 2.5em/1em "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, Sans-Serif;
   color: #333;
@@ -628,12 +628,12 @@ fieldset.search {
   padding-bottom: 0;
 }
 
-/* line 377, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 377, ../sass/coolblue.scss */
 #main h2 a {
   color: #333;
 }
 
-/* line 378, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 378, ../sass/coolblue.scss */
 #sidebar h3 {
   font: bold 1.7em 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
   letter-spacing: .2px;
@@ -641,18 +641,18 @@ fieldset.search {
   color: #333;
 }
 
-/* line 384, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 384, ../sass/coolblue.scss */
 #sidebar h3, #sidebar p {
   margin-left: 10px;
 }
 
-/* line 387, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 387, ../sass/coolblue.scss */
 #sidebar img {
   padding: 8px;
 }
 
 /* sidemenu */
-/* line 390, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 390, ../sass/coolblue.scss */
 .sidemenu ul {
   text-align: left;
   margin: 10px 15px 10px 8px;
@@ -660,7 +660,7 @@ fieldset.search {
   border-top: 1px solid #EFEFEF;
 }
 
-/* line 396, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 396, ../sass/coolblue.scss */
 .sidemenu ul li {
   list-style: none;
   font-size: 11px;
@@ -669,12 +669,12 @@ fieldset.search {
   border-bottom: 1px solid #EFEFEF;
 }
 
-/* line 403, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 403, ../sass/coolblue.scss */
 * html body .sidemenu ul li {
   height: 1%;
 }
 
-/* line 405, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 405, ../sass/coolblue.scss */
 .sidemenu ul li a:link,
 .sidemenu ul li a:visited {
   color: #33799B;
@@ -683,7 +683,7 @@ fieldset.search {
   text-transform: uppercase;
 }
 
-/* line 411, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 411, ../sass/coolblue.scss */
 .sidemenu ul li a span {
   color: #959595;
   font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
@@ -692,24 +692,24 @@ fieldset.search {
   text-transform: none;
 }
 
-/* line 418, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 418, ../sass/coolblue.scss */
 .sidemenu ul li a:hover {
   color: #000;
 }
 
-/* line 419, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 419, ../sass/coolblue.scss */
 .sidemenu ul ul {
   margin: 0 0 0 5px;
   padding: 0;
 }
 
-/* line 420, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 420, ../sass/coolblue.scss */
 .sidemenu ul ul li {
   border: none;
 }
 
 /* popular */
-/* line 423, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 423, ../sass/coolblue.scss */
 .popular ul {
   text-align: left;
   margin: 10px 15px 10px 8px;
@@ -717,7 +717,7 @@ fieldset.search {
   border-top: 1px solid #EFEFEF;
 }
 
-/* line 429, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 429, ../sass/coolblue.scss */
 .popular ul li {
   list-style: none;
   border-bottom: 1px solid #EFEFEF;
@@ -728,12 +728,12 @@ fieldset.search {
   background: url(../../images/document.gif) no-repeat 3px 11px;
 }
 
-/* line 438, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 438, ../sass/coolblue.scss */
 * html body .popular ul li {
   height: 1%;
 }
 
-/* line 440, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 440, ../sass/coolblue.scss */
 .popular ul li a:link,
 .popular ul li a:visited {
   color: #33799B;
@@ -742,7 +742,7 @@ fieldset.search {
   text-transform: none;
 }
 
-/* line 446, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 446, ../sass/coolblue.scss */
 .popular ul li span {
   color: #888;
   font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
@@ -753,13 +753,13 @@ fieldset.search {
   line-height: 1.7em;
 }
 
-/* line 455, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 455, ../sass/coolblue.scss */
 .popular ul li a:hover {
   color: #000;
 }
 
 /* footer */
-/* line 458, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 458, ../sass/coolblue.scss */
 #footer-outer {
   clear: both;
   text-align: left;
@@ -770,25 +770,25 @@ fieldset.search {
   border-top: #1a5d8a;
 }
 
-/* line 467, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 467, ../sass/coolblue.scss */
 #footer-wrap {
   /*	width: 1000px;*/
   max-width: 1000px;
   margin: 0 auto;
 }
 
-/* line 474, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 474, ../sass/coolblue.scss */
 #footer-wrap a:link,
 #footer-wrap a:visited {
   color: #fff;
 }
 
-/* line 475, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 475, ../sass/coolblue.scss */
 #footer-wrap a:hover {
   color: #99CCFF;
 }
 
-/* line 476, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 476, ../sass/coolblue.scss */
 #footer-wrap h3 {
   font: bold 1.7em 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
   letter-spacing: .2px;
@@ -797,7 +797,7 @@ fieldset.search {
 }
 
 /* gallery */
-/* line 484, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 484, ../sass/coolblue.scss */
 #footer-wrap #gallery {
   padding: 0 0 10px 0;
   margin: 0;
@@ -806,7 +806,7 @@ fieldset.search {
   /* border-bottom: 1px solid #326B8D;  */
 }
 
-/* line 492, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 492, ../sass/coolblue.scss */
 #footer-wrap #gallery h3 {
   float: left;
   display: inline;
@@ -815,7 +815,7 @@ fieldset.search {
   padding: 0;
 }
 
-/* line 499, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 499, ../sass/coolblue.scss */
 #footer-wrap #gallery p.thumbs {
   float: right;
   display: inline;
@@ -824,7 +824,7 @@ fieldset.search {
   padding: 0;
 }
 
-/* line 506, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 506, ../sass/coolblue.scss */
 p.thumbs img {
   position: relative;
   padding: 8px;
@@ -834,20 +834,20 @@ p.thumbs img {
 }
 
 /* footer columns */
-/* line 515, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 515, ../sass/coolblue.scss */
 #footer-wrap .col-a {
   width: 250px;
   float: left;
 }
 
-/* line 519, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 519, ../sass/coolblue.scss */
 #footer-wrap .col-b {
   width: 245px;
   float: right;
 }
 
 /* recent comments */
-/* line 525, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 525, ../sass/coolblue.scss */
 .recent-comments ul {
   text-align: left;
   margin-left: 20px;
@@ -855,7 +855,7 @@ p.thumbs img {
   background: url(../../images/footer-line.gif) repeat-x left top;
 }
 
-/* line 531, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 531, ../sass/coolblue.scss */
 .recent-comments ul li {
   list-style: none;
   font-size: 12px;
@@ -864,25 +864,25 @@ p.thumbs img {
   background: url(../../images/speech_bubble.gif) no-repeat 3px 11px;
 }
 
-/* line 538, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 538, ../sass/coolblue.scss */
 * html body .recent-comments ul li {
   height: 1%;
 }
 
-/* line 540, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 540, ../sass/coolblue.scss */
 .recent-comments ul li a:link,
 .recent-comments ul li a:visited {
   padding-left: 0;
 }
 
-/* line 541, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 541, ../sass/coolblue.scss */
 .recent-comments ul li cite {
   font-size: .9em;
   font-style: normal;
 }
 
 /* footer-list */
-/* line 547, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 547, ../sass/coolblue.scss */
 .footer-list ul {
   background: url(../../images/footer-line.gif) repeat-x left top;
   list-style: none;
@@ -890,12 +890,12 @@ p.thumbs img {
   margin-left: 20px;
 }
 
-/* line 553, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 553, ../sass/coolblue.scss */
 .footer-list ul li {
   border-bottom: 1px solid #326B8D;
 }
 
-/* line 555, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 555, ../sass/coolblue.scss */
 .footer-list ul li a:link,
 .footer-list ul li a:visited {
   display: block;
@@ -906,27 +906,27 @@ p.thumbs img {
   color: #fff;
 }
 
-/* line 563, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 563, ../sass/coolblue.scss */
 .footer-list ul li a:hover {
   color: #99CCFF;
 }
 
 /* subscribe stuff */
-/* line 566, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 566, ../sass/coolblue.scss */
 ul.subscribe-stuff {
   list-style: none;
   margin: 0 0 0 20px;
   padding: 0;
 }
 
-/* line 570, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 570, ../sass/coolblue.scss */
 ul.subscribe-stuff li {
   float: left;
   margin: 0 3px 0 0;
   padding: 0;
 }
 
-/* line 574, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 574, ../sass/coolblue.scss */
 ul.subscribe-stuff li img {
   padding: 0;
   margin: 0;
@@ -935,7 +935,7 @@ ul.subscribe-stuff li img {
 }
 
 /* footer-bottom */
-/* line 581, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 581, ../sass/coolblue.scss */
 #footer-bottom {
   clear: both;
   /*	width: 1000px;*/
@@ -950,17 +950,17 @@ ul.subscribe-stuff li img {
   background: url(../../images/footer-line.gif) repeat-x left top;
 }
 
-/* line 595, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 595, ../sass/coolblue.scss */
 #footer-bottom a {
   color: #fff;
 }
 
-/* line 596, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 596, ../sass/coolblue.scss */
 #footer-bottom a:hover {
   color: #99CCFF;
 }
 
-/* line 598, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 598, ../sass/coolblue.scss */
 #footer-bottom p.bottom-left {
   float: left;
   display: inline;
@@ -970,7 +970,7 @@ ul.subscribe-stuff li img {
   text-align: left;
 }
 
-/* line 606, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 606, ../sass/coolblue.scss */
 #footer-bottom p.bottom-right {
   float: right;
   display: inline;
@@ -983,7 +983,7 @@ ul.subscribe-stuff li img {
 /* ------------------------------------------------------------------------------
 		B L O G   P O S T
 --------------------------------------------------------------------------------- */
-/* line 618, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 618, ../sass/coolblue.scss */
 .post {
   margin: 5px 0 20px 0;
   padding: 0 0 20px 0;
@@ -992,7 +992,7 @@ ul.subscribe-stuff li img {
   border-bottom: 1px solid #eee;
 }
 
-/* line 625, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 625, ../sass/coolblue.scss */
 .right {
   width: 560px;
   float: right;
@@ -1000,7 +1000,7 @@ ul.subscribe-stuff li img {
   padding-right: 15px;
 }
 
-/* line 631, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 631, ../sass/coolblue.scss */
 .left {
   position: relative;
   width: 150px;
@@ -1008,7 +1008,7 @@ ul.subscribe-stuff li img {
   display: inline;
 }
 
-/* line 637, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 637, ../sass/coolblue.scss */
 .right .image-section {
   clear: both;
   display: block;
@@ -1016,20 +1016,20 @@ ul.subscribe-stuff li img {
   padding: 0;
 }
 
-/* line 643, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 643, ../sass/coolblue.scss */
 .right .image-section img {
   background: #F3F4F5;
   border: 1px solid #E2E3E7;
   padding: 12px;
 }
 
-/* line 648, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 648, ../sass/coolblue.scss */
 .right h2 {
   margin-top: 0;
 }
 
 /* share */
-/* line 651, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 651, ../sass/coolblue.scss */
 .right .share-box {
   margin: 20px 12px 0 20px;
   padding: 0 10px 10px 20px;
@@ -1039,30 +1039,30 @@ ul.subscribe-stuff li img {
   width: 494px;
 }
 
-/* line 659, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 659, ../sass/coolblue.scss */
 .right .share-box h4 {
   margin-left: 0;
 }
 
-/* line 662, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 662, ../sass/coolblue.scss */
 .right .share-box ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* line 666, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 666, ../sass/coolblue.scss */
 .right .share-box ul li {
   float: left;
   margin-right: 5px;
 }
 
-/* line 670, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 670, ../sass/coolblue.scss */
 .right .share-box ul li a:hover {
   cursor: pointer;
 }
 
-/* line 671, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 671, ../sass/coolblue.scss */
 .right .share-box ul li img {
   margin: 0;
   padding: 5px;
@@ -1070,7 +1070,7 @@ ul.subscribe-stuff li img {
 }
 
 /* dateinfo */
-/* line 678, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 678, ../sass/coolblue.scss */
 .left p.dateinfo {
   background: url(../../images/date-bg.gif) no-repeat;
   height: 83px;
@@ -1084,7 +1084,7 @@ ul.subscribe-stuff li img {
   color: #fff;
 }
 
-/* line 690, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 690, ../sass/coolblue.scss */
 .left p.dateinfo span {
   font: bold 30px Arial, Helvetica, sans-serif;
   display: block;
@@ -1095,7 +1095,7 @@ ul.subscribe-stuff li img {
 }
 
 /* post meta */
-/* line 700, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 700, ../sass/coolblue.scss */
 .left .post-meta {
   width: 140px;
   font-size: .9em;
@@ -1103,7 +1103,7 @@ ul.subscribe-stuff li img {
   padding: 0;
 }
 
-/* line 706, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 706, ../sass/coolblue.scss */
 .left .post-meta h4 {
   text-align: right;
   margin: 0 5px 10px 5px;
@@ -1111,7 +1111,7 @@ ul.subscribe-stuff li img {
   color: #555;
 }
 
-/* line 712, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 712, ../sass/coolblue.scss */
 .left .post-meta ul {
   list-style: none;
   margin: 0;
@@ -1119,7 +1119,7 @@ ul.subscribe-stuff li img {
   border-top: 1px solid #F1F1F1;
 }
 
-/* line 717, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 717, ../sass/coolblue.scss */
 .left .post-meta ul li {
   list-style: none;
   border-bottom: 1px solid #F1F1F1;
@@ -1129,48 +1129,48 @@ ul.subscribe-stuff li img {
   color: #147DB6;
 }
 
-/* line 725, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 725, ../sass/coolblue.scss */
 * html body .left .post-meta ul li {
   height: 1%;
 }
 
-/* line 727, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 727, ../sass/coolblue.scss */
 .left .post-meta ul.tags li {
   background: url(../../images/tag.gif) no-repeat 2px center;
 }
 
-/* line 728, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 728, ../sass/coolblue.scss */
 .left .post-meta ul li.user {
   background: url(../../images/user.gif) no-repeat 2px center;
 }
 
-/* line 729, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 729, ../sass/coolblue.scss */
 .left .post-meta ul li.time {
   background: url(../../images/clock.gif) no-repeat 2px center;
 }
 
-/* line 730, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 730, ../sass/coolblue.scss */
 .left .post-meta ul li.comment {
   background: url(../../images/comment.gif) no-repeat 2px center;
 }
 
-/* line 731, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 731, ../sass/coolblue.scss */
 .left .post-meta ul li.permalink {
   background: url(../../images/permalink.gif) no-repeat 2px center;
 }
 
-/* line 733, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 733, ../sass/coolblue.scss */
 .left .post-meta ul li a {
   color: #147DB6;
 }
 
-/* line 734, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 734, ../sass/coolblue.scss */
 .left .post-meta ul li a:hover {
   color: #333;
 }
 
 /* post bottom */
-/* line 737, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 737, ../sass/coolblue.scss */
 .post-bottom-section {
   position: relative;
   margin: 10px 0 20px 0;
@@ -1180,7 +1180,7 @@ ul.subscribe-stuff li img {
   border-bottom: 1px solid #eeeeee;
 }
 
-/* line 745, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 745, ../sass/coolblue.scss */
 .post-bottom-section h4 {
   position: absolute;
   left: 0px;
@@ -1189,7 +1189,7 @@ ul.subscribe-stuff li img {
   width: 135px;
 }
 
-/* line 751, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 751, ../sass/coolblue.scss */
 .post-bottom-section .right form {
   position: relative;
   top: 15px;
@@ -1198,12 +1198,12 @@ ul.subscribe-stuff li img {
 }
 
 /* post info */
-/* line 758, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 758, ../sass/coolblue.scss */
 .post-info {
   margin-top: 3px;
 }
 
-/* line 760, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 760, ../sass/coolblue.scss */
 .post .post-info a:link,
 .post .post-info a:visited {
   color: #1372a8;
@@ -1212,7 +1212,7 @@ ul.subscribe-stuff li img {
 }
 
 /* comments list */
-/* line 767, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 767, ../sass/coolblue.scss */
 ol.commentlist {
   margin: 12px 12px 12px 20px;
   padding: 0;
@@ -1220,7 +1220,7 @@ ol.commentlist {
   border-top: 1px solid #EAECEE;
 }
 
-/* line 773, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 773, ../sass/coolblue.scss */
 .commentlist li {
   list-style: none;
   margin: 0;
@@ -1230,13 +1230,13 @@ ol.commentlist {
   overflow: hidden;
 }
 
-/* line 782, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 782, ../sass/coolblue.scss */
 .commentlist li a:link,
 .commentlist li a:visited {
   color: #227bad;
 }
 
-/* line 785, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 785, ../sass/coolblue.scss */
 .commentlist li .comment-info {
   width: 99%;
   margin: 0;
@@ -1244,7 +1244,7 @@ ol.commentlist {
   overflow: hidden;
 }
 
-/* line 790, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 790, ../sass/coolblue.scss */
 .commentlist li .comment-info img {
   float: right;
   margin: 3px 13px 0 0;
@@ -1253,7 +1253,7 @@ ol.commentlist {
   display: inline;
 }
 
-/* line 797, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 797, ../sass/coolblue.scss */
 .commentlist li .comment-info cite {
   display: block;
   margin: 0;
@@ -1262,26 +1262,26 @@ ol.commentlist {
   font-weight: bold;
 }
 
-/* line 803, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 803, ../sass/coolblue.scss */
 .commentlist li .comment-info cite .comment-data {
   font-size: .8em;
   font-weight: normal;
 }
 
-/* line 807, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 807, ../sass/coolblue.scss */
 .commentlist li .comment-text {
   clear: both;
   margin: 0;
   padding: 0 20px 25px 20px;
 }
 
-/* line 811, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 811, ../sass/coolblue.scss */
 .commentlist li .comment-text p {
   margin: 5px 0 20px 0;
   padding: 0;
 }
 
-/* line 815, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 815, ../sass/coolblue.scss */
 .commentlist li .comment-text .reply a {
   padding: 5px;
   border: 1px solid #2177A5;
@@ -1291,13 +1291,13 @@ ol.commentlist {
   color: #fff;
 }
 
-/* line 823, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 823, ../sass/coolblue.scss */
 .commentlist li ul.children {
   margin: 0;
   padding: 0;
 }
 
-/* line 825, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 825, ../sass/coolblue.scss */
 .commentlist li ul.children li.depth-2,
 .commentlist li ul.children li.depth-3 {
   margin-left: 40px;
@@ -1306,7 +1306,7 @@ ol.commentlist {
   border-width: 1px 0 0 1px;
 }
 
-/* line 831, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 831, ../sass/coolblue.scss */
 .commentlist li.thread-alt {
   background: #F3F4F5;
   border-color: #E2E4E7;
@@ -1315,14 +1315,14 @@ ol.commentlist {
 /* ------------------------------------------------------------------------------
     A R C H I V E S
 --------------------------------------------------------------------------------- */
-/* line 839, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 839, ../sass/coolblue.scss */
 ul.archive {
   margin: 10px 30px 10px 20px;
   padding: 0;
   border-top: 1px solid #eeeeee;
 }
 
-/* line 844, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 844, ../sass/coolblue.scss */
 ul.archive li {
   margin: 0;
   padding: 12px 5px;
@@ -1330,7 +1330,7 @@ ul.archive li {
   list-style: none;
 }
 
-/* line 850, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 850, ../sass/coolblue.scss */
 ul.archive li .post-title {
   margin: 0;
   padding: 0;
@@ -1338,40 +1338,40 @@ ul.archive li .post-title {
   font-weight: bold;
 }
 
-/* line 856, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 856, ../sass/coolblue.scss */
 ul.archive li .post-title a:link,
 ul.archive li .post-title a:visited {
   color: #444;
 }
 
-/* line 859, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 859, ../sass/coolblue.scss */
 ul.archive li .post-title a:hover {
   border: none;
   color: #000;
 }
 
-/* line 863, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 863, ../sass/coolblue.scss */
 ul.archive li .post-details {
   margin-left: 0;
   margin-top: 0;
   font-size: .9em;
 }
 
-/* line 869, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 869, ../sass/coolblue.scss */
 ul.archive li .post-details a:link,
 ul.archive li .post-details a:visited {
   color: #1372a8;
 }
 
 /* pagenavigation */
-/* line 874, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 874, ../sass/coolblue.scss */
 .navigation {
   margin: 10px 20px;
   padding: 0;
   width: 560px;
 }
 
-/* line 879, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 879, ../sass/coolblue.scss */
 .navigation a:link,
 .navigation a:visited {
   float: left;
@@ -1388,7 +1388,7 @@ ul.archive li .post-details a:visited {
   border-color: #86BBDF #245F86 #245F86 #86BBDF;
 }
 
-/* line 893, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 893, ../sass/coolblue.scss */
 .navigation a:hover {
   background: #FF3399;
   border-width: 1px;
@@ -1400,38 +1400,38 @@ ul.archive li .post-details a:visited {
 		M I S C
 --------------------------------------------------------------------------------- */
 /* alignment classes & additional classes */
-/* line 905, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 905, ../sass/coolblue.scss */
 .float-left {
   float: left;
 }
 
-/* line 906, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 906, ../sass/coolblue.scss */
 .float-right {
   float: right;
 }
 
-/* line 907, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 907, ../sass/coolblue.scss */
 .align-left {
   text-align: left;
 }
 
-/* line 908, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 908, ../sass/coolblue.scss */
 .align-right {
   text-align: right;
 }
 
-/* line 909, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 909, ../sass/coolblue.scss */
 .no-border {
   border: none;
 }
 
-/* line 910, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 910, ../sass/coolblue.scss */
 .no-bg {
   background: none;
 }
 
 /* clearing */
-/* line 913, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 913, ../sass/coolblue.scss */
 .fix {
   clear: both;
   height: 1px;
@@ -1439,12 +1439,12 @@ ul.archive li .post-details a:visited {
   overflow: hidden;
 }
 
-/* line 919, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 919, ../sass/coolblue.scss */
 .clear {
   display: inline-block;
 }
 
-/* line 920, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/coolblue.scss */
+/* line 920, ../sass/coolblue.scss */
 .clear:after {
   display: block;
   visibility: hidden;
@@ -1454,7 +1454,7 @@ ul.archive li .post-details a:visited {
 }
 
 /* css3 design enhancements */
-/* line 4, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/enhancements.scss */
+/* line 4, ../sass/enhancements.scss */
 a:link.more, a:visited.more {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -1462,7 +1462,7 @@ a:link.more, a:visited.more {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 }
 
-/* line 11, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/enhancements.scss */
+/* line 11, ../sass/enhancements.scss */
 a:link.clickable, a:visited.clickable {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -1470,38 +1470,38 @@ a:link.clickable, a:visited.clickable {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 }
 
-/* line 18, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/enhancements.scss */
+/* line 18, ../sass/enhancements.scss */
 img.coolblue {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
 }
 
-/* line 23, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/enhancements.scss */
+/* line 23, ../sass/enhancements.scss */
 #header h1#logo-text a {
   text-shadow: #acacac 1px 1px 2px;
 }
 
-/* line 27, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/enhancements.scss */
+/* line 27, ../sass/enhancements.scss */
 #header #nav ul,
 #header p#rss a {
   text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.9);
 }
 
-/* line 31, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/enhancements.scss */
+/* line 31, ../sass/enhancements.scss */
 #footer-outer,
 #footer-bottom {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
 }
 
-/* line 34, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/enhancements.scss */
+/* line 34, ../sass/enhancements.scss */
 p.thumbs img {
   -moz-box-shadow: 1px 1px 3px #184569;
   -webkit-box-shadow: 1px 1px 3px #184569;
   box-shadow: 1px 1px 3px #184569;
 }
 
-/* line 39, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/enhancements.scss */
+/* line 39, ../sass/enhancements.scss */
 .right .image-section img {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -1511,25 +1511,25 @@ p.thumbs img {
   box-shadow: 3px 3px 3px #f3f4f5, -3px -3px 3px #f3f4f5;
 }
 
-/* line 48, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/enhancements.scss */
+/* line 48, ../sass/enhancements.scss */
 .left p.dateinfo {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
 }
 
-/* line 49, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/enhancements.scss */
+/* line 49, ../sass/enhancements.scss */
 .left p.dateinfo span {
   text-shadow: none;
 }
 
 /* customization */
 /* Form Elements */
-/* line 4, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 4, ../sass/layout.scss */
 form .form-errors {
   color: red;
   text-shadow: #aaaaaa 1px 1px 2px;
 }
 
-/* line 9, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 9, ../sass/layout.scss */
 .login-form {
   margin: 0;
   padding: 10px;
@@ -1538,88 +1538,88 @@ form .form-errors {
   background: none;
 }
 
-/* line 16, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 16, ../sass/layout.scss */
 .login-form #email, .login-form #password {
   font-size: 1.125em;
   padding: .25em;
   width: 200px;
 }
 
-/* line 21, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 21, ../sass/layout.scss */
 .login-form .button {
   padding: 0 10px;
 }
 
-/* line 24, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 24, ../sass/layout.scss */
 .userBox img.avatar {
   float: left;
   margin: 5px;
 }
 
-/* line 28, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 28, ../sass/layout.scss */
 .userBox ul {
   clear: both;
 }
 
-/* line 31, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 31, ../sass/layout.scss */
 .userBox .user-info {
   padding: 5px;
 }
 
-/* line 34, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 34, ../sass/layout.scss */
 .button.wide {
   padding: 0 10px;
 }
 
-/* line 37, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 37, ../sass/layout.scss */
 img.ajax-loader {
   background: none;
   border: 0;
 }
 
-/* line 41, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 41, ../sass/layout.scss */
 p.errors {
   color: red;
 }
 
 /* messages */
-/* line 49, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 49, ../sass/layout.scss */
 .errors {
   color: red;
 }
 
-/* line 53, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 53, ../sass/layout.scss */
 .warnings {
   color: orange;
 }
 
-/* line 57, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 57, ../sass/layout.scss */
 .notes {
   color: blue;
 }
 
 /* Post Adjust */
-/* line 64, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 64, ../sass/layout.scss */
 #post.clearlook h2, #post.clearlook h3 {
   text-shadow: #afafaf 1px 1px 2px;
 }
-/* line 67, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 67, ../sass/layout.scss */
 #post.clearlook h2 {
   font-size: 22px;
   color: #080000;
 }
-/* line 71, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 71, ../sass/layout.scss */
 #post.clearlook h3 {
   font-size: 18px;
   color: #080505;
 }
-/* line 75, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 75, ../sass/layout.scss */
 #post.clearlook p {
   font-size: 1.125em;
 }
 
 /* Book Cover Images */
-/* line 82, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 82, ../sass/layout.scss */
 div.book-coverImage {
   background: transparent;
   border: 0;
@@ -1628,7 +1628,7 @@ div.book-coverImage {
   position: relative;
 }
 
-/* line 89, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 89, ../sass/layout.scss */
 div.book-coverImage img.cover-image {
   border: 0;
   padding: 0;
@@ -1639,7 +1639,7 @@ div.book-coverImage img.cover-image {
   bottom: 0;
 }
 
-/* line 98, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 98, ../sass/layout.scss */
 div.book-coverImage span.embedded-title {
   width: 78px;
   height: 105px;
@@ -1654,7 +1654,7 @@ div.book-coverImage span.embedded-title {
 
 /* Images */
 /* 清除圖片不必要的設定 */
-/* line 113, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 113, ../sass/layout.scss */
 img.clear {
   border: 0;
   padding: 0;
@@ -1663,30 +1663,30 @@ img.clear {
 }
 
 /* Paginate */
-/* line 121, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 121, ../sass/layout.scss */
 .paginate {
   text-align: center;
   padding: 10px;
 }
 
-/* line 125, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 125, ../sass/layout.scss */
 .paginate span, .paginate a {
   padding: 5px;
 }
 
 /* Gravatar */
-/* line 130, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 130, ../sass/layout.scss */
 .gravatar {
   background: url(../../images/gravatar.jpg);
 }
 
-/* line 134, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 134, ../sass/layout.scss */
 #rss {
   display: none;
 }
 
 /* Table */
-/* line 140, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 140, ../sass/layout.scss */
 table.form-layout th {
   background: none;
   border: none;
@@ -1697,26 +1697,26 @@ table.form-layout th {
   padding: 0;
   vertical-align: middle;
 }
-/* line 150, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 150, ../sass/layout.scss */
 table.form-layout td {
   border: none;
 }
 
 /* Disqus Comments */
-/* line 158, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 158, ../sass/layout.scss */
 #disqus_thread img {
   border: none;
   padding: 0;
   background: none;
 }
-/* line 163, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/layout.scss */
+/* line 163, ../sass/layout.scss */
 #disqus_thread h3 {
   font-size: 18px;
 }
 
 /* controller specify customization */
 /* incase an inverted custom gradient isn't specified */
-/* line 177, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 177, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class, #controller-book.action-read .download-links a, .fancy-button, .fancy-button-submit {
   font-family: "Lucida Grande", Lucida, Arial, sans-serif;
   background: url('/images/button_bg.png?1326776211') repeat-x bottom left;
@@ -1729,41 +1729,41 @@ table.form-layout td {
   border-style: solid;
   font-weight: bold;
 }
-/* line 165, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 165, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class::-moz-focus-inner, #controller-book.action-read .download-links a::-moz-focus-inner, .fancy-button::-moz-focus-inner, .fancy-button-submit::-moz-focus-inner {
   border: none;
   padding: 0;
 }
-/* line 168, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 168, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class:focus, #controller-book.action-read .download-links a:focus, .fancy-button:focus, .fancy-button-submit:focus {
   outline: none;
 }
 
-/* line 8, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/controller_book.scss */
+/* line 8, ../sass/controller_book.scss */
 #controller-book.action-read .title {
   font-size: 20px;
   font-weight: bold;
   color: #080000;
 }
-/* line 13, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/controller_book.scss */
+/* line 13, ../sass/controller_book.scss */
 #controller-book.action-read .subtitle {
   font-size: 18px;
   color: #333333;
 }
-/* line 17, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/controller_book.scss */
+/* line 17, ../sass/controller_book.scss */
 #controller-book.action-read .downloads {
   clear: both;
 }
-/* line 19, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/controller_book.scss */
+/* line 19, ../sass/controller_book.scss */
 #controller-book.action-read .downloads h3 {
   font-size: 18px;
 }
-/* line 23, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/controller_book.scss */
+/* line 23, ../sass/controller_book.scss */
 #controller-book.action-read .download-links {
   margin: 2.5em auto;
   text-align: center;
 }
-/* line 27, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/controller_book.scss */
+/* line 27, ../sass/controller_book.scss */
 #controller-book.action-read .download-links a {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -1795,11 +1795,11 @@ table.form-layout td {
   -khtml-background-clip: padding-box;
   background-clip: padding-box;
 }
-/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a, #controller-book.action-read .download-links a:visited {
   color: white;
 }
-/* line 31, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 31, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a:hover, #controller-book.action-read .download-links a:focus {
   background-color: #00448c;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4c98e8), color-stop(10%, #196abf), color-stop(50%, #0e3d6e), color-stop(50%, #0d3560), color-stop(100%, #134f8e));
@@ -1811,11 +1811,11 @@ table.form-layout td {
   border-color: #071f38;
   text-shadow: #00060c 0px 1px 1px;
 }
-/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a:hover, #controller-book.action-read .download-links a:hover:visited, #controller-book.action-read .download-links a:focus, #controller-book.action-read .download-links a:focus:visited {
   color: white;
 }
-/* line 36, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 36, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a:active {
   background-color: #003d7c;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0e3d6e), color-stop(30%, #104277), color-stop(50%, #0d3865), color-stop(50%, #0b3057), color-stop(100%, #135192));
@@ -1831,47 +1831,78 @@ table.form-layout td {
   -o-box-shadow: #092645 0 0.08em 0.2em 1px inset;
   box-shadow: #092645 0 0.08em 0.2em 1px inset;
 }
-/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a:active, #controller-book.action-read .download-links a:active:visited {
   color: white;
 }
-/* line 31, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/controller_book.scss */
+/* line 31, ../sass/controller_book.scss */
 #controller-book.action-read .comments {
   margin-left: 25px;
 }
-/* line 34, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/controller_book.scss */
+/* line 34, ../sass/controller_book.scss */
 #controller-book.action-read .description pre, #controller-book.action-read .description code {
   width: 98%;
   height: 100%;
   background: none;
   border: 0;
 }
-/* line 40, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/controller_book.scss */
+/* line 40, ../sass/controller_book.scss */
 #controller-book.action-read .fb-like {
   margin: 10px 25px;
 }
-/* line 44, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/controller_book.scss */
+/* line 44, ../sass/controller_book.scss */
 #controller-book.action-read .post .description {
   font-size: 1.25em;
   color: #333333;
 }
 
-/* line 6, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/controller_publish.scss */
+/* line 6, ../sass/controller_publish.scss */
 #controller-publish.action-update span.required {
   color: red;
   font-weight: bold;
 }
-/* line 10, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/controller_publish.scss */
+/* line 10, ../sass/controller_publish.scss */
 #controller-publish.action-update div.book-coverImage {
   margin: 10px;
   float: left;
 }
-/* line 14, /users/lyhcode/ebook/SimaQian/web-app/compass/sass/controller_publish.scss */
+/* line 14, ../sass/controller_publish.scss */
 #controller-publish.action-update .clear-both {
   clear: both;
 }
 
-/* line 20, ../sass/screen.scss */
+/* incase an inverted custom gradient isn't specified */
+/* line 177, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class, #controller-book.action-read .download-links a, .fancy-button, .fancy-button-submit {
+  font-family: "Lucida Grande", Lucida, Arial, sans-serif;
+  background: url('/images/button_bg.png?1326776211') repeat-x bottom left;
+  margin: 0;
+  width: auto;
+  overflow: visible;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  border-style: solid;
+  font-weight: bold;
+}
+/* line 165, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class::-moz-focus-inner, #controller-book.action-read .download-links a::-moz-focus-inner, .fancy-button::-moz-focus-inner, .fancy-button-submit::-moz-focus-inner {
+  border: none;
+  padding: 0;
+}
+/* line 168, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class:focus, #controller-book.action-read .download-links a:focus, .fancy-button:focus, .fancy-button-submit:focus {
+  outline: none;
+}
+
+/* line 9, ../sass/controller_sandbox.scss */
+#controller-sandbox.action-show #content h3 {
+  font-size: 1.25em;
+  border-bottom: 3px solid #e0e0e0;
+  text-shadow: #aaaaaa 1px 1px 1px;
+}
+
+/* line 21, ../sass/screen.scss */
 .fancy-button {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -1903,11 +1934,11 @@ table.form-layout td {
   -khtml-background-clip: padding-box;
   background-clip: padding-box;
 }
-/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button, .fancy-button:visited {
   color: white;
 }
-/* line 31, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 31, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button:hover, .fancy-button:focus {
   background-color: #00448c;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4c98e8), color-stop(10%, #196abf), color-stop(50%, #0e3d6e), color-stop(50%, #0d3560), color-stop(100%, #134f8e));
@@ -1919,11 +1950,11 @@ table.form-layout td {
   border-color: #071f38;
   text-shadow: #00060c 0px 1px 1px;
 }
-/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button:hover, .fancy-button:hover:visited, .fancy-button:focus, .fancy-button:focus:visited {
   color: white;
 }
-/* line 36, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 36, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button:active {
   background-color: #003d7c;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0e3d6e), color-stop(30%, #104277), color-stop(50%, #0d3865), color-stop(50%, #0b3057), color-stop(100%, #135192));
@@ -1939,12 +1970,12 @@ table.form-layout td {
   -o-box-shadow: #092645 0 0.08em 0.2em 1px inset;
   box-shadow: #092645 0 0.08em 0.2em 1px inset;
 }
-/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button:active, .fancy-button:active:visited {
   color: white;
 }
 
-/* line 24, ../sass/screen.scss */
+/* line 25, ../sass/screen.scss */
 .fancy-button-submit {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -1976,11 +2007,11 @@ table.form-layout td {
   -khtml-background-clip: padding-box;
   background-clip: padding-box;
 }
-/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-submit, .fancy-button-submit:visited {
   color: white;
 }
-/* line 31, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 31, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-submit:hover, .fancy-button-submit:focus {
   background-color: #00448c;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4c98e8), color-stop(10%, #196abf), color-stop(50%, #0e3d6e), color-stop(50%, #0d3560), color-stop(100%, #134f8e));
@@ -1992,11 +2023,11 @@ table.form-layout td {
   border-color: #071f38;
   text-shadow: #00060c 0px 1px 1px;
 }
-/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-submit:hover, .fancy-button-submit:hover:visited, .fancy-button-submit:focus, .fancy-button-submit:focus:visited {
   color: white;
 }
-/* line 36, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 36, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-submit:active {
   background-color: #003d7c;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0e3d6e), color-stop(30%, #104277), color-stop(50%, #0d3865), color-stop(50%, #0b3057), color-stop(100%, #135192));
@@ -2012,22 +2043,22 @@ table.form-layout td {
   -o-box-shadow: #092645 0 0.08em 0.2em 1px inset;
   box-shadow: #092645 0 0.08em 0.2em 1px inset;
 }
-/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-submit:active, .fancy-button-submit:active:visited {
   color: white;
 }
 
-/* line 28, ../sass/screen.scss */
+/* line 29, ../sass/screen.scss */
 .w100p {
   width: 100%;
 }
 
-/* line 31, ../sass/screen.scss */
+/* line 32, ../sass/screen.scss */
 .w90p {
   width: 90%;
 }
 
-/* line 34, ../sass/screen.scss */
+/* line 35, ../sass/screen.scss */
 .w80p {
   width: 80%;
 }

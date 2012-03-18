@@ -183,11 +183,14 @@
 	</r:script>
 </head>
 <body>
+	<g:link action="list">Sandbox</g:link>
 	<g:if test="${sandbox?.id}">
-		<g:link action="list">Sandbox</g:link>
 		/
 		<g:link action="show" id="${sandbox.id}">${sandbox.title}</g:link>
 	</g:if>
+	<g:else>
+		/ New
+	</g:else>
 
 	<a name="editing"></a>
 

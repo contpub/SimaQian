@@ -16,6 +16,7 @@
 /* controller specify customization */
 @import "controller_book.scss";
 @import "controller_publish.scss";
+@import "controller_sandbox.scss";
 
 .fancy-button {
 	@include fancy-button(#124c89, 16px, 4px, 1px);
