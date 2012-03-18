@@ -29,3 +29,8 @@
   padding: 0;
   text-shadow: #aaaaaa 1px 1px 1px;
 }
+/* line 17, ../sass/controller_sandbox.scss */
+#controller-sandbox.action-show .comments {
+  margin-left: 25px;
+  margin-right: 25px;
+}

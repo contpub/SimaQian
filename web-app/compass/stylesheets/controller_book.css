@@ -29,26 +29,31 @@
   text-shadow: #aaaaaa 1px 1px 1px;
 }
 /* line 16, ../sass/controller_book.scss */
+#controller-book.action-read .comments {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+/* line 20, ../sass/controller_book.scss */
 #controller-book.action-read .title {
   font-size: 20px;
   font-weight: bold;
   color: #080000;
 }
-/* line 21, ../sass/controller_book.scss */
+/* line 25, ../sass/controller_book.scss */
 #controller-book.action-read .subtitle {
   font-size: 18px;
   color: #333333;
 }
-/* line 25, ../sass/controller_book.scss */
+/* line 29, ../sass/controller_book.scss */
 #controller-book.action-read .downloads {
   clear: both;
 }
-/* line 28, ../sass/controller_book.scss */
+/* line 32, ../sass/controller_book.scss */
 #controller-book.action-read .download-links {
   margin: 2.5em auto;
   text-align: center;
 }
-/* line 32, ../sass/controller_book.scss */
+/* line 36, ../sass/controller_book.scss */
 #controller-book.action-read .download-links a {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -120,22 +125,18 @@
 #controller-book.action-read .download-links a:active, #controller-book.action-read .download-links a:active:visited {
   color: white;
 }
-/* line 36, ../sass/controller_book.scss */
-#controller-book.action-read .comments {
-  margin-left: 25px;
-}
-/* line 39, ../sass/controller_book.scss */
+/* line 40, ../sass/controller_book.scss */
 #controller-book.action-read .description pre, #controller-book.action-read .description code {
   width: 98%;
   height: 100%;
   background: none;
   border: 0;
 }
-/* line 45, ../sass/controller_book.scss */
+/* line 46, ../sass/controller_book.scss */
 #controller-book.action-read .fb-like {
   margin: 10px 25px;
 }
-/* line 49, ../sass/controller_book.scss */
+/* line 50, ../sass/controller_book.scss */
 #controller-book.action-read .post .description {
   font-size: 1.25em;
   color: #333333;

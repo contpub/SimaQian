@@ -1716,7 +1716,7 @@ table.form-layout td {
 
 /* controller specify customization */
 /* incase an inverted custom gradient isn't specified */
-/* line 177, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 177, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class, #controller-book.action-read .download-links a, .fancy-button, .fancy-button-submit {
   font-family: "Lucida Grande", Lucida, Arial, sans-serif;
   background: url('/compass/images/button_bg.png?1326776211') repeat-x bottom left;
@@ -1729,12 +1729,12 @@ table.form-layout td {
   border-style: solid;
   font-weight: bold;
 }
-/* line 165, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 165, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class::-moz-focus-inner, #controller-book.action-read .download-links a::-moz-focus-inner, .fancy-button::-moz-focus-inner, .fancy-button-submit::-moz-focus-inner {
   border: none;
   padding: 0;
 }
-/* line 168, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 168, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class:focus, #controller-book.action-read .download-links a:focus, .fancy-button:focus, .fancy-button-submit:focus {
   outline: none;
 }
@@ -1746,26 +1746,31 @@ table.form-layout td {
   text-shadow: #aaaaaa 1px 1px 1px;
 }
 /* line 16, ../sass/controller_book.scss */
+#controller-book.action-read .comments {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+/* line 20, ../sass/controller_book.scss */
 #controller-book.action-read .title {
   font-size: 20px;
   font-weight: bold;
   color: #080000;
 }
-/* line 21, ../sass/controller_book.scss */
+/* line 25, ../sass/controller_book.scss */
 #controller-book.action-read .subtitle {
   font-size: 18px;
   color: #333333;
 }
-/* line 25, ../sass/controller_book.scss */
+/* line 29, ../sass/controller_book.scss */
 #controller-book.action-read .downloads {
   clear: both;
 }
-/* line 28, ../sass/controller_book.scss */
+/* line 32, ../sass/controller_book.scss */
 #controller-book.action-read .download-links {
   margin: 2.5em auto;
   text-align: center;
 }
-/* line 32, ../sass/controller_book.scss */
+/* line 36, ../sass/controller_book.scss */
 #controller-book.action-read .download-links a {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -1797,11 +1802,11 @@ table.form-layout td {
   -khtml-background-clip: padding-box;
   background-clip: padding-box;
 }
-/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a, #controller-book.action-read .download-links a:visited {
   color: white;
 }
-/* line 31, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 31, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a:hover, #controller-book.action-read .download-links a:focus {
   background-color: #00448c;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4c98e8), color-stop(10%, #196abf), color-stop(50%, #0e3d6e), color-stop(50%, #0d3560), color-stop(100%, #134f8e));
@@ -1813,11 +1818,11 @@ table.form-layout td {
   border-color: #071f38;
   text-shadow: #00060c 0px 1px 1px;
 }
-/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a:hover, #controller-book.action-read .download-links a:hover:visited, #controller-book.action-read .download-links a:focus, #controller-book.action-read .download-links a:focus:visited {
   color: white;
 }
-/* line 36, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 36, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a:active {
   background-color: #003d7c;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0e3d6e), color-stop(30%, #104277), color-stop(50%, #0d3865), color-stop(50%, #0b3057), color-stop(100%, #135192));
@@ -1833,26 +1838,22 @@ table.form-layout td {
   -o-box-shadow: #092645 0 0.08em 0.2em 1px inset;
   box-shadow: #092645 0 0.08em 0.2em 1px inset;
 }
-/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a:active, #controller-book.action-read .download-links a:active:visited {
   color: white;
 }
-/* line 36, ../sass/controller_book.scss */
-#controller-book.action-read .comments {
-  margin-left: 25px;
-}
-/* line 39, ../sass/controller_book.scss */
+/* line 40, ../sass/controller_book.scss */
 #controller-book.action-read .description pre, #controller-book.action-read .description code {
   width: 98%;
   height: 100%;
   background: none;
   border: 0;
 }
-/* line 45, ../sass/controller_book.scss */
+/* line 46, ../sass/controller_book.scss */
 #controller-book.action-read .fb-like {
   margin: 10px 25px;
 }
-/* line 49, ../sass/controller_book.scss */
+/* line 50, ../sass/controller_book.scss */
 #controller-book.action-read .post .description {
   font-size: 1.25em;
   color: #333333;
@@ -1903,6 +1904,11 @@ table.form-layout td {
   border-bottom: 3px solid #e0e0e0;
   padding: 0;
   text-shadow: #aaaaaa 1px 1px 1px;
+}
+/* line 17, ../sass/controller_sandbox.scss */
+#controller-sandbox.action-show .comments {
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
 /* line 21, ../sass/screen.scss */

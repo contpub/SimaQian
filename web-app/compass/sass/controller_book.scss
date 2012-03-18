@@ -13,6 +13,10 @@
 			@include single-text-shadow(#aaaaaa, 1px, 1px, 1px)
 		}
 	}
+	.comments {
+		margin-left: 25px;
+		margin-right: 25px;
+	}
 	.title {
 		font-size: 20px;
 		font-weight: bold;
@@ -32,9 +36,6 @@
 		a {
 			@include fancy-button(#124c89, 1.25em, 4px, 1px);
 		}
-	}
-	.comments {
-		margin-left: 25px;
 	}
 	.description pre, .description code {
 		width: 98%;
