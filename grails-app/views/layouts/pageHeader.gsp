@@ -38,6 +38,12 @@
 				</li>
 			</userTag:isLogin>
 		</ul>
+		<!--<select>
+			<option>Language</option>
+			<option>en_US</option>		
+			<option>zh_TW</option>
+			<option>zh_CN</option>
+		</select>-->
 	</div>
 	<p id="rss">
 		<a href="#">Grab the RSS feed</a>

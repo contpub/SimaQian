@@ -99,6 +99,10 @@
 		</div>
 	</div>
 
+	<div class="comments">
+		<socialTag:disqus identifier="sandbox-${sandbox?.id}" url="${createLink(action: 'show', id: sandbox?.id, absolute: true)}" />
+	</div>
+
 	<content tag="sidebar">
 		<div class="sidemenu">
 			<h3>Social</h3>
