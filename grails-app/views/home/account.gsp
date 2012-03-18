@@ -49,7 +49,7 @@
 		<avatar:gravatar email="${user?.email}" size="48" />
 		<p class="avatar-info">
 			Change your avatar at <a href="http://gravatar.com/" target="_blank" title="gravatar">gravatar.com</a><br/>
-			We’re using lyhcode@gmail.com
+			We’re using ${user?.email}
 			<div style="clear:both"></div>
 		</p>
 		<p>
