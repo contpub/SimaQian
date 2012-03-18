@@ -106,15 +106,18 @@ class SocialTagLib {
 		if (!attr.image) attr.image = createLinkTo(dir: 'icons', file: 'book.png', absolute: true)
 
 		out << """<!--Open Graph-->
-	<meta property="og:title" content="${attr.title}"/>
-	<meta property="og:description" content="${attr.description}"/>	
-	<meta property="og:type" content="${attr.type}"/>
-	<meta property="og:url" content="${attr.url}"/>
-	<meta property="og:image" content="${attr.image}"/>
-	<meta property="og:site_name" content="${grailsApplication.config.appConf.sysId}"/>
-	<meta property="fb:app_id" content="${grailsApplication.config.social.facebook.appId}"/>
-	<meta property="fb:admins" content="${grailsApplication.config.social.facebook.admins}"/>
-	<meta property="fb:page_id" content="${grailsApplication.config.social.facebook.pageId}"/>"""
+<meta property="og:title" content="${attr.title}"/>
+<meta property="og:description" content="${attr.description}"/>	
+<meta property="og:type" content="${attr.type}"/>
+<meta property="og:url" content="${attr.url}"/>
+<meta property="og:image" content="${attr.image}"/>
+<meta property="og:site_name" content="${grailsApplication.config.appConf.sysId}"/>
+<meta property="fb:app_id" content="${grailsApplication.config.social.facebook.appId}"/>
+<meta property="fb:admins" content="${grailsApplication.config.social.facebook.admins}"/>"""
+
+		if (attr.type!='book') {
+			out << """<meta property="fb:page_id" content="${grailsApplication.config.social.facebook.pageId}"/>"""
+		}
 	}
 
 	/**
