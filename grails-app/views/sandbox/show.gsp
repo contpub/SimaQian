@@ -73,12 +73,9 @@
 		</div>
 	</div>
 
-	<div style="width:90%;margin:auto">
-		<p>檔案下載：</p>			
-		<div style="font-size:.8em;margin-top:2em;">
-			<p>註1：PDF檔案可以使用 <a href="get.adobe.com/reader/">Adobe Reader</a> 或其他相容閱讀軟體開啟。EPUB檔案可以使用 <a href="http://www.adobe.com/products/digitaleditions/">Adobe Digital Edition</a> 或 iBooks（適用 iPad 平板電腦）等閱讀軟體開啟。</p>
-			<p>註2：PDF線上預覽使用 <a href="http://docs.google.com/viewer" target="_blank">Google Doc Viewer</a>（必須驗證您的 Google 帳號），EPUB線上預覽使用 <a href="http://www.magicscroll.net/" target="_blank">Magic Scroll</a>；受限於瀏覽器功能與字型限制，其顯示效果與下載版電子書可能有差異。</p>
-		</div>
+	<div style="width:90%;margin:auto;font-size:.8em;padding:2em;">
+		<p>註1：PDF檔案可以使用 <a href="get.adobe.com/reader/">Adobe Reader</a> 或其他相容閱讀軟體開啟。EPUB檔案可以使用 <a href="http://www.adobe.com/products/digitaleditions/">Adobe Digital Edition</a> 或 iBooks（適用 iPad 平板電腦）等閱讀軟體開啟。</p>
+		<p>註2：PDF線上預覽使用 <a href="http://docs.google.com/viewer" target="_blank">Google Doc Viewer</a>（必須驗證您的 Google 帳號），EPUB線上預覽使用 <a href="http://www.magicscroll.net/" target="_blank">Magic Scroll</a>；受限於瀏覽器功能與字型限制，其顯示效果與下載版電子書可能有差異。</p>
 	</div>
 
 	<div id="tabs-3" style="display:none">
