@@ -33,7 +33,7 @@
 				<g:if test="${userOwnBook||userBuyBook||book.isPublic}">
 					<a name="download"></a>
 					<g:if test="${book?.isCooking}">
-						<p><strong>重新發佈中</strong> 電子書正在重新製作...</p>
+						<p><strong>Notice</strong> eBooks are publishing...</p>
 					</g:if>
 					<div class="download-links">
 						<bookTag:downloadLink book="${book}" type="epub">ePub</bookTag:downloadLink>
@@ -52,6 +52,9 @@
 						<bookTag:downloadLink book="${book}" type="cdn">On-Line</bookTag:downloadLink>
 					</div>
 				</g:if>
+				<g:else>
+					<p>You don't have permission to download files for this book.</p>
+				</g:else>
 			</div>
 
 

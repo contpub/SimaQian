@@ -69,53 +69,65 @@ class BookController {
 			userOwnBook: userOwnBook
 		])
 	}
+
+	private String getFileName(bookName) {
+		def dotPos = bookName.lastIndexOf('.')
+		bookName.substring(0, dotPos)
+	}
+
+	private String getExtName(bookName) {
+		def dotPos = bookName.lastIndexOf('.')
+		bookName.substring(dotPos+1)
+	}
 	
 	/**
 	 * Permalinks for Download Books, redirect to Amazon S3 Signed URL
 	 */
-	def download = {
-		def bookNameSrc = params.bookName
+	def download = {		
+		def bookName = getFileName(params.bookName)
+		def fileExt = getExtName(params.bookName)
 		
-		def dotPos = bookNameSrc.lastIndexOf('.')
-
-		def fileExt = bookNameSrc.substring(dotPos+1)
-
-		def bookName = bookNameSrc.substring(0, dotPos)
-		
-		//bookName = bookName.replaceFirst(~/\.[^\.]+$/, '')
-		
+		def user = User.get(session.userId)
 		def book = Book.findByName(bookName)
+
+		// book not found
+		if (!book) {
+			response.sendError 404
+		}
+
+		if (!book.isPublic) {
+			def link = UserAndBook.findByBookAndUser(book, user)
+
+			def perms = [UserAndBookLinkType.OWNER, UserAndBookLinkType.BUYER]
+
+			if (!link || !perms.contains(link.linkType)) {
+				response.sendError 403
+			}
+		}
 		
-		if (book) {
-			def awsCredentials = new AWSCredentials(
-				grailsApplication.config.aws.accessKey,
-				grailsApplication.config.aws.secretKey
-			)
-			
-			def s3Service = new RestS3Service(awsCredentials)
+		def awsCredentials = new AWSCredentials(
+			grailsApplication.config.aws.accessKey,
+			grailsApplication.config.aws.secretKey
+		)
+		
+		def s3Service = new RestS3Service(awsCredentials)
 
-			def bucket = s3Service.getBucket(grailsApplication.config.aws.bucketName)
-			def bucketName = grailsApplication.config.aws.bucketName
-			
-			def cal = Calendar.instance
-			cal.add(Calendar.MINUTE, 5)
-			def expiryDate = cal.time
-			
-			//def filepath = "${book.name.substring(0,1).toLowerCase()}/${book.name}.${fileExt}"
-			def filePath = "book/${book.name}.${fileExt}"
-			
-			def signedUrl = s3Service.createSignedGetUrl(bucketName, filePath, awsCredentials, expiryDate, false)
-			
-			//dirty hack for https(ssl) auth failed
-			signedUrl = signedUrl.replace('https://', 'http://')
+		def bucket = s3Service.getBucket(grailsApplication.config.aws.bucketName)
+		def bucketName = grailsApplication.config.aws.bucketName
+		
+		def cal = Calendar.instance
+		cal.add(Calendar.MINUTE, 3)
+		def expiryDate = cal.time
+		
+		//def filepath = "${book.name.substring(0,1).toLowerCase()}/${book.name}.${fileExt}"
+		def filePath = "book/${book.name}.${fileExt}"
+		
+		def signedUrl = s3Service.createSignedGetUrl(bucketName, filePath, awsCredentials, expiryDate, false)
+		
+		//dirty hack for https(ssl) auth failed
+		signedUrl = signedUrl.replace('https://', 'http://')
 
-			//render(filepath)
-			redirect (url: signedUrl)
-			//render ("${bucketName}/${book.name}.pdf")
-		}
-		else {
-			render (controller: 'errors', action: 'notFound')
-		}
+		redirect (url: signedUrl)
 	}
 	
 	/**

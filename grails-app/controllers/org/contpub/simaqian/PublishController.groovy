@@ -106,13 +106,15 @@ class PublishController {
 		if (!book) {
 			response.sendError 404
 		}
+
 		if (link?.linkType != UserAndBookLinkType.OWNER) {
 			response.sendError 403
 		}
 
 		if (params.confirm=='yes') {
-			book.isDeleted = true
-			book.save(flush: true)
+			//book.isDeleted = true
+			//book.save(flush: true)
+			book.delete(flush: true)
 			redirect(action: 'deleted')
 		}
 
