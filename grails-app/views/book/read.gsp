@@ -90,8 +90,12 @@
 			<g:if test="${userOwnBook}">
 				<userTag:isLogin>
 					<div style="text-align:right">
-						<g:link controller="publish" action="update" id="${book?.id}" class="clickable">設定</g:link>
-						<g:link controller="publish" action="editor" id="${book?.id}" class="clickable">編輯室</g:link>
+						<g:link controller="publish" action="update" id="${book?.id}" class="clickable">
+							<g:message code="button.publish.update" default="Settings" />
+						</g:link>
+						<g:link controller="publish" action="editor" id="${book?.id}" class="clickable">
+							<g:message code="button.publish.editor" default="Editor" />
+						</g:link>
 					</div>
 				</userTag:isLogin>
 			</g:if>

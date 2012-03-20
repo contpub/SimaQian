@@ -33,6 +33,6 @@ class User {
 	}
 
 	static mapping = {
-        books sort: 'dateCreated', order: 'desc'
+        books sort: 'lastUpdated', order: 'desc'
     }
 }

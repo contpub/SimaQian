@@ -14,10 +14,10 @@ class HomeController {
     def login() {
         def users = User.withCriteria {
             or {
-                eq ('email', params.email)
-                eq ('account', params.email)
+                eq ('email', params.loginEmail)
+                eq ('account', params.loginEmail)
             }
-            eq ('password', params.password)
+            eq ('password', params.loginPassword)
         }
         
         def user = users.size() > 0? users[0]: null
@@ -26,6 +26,7 @@ class HomeController {
             session.userId = user.id
         }
         else {
+            flash.loginEmail = params.loginEmail
             flash.loginErrors = 'E-mail or password not correct.'
         }
         if (!params.forwardURI) {

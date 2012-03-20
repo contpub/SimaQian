@@ -11,9 +11,6 @@
 		<g:each in="${sandboxList}" var="sandbox">
 			<li>
 				<g:link action="show" id="${sandbox?.id}">${sandbox?.title}</g:link>
-				<g:if test="${sandbox?.owner==user}">
-					<g:link action="publish" id="${sandbox?.id}">[Edit]</g:link>
-				</g:if>
 			</li>
 		</g:each>
 	</ul>

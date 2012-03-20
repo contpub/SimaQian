@@ -73,6 +73,21 @@ class SandboxController {
 	}
 
 	/**
+	 * delete sandbox
+	 */
+	def delete = {
+		def user = User.get(session.userId)
+		def sandbox = Sandbox.get(params.id)
+
+		if (!user) { response.sendError 403 }
+		if (!sandbox) { response.sendError 404 }
+		if (sandbox.owner != user) { response.sendError 403 }
+
+		sandbox.delete(flush: true)
+		redirect(action: 'user')
+	}
+
+	/**
 	 * Show User's Sandboxes
 	 */
 	def user = {

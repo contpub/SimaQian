@@ -22,38 +22,66 @@
   outline: none;
 }
 
-/* line 9, ../sass/controller_book.scss */
+/* line 8, ../sass/controller_book.scss */
+#controller-book.action-index #bookshelf {
+  margin: 0 auto;
+  width: 600px;
+  height: 616px;
+  padding: 0;
+  border: 1px solid black;
+  background: url(../../images/bookshelf_600px.png);
+}
+/* line 15, ../sass/controller_book.scss */
+#controller-book.action-index #bookshelf .inner {
+  border: 0;
+  margin: 55px 0 0 27px;
+  padding: 0 auto;
+}
+/* line 20, ../sass/controller_book.scss */
+#controller-book.action-index #bookshelf a {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+/* line 25, ../sass/controller_book.scss */
+#controller-book.action-index #bookshelf img {
+  float: left;
+  margin-bottom: 28px;
+  margin-right: 12px;
+}
+
+/* line 35, ../sass/controller_book.scss */
 #controller-book.action-read #main h3 {
   font-size: 1.25em;
   border-bottom: 3px solid #e0e0e0;
   text-shadow: #aaaaaa 1px 1px 1px;
 }
-/* line 16, ../sass/controller_book.scss */
+/* line 42, ../sass/controller_book.scss */
 #controller-book.action-read .comments {
   margin-left: 25px;
   margin-right: 25px;
 }
-/* line 20, ../sass/controller_book.scss */
+/* line 46, ../sass/controller_book.scss */
 #controller-book.action-read .title {
   font-size: 20px;
   font-weight: bold;
   color: #080000;
 }
-/* line 25, ../sass/controller_book.scss */
+/* line 51, ../sass/controller_book.scss */
 #controller-book.action-read .subtitle {
   font-size: 18px;
   color: #333333;
 }
-/* line 29, ../sass/controller_book.scss */
+/* line 55, ../sass/controller_book.scss */
 #controller-book.action-read .downloads {
   clear: both;
 }
-/* line 32, ../sass/controller_book.scss */
+/* line 58, ../sass/controller_book.scss */
 #controller-book.action-read .download-links {
   margin: 2.5em auto;
   text-align: center;
 }
-/* line 36, ../sass/controller_book.scss */
+/* line 62, ../sass/controller_book.scss */
 #controller-book.action-read .download-links a {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -125,18 +153,18 @@
 #controller-book.action-read .download-links a:active, #controller-book.action-read .download-links a:active:visited {
   color: white;
 }
-/* line 40, ../sass/controller_book.scss */
+/* line 66, ../sass/controller_book.scss */
 #controller-book.action-read .description pre, #controller-book.action-read .description code {
   width: 98%;
   height: 100%;
   background: none;
   border: 0;
 }
-/* line 46, ../sass/controller_book.scss */
+/* line 72, ../sass/controller_book.scss */
 #controller-book.action-read .fb-like {
   margin: 10px 25px;
 }
-/* line 50, ../sass/controller_book.scss */
+/* line 76, ../sass/controller_book.scss */
 #controller-book.action-read .post .description {
   font-size: 1.25em;
   color: #333333;

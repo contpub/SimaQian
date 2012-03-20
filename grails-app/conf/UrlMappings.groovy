@@ -28,8 +28,13 @@ class UrlMappings {
 			controller = "book"
 			action = "read"
 			constraints {
-				//bookName(matches:/^[a-zA-Z0-9]+$/)
-				//userName(matches:/^((?!^css$)(?!^js$)(?!^images$)(?!^session$)(?!^page$)(?!^share$).)*$/)
+			}
+		}
+
+		"/cover/$bookName" {
+			controller = "book"
+			action = "cover"
+			constraints {
 			}
 		}
 

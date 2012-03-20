@@ -12,15 +12,18 @@ form .form-errors {
 	width: 200px;
 	border: none;
 	background: none;
+	
+	#loginEmail, #loginPassword {
+		font-size: 1.125em;
+		padding: .25em;
+		width: 200px;
+	}
+
+	.button {
+		padding: 0 10px;
+	}
 }
-.login-form #email, .login-form #password {
-	font-size: 1.125em;
-	padding: .25em;
-	width: 200px;
-}
-.login-form .button {
-	padding: 0 10px;
-}
+
 .userBox img.avatar {
 	float: left;
 	margin: 5px;

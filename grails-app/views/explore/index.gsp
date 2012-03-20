@@ -36,9 +36,9 @@
 		clear: both;
 		text-align: right;
 	}
-	div.book-coverImage {
+	.cover-image {
 		float: left;
-		margin: 15px;
+		padding: 5px;
 	}
 	</style>
 </head>
@@ -49,7 +49,7 @@
 			<g:if test="${i<3}">
 				<div class="book">
 					<bookTag:link book="${book}">
-						<bookTag:coverImage book="${book}" />
+						<img src="${bookTag.createCoverLink(book: book)}" class="cover-image" />
 					</bookTag:link>
 					<div class="book-info">
 						<bookTag:link book="${book}"><h3 class="title">${book?.title}</h3></bookTag:link>

@@ -26,9 +26,18 @@
 		/
 		${sandbox.title}
 	</g:if>
+
+	<p style="float:right">
 	<g:if test="${sandbox.owner==user}">
-		<g:link action="update" id="${sandbox.id}">Edit</g:link>
+		<g:link action="publish" id="${sandbox.id}">
+			<g:message code="button.edit" default="Edit" />
+		</g:link>
+		|
+		<g:link action="delete" id="${sandbox.id}" onclick="return confirm('Are you sure?')"> 
+			<g:message code="button.delete" default="Delete" />
+		</g:link>
 	</g:if>
+	</p>
 
     <h2>${sandbox?.title}</h2>
 

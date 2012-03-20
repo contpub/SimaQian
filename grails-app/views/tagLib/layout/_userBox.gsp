@@ -15,6 +15,11 @@
 				</g:link>
 			</li>
 			<li>
+				<g:link controller="book" action="user" id="${user?.id}">
+					<g:message code="common.myCreations" default="Creations" />
+				</g:link>
+			</li>
+			<li>
 				<g:link controller="home" action="account">
 					<g:message code="common.myAccount" default="My Account" />
 				</g:link>
