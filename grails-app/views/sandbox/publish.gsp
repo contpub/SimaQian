@@ -260,11 +260,14 @@
 	</div>
 
 	<div id="dialog-help" title="${message(code: 'common.help', default: 'Help')}">
-		<p><span style="color:red">＊</span>設定完成後，請編輯電子書「原始碼」，並使用「發佈」按鈕產生電子書。</p>
-		<p><span style="color:red">＊</span>您在沙盒編輯的原始碼，以及產生的電子書檔案，將會開放任何人存取，請避免填入隱私資料。</p>
-		<p>使用<strong>沙盒測試</strong>體驗電子書製作，您可以不必註冊帳號。</p>
-		<p>在<strong>原始碼</strong>編輯器，輸入書籍內容，並按下「<strong>發佈</strong>」立即產生一本電子書。</p>
-		<p><font color="red">請注意！</font>沙盒測試產生的電子書，系統會定期進行清理，不會永久保存。如果您需要留存檔案資料，請自行下載存放。</p>
+		<p>
+			<span style="color:red">＊</span>
+			Press "Publish" to making eBook.
+		</p>
+		<p>
+			<span style="color:red">＊</span>
+			Sandboxes is public accessible, all source code and eBook could be freely access by any person.
+		</p>
 	</div>
 </body>
 </html>
