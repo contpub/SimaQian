@@ -89,6 +89,13 @@
 		<g:hiddenField name="url" value="" />
 		
 		<p>
+			<label for="agree">Permissions</label><br/>
+			<g:checkBox name="isPublic" value="${book?.isPublic}" />
+			<label for="isPublic"><g:message code="view.publish.form.isPublic" default="Public" /></label>
+			<g:message code="view.publish.form.isPublic.desc" default="make this book public" />
+		</p>
+
+		<p>
 			<label for="agree">Agreement</label><br/>
 			<g:checkBox name="agree" value="${true}" /> I have read, understood, and agree to <a href="#" id="agreement">Publishing Agreement</a><br/>
 			<iframe id="agreement-frame" src="${createLinkTo(file: 'publishing-agreement.html')}" style="width:90%;display:none"></iframe>

@@ -43,6 +43,7 @@ class PublishController {
 		
 		book.name = params.name
 		book.title = params.title
+		book.isPublic = params.isPublic=='on'
 
 		// Save Book!!!
 		if (book.validate() && book.save(flush: true)) {

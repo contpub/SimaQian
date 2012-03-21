@@ -110,7 +110,7 @@ class BookController {
     /**
      * Permalinks for Download Books, redirect to Amazon S3 Signed URL
      */
-    def download = {        
+    def download = {
         def bookName = getFileName(params.bookName)
         def fileExt = getExtName(params.bookName)
         

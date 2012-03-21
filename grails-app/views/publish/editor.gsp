@@ -91,6 +91,15 @@
 				'json'
 			);
 		});
+
+		// Auto-Save
+		var autoSave = function() {
+			window.setTimeout(function() {
+				$('a.save-button').click();
+				autoSave();
+			}, 30000);
+		};
+		autoSave();
 	});
 	</script>
 </head>
