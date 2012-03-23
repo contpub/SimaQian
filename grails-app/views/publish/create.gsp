@@ -39,6 +39,10 @@
 
 		$('#name').keyup(function() {
 			$('.preview-name').text($(this).val());
+		}).focus(function() {
+			$('#preview-box').fadeIn();
+		}).blur(function() {
+			$('#preview-box').fadeOut();
 		});
 		
 		$('#agree').click(function () {
@@ -69,12 +73,14 @@
 			<g:textField name="name" value="${book?.name}" />
 		</p>
 
-		<p>Book URLs preview:</p>
-		<ul class="preview-list">
-			<li>${grailsApplication.config.appConf.baseUrl}read/<span class="preview-name">${book?.name}</span></li>
-			<li>${grailsApplication.config.appConf.baseUrl}download/<span class="preview-name">${book?.name}</span>.pdf</li>
-			<li>${grailsApplication.config.appConf.cdn.href}pubic/<span class="preview-name">${book?.name}</span>/index.html</li>
-		</ul>
+		<div id="preview-box" style="display:none">
+			Book URLs preview:
+			<ul class="preview-list">
+				<li>${grailsApplication.config.appConf.baseUrl}read/<span class="preview-name">${book?.name}</span></li>
+				<li>${grailsApplication.config.appConf.baseUrl}download/<span class="preview-name">${book?.name}</span>.pdf</li>
+				<li>${grailsApplication.config.appConf.cdn.href}pubic/<span class="preview-name">${book?.name}</span>/index.html</li>
+			</ul>
+		</div>
 
 
 		<p>
@@ -89,15 +95,16 @@
 		<g:hiddenField name="url" value="" />
 		
 		<p>
-			<label for="agree">Permissions</label><br/>
+			<strong>Permissions</strong><br/>
 			<g:checkBox name="isPublic" value="${book?.isPublic}" />
-			<label for="isPublic"><g:message code="view.publish.form.isPublic" default="Public" /></label>
-			<g:message code="view.publish.form.isPublic.desc" default="make this book public" />
+			<label for="isPublic"><g:message code="view.publish.form.isPublic" default="Public" /></label><br/>
+			<g:message code="view.publish.form.isPublic.desc" default="Everyone can download this book, including an unpaid user." />
 		</p>
 
 		<p>
-			<label for="agree">Agreement</label><br/>
-			<g:checkBox name="agree" value="${true}" /> I have read, understood, and agree to <a href="#" id="agreement">Publishing Agreement</a><br/>
+			<strong>Agreement</strong><br/>
+			<g:checkBox name="agree" value="${true}" />
+			<label for="agree">I have read, understood, and agree to <a href="#" id="agreement">Publishing Agreement</a></label><br/>
 			<iframe id="agreement-frame" src="${createLinkTo(file: 'publishing-agreement.html')}" style="width:90%;display:none"></iframe>
 		</p>
 
