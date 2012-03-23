@@ -357,6 +357,10 @@ class PublishController {
 				case 'GIT':
 					newType = RepoType.GIT
 				break
+
+				case 'SVN':
+					newType = RepoType.SVN
+				break
 			}
 			if (newType) {
 				book.type = newType
@@ -396,6 +400,37 @@ class PublishController {
 		flash.type = 'notes'
 
 		redirect (action: 'setupGit', id: book?.id)
+	}
+
+	/**
+	 * Setup SVN
+	 */
+	def setupSvn = {
+		def book = Book.get(params.id)
+		[book: book]
+	}
+	
+	/**
+	 * Save SVN Setting
+	 */
+	def setupSvnSave = {
+		def book = Book.get(params.id)
+
+		if (!book) {
+			response.sendError 404
+			return
+		}
+
+		book.url = params.url
+		book.save(flush: true)
+
+		//flash messages
+		flash.message = 'common.flash.message.saved'
+		flash.args = [new Date(), book.title]
+		flash.default = '{1} saved {0}'
+		flash.type = 'notes'
+
+		redirect (action: 'setupSvn', id: book?.id)
 	}
 
 	/**

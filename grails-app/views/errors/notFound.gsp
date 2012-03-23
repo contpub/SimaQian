@@ -7,5 +7,6 @@
 <h2>Page not found</h2>
 <p>Oops, something wrong...</p>
 <p><g:link controller="home" action="index">Go Home</g:link></p>
+<p><g:renderException exception="${exception}" /></p>
 </body>
 </html>
