@@ -294,11 +294,14 @@ class BookController {
      * Get embedded contents
      */
     def embed = {
-
         def contentType = 'text/plain'
 
         //Implement SecretKey here!!!
         def book = Book.get(params.id)
+
+        if (!book) {
+            book = new Book()
+        }
         
         if (params.index != null) {
             return renderIndex(book)
@@ -307,17 +310,24 @@ class BookController {
             return renderSyntax(book)
         }
         
-        render (contentType: contentType, encoding: 'UTF-8', text: book.profile?.contents)
+        def contents = book.profile?.contents
+
+        if (!contents) {
+            contents = 'empty'
+        }
+
+        render (contentType: contentType, encoding: 'UTF-8', text: contents)
     }
 
     def renderIndex(book) {
-        def contents = """.. ${book.name}
+        def contents = """.. metadata
    @project: ${book.name}
    @title: ${book.title}
-   @copyright: 2011, ContPub
-   @authors: 2011, ContPub
+   @authors: ${book.authors}
    @language: zh_TW
+   @html_theme: nature
    @epub_theme: epub_simple
+   @mobi_theme: mobi_simple
 
 ####
 ${book.title}
