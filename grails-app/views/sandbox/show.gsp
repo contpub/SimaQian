@@ -1,24 +1,38 @@
 <html>
 <head>
-	<socialTag:openGraph title="${sandbox?.title}" type="book" url="${createLink(action: 'show', id: sandbox?.id, absolute: true)}" image="${createLinkTo(dir: 'icons', file: 'book.png', absolute: true)}" description="您也可以使用「沙盒」輕鬆製作一本電子書，趕快來體驗開放源碼電子書。" />
-	<title>${sandbox?.title}</title>
-	<style tyle="text/css">
-	.CodeMirror {
-		background: #ffffee;
-		padding: 1em;
-		font-family: 'Droid Sans Mono', sans-serif, Consolata, monospace;
-		font-size: 12pt;
-		line-height: 1.25em;
-	}
-	</style>
-	<r:script>
-	$(function() {
-		$('#code').codemirror({
-			mode: 'text/x-rst',
-			runmode: true
-		});
+<socialTag:openGraph title="${sandbox?.title}" type="book" url="${createLink(action: 'show', id: sandbox?.id, absolute: true)}" image="${createLinkTo(dir: 'icons', file: 'book.png', absolute: true)}" description="您也可以使用「沙盒」輕鬆製作一本電子書，趕快來體驗開放源碼電子書。" />
+<title>${sandbox?.title}</title>
+<layoutTag:webFonts family="Droid Sans Mono" />
+
+<style tyle="text/css">
+.CodeMirror {
+	font-family: 'Droid Sans Mono', sans-serif, Consolata, monospace;
+	font-size: 12pt;
+	line-height: 1.25em;
+	height: 320px;
+	margin: 0 1.5em;
+}
+.CodeMirror-scroll {
+	width: 100%;
+	height: 100%;
+}
+</style>
+<r:script>
+$(function() {
+	var editor = CodeMirror.fromTextArea(
+		document.getElementById('contents'), {
+		lineNumbers: true,
+		indentUnit: 4,
+		indentWithTabs: false,     
+		tabMode: 'shift', //indent
+		enterMode: 'keep', //indent
+		matchBrackets: true,
+		theme: 'default',	//[default, night]
+		lineWrapping: true,
+		readOnly: true
 	});
-	</r:script>
+});
+</r:script>
 </head>
 <body>
 	<g:link action="list">Sandbox</g:link>
@@ -42,8 +56,8 @@
     <h2>${sandbox?.title}</h2>
 
     <h3>E-book source code</h3>
-    <div style="overflow:auto;width:95%;height:240px;margin:auto">
-		<textarea id="code" style="display:none">${sandbox?.contents}</textarea>
+    <div style="height:320px">
+		<g:textArea name="contents" value="${sandbox?.contents}" style="display:none" />
 	</div>
 
 	<h3>Download</h3>
@@ -101,7 +115,7 @@
 	</div>
 
 	<h3>Share with friends</h3>
-	
+
 	<div style="margin: 1em 2em;height:50px;overflow:hidden">
 		<socialTag:facebookLikeButton />
 	</div>
