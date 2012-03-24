@@ -1,5 +1,5 @@
 /* incase an inverted custom gradient isn't specified */
-/* line 177, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 177, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.2.0/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class {
   font-family: "Lucida Grande", Lucida, Arial, sans-serif;
   background: url('/compass/images/button_bg.png?1326776211') repeat-x bottom left;
@@ -12,12 +12,12 @@
   border-style: solid;
   font-weight: bold;
 }
-/* line 165, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 165, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.2.0/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class::-moz-focus-inner {
   border: none;
   padding: 0;
 }
-/* line 168, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 168, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.2.0/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class:focus {
   outline: none;
 }

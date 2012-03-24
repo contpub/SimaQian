@@ -49,6 +49,7 @@ class BookController {
         
         if (!book || book.isDeleted) {
             response.sendError 404
+            return
         }
         
         def link = UserAndBook.findByUserAndBook(user, book)
@@ -82,6 +83,7 @@ class BookController {
 
         if (!user) {
             response.sendError 404
+            return
         }
 
         (user.books).each {
@@ -97,12 +99,12 @@ class BookController {
         ]
     }
 
-    private String getFileName(bookName) {
+    def parseFileName(bookName) {
         def dotPos = bookName.lastIndexOf('.')
         bookName.substring(0, dotPos)
     }
 
-    private String getExtName(bookName) {
+    def parseExtName(bookName) {
         def dotPos = bookName.lastIndexOf('.')
         bookName.substring(dotPos+1)
     }
@@ -111,8 +113,8 @@ class BookController {
      * Permalinks for Download Books, redirect to Amazon S3 Signed URL
      */
     def download = {
-        def bookName = getFileName(params.bookName)
-        def fileExt = getExtName(params.bookName)
+        def bookName = parseFileName(params.bookName)
+        def fileExt = parseExtName(params.bookName)
         
         def user = User.get(session.userId)
         def book = Book.findByName(bookName)
@@ -120,6 +122,7 @@ class BookController {
         // book not found
         if (!book) {
             response.sendError 404
+            return
         }
 
         if (!book.isPublic) {
@@ -129,6 +132,7 @@ class BookController {
 
             if (!link || !perms.contains(link.linkType)) {
                 response.sendError 403
+                return
             }
         }
         
@@ -149,25 +153,39 @@ class BookController {
         //def filepath = "${book.name.substring(0,1).toLowerCase()}/${book.name}.${fileExt}"
         def filePath = "book/${book.name}.${fileExt}"
         
-        def signedUrl = s3Service.createSignedGetUrl(bucketName, filePath, awsCredentials, expiryDate, false)
-        
-        //dirty hack for https(ssl) auth failed
-        signedUrl = signedUrl.replace('https://', 'http://')
-
-        redirect (url: signedUrl)
+        if (params.redirect != null) {
+            def signedUrl = s3Service.createSignedGetUrl(bucketName, filePath, awsCredentials, expiryDate, false)        
+            //dirty hack for https(ssl) auth failed
+            signedUrl = signedUrl.replace('https://', 'http://')
+            redirect (url: signedUrl)
+        }
+        else {
+            try {
+                def object = s3Service.getObject(bucket, filePath)
+                response.contentType = object.contentType
+                response.setHeader "Content-length", "${object.contentLength}"
+                response.setHeader "Content-Disposition", "inline; filename=\"${bookName}.${fileExt}\""
+                response.outputStream << object.dataInputStream
+            }
+            catch (ex) {
+                response.sendError 404
+                return
+            }
+        }
     }
     
     /**
      * Cover image for Book
      */
     def cover = {       
-        def bookName = getFileName(params.bookName)
-        def fileExt = getExtName(params.bookName)
+        def bookName = parseFileName(params.bookName)
+        def fileExt = parseExtName(params.bookName)
 
         def book = Book.findByName(bookName)
 
         if (!book) {
             response.sendError 404
+            return
         }
 
         def awsCredentials = new AWSCredentials(

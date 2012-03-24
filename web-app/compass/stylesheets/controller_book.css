@@ -1,5 +1,5 @@
 /* incase an inverted custom gradient isn't specified */
-/* line 177, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 177, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.2.0/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class, #controller-book.action-read .download-links a {
   font-family: "Lucida Grande", Lucida, Arial, sans-serif;
   background: url('/compass/images/button_bg.png?1326776211') repeat-x bottom left;
@@ -12,12 +12,12 @@
   border-style: solid;
   font-weight: bold;
 }
-/* line 165, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 165, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.2.0/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class::-moz-focus-inner, #controller-book.action-read .download-links a::-moz-focus-inner {
   border: none;
   padding: 0;
 }
-/* line 168, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 168, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.2.0/lib/stylesheets/_fancy-buttons.sass */
 .fancy-button-reset-base-class:focus, #controller-book.action-read .download-links a:focus {
   outline: none;
 }
@@ -83,11 +83,10 @@
 }
 /* line 62, ../sass/controller_book.scss */
 #controller-book.action-read .download-links a {
-  -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
-  -o-border-radius: 4px;
+  -moz-border-radius: 4px;
   -ms-border-radius: 4px;
-  -khtml-border-radius: 4px;
+  -o-border-radius: 4px;
   border-radius: 4px;
   font-size: 1.25em;
   line-height: 1.2em;
@@ -102,22 +101,18 @@
   background-image: linear-gradient(#5aa0e9, #1b72cd 10%, #10447b 50%, #0e3d6e 50%, #14569b);
   border-color: #092645;
   text-shadow: #000d1b 0px 1px 1px;
-  -moz-box-shadow: rgba(255, 255, 255, 0.304) 0 0 0.1em 1px inset;
   -webkit-box-shadow: rgba(255, 255, 255, 0.304) 0 0 0.1em 1px inset;
-  -o-box-shadow: rgba(255, 255, 255, 0.304) 0 0 0.1em 1px inset;
+  -moz-box-shadow: rgba(255, 255, 255, 0.304) 0 0 0.1em 1px inset;
   box-shadow: rgba(255, 255, 255, 0.304) 0 0 0.1em 1px inset;
-  -moz-background-clip: padding;
   -webkit-background-clip: padding;
-  -o-background-clip: padding-box;
-  -ms-background-clip: padding-box;
-  -khtml-background-clip: padding-box;
+  -moz-background-clip: padding;
   background-clip: padding-box;
 }
-/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.2.0/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a, #controller-book.action-read .download-links a:visited {
   color: white;
 }
-/* line 31, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 31, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.2.0/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a:hover, #controller-book.action-read .download-links a:focus {
   background-color: #00448c;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4c98e8), color-stop(10%, #196abf), color-stop(50%, #0e3d6e), color-stop(50%, #0d3560), color-stop(100%, #134f8e));
@@ -129,11 +124,11 @@
   border-color: #071f38;
   text-shadow: #00060c 0px 1px 1px;
 }
-/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.2.0/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a:hover, #controller-book.action-read .download-links a:hover:visited, #controller-book.action-read .download-links a:focus, #controller-book.action-read .download-links a:focus:visited {
   color: white;
 }
-/* line 36, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 36, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.2.0/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a:active {
   background-color: #003d7c;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #0e3d6e), color-stop(30%, #104277), color-stop(50%, #0d3865), color-stop(50%, #0b3057), color-stop(100%, #135192));
@@ -144,12 +139,11 @@
   background-image: linear-gradient(#0e3d6e, #104277 30%, #0d3865 50%, #0b3057 50%, #135192);
   border-color: #06172a;
   text-shadow: black 0px -1px -1px;
-  -moz-box-shadow: #092645 0 0.08em 0.2em 1px inset;
   -webkit-box-shadow: #092645 0 0.08em 0.2em 1px inset;
-  -o-box-shadow: #092645 0 0.08em 0.2em 1px inset;
+  -moz-box-shadow: #092645 0 0.08em 0.2em 1px inset;
   box-shadow: #092645 0 0.08em 0.2em 1px inset;
 }
-/* line 116, ../../../../../../../opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.1.2/lib/stylesheets/_fancy-buttons.sass */
+/* line 116, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.2.0/lib/stylesheets/_fancy-buttons.sass */
 #controller-book.action-read .download-links a:active, #controller-book.action-read .download-links a:active:visited {
   color: white;
 }

@@ -39,10 +39,12 @@ class SandboxController {
 
 		if (!user) {
 			response.sendError 403
+			return
 		}
 
 		if (sandbox && sandbox.owner != user) {
 			response.sendError 403
+			return
 		}
 
 		if (!sandbox) {
@@ -79,9 +81,9 @@ class SandboxController {
 		def user = User.get(session.userId)
 		def sandbox = Sandbox.get(params.id)
 
-		if (!user) { response.sendError 403 }
-		if (!sandbox) { response.sendError 404 }
-		if (sandbox.owner != user) { response.sendError 403 }
+		if (!user) { response.sendError 403; return }
+		if (!sandbox) { response.sendError 404; return }
+		if (sandbox.owner != user) { response.sendError 403; return }
 
 		sandbox.delete(flush: true)
 		redirect(action: 'user')

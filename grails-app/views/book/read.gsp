@@ -26,8 +26,6 @@
 				${book?.profile?.description}
 			</div>
 			
-			<socialTag:facebookLikeButton />
-
 			<h3><g:message code="common.download.ebook" default="Download eBooks"/></h3>
 			<div class="downloads">
 				<g:if test="${userOwnBook||userBuyBook||book.isPublic}">
@@ -57,8 +55,12 @@
 				</g:else>
 			</div>
 
+			<h3>Share with friends</h3>
+			<div style="height:50px;overflow:hidden">
+				<socialTag:facebookLikeButton />
+			</div>
 
-			<div class="comments">
+			<div class="comments" style="min-height:250px">
 				<socialTag:disqus identifier="book-${book?.name}" url="${bookTag.createLink(book: book)}" />
 			</div>
 		</div>
@@ -68,10 +70,9 @@
 				<img src="${createLinkTo(dir: 'images', file: 'book_icon.png')}" class="book-icon" />
 			</p>-->
 			
-			<p>
-				<bookTag:coverImage book="${book}" />
-			</p>
-			
+			<div style="height:120px;text-align:center">
+				<img src="${bookTag.createCoverLink(book: book)}" alt="${book?.title}" />
+			</div>
 			<div class="post-meta">
 				<!--<h4>Book Info</h4>-->
 				<ul>

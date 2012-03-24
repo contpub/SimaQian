@@ -4,9 +4,9 @@
 <title>Forbidden</title>
 </head>
 <body>
-<h2>Forbidden</h2>
-<p>Oops, something wrong...</p>
-<p>${exception}</p>
+<h2>Error 403: forbidden</h2>
+<p>Oops, something wrong... ${exception}</p>
+<div style="text-align:center"><img src="${createLinkTo(dir:'images', file:'error-403.png')}" alt="error-403" /></div>
 <p><g:link controller="home" action="index">Go Home</g:link></p>
 </body>
 </html>

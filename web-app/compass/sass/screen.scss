@@ -18,6 +18,10 @@
 @import "controller_publish.scss";
 @import "controller_sandbox.scss";
 
+h1, h2, h3 {
+	@include single-text-shadow(#cccccc, 2px, 2px, 2px);
+}
+
 .fancy-button {
 	@include fancy-button(#124c89, 16px, 4px, 1px);
 }

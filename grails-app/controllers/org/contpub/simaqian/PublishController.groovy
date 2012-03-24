@@ -88,9 +88,11 @@ class PublishController {
 
 		if (!book) {
 			response.sendError 404
+			return
 		}
 		if (link?.linkType != UserAndBookLinkType.OWNER) {
 			response.sendError 403
+			return
 		}
 
 		[book: book]
@@ -106,10 +108,12 @@ class PublishController {
 
 		if (!book) {
 			response.sendError 404
+			return
 		}
 
 		if (link?.linkType != UserAndBookLinkType.OWNER) {
 			response.sendError 403
+			return
 		}
 
 		if (params.confirm=='yes') {
