@@ -46,7 +46,7 @@ grails.project.dependency.resolution = {
 		
 		//runtime 'commons-collections:commons-collections:3.2.1'
 		
-		runtime "net.java.dev.jets3t:jets3t:0.8.1"
+		runtime "net.java.dev.jets3t:jets3t:0.9.0"
 	}
 
 	plugins {

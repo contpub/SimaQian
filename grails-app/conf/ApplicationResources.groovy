@@ -4,21 +4,21 @@ modules = {
     }
 
     compass {
-        resource url: [dir: '/compass/stylesheets', file: 'screen.css'],
+        resource url: [dir: '/stylesheets', file: 'screen.css'],
             attrs: [media: 'screen, projection']
-        resource url: [dir: '/compass/stylesheets', file: 'print.css'],
+        resource url: [dir: '/stylesheets', file: 'print.css'],
             attrs: [media: 'print']
-        resource url: [dir: '/compass/stylesheets', file: 'ie.css'],
+        resource url: [dir: '/stylesheets', file: 'ie.css'],
             attrs: [media: 'screen'],
             wrapper: { s -> "<!--[if IE]>$s<![endif]-->" }
-        resource url: [dir: '/compass/stylesheets', file: 'ie6.css'],
+        resource url: [dir: '/stylesheets', file: 'ie6.css'],
             attrs: [media: 'screen'],
             wrapper: { s -> "<!--[if lt IE 7]>$s<![endif]-->" }
     }
 
     reset {
         resource url: [
-            dir: '/compass/stylesheets',
+            dir: '/stylesheets',
             file: 'reset.css'],
             attrs: [media: 'screen'
         ]

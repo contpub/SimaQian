@@ -1,0 +1,17 @@
+#controller-publish {
+	
+}
+
+#controller-publish.action-update {
+	span.required {
+		color: red;
+		font-weight: bold;
+	}
+	div.book-coverImage {
+		margin: 10px;
+		float: left;
+	}
+	.clear-both {
+		clear:both;
+	}
+}

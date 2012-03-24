@@ -35,7 +35,13 @@ grails.mime.types = [
 //grails.urlmapping.cache.maxsize = 1000
 
 // What URL patterns should be processed by the resources plugin
-grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
+grails.resources.adhoc.patterns = [
+	'/images/*',
+	'/css/*',
+	'/stylesheets/*',
+	'/js/*',
+	'/plugins/*'
+]
 
 // The default codec used to encode data with ${}
 grails.views.default.codec = "none" // none, html, base64
@@ -106,6 +112,9 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+//richui
+richui.serve.resource.files.remote=true
 
 // RabbitMQ configuration
 rabbitmq {

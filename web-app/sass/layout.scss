@@ -1,0 +1,169 @@
+@import "compass/css3/text-shadow";
+
+/* Form Elements */
+form .form-errors {
+	color: red;
+	@include single-text-shadow(#aaaaaa, 1px, 1px, 2px);
+}
+
+.login-form {
+	margin: 0;
+	padding: 10px;
+	width: 200px;
+	border: none;
+	background: none;
+	
+	#loginEmail, #loginPassword {
+		font-size: 1.125em;
+		padding: .25em;
+		width: 200px;
+	}
+
+	.button {
+		padding: 0 10px;
+	}
+}
+
+.userBox img.avatar {
+	float: left;
+	margin: 5px;
+}
+.userBox ul {
+	clear: both;
+}
+.userBox .user-info {
+	padding: 5px;
+}
+.button.wide {
+	padding: 0 10px;
+}
+img.ajax-loader {
+	background: none;
+	border: 0;
+}
+p.errors {
+	color: red;
+}
+
+
+/* messages */
+#flash-message {
+}
+.errors {
+	@extend #flash-message;
+	color: red;
+}
+.warnings {
+	@extend #flash-message;
+	color: orange;
+}
+.notes {
+	@extend #flash-message;
+	color: blue;
+}
+
+/* Post Adjust */
+#post.clearlook {
+	h2, h3 {
+		@include single-text-shadow(#afafaf, 1px, 1px, 2px);
+	}
+	h2 {
+		font-size: 22px;
+		color: #080000;
+	}
+	h3 {
+		font-size: 18px;
+		color: #080505;
+	}
+	p {
+		font-size: 1.125em;
+	}
+}
+
+
+/* Book Cover Images */
+div.book-coverImage {
+	background: transparent;
+	border: 0;
+	width: 100px;
+	height: 115px;
+	position: relative;
+}
+div.book-coverImage img.cover-image {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	border-radius: 0;
+	background: none;
+	position: absolute;
+	bottom: 0;
+}
+div.book-coverImage span.embedded-title {
+	width: 78px;
+	height: 105px;
+	position: absolute;
+	margin-left: 15px;
+	margin-top: 10px;
+	color: #dadada;
+	text-shadow: 2px 2px 2px #000;
+	overflow: hidden;
+	text-align: center;
+}
+
+/* Images */
+
+/* 清除圖片不必要的設定 */
+img.clear {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background: none;
+}
+
+/* Paginate */
+.paginate {
+	text-align: center;
+	padding: 10px;
+}
+.paginate span, .paginate a {
+	padding: 5px;
+}
+
+/* Gravatar */
+.gravatar {
+	background:url(../../images/gravatar.jpg);
+}
+
+#rss {
+	display: none;
+}
+
+/* Table */
+table.form-layout {
+	th {
+		background: none;
+		border: none;
+		color: #333333;
+		text-align: right;
+		font-weight: normal;
+		margin: 0;
+		padding: 0;
+		vertical-align: middle;
+	}
+	td {
+		border: none;
+	}
+}
+
+/* Disqus Comments */
+
+#disqus_thread {
+	img {
+		border: none;
+		padding: 0;
+		background: none;
+	}
+	h3 {
+		font-size: 18px;
+	}
+}

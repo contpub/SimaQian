@@ -1,0 +1,21 @@
+@import "fancy-buttons";
+
+#controller-sandbox {
+	
+}
+
+#controller-sandbox.action-show {
+	#main {
+		h3 {
+			font-size: 1.25em;
+			border-bottom: 3px solid #e0e0e0;
+			padding: 0;
+
+			@include single-text-shadow(#aaaaaa, 1px, 1px, 1px)
+		}
+	}
+	.comments {
+		margin-left: 25px;
+		margin-right: 25px;
+	}
+}

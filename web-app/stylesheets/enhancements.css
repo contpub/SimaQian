@@ -1,0 +1,67 @@
+/* css3 design enhancements */
+/* line 4, ../sass/enhancements.scss */
+a:link.more, a:visited.more {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* line 11, ../sass/enhancements.scss */
+a:link.clickable, a:visited.clickable {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* line 18, ../sass/enhancements.scss */
+img.coolblue {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 23, ../sass/enhancements.scss */
+#header h1#logo-text a {
+  text-shadow: #acacac 1px 1px 2px;
+}
+
+/* line 27, ../sass/enhancements.scss */
+#header #nav ul,
+#header p#rss a {
+  text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.9);
+}
+
+/* line 31, ../sass/enhancements.scss */
+#footer-outer,
+#footer-bottom {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+/* line 34, ../sass/enhancements.scss */
+p.thumbs img {
+  -moz-box-shadow: 1px 1px 3px #184569;
+  -webkit-box-shadow: 1px 1px 3px #184569;
+  box-shadow: 1px 1px 3px #184569;
+}
+
+/* line 39, ../sass/enhancements.scss */
+.right .image-section img {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -moz-box-shadow: 3px 3px 3px #f3f4f5, -3px -3px 3px #f3f4f5;
+  -webkit-box-shadow: 3px 3px 3px #f3f4f5, -3px -3px 3px #f3f4f5;
+  box-shadow: 3px 3px 3px #f3f4f5, -3px -3px 3px #f3f4f5;
+}
+
+/* line 48, ../sass/enhancements.scss */
+.left p.dateinfo {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+/* line 49, ../sass/enhancements.scss */
+.left p.dateinfo span {
+  text-shadow: none;
+}

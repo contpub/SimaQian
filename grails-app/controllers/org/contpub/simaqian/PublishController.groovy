@@ -596,7 +596,10 @@ class PublishController {
 	}
 
 	private boolean sendCookMessage(book) {
-		if (book.isCooking == false) {
+		
+		def isAllow = true //book.isCooking
+
+		if (isAllow) {
 			book.isCooking = true
 			book.countCook ++
 			book.save()
@@ -604,13 +607,21 @@ class PublishController {
 			def json = new JsonBuilder()
 			def version = grailsApplication.config.appConf.cook.version
 
-			def contentUrl
+			def contentType = book.type
+			def contentUrl = book.url
 			
+			// check type settings
+			if (contentType.equals(RepoType.GIT) || contentType.equals(RepoType.SVN)) {
+
+				// repositories must have url
+				if (contentUrl == null || contentUrl == '') {
+					contentType = RepoType.EMBED
+				}
+			}
+
+			// auto-generate url if type is EMBED
 			if (book.type.equals(RepoType.EMBED)) {
 				contentUrl = createLink(controller: 'book', action: 'embed', id: book.id, absolute: true)
-			}
-			else {
-				contentUrl = book.url
 			}
 
 			def vhost

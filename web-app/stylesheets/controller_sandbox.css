@@ -1,0 +1,36 @@
+/* incase an inverted custom gradient isn't specified */
+/* line 177, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.2.0/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class {
+  font-family: "Lucida Grande", Lucida, Arial, sans-serif;
+  background: url('/compass/images/button_bg.png?1326776211') repeat-x bottom left;
+  margin: 0;
+  width: auto;
+  overflow: visible;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  border-style: solid;
+  font-weight: bold;
+}
+/* line 165, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.2.0/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class::-moz-focus-inner {
+  border: none;
+  padding: 0;
+}
+/* line 168, /opt/local/lib/ruby/gems/1.8/gems/fancy-buttons-1.2.0/lib/stylesheets/_fancy-buttons.sass */
+.fancy-button-reset-base-class:focus {
+  outline: none;
+}
+
+/* line 9, ../sass/controller_sandbox.scss */
+#controller-sandbox.action-show #main h3 {
+  font-size: 1.25em;
+  border-bottom: 3px solid #e0e0e0;
+  padding: 0;
+  text-shadow: #aaaaaa 1px 1px 1px;
+}
+/* line 17, ../sass/controller_sandbox.scss */
+#controller-sandbox.action-show .comments {
+  margin-left: 25px;
+  margin-right: 25px;
+}

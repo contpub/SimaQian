@@ -1,0 +1,81 @@
+@import "fancy-buttons";
+
+#controller-book {
+	
+}
+
+#controller-book.action-index {
+	#bookshelf {
+		margin: 0 auto;
+		width: 600px;
+		height: 616px;
+		padding: 0;
+		border: 1px solid black;
+		background: url(../../images/bookshelf_600px.png);
+		.inner {
+			border: 0;
+			margin: 55px 0 0 27px;
+			padding: 0 auto;
+		}
+		a {
+			border: 0;
+			padding: 0;
+			margin: 0;
+		}
+		img {
+			float: left;
+			margin-bottom: 28px;
+			margin-right: 12px;
+		}
+	}
+}
+
+#controller-book.action-read {
+	#main {
+		h3 {
+			font-size: 1.25em;
+			border-bottom: 3px solid #e0e0e0;
+
+			@include single-text-shadow(#aaaaaa, 1px, 1px, 1px)
+		}
+	}
+	.comments {
+		margin-left: 25px;
+		margin-right: 25px;
+	}
+	.title {
+		font-size: 20px;
+		font-weight: bold;
+		color: #080000;
+	}
+	.subtitle {
+		font-size: 18px;
+		color: #333333;
+	}
+	.downloads {
+		clear: both;
+	}
+	.download-links {
+		margin: 2.5em auto;
+		text-align: center;
+
+		a {
+			@include fancy-button(#124c89, 1.25em, 4px, 1px);
+		}
+	}
+	.description pre, .description code {
+		width: 98%;
+		height: 100%;
+		background: none;
+		border: 0;
+	}
+	.fb-like {
+		margin: 10px 25px;
+	}
+	.post {
+		.description {
+			font-size: 1.25em;
+			color: #333333;
+		}
+	}
+}
