@@ -55,6 +55,22 @@
 				</g:else>
 			</div>
 
+			<h3>Reader services</h3>
+			<ul>
+				<li>aaa</li>
+			</ul>
+			<p>
+			<select>
+				<option value="0"></option>
+				<option value="1">I want to report a problem.</option>
+				<option value="2">I can't download this book.</option>
+				<option value="3">This book contains illegal contents.</option>
+			</select><br/>
+			<g:textArea name="feedback" /><br/>
+			<g:submitButton name="submit" value="Send" class="fancy-button" />
+			</p>
+
+
 			<h3>Share with friends</h3>
 			<div style="height:50px;overflow:hidden">
 				<socialTag:facebookLikeButton />
@@ -85,6 +101,7 @@
 					<g:if test="${book?.cookUpdated}">
 						<li class="time">${book?.cookUpdated?.format('yyyy/MM/dd')}</li>
 					</g:if>
+					<!--<li class=""><a id="appeal" href="#appeal"><g:message code="common.appeal" default="Appeal" /></a></li>-->
 				</ul>
 			</div>
 			

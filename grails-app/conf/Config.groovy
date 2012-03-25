@@ -69,6 +69,9 @@ environments {
     development {
         grails.logging.jul.usebridge = true
 
+		// Grails cdn-resources plugin
+		grails.resources.cdn.enabled = false
+
 		recaptcha {
 			enabled = true
 			useSecureAPI = true
@@ -83,6 +86,10 @@ environments {
         grails.serverURL = "http://contpub.org"
 
 		//log4j.appender.'errors.File'="/tmp/stacktrace.log"
+
+		// Grails cdn-resources plugin
+		grails.resources.cdn.enabled = true
+		grails.resources.cdn.url = "http://static.contpub.org/"
 
 		recaptcha {
 			enabled = true
@@ -160,7 +167,7 @@ grails.config.locations = [
 
 // Gravatar
 avatarPlugin {
-	defaultGravatarUrl='http://contpub.org/static/images/gravatar.jpg'
+	defaultGravatarUrl='http://cdn.contpub.org/images/gravatar.png'
 	gravatarRating="G"
 }
 
