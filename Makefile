@@ -9,8 +9,10 @@ commit:
 update:
 	git pull
 
+clean:
+	grails clean
+
 war:
-	#grails clean
 	grails war
 
 download:
@@ -19,10 +21,18 @@ download:
 upload:
 	s3cmd put -P target/SimaQian.war s3://s3.contpub.org/webapps/
 
+remote-deploy:
+	ssh -t kyle@contpub.org 'cd SimaQian && make update download && sudo make deploy'
+
+remote-log:
+	ssh -t kyle@contpub.org 'cd SimaQian && make log'
+
 deploy:
 	service tomcat6 stop
 	rm -rf /var/lib/tomcat6/webapps-contpub/ROOT.war
 	rm -rf /var/lib/tomcat6/webapps-contpub/ROOT
 	cp target/SimaQian.war /var/lib/tomcat6/webapps-contpub/ROOT.war
 	service tomcat6 start
+
+log:
 	tail -f /var/lib/tomcat6/logs/catalina.out

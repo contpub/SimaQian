@@ -14,13 +14,13 @@
 }
 </style>
 <r:script>
-	$(function() {
-		$('#tabs').tabs();
-		$('#code').codemirror({
-			mode: 'text/x-rst',
-			runmode: true
-		});
+$(function() {
+	$('#tabs').tabs();
+	$('#code').codemirror({
+		mode: 'text/x-rst',
+		runmode: true
 	});
+});
 </r:script>
 </head>
 <body>

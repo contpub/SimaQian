@@ -85,8 +85,6 @@ environments {
         grails.logging.jul.usebridge = false
         grails.serverURL = "http://contpub.org"
 
-		//log4j.appender.'errors.File'="/tmp/stacktrace.log"
-
 		// Grails cdn-resources plugin
 		grails.resources.cdn.enabled = false
 		grails.resources.cdn.url = "http://static.contpub.org/"
@@ -94,6 +92,11 @@ environments {
 		recaptcha {
 			enabled = true
 			useSecureAPI = true
+		}
+
+		//log4j.appender.'errors.File'="/tmp/stacktrace.log"
+		log4j = {
+			'null' name:'stacktrace'
 		}
 	}
 }
