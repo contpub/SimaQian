@@ -26,7 +26,7 @@ modules = {
 
     colorbox {
         resource url: [dir: '/css', file: 'colorbox.css'], attrs: [media: 'screen']
-        resource url: [dir: '/js', file: 'jquery.colorbox-min.js']
+        resource url: [dir: '/js', file: 'jquery.colorbox.min.js']
     }
 
     codemirror {
