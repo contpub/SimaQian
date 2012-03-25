@@ -1,3 +1,5 @@
+@import "fancy-buttons";
+
 #controller-publish {
 	
 }
@@ -13,5 +15,44 @@
 	}
 	.clear-both {
 		clear:both;
+	}
+}
+
+#controller-publish.action-editor {
+	.toolbar {
+		margin: 5px 10px;
+		img {
+			background: none;
+			border: 0;
+		}
+		
+	}
+	.CodeMirror {
+		font-family: 'Droid Sans Mono', sans-serif, Consolata, monospace;
+		font-size: 12pt;
+		line-height: 1.25em;
+		margin: 0 10px;
+		width: auto;
+		height: 480px;
+	}
+	.CodeMirror-scroll {
+		width: 100%;
+		height: 100%;
+	}
+	.paginate {
+		a {
+			color: #ddd;
+		}
+		.currentStep {
+			color: #fff;
+		}
+		.prevLink, .step, .currentStep, .nextLink {
+			margin: 0 2px;
+			background: #aaaaaa;
+			border: 1px solid #cccccc;
+		}
+	}
+	.insertion {
+		text-align: center;
 	}
 }

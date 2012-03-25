@@ -4,7 +4,7 @@ body {
 	font: 13px/170% 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
 	color: #777;
 	margin: 0; padding: 0;
-	background: url(../../images/bg.jpg);
+	background: url(../images/bg.jpg);
 }
 /* links */
 a:link, a:visited {
@@ -102,7 +102,7 @@ blockquote {
 	margin: 10px 25px;
 	padding: 10px 20px 10px 32px;
 	border: 1px solid #F0F0F0;
-	background: #f8f8f8 url(../../images/quote.gif) no-repeat 12px 12px;
+	background: #f8f8f8 url(../images/quote.gif) no-repeat 12px 12px;
 	font-weight: normal;
 	font-size: 17px;
 	line-height: 1.5em;
@@ -190,7 +190,7 @@ input.button {
 	float: left;
 	height: 150px;
 	width: 100%;
-	background: url(../../images/header-bg.png) repeat-x bottom;
+	background: #ffffff url(../images/header-bg.png) repeat-x bottom;
 }
 #header {
 	position: relative;
@@ -243,7 +243,7 @@ input.button {
 	text-align: right;
 }
 #header p#rss a {
-	background: transparent url(../../images/rss.gif) no-repeat left center;
+	background: transparent url(../images/rss.gif) no-repeat left center;
 	color: #baa7a7;
 	height: 30px;
 	font: bold 12px 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
@@ -266,7 +266,7 @@ fieldset.search {
 	border: none;
 	width: 250px; height: 40px;
 	padding: 0; margin: 0;
-	background: url(../../images/search.gif) no-repeat;
+	background: url(../images/search.gif) no-repeat;
 }
 .search input {
 	border: none;
@@ -291,7 +291,7 @@ fieldset.search {
   	height: 40px;
   	cursor: pointer;
   	text-indent: -9999px;
-  	background: #fbc900 url(../../images/search.gif) no-repeat top right;
+  	background: #fbc900 url(../images/search.gif) no-repeat top right;
 }
 
 /*  navigation  */
@@ -349,7 +349,7 @@ fieldset.search {
 	max-width: 1000px;
 	margin: 0 auto;
 	padding: 0 0 20px 0;
-	background: #FFF url(../../images/content.gif) repeat-y center top;
+	background: #FFF url(../images/content.gif) repeat-y center top;
 	overflow: hidden;
 }
 
@@ -433,7 +433,7 @@ fieldset.search {
 	line-height: 1.5em;
 	padding: 8px 5px 8px 20px;
 	margin: 0;
-	background: url(../../images/document.gif) no-repeat 3px 11px;
+	background: url(../images/document.gif) no-repeat 3px 11px;
 }
 * html body .popular ul li { height: 1%; }
 .popular ul li a:link,
@@ -485,7 +485,7 @@ fieldset.search {
 	padding: 0 0 10px 0;
 	margin: 0;
 	width: 100%;
-	background: url(../../images/footer-line.gif) repeat-x left bottom;
+	background: url(../images/footer-line.gif) repeat-x left bottom;
 	
 	/* border-bottom: 1px solid #326B8D;  */
 }
@@ -526,14 +526,14 @@ p.thumbs img {
 	text-align: left;
 	margin-left: 20px;
 	padding: 0;
-	background: url(../../images/footer-line.gif) repeat-x left top;
+	background: url(../images/footer-line.gif) repeat-x left top;
 }
 .recent-comments ul li {
 	list-style: none;
 	font-size: 12px;
 	line-height: 1.5em;
 	padding: 7px 5px 7px 20px;
-	background: url(../../images/speech_bubble.gif) no-repeat 3px 11px;
+	background: url(../images/speech_bubble.gif) no-repeat 3px 11px;
 }
 * html body .recent-comments ul li { height: 1%; }
 .recent-comments ul li a:link,
@@ -545,7 +545,7 @@ p.thumbs img {
 
 /* footer-list */
 .footer-list ul {
-	background: url(../../images/footer-line.gif) repeat-x left top;
+	background: url(../images/footer-line.gif) repeat-x left top;
 	list-style: none;
 	padding: 0;
 	margin-left: 20px;
@@ -589,7 +589,7 @@ ul.subscribe-stuff li img {
 	font-size: .9em;
 	color: #C2DBE7;
 	overflow: hidden;
-	background: url(../../images/footer-line.gif) repeat-x left top;
+	background: url(../images/footer-line.gif) repeat-x left top;
 }
 
 #footer-bottom a { color: #fff; }
@@ -676,7 +676,7 @@ ul.subscribe-stuff li img {
 
 /* dateinfo */
 .left p.dateinfo {
-	background: url(../../images/date-bg.gif) no-repeat;
+	background: url(../images/date-bg.gif) no-repeat;
 	height: 83px;
 	width: 68px;
 	margin: 12px 0 0 70px;
@@ -724,11 +724,11 @@ ul.subscribe-stuff li img {
 }
 * html body .left .post-meta ul li { height: 1%; }
 
-.left .post-meta ul.tags li { background: url(../../images/tag.gif) no-repeat 2px center; }
-.left .post-meta ul li.user { background: url(../../images/user.gif) no-repeat 2px center; }
-.left .post-meta ul li.time { background: url(../../images/clock.gif) no-repeat 2px center; }
-.left .post-meta ul li.comment { background: url(../../images/comment.gif) no-repeat 2px center; }
-.left .post-meta ul li.permalink { background: url(../../images/permalink.gif) no-repeat 2px center; }
+.left .post-meta ul.tags li { background: url(../images/tag.gif) no-repeat 2px center; }
+.left .post-meta ul li.user { background: url(../images/user.gif) no-repeat 2px center; }
+.left .post-meta ul li.time { background: url(../images/clock.gif) no-repeat 2px center; }
+.left .post-meta ul li.comment { background: url(../images/comment.gif) no-repeat 2px center; }
+.left .post-meta ul li.permalink { background: url(../images/permalink.gif) no-repeat 2px center; }
 
 .left .post-meta ul li a { color: #147DB6; }
 .left .post-meta ul li a:hover { color: #333; }

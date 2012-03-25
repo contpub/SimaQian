@@ -106,10 +106,7 @@ class PublishController {
 		def user = User.get(session.userId)
 		def link = UserAndBook.findByBookAndUser(book, user)
 
-		if (!book) {
-			response.sendError 404
-			return
-		}
+		if (!book) { response.sendError 404; return }
 
 		if (link?.linkType != UserAndBookLinkType.OWNER) {
 			response.sendError 403
@@ -135,10 +132,7 @@ class PublishController {
 	def updateSave = {
 		def book = Book.get(params.id)
 		
-		if (!book) {
-			response.sendError 404
-			return
-		}
+		if (!book) { response.sendError 404; return }
 
 		book.title = params.title
 		book.subtitle = params.subtitle
@@ -159,7 +153,6 @@ class PublishController {
 			flash.default = '{1} saved {0}'
 			flash.type = 'notes'
 
-
 			redirect(action: 'update', id: book?.id)
 		}
 		else {
@@ -171,7 +164,109 @@ class PublishController {
 	 * Editor
 	 */
 	def editor = {
-		[book: Book.get(params.id)]
+		def book = Book.get(params.id)
+		def user = User.get(session.userId)
+		def link = UserAndBook.findByBookAndUser(book, user)
+
+		if (!book) { response.sendError 404; return }
+		if (!user) { response.sendError 403; return }
+		if (link?.linkType != UserAndBookLinkType.OWNER) { response.sendError 403; return }
+
+		def contents = book?.profile?.contents
+
+		if (contents == null) contents = ""
+
+		def contents_array = contents.split("\n.. end-of-file\n")
+
+		def total = contents_array.size()
+
+		def part_of_contents = ""
+
+		def offset = params.offset
+
+		if (offset == null) {
+			offset = 0
+		}
+		else {
+			offset = Integer.valueOf(offset)
+		}
+
+		if (offset >= 0 && offset < contents_array.size()) {
+			part_of_contents = "${contents_array[offset]?.trim()}\n"
+		}
+
+		[book: book, contents: part_of_contents, offset: offset, total: total]
+	}
+
+	def insertContent = {
+		def book = Book.get(params.id)
+		def user = User.get(session.userId)
+		def link = UserAndBook.findByBookAndUser(book, user)
+
+		if (!book) { response.sendError 404; return }
+		if (!user) { response.sendError 403; return }
+		if (link?.linkType != UserAndBookLinkType.OWNER) { response.sendError 403; return }
+
+		def offset = params.offset
+
+		if (!book.profile) { book.profile = new BookProfile(book: book) }
+
+		def contents = book.profile.contents
+
+		if (contents == null) { contents = "" }
+
+		if (offset == null) {
+			offset = contents.split("\n.. end-of-file\n").size()
+			contents = "${contents}\n\n.. end-of-file\n\n..."
+		}
+		else {
+			def contents_array = contents.split("\n.. end-of-file\n")
+			offset = Integer.valueOf(offset)
+			for (def i=0; i<contents_array.size(); i++) {
+				contents_array[i] = "${contents_array[i]}".trim()
+			}
+			if (offset >= 0 && offset < contents_array.size()) {
+				contents_array[offset] = contents_array[offset] + "\n\n.. end-of-file\n\n"
+			}
+			contents = contents_array.join("\n\n.. end-of-file\n\n")
+			offset = offset + 1
+		}
+		book.profile.contents = contents		
+		book.profile.save(flush: true)
+		book.save(flush: true)
+
+		redirect(action: 'editor', id: book.id, params: [offset: offset])
+	}
+
+	def cleanupContents = {
+		def book = Book.get(params.id)
+		def user = User.get(session.userId)
+		def link = UserAndBook.findByBookAndUser(book, user)
+
+		if (!book) { response.sendError 404; return }
+		if (!user) { response.sendError 403; return }
+		if (link?.linkType != UserAndBookLinkType.OWNER) { response.sendError 403; return }
+
+		def contents = book.profile.contents
+
+		if (contents == null) { contents = "" }
+
+		def contents_array = contents.split("\n.. end-of-file\n")
+		def contents_cleanup = []
+		for (def i=0; i<contents_array.size(); i++) {
+			contents_array[i] = "${contents_array[i]}".trim()
+			if (contents_array[i].length() > 0) {
+				contents_cleanup << contents_array[i]
+			}
+		}
+
+		contents = contents_cleanup.join("\n\n.. end-of-file\n\n")
+
+		book.profile.contents = contents		
+		book.profile.save(flush: true)
+		book.save(flush: true)
+
+		redirect(action: 'editor', id: book.id)
 	}
 	
 	/**
@@ -211,18 +306,7 @@ class PublishController {
 	def preview = {
 		[book: Book.get(params.id)]
 	}
-	
-	/**
-	 * Send event to RabbitMQ for book publishing
-	 */
-	def cook = {
-		def book = Book.get(params.id)
 		
-		sendCookMessage(book)
-
-		[book: book]
-	}
-	
 	/**
 	 * Check for cooking status
 	 */
@@ -473,111 +557,61 @@ class PublishController {
 	 */
 	def ajaxSaveContents = {
 		def book = Book.get(params.id)
-		def successed = false
+		def user = User.get(session.userId)
+		def link = UserAndBook.findByBookAndUser(book, user)
 
-		if (params.contents) {
-			if (!book.profile) {
-				book.profile = new BookProfile(book: book)
-			}
-			book.profile.contents = params.contents
-			book.profile.save(flush: true)
-			successed = book.save(flush: true)
-		}
+		if (!book) { response.sendError 404; return }
+		if (!user) { response.sendError 403; return }
+		if (link?.linkType != UserAndBookLinkType.OWNER) { response.sendError 403; return }
 
-		render (contentType: 'text/json') {
-			result (successed: successed, message: "儲存成功 ${new Date().format('HH:mm:ss')}")
-		}
-	}
-
-	/**
-	 * Query Status (Ajax)
-	 */
-	def ajaxStatus = {
-		def book = Book.get(params.id)
-
-		render (contentType: 'text/json') {
-			result (
-				isCooking: book?.isCooking?'正在製作中':'已完成',
-				lastUpdated: book?.lastUpdated?.format('yyyy-MM-dd HH:mm:ss'),
-				cookUpdated: book?.cookUpdated?.format('yyyy-MM-dd HH:mm:ss'),
-				message: new Date().format('HH:mm:ss')
-			)
-		}
-	}
-
-	/**
-	 * Publish (Ajax), Send event to RabbitMQ for book publishing
-	 */
-	def ajaxPublish = {
 		def successed = false
 		def message = ''
 
-		def book = Book.get(params.id)
-		
-		def cookExpired = false
+		if (params.contents != null) {
+			if (!book.profile) { book.profile = new BookProfile(book: book) }
 
-		if (!book.cookUpdated) {
-			cookExpired = true
-		}
-		else {
-			def diff = new Date().time - book.cookUpdated.time
-			if (diff >= 60*1000) {
-				cookExpired = true
-			}
-		}
-
-		if (book.isCooking == false || cookExpired) {
-			book.isCooking = true
-			book.countCook ++
-			book.cookUpdated = new Date()
-			book.save(flush: true)
-		
-			def json = new JsonBuilder()
-			def version = grailsApplication.config.appConf.cook.version
-
-			def contentUrl = null
-
-			switch (book.type) {
-				case RepoType.EMBED:
-					contentUrl = createLink(
-						controller: 'book',
-						action: 'embed',
-						id: book.id,
-						absolute: true
-					)
-				break
-
-				case RepoType.DROPBOX:
-					contentUrl = "${grailsApplication.config.appConf.sysId}-${book.name}"
-				break
-
-				default:
-					contentUrl = book.url
-			}
-						
-			json (
-				id: book.id,
-				url: "${contentUrl}",
-				type: "${book.type}",
-				name: "${book.name}",
-				version: version
-			)
-
-			println json
+			def contents = book.profile.contents
 			
-			def routingKey = grailsApplication.config.appConf.cook.routingKey
-			def msgContent = json?.toString()
-		
-			// Send msg to RepoCook agents using RabbitMQ
-			rabbitSend routingKey, msgContent
+			if (contents == null) { contents = "" }
 
-			successed = true
-			message = "電子書已開始製作 ${new Date().format('hh:mm:ss')}"
+			def contents_array = contents.split("\n.. end-of-file\n")
+			def offset = params.offset
+			
+			if (offset == null) {
+				offset = 0
+			}
+			else {
+				offset = Integer.valueOf(offset)
+			}
+
+			if (offset >= 0 && offset < contents_array.size()) {
+				contents_array[offset] = params.contents
+			}
+
+			for (def i=0; i<contents_array.size(); i++) {
+				contents_array[i] = "${contents_array[i]}".trim()
+			}
+
+			contents = contents_array.join("\n\n.. end-of-file\n\n")
+
+			book.profile.contents = contents
+			
+			book.profile.save(flush: true)
+			successed = book.save(flush: true)
+
+			if (successed) {
+				message = "Saved! ${new Date().format('HH:mm:ss')}"
+			}
+			else {
+				message = "Unable to save. ${new Date().format('HH:mm:ss')}"
+			}
 		}
-		else {
-			successed = false
-			message = "前次發佈尚未完成 ${new Date().format('hh:mm:ss')}"
+
+		if (params.publish=="true") {
+			sendCookMessage(book)
+			message = "E-book is being published. ${new Date().format('HH:mm:ss')}"
 		}
+
 		render (contentType: 'text/json') {
 			result (successed: successed, message: message)
 		}
@@ -596,10 +630,19 @@ class PublishController {
 	}
 
 	private boolean sendCookMessage(book) {
-		
-		def isAllow = true //book.isCooking
+		def cookExpired = false
 
-		if (isAllow) {
+		if (!book.cookUpdated) {
+			cookExpired = true
+		}
+		else {
+			def diff = new Date().time - book.cookUpdated.time
+			if (diff >= 30*1000) {
+				cookExpired = true
+			}
+		}
+
+		if (book.isCooking == false || cookExpired) {
 			book.isCooking = true
 			book.countCook ++
 			book.save()

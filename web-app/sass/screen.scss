@@ -6,6 +6,9 @@
 @import "fancy-buttons";
 @import "compass/reset";
 
+/* silk icons */
+@import "silk-sprite.sass";
+
 /* main themes */
 @import "coolblue.scss";
 @import "enhancements.scss";
@@ -22,10 +25,12 @@ h1, h2, h3 {
 	@include single-text-shadow(#cccccc, 2px, 2px, 2px);
 }
 
+a.fancy-button {
+	color: white;
+}
 .fancy-button {
 	@include fancy-button(#124c89, 16px, 4px, 1px);
 }
-
 .fancy-button-submit {
 	@include fancy-button(#124c89, 16px, 4px, 1px);
 }

@@ -16,17 +16,21 @@
 <ga:trackPageview />
 </head>
 <body>
-	<socialTag:facebookSDK />
-	<g:applyLayout name="pageHeader"></g:applyLayout>
-	<g:applyLayout name="pageContent">
-		<g:layoutBody/>
-		<!--Sidebar define by each view-->
-		<content tag="sidebar">
-			<g:pageProperty name="page.sidebar" />
-		</content>
-	</g:applyLayout>
-	<g:applyLayout name="pageFooter"></g:applyLayout>
-	<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-	<g:javascript library="application"/>
+<socialTag:facebookSDK />
+<g:applyLayout name="pageHeader"></g:applyLayout>
+<g:applyLayout name="pageContent">
+	<g:layoutBody/>
+	<!--Sidebar define by each view-->
+	<content tag="sidebar">
+		<div class="sidemenu usermenu">
+	        <h3>User</h3>
+	        <layoutTag:userBox />
+	    </div>
+		<g:pageProperty name="page.sidebar" />
+	</content>
+</g:applyLayout>
+<g:applyLayout name="pageFooter"></g:applyLayout>
+<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+<g:javascript library="application"/>
 </body>
 </html>
