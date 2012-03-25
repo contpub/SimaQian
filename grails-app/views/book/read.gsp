@@ -57,9 +57,9 @@
 
 			<h3>Reader services</h3>
 			<ul>
-				<li>aaa</li>
+				<li>Send email to contact@contpub.org, we'll reply a-s-a-p.</li>
 			</ul>
-			<p>
+			<!--<p>
 			<select>
 				<option value="0"></option>
 				<option value="1">I want to report a problem.</option>
@@ -68,8 +68,7 @@
 			</select><br/>
 			<g:textArea name="feedback" /><br/>
 			<g:submitButton name="submit" value="Send" class="fancy-button" />
-			</p>
-
+			</p>-->
 
 			<h3>Share with friends</h3>
 			<div style="height:50px;overflow:hidden">
