@@ -88,7 +88,7 @@ environments {
 		//log4j.appender.'errors.File'="/tmp/stacktrace.log"
 
 		// Grails cdn-resources plugin
-		grails.resources.cdn.enabled = true
+		grails.resources.cdn.enabled = false
 		grails.resources.cdn.url = "http://static.contpub.org/"
 
 		recaptcha {
