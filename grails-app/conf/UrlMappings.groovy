@@ -15,6 +15,12 @@ class UrlMappings {
 		'404' (controller: 'errors', action: 'notFound')
 		'500' (controller: 'errors', action: 'serverError')
 
+		"/api/$action?/$session?/$id?" {
+			controller = "developer"
+			constraints {
+			}
+		}
+
 		"/download/$bookName" {
 			controller = "book"
 			action = "download"
