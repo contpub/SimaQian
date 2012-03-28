@@ -34,20 +34,20 @@
 						<p><strong>Notice</strong> eBooks are publishing...</p>
 					</g:if>
 					<div class="download-links">
-						<bookTag:downloadLink book="${book}" type="epub">ePub</bookTag:downloadLink>
+						<bookTag:downloadLink book="${book}" type="epub" class="fancy-button">ePub</bookTag:downloadLink>
 
-						<bookTag:downloadLink book="${book}" type="mobi">Kindle</bookTag:downloadLink>
+						<bookTag:downloadLink book="${book}" type="mobi" class="fancy-button">Kindle</bookTag:downloadLink>
 
-						<bookTag:downloadLink book="${book}" type="pdf">PDF</bookTag:downloadLink>
+						<bookTag:downloadLink book="${book}" type="pdf" class="fancy-button">PDF</bookTag:downloadLink>
 
-						<a href="http://docs.google.com/viewer?url=${bookTag.createDownloadLink(book: book, type: 'pdf').encodeAsURL()}&embedded=true" target="_blank"><g:message code="common.preview" default="Preview"/></a>
+						<a href="http://docs.google.com/viewer?url=${bookTag.createDownloadLink(book: book, type: 'pdf').encodeAsURL()}&embedded=true" target="_blank" class="fancy-button"><g:message code="common.preview" default="Preview"/></a>
 
 						<br/>
 						<br/>
 
-						<bookTag:downloadLink book="${book}" type="zip">HTML</bookTag:downloadLink>
+						<bookTag:downloadLink book="${book}" type="zip" class="fancy-button">HTML</bookTag:downloadLink>
 
-						<bookTag:downloadLink book="${book}" type="cdn">On-Line</bookTag:downloadLink>
+						<bookTag:downloadLink book="${book}" type="cdn" class="fancy-button">On-Line</bookTag:downloadLink>
 					</div>
 				</g:if>
 				<g:else>
@@ -101,21 +101,12 @@
 						<li class="time">${book?.cookUpdated?.format('yyyy/MM/dd')}</li>
 					</g:if>
 					<!--<li class=""><a id="appeal" href="#appeal"><g:message code="common.appeal" default="Appeal" /></a></li>-->
+					<g:if test="${userOwnBook}"><userTag:isLogin>
+						<li><g:link controller="publish" action="update" id="${book?.id}"><g:message code="button.publish.update" default="Settings" /></g:link></li>
+						<li><g:link controller="publish" action="editor" id="${book?.id}"><g:message code="button.publish.editor" default="Editor" /></g:link></li>
+					</userTag:isLogin></g:if>
 				</ul>
-			</div>
-			
-			<g:if test="${userOwnBook}">
-				<userTag:isLogin>
-					<div style="text-align:right">
-						<g:link controller="publish" action="update" id="${book?.id}" class="clickable">
-							<g:message code="button.publish.update" default="Settings" />
-						</g:link>
-						<g:link controller="publish" action="editor" id="${book?.id}" class="clickable">
-							<g:message code="button.publish.editor" default="Editor" />
-						</g:link>
-					</div>
-				</userTag:isLogin>
-			</g:if>
+			</div>			
 		</div>
 	</div>
 

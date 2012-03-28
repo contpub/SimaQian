@@ -79,7 +79,11 @@ class BookTagLib {
 	 * <bookTag:downloadLink book=${book} type="pdf" />
 	 */
 	def downloadLink = { attr, body ->
-		out << "<a href=\"${attr.book?createDownloadLink(book: attr.book, type: attr.type):'#'}\" title=\"${attr.book?.title}\">"
+		out << "<a"
+		out << " href=\"${attr.book?createDownloadLink(book: attr.book, type: attr.type):'#'}\""
+		out << " title=\"${attr.book?.title}\""
+		out << " class=\"${attr.class}\""
+		out << ">"
 		out << body()
 		out << "</a>"
 	}

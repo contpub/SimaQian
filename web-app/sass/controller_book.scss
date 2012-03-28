@@ -58,10 +58,6 @@
 	.download-links {
 		margin: 2.5em auto;
 		text-align: center;
-
-		a {
-			@include fancy-button(#124c89, 1.25em, 4px, 1px);
-		}
 	}
 	.description pre, .description code {
 		width: 98%;

@@ -22,17 +22,17 @@
 @import "controller_sandbox.scss";
 
 h1, h2, h3 {
-	@include single-text-shadow(#cccccc, 2px, 2px, 2px);
+	@include single-text-shadow(#cccccc, 1px, 1px, 1px);
 }
 
 a.fancy-button {
 	color: white;
 }
 .fancy-button {
-	@include fancy-button(#124c89, 16px, 4px, 1px);
+	@include fancy-button(#2c76a6, 16px, 4px, 1px);
 }
 .fancy-button-submit {
-	@include fancy-button(#124c89, 16px, 4px, 1px);
+	@include fancy-button(#2c76a6, 16px, 4px, 1px);
 }
 
 .w100p {
