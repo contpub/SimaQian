@@ -1,4 +1,4 @@
-import org.contpub.simaqian.*
+import simaqian.*
 
 println 'Add [User] ...'
 

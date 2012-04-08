@@ -93,7 +93,7 @@ $(function() {
 		</a>
 		<span class="status"></span>
 	</div>
-	<g:if test="${book?.type==org.contpub.simaqian.RepoType.GIT}">
+	<g:if test="${book?.type==simaqian.RepoType.GIT}">
 		<p>
 			本書已設定為 Git 編輯模式，系統將由 
 			${book?.url} 位址下載書籍原始碼，請使用 Git 工具來撰寫內容。您在下方編輯器輸入的內容，仍會上傳儲存在網站，但是不會用來產生電子書。

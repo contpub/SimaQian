@@ -25,8 +25,8 @@
 				</p>-->
 
 				<p>
-					<label for="cname">Custom Domain Name</label><br />
-					<g:textField name="cname" value="${book?.cname}" class="w90p" /><br/>
+					<label for="vhost">Virtual Host</label><br />
+					<g:textField name="vhost" value="${book?.vhost}" class="w90p" /><br/>
 					Using your DNS manager, create a CNAME alias record to <strong>vhost.contpub.org</strong> for your sub domain (e.g. book.your-domain-name.com).<br/>
 					<g:checkBox name="generate" />
 					<label for="generate">generate contents</label>

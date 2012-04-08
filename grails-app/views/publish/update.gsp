@@ -35,7 +35,7 @@
 				<label for="description">Brief Description</label><br />
 				<richui:richTextEditor name="description" value="${book?.profile?.description}" width="450" />
 			</p>
-			<g:if test="${book?.type==org.contpub.simaqian.RepoType.GIT}">
+			<g:if test="${book?.type==simaqian.RepoType.GIT}">
 				<p>
 					<label for="url">Url</label><br/>
 					<g:textField name="url" value="${book?.url}" class="w90p" />

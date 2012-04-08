@@ -36,3 +36,6 @@ deploy:
 
 log:
 	tail -f /var/lib/tomcat6/logs/catalina.out
+
+syncdb:
+	mysqldump -h contpub.org -usynconly -p contpub | mysql -h localhost -ucontpub -pcontpub contpub

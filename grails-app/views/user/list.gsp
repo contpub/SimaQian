@@ -1,4 +1,4 @@
-<%@ page import="org.contpub.simaqian.User" %>
+<%@ page import="simaqian.User" %>
 <html>
 <head>
 	<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
