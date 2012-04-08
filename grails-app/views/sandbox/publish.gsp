@@ -69,9 +69,11 @@
 			tabMode: 'shift',
 			enterMode: 'keep',
 			matchBrackets: true,
-			theme: 'default'
+			theme: 'default',
+			lineWrapping: true
 		});
-		$('#dialog-template, #dialog-help, #dialog-setup, #dialog-result').dialog({
+		
+		$('#dialog-template, #dialog-result').dialog({
 			autoOpen: false,
 			modal: true,
 			width: '640',
@@ -103,8 +105,6 @@
 					title: $('#title').val(),
 					authors: $('#authors').val(),
 					password: $('#password').val(),
-					pdfPaperSize: $('#pdfPaperSize').val(),
-					pdfFontSize: $('#pdfFontSize').val(),
 					contents: editor.getValue()
 				},
 				function(data) {
@@ -112,11 +112,12 @@
 					$('#dialog-result').dialog('open');
 
 					$('span.status').html(data.message);
-					_sandboxId = data.sandboxId;					
-
+					_sandboxId = data.sandboxId;
+					
+					alert('電子書正在製作，等待約一分鐘即可下載！');
+					location.href = data.redirectUrl;
 					//check and wait for 90sec
-					checker();
-								
+					//checker();
 				},
 				'json'
 			);
@@ -138,15 +139,6 @@
 			}
 		}).click(function() {
 			$('#dialog-setup').dialog('open');
-		});
-
-		$('#help').button({
-			text: false,
-			icons: {
-				primary: 'ui-icon-help'
-			}
-		}).click(function(){
-			$('#dialog-help').dialog('open');
 		});
 
 		$('#sample').change(function() {
@@ -197,35 +189,16 @@
 	<div id="toolbar" class="ui-widget-header ui-corner-all">
 		<button id="publish"><g:message code="common.publish" default="Publish" /></button>
 		<button id="template"><g:message code="common.template" default="Template" /></button>
-		<button id="setup"><g:message code="common.setup" default="Setup" /></button>
-		<button id="help"><g:message code="common.help" default="Help" /></button>
 		<span class="status">
-			<span style="color:red">＊</span>請按「發佈」開始製作電子書。
+			<span style="color:red">*</span>
+			Press "Publish" to making eBook.
 		</span>
 	</div>
+	
+	書名 <g:textField name="title" value="${sandbox?.title}" />
+	作者 <g:textField name="authors" value="${sandbox?.authors}" />
 
 	<g:textArea name="contents" value="${sandbox?.contents}" />
-
-	<div id="dialog-setup" title="${message(code:'common.setup', default:'Setup')}">
-		<table width="90%" cellpadding="0" cellspacing="0" class="form-layout">
-			<tr>
-				<th width="120">書名</th>
-				<td><g:textField name="title" value="${sandbox?.title}" /></td>
-			</tr>
-			<tr>
-				<th>作者</th>
-				<td><g:textField name="authors" value="${sandbox?.authors}" /></td>
-			</tr>
-			<tr>
-				<th>紙張大小（PDF）</th>
-				<td><g:select name="pdfPaperSize" from="${pdfPaperSizeList}" value="${sandbox?.pdfPaperSize}" /></td>
-			</tr>
-			<tr>
-				<th>字體大小（PDF）</th>
-				<td><g:select name="pdfFontSize" from="${pdfFontSizeList}" value="${sandbox?.pdfFontSize}" /></td>
-			</tr>
-		</table>
-	</div>
 
 	<div id="dialog-result" title="發佈"></div>
 
@@ -257,17 +230,6 @@
 				</td>
 			</tr>
 		</table>
-	</div>
-
-	<div id="dialog-help" title="${message(code: 'common.help', default: 'Help')}">
-		<p>
-			<span style="color:red">＊</span>
-			Press "Publish" to making eBook.
-		</p>
-		<p>
-			<span style="color:red">＊</span>
-			Sandboxes is public accessible, all source code and eBook could be freely access by any person.
-		</p>
 	</div>
 </body>
 </html>

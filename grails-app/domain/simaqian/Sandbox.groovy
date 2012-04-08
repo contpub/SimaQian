@@ -7,9 +7,6 @@ class Sandbox {
 	String password				//密碼保護
 
 	String epubTheme = "epub_simple"	// ePub 佈景主題
-	String pdfPaperSize = "b5"			// pdf paper size
-	String pdfFontSize = "12pt"			// pdf font size
-
 	Boolean isCooking = false	//是否正在處理轉換中
 	Boolean isSample = false	// in sample catalog
 
@@ -30,13 +27,5 @@ class Sandbox {
 	
 	static mapping = {
 		 contents (type: 'text')
-	}
-
-	static getPdfPaperSizeList() {
-		['a4', 'b5']
-	}
-
-	static getPdfFontSizeList() {
-		['10pt', '11pt', '12pt']
 	}
 }

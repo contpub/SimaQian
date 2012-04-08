@@ -359,7 +359,27 @@ class PublishController {
 
 	def mediaSave = {
 		def book = Book.get(params.id)
+		
+		log.info("Update media config for ${book.name}(${book.id})");
 
+		def formats = []
+
+		if (params.pdf=='on') {
+			formats << 'pdf'
+		}		
+		if (params.epub=='on') {
+			formats << 'epub'
+		}
+		if (params.mobi=='on') {
+			formats << 'mobi'
+		}
+		if (params.html=='on') {
+			formats << 'html'
+		}
+		
+		log.info("Avaliable formats: ${formats}");
+		
+		book.formats = formats.join(',')
 		book.vhost = params.vhost
 		book.save(flush: true)
 

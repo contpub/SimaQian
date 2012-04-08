@@ -30,6 +30,8 @@ class Book {
 	Boolean isPublic		= true		// Public Book => 公版書/免費書
 	
 	Boolean hasCover		= false		// Has cover or not
+	
+	String formats			= "epub,mobi,pdf"	// Available eBook formats
 
 	RepoType type = RepoType.EMBED	// Repository Type (ex. GIT, SVN)
 	String url						// Repository URL (ex. git@github.com:user/project)
@@ -48,6 +50,7 @@ class Book {
 		title (nullable: false, blank: false)
 		subtitle (nullable: true, blank: true)
 		authors (nullable: true, blank: true)
+		formats (nullable: true, blank: true)
 		type (nullable: true)
 		url (nullable: true, url: true)
 		vhost (nullable: true, blank: true)

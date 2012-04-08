@@ -68,9 +68,7 @@ class SandboxController {
 		
 		[
 			sandbox: sandbox,
-			sampleList: Sandbox.findAllByIsSample(true),
-			pdfPaperSizeList: Sandbox.pdfPaperSizeList,
-			pdfFontSizeList: Sandbox.pdfFontSizeList
+			sampleList: Sandbox.findAllByIsSample(true)
 		]
 	}
 
@@ -164,6 +162,7 @@ class SandboxController {
 		render (contentType: 'text/json') {
 				successed = saveResult?true:false
 				sandboxId = sandbox?.id
+				redirectUrl = createLink(action: 'show', id: sandbox?.id)
 				resultUrl = createLink(action: 'result', id: sandbox?.id, params: ['_t':new Date().time])
 				htmlText = g.render (template: 'result', model: [sandbox: sandbox])
 				message = "發佈時間 ${new Date().format('yyyy/MM/dd')}"
@@ -212,8 +211,6 @@ class SandboxController {
    @copyright: ContPub Sandbox
    @authors: ${sandbox.authors}
    @language: zh_TW
-   @latex_paper_size: ${sandbox.pdfPaperSize}
-   @latex_font_size: ${sandbox.pdfFontSize}
    @epub_theme: ${sandbox.epubTheme}
 
 ${'#'.multiply(sandbox.title.size()+(sandbox.title.bytes.size()-sandbox.title.size())/2)}

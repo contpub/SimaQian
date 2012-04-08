@@ -33,20 +33,21 @@
 					<p><strong>Notice</strong> eBooks are publishing...</p>
 				</g:if>
 				<div class="download-links">
-					<bookTag:downloadLink book="${book}" type="epub" class="fancy-button">ePub</bookTag:downloadLink>
+					
+					<g:if test="${book?.formats?.contains('epub')}"><bookTag:downloadLink book="${book}" type="epub" class="fancy-button">ePub</bookTag:downloadLink></g:if>
 
-					<bookTag:downloadLink book="${book}" type="mobi" class="fancy-button">Kindle</bookTag:downloadLink>
+					<g:if test="${book?.formats?.contains('mobi')}"><bookTag:downloadLink book="${book}" type="mobi" class="fancy-button">Kindle</bookTag:downloadLink></g:if>
 
-					<bookTag:downloadLink book="${book}" type="pdf" class="fancy-button">PDF</bookTag:downloadLink>
+					<g:if test="${book?.formats?.contains('pdf')}"><bookTag:downloadLink book="${book}" type="pdf" class="fancy-button">PDF</bookTag:downloadLink></g:if>
 
-					<a href="http://docs.google.com/viewer?url=${bookTag.createDownloadLink(book: book, type: 'pdf').encodeAsURL()}&embedded=true" target="_blank" class="fancy-button"><g:message code="common.preview" default="Preview"/></a>
+					<g:if test="${book?.formats?.contains('pdf')&&book?.isPublic}"><a href="http://docs.google.com/viewer?url=${bookTag.createDownloadLink(book: book, type: 'pdf').encodeAsURL()}&embedded=true" target="_blank" class="fancy-button"><g:message code="common.preview" default="Preview"/></a></g:if>
 
 					<br/>
 					<br/>
 
-					<bookTag:downloadLink book="${book}" type="zip" class="fancy-button">HTML</bookTag:downloadLink>
+					<g:if test="${book?.formats?.contains('html')}"><bookTag:downloadLink book="${book}" type="zip" class="fancy-button">HTML</bookTag:downloadLink></g:if>
 
-					<bookTag:downloadLink book="${book}" type="cdn" class="fancy-button">On-Line</bookTag:downloadLink>
+					<g:if test="${book?.formats?.contains('html')||book?.vhost}"><bookTag:downloadLink book="${book}" type="cdn" class="fancy-button">On-Line</bookTag:downloadLink></g:if>
 				</div>
 			</g:if>
 			<g:else>
