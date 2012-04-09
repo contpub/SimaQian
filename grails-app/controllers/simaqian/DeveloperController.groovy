@@ -1,20 +1,59 @@
 package simaqian
 
+/**
+ * http://contpub.org/api/login?user=guest&pwd=guest
+ * => 取得 SESSION 790d108bdf1f9f728643ed4519a2ce06
+ * http://contpub.org/api/category/790d108bdf1f9f728643ed4519a2ce06
+ * => 傳入 SESSION 取回 (category)id, label
+ * http://contpub.org/api/catalog/790d108bdf1f9f728643ed4519a2ce06/1
+ * => 傳入 SESSION, (category)id 取回 書籍清單
+ */
 class DeveloperController {
 
     def index() { }
+    
+    def login() {
+    	render (contentType: 'text/json') {
+			[
+				success: true,
+				session: new Date().toString().encodeAsMD5()
+			]
+		}
+	}
+    
+    def category() {
+    	render (contentType: 'text/json') {
+			[
+				[id: 1, label: '公版書'],
+				[id: 2, label: '軟體開發']
+			]
+		}
+	}
 
     def catalog() {
     	def books = []
-    	books << Book.findByName('PUB000003')
-    	books << Book.findByName('kalvar-20120324')
+    	
+    	switch (params.id) {
+			case '1':
+		    	books << Book.findByName('PUB000003')
+			break
+			case '2':
+		    	books << Book.findByName('kalvar-20120324')
+			break
+		}
 
     	def results = []
 
     	books.each {
     		book->
     		if (book) {
-    			results << [name: book.name, title: book.title, pdf: bookTag.createDownloadLink(book: book, type: 'pdf')]
+    			results << [
+    				name: book.name,
+    				title: book.title,
+    				subtitle: book.subtitle,
+    				authors: book.authors,
+    				pdf: bookTag.createDownloadLink(book: book, type: 'pdf'),
+    				epub: bookTag.createDownloadLink(book: book, type: 'epub')]
     		}
     	}
 
