@@ -37,6 +37,7 @@ grails.mime.types = [
 // What URL patterns should be processed by the resources plugin
 grails.resources.adhoc.patterns = [
 	'/images/*',
+	'/icons/*',
 	'/css/*',
 	'/stylesheets/*',
 	'/js/*',

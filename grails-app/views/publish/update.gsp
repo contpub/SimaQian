@@ -2,7 +2,14 @@
 <head>
 <title>Update book info</title>
 <socialTag:websnaprSDK />
-<tinyMce:resources jquery="true" />
+<r:script>
+$(function() {
+    $('textarea.tinymce').tinymce({
+        script_url : '/tiny_mce/tiny_mce.js',
+        theme : "simple"
+    });
+});
+</r:script>
 </head>
 <body>
 <g:render template="breadcrumbs" model="[title: message(code: 'view.publish.menu.update', default: 'Basic settings')]" />
@@ -33,7 +40,7 @@
 			</p>
 			<p>
 				<label for="description">Brief Description</label><br />
-				<richui:richTextEditor name="description" value="${book?.profile?.description}" width="450" />
+				<g:textArea name="description" value="${book?.profile?.description}" class="tinymce w90p" style="height:200px" />
 			</p>
 			<g:if test="${book?.type==simaqian.RepoType.GIT}">
 				<p>

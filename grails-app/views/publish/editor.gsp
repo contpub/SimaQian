@@ -88,9 +88,6 @@ $(function() {
 		<a href="#" id="publish-button" class="fancy-button">
 			<span class="icons ss_printer">&nbsp;</span>Publish
 		</a>
-		<a href="${bookTag.createDownloadLink(book: book, type: 'log')}" target="_blank" title="檢視記錄檔" class="fancy-button">
-			<span class="icons ss_page_white_text">&nbsp;</span>Log
-		</a>
 		<span class="status"></span>
 	</div>
 	<g:if test="${book?.type==simaqian.RepoType.GIT}">
@@ -105,11 +102,16 @@ $(function() {
 	<div class="paginate">
 		<g:paginate next="Forward" prev="Back" action="editor" id="${book?.id}" max="1" maxsteps="10" offset="0" total="${total}" />
 	</div>
-	<div class="insertion">
+	<div class="editor-links">
 		Insert new text
 		<g:link action="insertContent" id="${book?.id}" params="[offset: offset]">after current text</g:link>
 		or
 		<g:link action="insertContent" id="${book?.id}">as last text</g:link>.
+		See
+		<a href="${bookTag.createDownloadLink(book: book, type: 'log')}" target="_blank" title="檢視記錄檔">
+			<span class="icons ss_page_white_text">&nbsp;</span>logs
+		</a>
+		if something wrong.
 	</div>
 </body>
 </html>

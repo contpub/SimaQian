@@ -11,6 +11,8 @@ class PublishController {
 	BookService bookService
 	UserService userService
 
+	static defaultAction = 'create'
+
 	/**
 	 * Homepage, redirect to create a book
 	 */
@@ -25,6 +27,8 @@ class PublishController {
 		def book = new Book()
 		def user = User.get(session.userId)
 
+        if (!user) { response.sendError 403; return }
+
 		def userAccount = user?.account
 		def dateString = new Date().format('yyyyMMdd')
 		
@@ -38,8 +42,9 @@ class PublishController {
 	 */
 	def save = {
 		def user = User.get(session.userId)
-
 		def book = new Book()
+
+		if (!user) { response.sendError 403; return }
 		
 		book.name = params.name
 		book.title = params.title
@@ -86,6 +91,8 @@ class PublishController {
 		def user = User.get(session.userId)
 		def link = UserAndBook.findByBookAndUser(book, user)
 
+		if (!user) { response.sendError 403; return }
+
 		if (!book) {
 			response.sendError 404
 			return
@@ -106,6 +113,7 @@ class PublishController {
 		def user = User.get(session.userId)
 		def link = UserAndBook.findByBookAndUser(book, user)
 
+		if (!user) { response.sendError 403; return }
 		if (!book) { response.sendError 404; return }
 
 		if (link?.linkType != UserAndBookLinkType.OWNER) {
@@ -130,8 +138,10 @@ class PublishController {
 	 * Save a updated book.
 	 */
 	def updateSave = {
+		def user = User.get(session.userId)
 		def book = Book.get(params.id)
 		
+		if (!user) { response.sendError 403; return }
 		if (!book) { response.sendError 404; return }
 
 		book.title = params.title

@@ -21,6 +21,24 @@ class UrlMappings {
 			}
 		}
 
+		"/apps/$name?" {
+			controller = "page"
+			action = "show"
+			category = "apps"
+			constraints {
+
+			}
+		}
+
+		"/support/$name?" {
+			controller = "page"
+			action = "show"
+			category = "support"
+			constraints {
+
+			}
+		}
+
 		"/download/$bookName" {
 			controller = "book"
 			action = "download"

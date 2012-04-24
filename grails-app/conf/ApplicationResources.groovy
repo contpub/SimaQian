@@ -38,6 +38,11 @@ modules = {
         resource url: [dir: '/codemirror/lib/util', file: 'runmode.js']
     }
 
+    tinymce {
+        //resource url: [dir: '/tiny_mce', file: 'tiny_mce.js']
+        resource url: [dir: '/tiny_mce', file: 'jquery.tinymce.js']
+    }
+
     overrides {
         'jquery-theme' {
             resource id:'theme', url: '/css/jquery-ui/cupertino/jquery-ui-1.8.17.custom.css'

@@ -35,14 +35,16 @@ grails.project.dependency.resolution = {
 		// specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 		
 		//for mysql datasource
-		runtime 'mysql:mysql-connector-java:5.1.16'
+		runtime 'mysql:mysql-connector-java:5.1.19'
 		
 		//for rst2html
-		runtime ('org.nuiton.jrst:jrst:1.4') {
+		/*
+        runtime ('org.nuiton.jrst:jrst:1.4') {
 			//transitive = false
 			//excludes "xml-apis", "saxon", "fop"
 			excludes "fop", "saxon"
 		}
+        */
 		
 		//runtime 'commons-collections:commons-collections:3.2.1'
 		
@@ -51,8 +53,8 @@ grails.project.dependency.resolution = {
 
 	plugins {
 		compile ":hibernate:$grailsVersion"
-		compile ":jquery:1.6.1.1"
-		compile ":resources:1.0.2"
+		compile ":jquery:1.7.1"
+		compile ":resources:1.1.6"
 		
 		// either compile & test require latest spock plugin, or UnitSpec compile failed
 		//compile ":spock:0.6-SNAPSHOT"

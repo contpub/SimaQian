@@ -10,7 +10,7 @@
 <title><g:layoutTitle default="Publish" /> - ${grailsApplication.config.appConf.title}</title>
 <layoutTag:normalHead />
 <layoutTag:normalIcon />
-<r:require modules="jquery, jquery-ui, codemirror, compass" />
+<r:require modules="jquery, jquery-ui, codemirror, compass, tinymce" />
 <r:layoutResources />
 <g:layoutHead/>
 <ga:trackPageview />

@@ -81,10 +81,7 @@ class BookController {
         def user = User.get(params.id)
         def books = []
 
-        if (!user) {
-            response.sendError 404
-            return
-        }
+        if (!user) { response.sendError 404; return }
 
         (user.books).each {
             link ->
