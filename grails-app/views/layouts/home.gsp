@@ -14,8 +14,8 @@
 </head>
 <body>
 <socialTag:facebookSDK />
-<div class="container">
 <!--header--><g:applyLayout name="pageHeader"/>
+<div class="container">
 <!--body--><g:layoutBody/>
 <!--footer--><g:applyLayout name="pageFooter"/>
 </div>

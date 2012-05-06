@@ -9,8 +9,13 @@
 		<p>Typing and self-publish anytime, anywhere... Get awesome eBooks with your favorite devices in minutes.</p>
 		<p>PDF, EPUB, MOBI and HTML <small>is ready.</small></p>
 		<p class="download-info">
-			<g:link action="signup" class="btn btn-danger btn-large">Sign up now</g:link>
-			<a href="assets/bootstrap.zip" class="btn btn-large">Learning <small>step by step</small></a>
+			<userTag:isLogin>
+				<g:link controller="publish" action="create" class="btn btn-primary btn-large">Publish now</g:link>
+			</userTag:isLogin>
+			<userTag:isNotLogin>
+				<g:link action="signup" class="btn btn-danger btn-large">Sign up now</g:link>
+			</userTag:isNotLogin>
+			<a href="#" class="btn btn-large">Learning <small>step by step</small></a>
 		</p>
 	</div>
 	<div class="bs-links">
@@ -46,7 +51,7 @@
 
 <div class="marketing">
 	<h1>Featured Books</h1>
-	<p class="marketing-byline">For even more books published with ContPub, try <g:link controller="explorer">explore</g:link> or see <a href="#">latest</a>.</p>
+	<p class="marketing-byline">For even more books published with ContPub, try <g:link controller="explore">explore</g:link> or see <a href="#">latest</a>.</p>
 	<!--<ul class="thumbnails example-sites">
 		<li class="span3">
 			<a class="thumbnail" href="http://soundready.fm/" target="_blank">

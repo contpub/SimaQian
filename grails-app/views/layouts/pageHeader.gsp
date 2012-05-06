@@ -81,5 +81,7 @@
 		</div>
 	</div>
 </nav>
+<div class="container">
 <g:if test="${flash.alertType}"><div class="alert alert-${flash.alertType}"><a class="close" data-dismiss="alert" href="#">×</a>${flash.alertMessage}</div></g:if>
 <g:if test="${flash.type}"><div class="alert alert-${flash.type}"><a class="close" data-dismiss="alert" href="#">×</a><g:message code="${flash.message}" args="${flash.args}" default="${flash.default}"/></div></g:if>
+</div>
