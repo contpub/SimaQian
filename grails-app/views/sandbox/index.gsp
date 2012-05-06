@@ -1,7 +1,0 @@
-<html>
-<head>
-	<title>Sandbox</title>
-</head>
-<body>
-</body>
-</html>

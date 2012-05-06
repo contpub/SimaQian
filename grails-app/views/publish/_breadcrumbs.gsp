@@ -1,12 +1,19 @@
-<div class="breadcrumbs">
-	<userTag:isLogin>
+<ul class="breadcrumb">
+	<li>
 		<g:link controller="book" action="index">Books</g:link>
+		<span class="divider">/</span>
+	</li>
+	<userTag:isLogin>
+		<li>
+			<bookTag:link book="${book}" />
+			<span class="divider">/</span>
+		</li>
 	</userTag:isLogin>
 	<userTag:isNotLogin>
-		Books
+		<li>
+			${book?.title}
+			<span class="divider">/</span>
+		</li>
 	</userTag:isNotLogin>
-	&gt;
-	<bookTag:link book="${book}" />
-	&gt;
-	${title}
-</div>
+	<li class="active">${title}</li>
+</ul>

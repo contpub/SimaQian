@@ -330,6 +330,17 @@ class BookController {
         if (!contents) {
             contents = 'empty'
         }
+        else {
+            def texts = []
+            def xml = new XmlParser().parseText(contents)
+            def files = xml.file
+            if (files) {
+                files.each { file ->
+                    texts << file.text()
+                }
+            }
+            contents = texts.join("\n\n")
+        }
 
         render (contentType: contentType, encoding: 'UTF-8', text: contents)
     }

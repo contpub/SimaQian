@@ -24,10 +24,12 @@ class HomeController {
     
         if (user) {
             session.userId = user.id
+            session.userName = user.name
         }
         else {
-            flash.loginEmail = params.loginEmail
-            flash.loginErrors = 'E-mail or password not correct.'
+            flash.loginError = true
+            flash.alertType = 'error'
+            flash.alertMessage = 'Login authentication failed. Please enter your correct username and password.'
         }
         if (!params.forwardURI) {
             redirect (action: 'index')
@@ -40,6 +42,8 @@ class HomeController {
     def logout() {
         //session.invalidate()
         session.userId = null
+        flash.alertType = 'success'
+        flash.alertMessage = 'You have already signed out.'
         redirect (action: 'index')
     }
     
@@ -47,83 +51,59 @@ class HomeController {
      * Sign-up for new registers
      */
     def signup() {
-        def user = new User()
-        
-        [user: user]
-    }
-    
-    /**
-     * Save sign-up form data
-     */
-    def signupSave() {
         def user = new User(params)
-        if (!user.save(flush: true)) {
-            render(view: "signup", model: [user: user])
-            return
-        }
 
-        //flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), user.id])
-        //redirect(action: "show", id: user.id)
+        if (params.signup) {
+            user = new User(params)
+
+            if (user.save(flush: true)) {
+                flash.alertType = 'success'
+                flash.alertMessage = 'Your new account has been established.'
+                redirect (action: 'index')
+            }
+        }
         
-        flash.message = 'Thanks for sign-up.'
-        redirect (action: 'welcome')
+        [
+            user: user,
+            usernums: User.count(),
+            booknums: Book.count()
+        ]
     }
     
     /**
-     * Welcome new registers
-     */
-    def welcome() {
-        
-    }
-    
-    /**
-     * Personal account management
+     * User account preferences
      */
     def account() {
         def user = User.get(session.userId)
         
-        if (!user) {
-            response.sendError(403)
-            return
-        }
-        
-        [user: user]        
-    }
-    
-    /**
-     * Save account modifications
-     */
-    def accountSave() {
-        def user = User.get(params.id)
-        
-        if (!user) {
-            response.sendError(403)
-            return
-        }
-        
-        def descReader = new StringReader(params.description)
-        
-        user.name = params.name
-        
-        if (!user.profile) {
-            user.profile = new UserProfile(user: user)
-        }
-        
-        user.profile.description = params.description
-        user.profile.homepage = params.homepage
-        user.profile.blog = params.blog
-        
-        if (params.password) {
-            user.password = params.password
-        }
-                        
-        if (user.save(flush: true)) {
+        if (!user) { response.sendError(403); return }
+
+        if (params.save) {
+            user.name = params.name
             
-        }
-        else {
+            if (!user.profile) {
+                user.profile = new UserProfile(user: user)
+            }
             
+            user.profile.description = params.description
+            user.profile.homepage = params.homepage
+            user.profile.blog = params.blog
+            
+            if (params.password) {
+                user.password = params.password
+            }
+
+            if (user.profile.save(flush: true)
+                && user.save(flush: true)) {
+                flash.alertType = 'success'
+                flash.alertMessage = "${user?.name} account preferences updated. ${new Date()}"
+            }
+            else {
+                flash.alertType = 'error'
+                flash.alertMessage = "Unable to save data."
+            }
         }
-        
-        render(view: 'account', model: [user: user])
-    }
+
+        [user: user]
+    }    
 }

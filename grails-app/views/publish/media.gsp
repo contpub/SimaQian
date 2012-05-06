@@ -3,57 +3,59 @@
 <title><g:message code="view.publish.menu.media" default="Media types" /></title>
 </head>
 <body>
-	<g:render template="breadcrumbs" model="[title: message(code: 'view.publish.menu.media', default: 'Media types')]" />
-	
-	<div id="post">
-		<div class="right">
-			<g:renderErrors bean="${book}" />
-
-			<g:form action="mediaSave" id="${book?.id}">
-
-				<layoutTag:flashMessage />
-
-				<!--display errors-->
-				<div class="form-errors">
-					<g:renderErrors bean="${book}" as="list" />
+<g:render template="breadcrumbs" model="[title: message(code: 'view.publish.menu.media', default: 'Media types')]" />
+<div class="row">
+	<div class="span3">
+		<g:render template="leftMenu" />
+	</div>
+	<div class="span9">
+		<g:hasErrors bean="${book}">
+			<div class="alert alert-error">
+				<a class="close" data-dismiss="alert" href="#">×</a>
+				<h4>Please correct these errors</h4>
+				<g:renderErrors bean="${book}" as="list" />
+			</div>
+		</g:hasErrors>
+		<g:form action="media" id="${book?.id}" class="form-horizontal">
+			<fieldset>
+				<!--formats-->
+				<div class="control-group ${hasErrors(bean: book, field: 'formats', 'error')}">
+					<label class="control-label">Avaliable Formats</label>
+					<div class="controls">
+						<label class="checkbox" for="pdf"><g:checkBox name="pdf" value="${book.formats?.contains('pdf')}" />PDF</label>
+						<p class="help-block">PC/iPad/Android/Printable</p>
+					</div>
+					<div class="controls">
+						<label class="checkbox" for="epub"><g:checkBox name="epub" value="${book.formats?.contains('epub')}" />EPUB</label>
+						<p class="help-block">iPad/iPhone/Android</p>
+					</div>
+					<div class="controls">
+						<label class="checkbox" for="mobi"><g:checkBox name="mobi" value="${book.formats?.contains('mobi')}" />MOBI</label>
+						<p class="help-block">Kindle</p>
+					</div>
+					<div class="controls">
+						<label class="checkbox" for="html"><g:checkBox name="html" value="${book.formats?.contains('html')}" />HTML</label>
+						<p class="help-block">Browsers (.zip)</p>
+					</div>
 				</div>
 
-				<p>
-					<label>Available Formats</label><br/>
-					
-					<g:checkBox name="pdf" value="${book.formats?.contains('pdf')}" />
-					<label for="pdf">PDF</label> PC/iPad/Android/Printable<br/>
-					
-					<g:checkBox name="epub" value="${book.formats?.contains('epub')}" />
-					<label for="epub">EPUB</label> iPad/iPhone/Android<br/>
-					
-					<g:checkBox name="mobi" value="${book.formats?.contains('mobi')}" />
-					<label for="mobi">MOBI</label> Kindle<br/>
-					
-					<g:checkBox name="html" value="${book.formats?.contains('html')}" />
-					<label for="html">HTML</label> Browsers(ZIP archive file)<br/>
-				</p>
-				
-				<p>
-					<label for="vhost">Virtual Host</label><br />
-					<g:textField name="vhost" value="${book?.vhost}" class="w90p" /><br/>
-					Using your DNS manager, create a CNAME alias record to <strong>vhost.contpub.org</strong> for your sub domain (e.g. book.your-domain-name.com).<br/>
-					<g:checkBox name="generate" />
-					<label for="generate">generate contents</label>
-				</p>
-				
-				<p class="no-border">
-					<div id="message"></div>
-					<div id="error"></div>
+				<!--vhost-->
+				<div class="control-group ${hasErrors(bean: book, field: 'vhost', 'error')}">
+					<label class="control-label" for="vhost">Virtual Host</label>
+					<div class="controls">
+						<g:textField name="vhost" value="${book?.vhost}" class="input-xlarge" />
+						<p class="help-block">Using your DNS manager, create a CNAME alias record to <strong>vhost.contpub.org</strong> for your sub domain (e.g. book.your-domain-name.com).</p>
+					</div>
+				</div>
 
-					<g:submitButton name="create" value="${message(code: 'common.update', default: 'Update')}" class="fancy-button-submit" />
-				</p>
-
-			</g:form>
-		</div>
-		<div class="left">
-			<g:render template="leftMenu"></g:render>
-		</div>
+				<!--actions-->
+				<div class="form-actions">
+					<g:submitButton name="update" value="Update" class="btn btn-primary" />
+					<bookTag:link book="${book}" class="btn">Cancel</bookTag:link>
+				</div>
+			</fieldset>
+		</g:form>
 	</div>
+</div>
 </body>
 </html>

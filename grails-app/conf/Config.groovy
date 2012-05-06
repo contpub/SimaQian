@@ -10,7 +10,6 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
-
 grails.app.context = '/'
 
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
@@ -41,7 +40,8 @@ grails.resources.adhoc.patterns = [
 	'/css/*',
 	'/stylesheets/*',
 	'/js/*',
-	'/plugins/*'
+	'/plugins/*',
+	'/bootstrap/*'
 ]
 
 // The default codec used to encode data with ${}
@@ -70,8 +70,15 @@ environments {
     development {
         grails.logging.jul.usebridge = true
 
-		// Grails cdn-resources plugin
+		// disable cdn-resources plugin
 		grails.resources.cdn.enabled = false
+
+		// disable yui-minify-resources plugin
+		grails.resources.mappers.yuicssminify.disable=true
+		grails.resources.mappers.yuijsminify.disable=true
+
+		// enable resources debugging mode
+		grails.resources.debug = true
 
 		recaptcha {
 			enabled = true

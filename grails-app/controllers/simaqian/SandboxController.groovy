@@ -9,6 +9,8 @@ import groovy.json.JsonBuilder
 
 class SandboxController {
 
+	static defaultAction = 'list'
+
 	def index = {
 		redirect(action: 'publish')
 	}
@@ -37,15 +39,8 @@ class SandboxController {
 		//process params.create=true
 		//process params.id
 
-		if (!user) {
-			response.sendError 403
-			return
-		}
-
-		if (sandbox && sandbox.owner != user) {
-			response.sendError 403
-			return
-		}
+		if (!user) { response.sendError 403; return }
+		if (sandbox && sandbox.owner != user) { response.sendError 403; return }
 
 		if (!sandbox) {
 			sandbox = Sandbox.findByOwner(user)
@@ -54,15 +49,60 @@ class SandboxController {
 		if (!sandbox || params.create) {
 			sandbox = new Sandbox()
 
-			def samples = Sandbox.findAllByIsSample(true)
-			def random = new Random(new Date().time)
+			def template
 
-			if (samples) {
-				def sample = samples[random.nextInt(samples.size())]
+			if (params.template) {
+				template = Sandbox.get(params.template)
+			}
+			else {
+				// random load from templates
+				def samples = Sandbox.findAllByIsSample(true)
+				def random = new Random(new Date().time)
 
-				sandbox.title = sample.title
-				sandbox.authors = sample.authors
-				sandbox.contents = sample.contents
+				if (samples) {
+					template = samples[random.nextInt(samples.size())]
+				}
+			}
+
+			sandbox.title		= template.title
+			sandbox.authors		= template.authors
+			sandbox.contents	= template.contents
+		}
+
+		if (params.publish) {
+			
+			sandbox.title = params.title
+			sandbox.authors = params.authors
+			sandbox.contents = params.contents
+
+			sandbox.owner = User.get(session.userId)
+			sandbox.isCooking = true //set cooking
+
+			if (sandbox.save(flush: true)) {
+				def url = createLink(action: 'embed', id: sandbox.id, absolute: true)
+				
+				def json = new JsonBuilder()
+
+				json (
+					id: sandbox.id,
+					url: "${url}",
+					type: "SANDBOX",
+					name: "sandbox${sandbox.id}",
+					version: grailsApplication.config.appConf.cook.version
+				)
+				
+				// Send msg to RepoCook agents using RabbitMQ
+				rabbitSend grailsApplication.config.appConf.cook.routingKey, json?.toString()
+			
+				flash.alertType = 'success'
+				flash.alertMessage = "Sandbox is publishing. ${new Date()}"
+
+				redirect(action: 'show', id: sandbox?.id)
+				return
+			}
+			else {
+				flash.alertType = 'error'
+				flash.alertMessage = 'Could not publish.'
 			}
 		}
 		
@@ -111,82 +151,6 @@ class SandboxController {
 			sandbox: sandbox,
 			user: user
 		]
-	}
-
-	/**
-	 * Sample (Ajax), Read sample sandbox
-	 */
-	def ajaxSample = {
-		def sandbox = Sandbox.get(params.id)
-		
-		render (contentType: 'text/json') {
-			title = sandbox?.title
-			authors = sandbox?.authors
-			contents = sandbox?.contents
-		}
-	}
-
-	/**
-	 * Publish (Ajax), Send event to RabbitMQ for book publishing
-	 */
-	def ajaxPublish = {
-		def sandbox
-		
-		if (params.id) {
-			sandbox = Sandbox.get(params.id)
-			sandbox.properties = params
-		}
-		else {
-			sandbox = new Sandbox(params)
-		}
-	
-		sandbox.owner = User.get(session.userId)
-		sandbox.isCooking = true //set cooking
-
-		def saveResult = sandbox.save(flush: true)
-		
-		def url = createLink(action: 'embed', id: sandbox.id, absolute: true)
-		
-		def json = new JsonBuilder()
-		json (
-			id: sandbox.id,
-			url: "${url}",
-			type: "SANDBOX",
-			name: "sandbox${sandbox.id}",
-			version: grailsApplication.config.appConf.cook.version
-		)
-		
-		// Send msg to RepoCook agents using RabbitMQ
-		rabbitSend grailsApplication.config.appConf.cook.routingKey, json?.toString()
-		
-		render (contentType: 'text/json') {
-				successed = saveResult?true:false
-				sandboxId = sandbox?.id
-				redirectUrl = createLink(action: 'show', id: sandbox?.id)
-				resultUrl = createLink(action: 'result', id: sandbox?.id, params: ['_t':new Date().time])
-				htmlText = g.render (template: 'result', model: [sandbox: sandbox])
-				message = "發佈時間 ${new Date().format('yyyy/MM/dd')}"
-		}
-	}
-
-	/* Ajax Checker for Publishing Status */
-	def ajaxCheck = {
-		def sandbox = Sandbox.get(params.id)
-
-		//long polling (wait for 90 secs)
-		def c = 0
-		while (sandbox.isCooking) {
-			if (c++ >= 18) break
-			sleep(5000)
-			sandbox.refresh()
-		}
-
-		if (sandbox.isCooking) {
-			render (template: 'timeout', model: [sandbox: sandbox])
-		}
-		else {
-			render (template: 'success', model: [sandbox: sandbox])
-		}
 	}
 
 	/**
@@ -240,19 +204,27 @@ ${'#'.multiply(sandbox.title.size()+(sandbox.title.bytes.size()-sandbox.title.si
 		cal.add(Calendar.MINUTE, 30)
 		def expiryDate = cal.time
 
-		//def filepath = "${book.name.substring(0,1).toLowerCase()}/${book.name}.${fileExt}"
-		def key = "sandbox/${params.id}"
-
-		def signedUrl = s3Service.createSignedGetUrl(bucketName, key, awsCredentials, expiryDate, false)
-		//dirty hack for https(ssl) auth failed
-		signedUrl = signedUrl.replace('https://', 'http://')
-
-		if (signedUrl) {
-			redirect (url: signedUrl)
-		}
-		else {
-			response.status = 404;
-		}
+        def filePath = "sandbox/${params.id}"
+        
+        if (params.redirect) {
+            def signedUrl = s3Service.createSignedGetUrl(bucketName, filePath, awsCredentials, expiryDate, false)        
+            //dirty hack for https(ssl) auth failed
+            signedUrl = signedUrl.replace('https://', 'http://')
+            redirect (url: signedUrl)
+        }
+        else {
+            try {
+                def object = s3Service.getObject(bucket, filePath)
+                response.contentType = object.contentType
+                response.setHeader "Content-length", "${object.contentLength}"
+                response.setHeader "Content-Disposition", "inline; filename=\"${params.id}\""
+                response.outputStream << object.dataInputStream
+            }
+            catch (ex) {
+                response.sendError 404
+                return
+            }
+        }
 	}
 
 }

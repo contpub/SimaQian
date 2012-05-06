@@ -1,42 +1,36 @@
 <html>
 <head>
-<title>Creations of ${user?.name}</title>
+<title>Publications of ${user?.name}</title>
 </head>
 <body>
-<g:if test="${books?.size()>1}">
-	Wow! You have ${books.size()} books.
-</g:if>
-<g:elseif test="${books?.size()>0}">
-	You have 1 book.
-</g:elseif>
-<g:else>
-	Just press <g:link controller="publish" action="index">publish</g:link> to write your new book.
-</g:else>
-	<table width="90%" cellpadding="0" cellspacing="0" border="0">
-		<thead>
-			<tr>
-				<th>Title</th>
-				<th>Last Modified</th>
-				<th>Action</th>
-			</tr>
-		</thead>
-		<tbody>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Book Title</th>
+			<th>Descriptions</th>
+			<th>Authors</th>
+			<th>Available Formats</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
 		<g:each status="i" in="${books}" var="book">
 			<tr>
+				<td>${i+1}</td>
 				<td><bookTag:link book="${book}">${book?.title}</bookTag:link></td>
-				<td>${book?.lastUpdated}</td>
+				<td>${book?.subtitle}</td>
+				<td>${book?.authors}</td>
+				<td>${book?.formats}</td>
 				<td>
-					<g:link controller="publish" action="update" id="${book?.id}">
-						<g:message code="button.publish.update" default="Settings" />
-					</g:link>
-					|
-					<g:link controller="publish" action="editor" id="${book?.id}">
-						<g:message code="button.publish.editor" default="Editor" />
-					</g:link>
+					<div class="btn-group">
+						<g:link controller="publish" action="update" id="${book?.id}" class="btn btn-small"><g:message code="button.publish.update" default="Settings" /></g:link>
+	<g:link controller="publish" action="editor" id="${book?.id}" class="btn btn-small"><g:message code="button.publish.editor" default="Editor" /></g:link>
+					</div>
 				</td>
 			</tr>
 		</g:each>
-		</tbody>
-	</table>
+	</tbody>
+</table>
 </body>
 </html>

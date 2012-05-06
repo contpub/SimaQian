@@ -1,69 +1,101 @@
 <html>
 <head>
-	<title>Sign up</title>
-	<style type="text/css">
-	form #account, form #password, form #password2 {
-		width: 180px;
-	}
-	form #email, form #name {
-		width: 95%;
-	}
-	</style>
-	<script type="text/javascript">
-	$(function () {
-		$('form #signup.button').click(function () {
-			var result = true;
-			var password_val = $('form #password').val();
-			var password2_val = $('form #password2').val();
-			
-			if (password_val != '' && password_val != password2_val) {
-				result = false;
-				alert('Password not match!');
-				$('form #password2').focus();
-			}
-			
-			return result;
-		});
+<title>Sign up</title>
+<r:script>
+$(function() {
+	$('#signup').click(function () {
+		var result = true;
+		var password_val = $('#password').val();
+		var password2_val = $('#password2').val();
 		
-		$('form input.errors').focus();
+		if (password_val != '' && password_val != password2_val) {
+			result = false;
+			alert('Password not match!');
+			$('#password2').focus();
+		}
+		
+		return result;
 	});
-	</script>
+	
+	$('.control-group.error input').focus();
+});
+</r:script>
 </head>
 <body>
+<div class="row">
+	<div class="span4">
+		<p></p>
+		<p>Our site has ${usernums} members.Welcome to join us to enjoy the fun of reading and writing. The following are the rights of membership:</p>
+		<ul>
+			<li>Buy a book from ${booknums} publications</li>
+			<li>Write a book and self-publish</li>
+			<li>Receive special offers</li>
+		</ul>
+	</div>
+	<div class="span8">
+		<g:hasErrors bean="${user}">
+			<div class="alert alert-error">
+				<a class="close" data-dismiss="alert" href="#">×</a>
+				<h4>Please correct these errors</h4>
+				<g:renderErrors bean="${user}" />
+			</div>
+		</g:hasErrors>
+		<g:form action="signup" class="form-horizontal">
+			<fieldset>
+				<legend>Free Sign up</legend>
 
-	<h2>Register</h2>
+				<!--email-->
+				<div class="control-group ${hasErrors(bean: user, field: 'email', 'error')}">
+					<label class="control-label" for="email">E-mail</label>
+					<div class="controls">
+						<g:textField name="email" value="${user?.email}" class="input-xlarge" autocomplete="off" />
+						<p class="help-block">Your e-mail address.</p>
+					</div>
+				</div>
 
-	<g:renderErrors bean="${user}" />
+				<!--account-->
+				<div class="control-group ${hasErrors(bean: user, field: 'account', 'error')}">
+					<label class="control-label" for="account">Username</label>
+					<div class="controls">
+					<g:textField name="account" value="${user?.account}" class="input-xlarge" autocomplete="off" />
+					<p class="help-block">e.g. john2011</p>
+					</div>
+				</div>
+				
+				<!--name-->
+				<div class="control-group ${hasErrors(bean: user, field: 'name', 'error')}">
+					<label class="control-label" for="name">Display Name</label>
+					<div class="controls">
+					<g:textField name="name" value="${user?.name}" class="input-xlarge" autocomplete="off" />
+					<p class="help-block">e.g. Peter Druker</p>
+					</div>
+				</div>
+				
+				<!--password-->
+				<div class="control-group ${hasErrors(bean: user, field: 'password', 'error')}">
+					<label class="control-label" for="password">Password</label>
+					<div class="controls">
+					<g:passwordField name="password" value="${user?.password}" class="input-xlarge" autocomplete="off" /><br />
+					</div>
+				</div>
 
-	<g:form action="signupSave">
-		<p class="no-border"><strong>Feel free to fill everything</strong></p>
+				<!--confirm-password-->
+				<div class="control-group ${hasErrors(bean: user, field: 'password', 'error')}">
+					<label class="control-label" for="password2">Confirm Password</label>
+					<div class="controls">
+					<g:passwordField name="password2" value="" class="input-xlarge" autocomplete="off" /><br />
+					<p class="help-block">Please enter the password twice.</p>
+					</div>
+				</div>
 
-		<p>
-			<label for="email">Email</label><br />
-			<g:textField name="email" value="${user?.email}" autocomplete="off" />
-		</p>
-
-		<p>
-			<label for="account">Account</label> (ex. john2011)<br />
-			<g:textField name="account" value="${user?.account}" autocomplete="off" />
-		</p>
-		
-		<p>
-			<label for="name">Display Name</label> (ex. Peter Druker)<br />
-			<g:textField name="name" value="${user?.name}" autocomplete="off" />
-		</p>
-		
-		<p>
-			<label for="password">Password</label><br />
-			<g:passwordField name="password" value="${user?.password}" autocomplete="off" /><br />
-			<g:passwordField name="password2" value="" autocomplete="off" /> (confirm your new password)
-		</p>
-
-		<p class="no-border">
-			<g:submitButton name="signup" value="Sign up" class="button" />
-		</p>
-
-	</g:form>
-
+				<!--actions-->
+				<div class="form-actions">
+					<g:submitButton name="signup" value="Sign up" class="btn btn-primary" />
+					<g:link action="index" class="btn">Cancel</g:link>
+				</div>
+			</fieldset>
+		</g:form>
+	</div>
+</div>
 </body>
 </html>

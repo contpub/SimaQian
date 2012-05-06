@@ -1,5 +1,6 @@
 package simaqian
 
+import groovy.xml.MarkupBuilder
 import groovy.json.JsonBuilder
 import groovyx.net.http.URIBuilder
 
@@ -24,63 +25,46 @@ class PublishController {
      * Create a new book.
      */
 	def create = {
-		def book = new Book()
+		def book = new Book(params)
 		def user = User.get(session.userId)
 
         if (!user) { response.sendError 403; return }
 
-		def userAccount = user?.account
-		def dateString = new Date().format('yyyyMMdd')
-		
-		book.name = "${userAccount}-${dateString}"
-		
-		[book: book]
-	}
-	
-	/**
-	 * Save a new book.
-	 */
-	def save = {
-		def user = User.get(session.userId)
-		def book = new Book()
+        if (params.create) {
+			book.name = params.name
+			book.title = params.title
+			book.isPublic = (params.isPublic=='on')
 
-		if (!user) { response.sendError 403; return }
-		
-		book.name = params.name
-		book.title = params.title
-		book.isPublic = params.isPublic=='on'
-
-		// Save Book!!!
-		if (book.validate() && book.save(flush: true)) {
-			
-			// Create book profile
-			book.profile = new BookProfile(book: book)
-
-			// Save BookProfile first!!!
-			if (book.profile.validate()) {
+			// Save Book!!!
+			if (book.save(flush: true)) {
+				
+				// Create book profile
+				book.profile = new BookProfile(book: book)
 				book.profile.save(flush: true)
+
+				/* Connect User and Book association */
+				def link1 = new UserAndBook(user: user, book: book, linkType: UserAndBookLinkType.OWNER)			
+				link1.save(flush: true)
+
+				user.addToBooks(link1)
+				book.addToUsers(link1)
+
+				user.save(flush: true)
+				book.save(flush: true)
+
+				flash.alertType = 'success'
+				flash.alertMessage = "Saved. ${new Date()}"        		
+        		redirect(controller: 'publish', action: 'editor', id: book?.id)
 			}
-
-			/* Connect User and Book association */
-			def link1 = new UserAndBook()
-
-			link1.user = user
-			link1.book = book
-			link1.linkType = UserAndBookLinkType.OWNER
-			
-			link1.save(flush: true)
-
-			user.addToBooks(link1)
-			book.addToUsers(link1)
-
-			user.save(flush: true)
-			book.save(flush: true)
-
-			redirect (action: 'editor', id: book.id)
 		}
 		else {
-			render (view: 'create', model: [book: book])
+			book.name = "${user?.account}-${new Date().format('yyyyMMdd')}"
 		}
+		
+		[
+			book: book,
+			booknums: Book.count()
+		]
 	}
 	
 	/**
@@ -92,17 +76,34 @@ class PublishController {
 		def link = UserAndBook.findByBookAndUser(book, user)
 
 		if (!user) { response.sendError 403; return }
-
-		if (!book) {
-			response.sendError 404
-			return
-		}
+		if (!book) { response.sendError 404; return }
 		if (link?.linkType != UserAndBookLinkType.OWNER) {
 			response.sendError 403
 			return
 		}
 
-		[book: book]
+		if (params.update) {
+			book.title = params.title
+			book.subtitle = params.subtitle
+			book.authors = params.authors
+
+			if (book.profile) {
+				book.profile.description = params.description
+				book.profile.save(flush: true)
+			}
+			
+			if (book.save(flush: true)) {
+				//flash messages
+				flash.message = 'common.flash.message.saved'
+				flash.args = [new Date(), book.title]
+				flash.default = '{1} saved {0}'
+				flash.type = 'success'
+			}
+		}
+
+		[
+			book: book
+		]
 	}
 
 	/**
@@ -125,49 +126,51 @@ class PublishController {
 			//book.isDeleted = true
 			//book.save(flush: true)
 			book.delete(flush: true)
-			redirect(action: 'deleted')
+			redirect(controller: 'book', action: 'user', id: user?.id)
+			return
 		}
 
-		[book: book]
-	}
-
-	def deleted = {
+		[
+			book: book
+		]
 	}
 
 	/**
-	 * Save a updated book.
+	 * legacyToXml transfer plain text to xml files structure
 	 */
-	def updateSave = {
-		def user = User.get(session.userId)
-		def book = Book.get(params.id)
-		
-		if (!user) { response.sendError 403; return }
-		if (!book) { response.sendError 404; return }
+	def legacyToXml = {
+		Book.findAll().each {
+			book ->
+			//println book
+			if (book.profile) {
+				println "${book} process"
+				
+				def contents = book.profile.contents
 
-		book.title = params.title
-		book.subtitle = params.subtitle
-		book.authors = params.authors
-		book.url = params.url
+				if (contents) {
+					def contentsArray = contents.split("\n.. end-of-file\n")
 
-		if (!book.profile) {
-			book.profile = new BookProfile(book: book)
+					def writer = new StringWriter()
+					def xml = new MarkupBuilder(writer)
+					xml.files() {
+						contentsArray.each {
+							c->
+							file(c)
+						}
+					}
+
+					book.profile.contents = writer.toString()
+					book.profile.save(flush: true)
+
+					println "-xml-created-" 
+				}
+
+			}
+			else {
+				println "${book} no profile"
+			}
 		}
-		book.profile.description = params.description
-
-		if (book.profile.save(flush: true)
-			&& book.save(flush: true)) {
-
-			//flash messages
-			flash.message = 'common.flash.message.saved'
-			flash.args = [new Date(), book.title]
-			flash.default = '{1} saved {0}'
-			flash.type = 'notes'
-
-			redirect(action: 'update', id: book?.id)
-		}
-		else {
-			render(view: 'update', model: [book: book])
-		}
+		render('-end-')
 	}
 
 	/**
@@ -182,153 +185,101 @@ class PublishController {
 		if (!user) { response.sendError 403; return }
 		if (link?.linkType != UserAndBookLinkType.OWNER) { response.sendError 403; return }
 
+		def offset = params.offset?Integer.valueOf(params.offset):0
+
 		def contents = book?.profile?.contents
 
-		if (contents == null) contents = ""
+		def catalog = []
+		def contents_array = []
 
-		def contents_array = contents.split("\n.. end-of-file\n")
+		if (contents) {
+			def xml = new XmlParser().parseText(contents)
+			def files = xml.file
+			if (files) {
+				files.each { file ->
+					def text = file.text()
+					contents_array << text
+
+					def shorttext = text.replace('*', '').replace('=', '').replace('-', '').trim().split("\n")[0]
+					catalog << (shorttext?shorttext:'untitled')
+				}
+			}
+		}
+
+		// contents_array at least one row
+		if (contents_array.size() == 0) {
+			contents_array << ''
+		}
+
+		if (contents_array.size() > 0 && offset >= contents_array.size()) {
+			redirect(action: 'editor', id: book?.id)
+			return
+		}
+
+		// update, insert or remove
+		if (params.update || params.insert || params.remove) {
+
+			def contents_array_expand = []
+
+			def i = 0
+			contents_array.each { text ->
+				if (offset != i || params.insert) {
+					contents_array_expand << text
+				}
+				if (offset == i && params.update) {
+					contents_array_expand << params.contents
+				}
+				if (offset == i && params.insert) {
+					contents_array_expand << ''
+				}
+				i++
+			}
+
+			def writer = new StringWriter()
+			def xml = new MarkupBuilder(writer)
+
+			xml.files() {
+				contents_array_expand.each { text ->
+					file(text)
+				}
+			}
+
+			if (book.profile) {
+				book.profile.contents = writer.toString()
+				if (book.profile.save(flush: true)) {
+					flash.alertType = 'success'
+					flash.alertMessage = "Saved. ${new Date()}"
+				}
+			}
+
+			if (params.update == 'publish') {
+				sendCookMessage(book)
+			}
+
+			def newoffset = offset + (params.insert?1:0)
+
+			redirect(action: 'editor', id: book?.id, params: [offset: newoffset])
+		}
+
+		if (!catalog) {
+			catalog << 'untitled'
+		}
 
 		def total = contents_array.size()
 
 		def part_of_contents = ""
 
-		def offset = params.offset
-
-		if (offset == null) {
-			offset = 0
-		}
-		else {
-			offset = Integer.valueOf(offset)
-		}
-
 		if (offset >= 0 && offset < contents_array.size()) {
-			part_of_contents = "${contents_array[offset]?.trim()}\n"
+			part_of_contents = contents_array[offset]
 		}
 
-		[book: book, contents: part_of_contents, offset: offset, total: total]
-	}
-
-	def insertContent = {
-		def book = Book.get(params.id)
-		def user = User.get(session.userId)
-		def link = UserAndBook.findByBookAndUser(book, user)
-
-		if (!book) { response.sendError 404; return }
-		if (!user) { response.sendError 403; return }
-		if (link?.linkType != UserAndBookLinkType.OWNER) { response.sendError 403; return }
-
-		def offset = params.offset
-
-		if (!book.profile) { book.profile = new BookProfile(book: book) }
-
-		def contents = book.profile.contents
-
-		if (contents == null) { contents = "" }
-
-		if (offset == null) {
-			offset = contents.split("\n.. end-of-file\n").size()
-			contents = "${contents}\n\n.. end-of-file\n\n..."
-		}
-		else {
-			def contents_array = contents.split("\n.. end-of-file\n")
-			offset = Integer.valueOf(offset)
-			for (def i=0; i<contents_array.size(); i++) {
-				contents_array[i] = "${contents_array[i]}".trim()
-			}
-			if (offset >= 0 && offset < contents_array.size()) {
-				contents_array[offset] = contents_array[offset] + "\n\n.. end-of-file\n\n"
-			}
-			contents = contents_array.join("\n\n.. end-of-file\n\n")
-			offset = offset + 1
-		}
-		book.profile.contents = contents		
-		book.profile.save(flush: true)
-		book.save(flush: true)
-
-		redirect(action: 'editor', id: book.id, params: [offset: offset])
-	}
-
-	def cleanupContents = {
-		def book = Book.get(params.id)
-		def user = User.get(session.userId)
-		def link = UserAndBook.findByBookAndUser(book, user)
-
-		if (!book) { response.sendError 404; return }
-		if (!user) { response.sendError 403; return }
-		if (link?.linkType != UserAndBookLinkType.OWNER) { response.sendError 403; return }
-
-		def contents = book.profile.contents
-
-		if (contents == null) { contents = "" }
-
-		def contents_array = contents.split("\n.. end-of-file\n")
-		def contents_cleanup = []
-		for (def i=0; i<contents_array.size(); i++) {
-			contents_array[i] = "${contents_array[i]}".trim()
-			if (contents_array[i].length() > 0) {
-				contents_cleanup << contents_array[i]
-			}
-		}
-
-		contents = contents_cleanup.join("\n\n.. end-of-file\n\n")
-
-		book.profile.contents = contents		
-		book.profile.save(flush: true)
-		book.save(flush: true)
-
-		redirect(action: 'editor', id: book.id)
-	}
-	
-	/**
-	 * Change book contents (EMBED)
-	 */
-	def write = {
-		[book: Book.get(params.id)]
-	}
-	
-	/**
-	 * Save contents changes
-	 */
-	def saveWrite = {
-		def book = Book.get(params.id)
-		
-		def profile = book.profile
-		
-		if (!profile) {
-			profile = new BookProfile(book: book)
-			book.profile = profile
-		}
-		
-		profile.contents = params.contents
-		
-		if (book.save(flush: true)) {
-			flash.message = "Contents saved. ${new Date().format('yyyy-MM-dd HH:mm:ss')}"
-			redirect (action: 'write', id: book.id, fragment: 'editing')
-		}
-		else {
-			render (view: 'write', model: [book: book])
-		}
-	}
-	
-	/**
-	 * Preview before cooking
-	 */
-	def preview = {
-		[book: Book.get(params.id)]
-	}
-		
-	/**
-	 * Check for cooking status
-	 */
-	def checkCook = {
-		def book = Book.get(params.id)
-		
-		if (book?.isCooking) {
-			render (view: 'cook', model: [book: book])
-		}
-		else {
-			redirect (url: book.link)
-		}
+		[
+			book: book,
+			contents: part_of_contents,
+			catalog: catalog,
+			offset: offset,
+			total: total
+		]
 	}
 	
 	/**
@@ -364,54 +315,41 @@ class PublishController {
 	 */
 	def media = {
 		def book = Book.get(params.id)
-		[book: book]
-	}
+		def user = User.get(session.userId)
+		def link = UserAndBook.findByBookAndUser(book, user)
 
-	def mediaSave = {
-		def book = Book.get(params.id)
-		
-		log.info("Update media config for ${book.name}(${book.id})");
+		if (!book) { response.sendError 404; return }
+		if (!user) { response.sendError 403; return }
+		if (link?.linkType != UserAndBookLinkType.OWNER) { response.sendError 403; return }
 
-		def formats = []
+		if (params.update) {
+			def formats = []
 
-		if (params.pdf=='on') {
-			formats << 'pdf'
-		}		
-		if (params.epub=='on') {
-			formats << 'epub'
-		}
-		if (params.mobi=='on') {
-			formats << 'mobi'
-		}
-		if (params.html=='on') {
-			formats << 'html'
-		}
-		
-		log.info("Avaliable formats: ${formats}");
-		
-		book.formats = formats.join(',')
-		book.vhost = params.vhost
-		book.save(flush: true)
-
-		if (book.vhost && params.generate=='on') {
-			//re-generate vhost contents
-			log.info "generate contents for ${book.vhost}"
-
-			def url = new URIBuilder(grailsApplication.config.appConf.vhost.href)
-				.setQuery([h: book.vhost, f:bookTag.createDownloadLink(book: book, type: 'zip')])
-
-			log.info "access url ${url}"
-
-			log.info new URL(url.toString()).text
+			if (params.pdf=='on') {
+				formats << 'pdf'
+			}		
+			if (params.epub=='on') {
+				formats << 'epub'
+			}
+			if (params.mobi=='on') {
+				formats << 'mobi'
+			}
+			if (params.html=='on') {
+				formats << 'html'
+			}
+				
+			book.formats = formats.join(',')
+			book.vhost = params.vhost
+			
+			if (book.save(flush: true)) {
+				flash.alertType = 'success'
+				flash.alertMessage = "Saved ${new Date()}"
+			}
 		}
 
-		//flash messages
-		flash.message = 'common.flash.message.saved'
-		flash.args = [new Date(), book.title]
-		flash.default = '{1} saved {0}'
-		flash.type = 'notes'
-
-		redirect (action: 'media', id: book?.id)
+		[
+			book: book
+		]
 	}
 
 	/**
@@ -419,32 +357,34 @@ class PublishController {
 	 */
 	def reader = {
 		def book = Book.get(params.id)
-		[book: book]
-	}
+		def user = User.get(session.userId)
+		def link = UserAndBook.findByBookAndUser(book, user)
 
-	def readerSave = {
-		def book = Book.get(params.id)
+		if (!book) { response.sendError 404; return }
+		if (!user) { response.sendError 403; return }
+		if (link?.linkType != UserAndBookLinkType.OWNER) { response.sendError 403; return }
 
-		if (params.email) {
-			def user = User.findByEmail(params.email)
-
-			if (user) {
+		if (params.add) {
+			def newUser = User.findByEmail(params.email)
+			if (newUser) {
 				def link1 = new UserAndBook()
-
-				link1.user = user
+				
+				link1.user = newUser
 				link1.book = book
 				link1.linkType = UserAndBookLinkType.BUYER				
 				link1.save(flush: true)
 
-				user.addToBooks(link1)
+				newUser.addToBooks(link1)
 				book.addToUsers(link1)
 
-				user.save(flush: true)
+				newUser.save(flush: true)
 				book.save(flush: true)
 			}
 		}
 
-		redirect (action: 'reader', id: book?.id)
+		[
+			book: book
+		]
 	}
 
 	/**
@@ -452,41 +392,39 @@ class PublishController {
 	 */
 	def mode = {
 		def book = Book.get(params.id)
-		[book: book]
-	}
+		def user = User.get(session.userId)
+		def link = UserAndBook.findByBookAndUser(book, user)
 
-	/**
-	 * Change Mode Request
-	 */
-	def modeChange = {
-		def book = Book.get(params.id)
+		if (!book) { response.sendError 404; return }
+		if (!user) { response.sendError 403; return }
+		if (link?.linkType != UserAndBookLinkType.OWNER) { response.sendError 403; return }
 
-		if (book) {
-			def newType = null
+		if (params.type) {
 			switch (params.type) {
 				case 'EMBED':
-					newType = RepoType.EMBED
+					book.type = RepoType.EMBED
 				break
-
 				case 'DROPBOX':
-					newType = RepoType.DROPBOX
+					book.type = RepoType.DROPBOX
 				break
-
 				case 'GIT':
-					newType = RepoType.GIT
+					book.type = RepoType.GIT
 				break
-
 				case 'SVN':
-					newType = RepoType.SVN
+					book.type = RepoType.SVN
 				break
+				default:
+					book.type = RepoType.EMBED
 			}
-			if (newType) {
-				book.type = newType
-				book.save(flush: true)
+			if (book.save(flush: true)) {
+				flash.alertType = 'success'
+				flash.alertMessage = "Mode changed. ${new Date()}"
 			}
 		}
 
-		redirect(action: 'mode', id: book?.id)
+		[
+			book: book
+		]
 	}
 
 	/**
@@ -556,37 +494,6 @@ class PublishController {
 	 */
 	def permission = {
 		def book = Book.get(params.id)
-		[book: book]
-	}
-
-	/**
-	 * Change Mode Request
-	 */
-	def permissionSave = {
-		def book = Book.get(params.id)
-
-		if (!book) {
-			response.sendError 404
-			return
-		}
-
-		book.isPublic = params.isPublic=='on'
-		book.save(flush: true)
-
-		//flash messages
-		flash.message = 'common.flash.message.saved'
-		flash.args = [new Date(), book.title]
-		flash.default = '{1} saved {0}'
-		flash.type = 'notes'
-
-		redirect (action: 'permission', id: book?.id)
-	}
-
-	/**
-	 * Save Contents (Ajax)
-	 */
-	def ajaxSaveContents = {
-		def book = Book.get(params.id)
 		def user = User.get(session.userId)
 		def link = UserAndBook.findByBookAndUser(book, user)
 
@@ -594,57 +501,20 @@ class PublishController {
 		if (!user) { response.sendError 403; return }
 		if (link?.linkType != UserAndBookLinkType.OWNER) { response.sendError 403; return }
 
-		def successed = false
-		def message = ''
+		if (params.update) {
+			book.isPublic = params.isPublic=='on'
 
-		if (params.contents != null) {
-			if (!book.profile) { book.profile = new BookProfile(book: book) }
-
-			def contents = book.profile.contents
-			
-			if (contents == null) { contents = "" }
-
-			def contents_array = contents.split("\n.. end-of-file\n")
-			def offset = params.offset
-			
-			if (offset == null) {
-				offset = 0
-			}
-			else {
-				offset = Integer.valueOf(offset)
-			}
-
-			if (offset >= 0 && offset < contents_array.size()) {
-				contents_array[offset] = params.contents
-			}
-
-			for (def i=0; i<contents_array.size(); i++) {
-				contents_array[i] = "${contents_array[i]}".trim()
-			}
-
-			contents = contents_array.join("\n\n.. end-of-file\n\n")
-
-			book.profile.contents = contents
-			
-			book.profile.save(flush: true)
-			successed = book.save(flush: true)
-
-			if (successed) {
-				message = "Saved! ${new Date().format('HH:mm:ss')}"
-			}
-			else {
-				message = "Unable to save. ${new Date().format('HH:mm:ss')}"
+			if (book.save(flush: true)) {
+				flash.message = 'common.flash.message.saved'
+				flash.args = [new Date(), book.title]
+				flash.default = '{1} saved {0}'
+				flash.type = 'success'
 			}
 		}
 
-		if (params.publish=="true") {
-			sendCookMessage(book)
-			message = "E-book is being published. ${new Date().format('HH:mm:ss')}"
-		}
-
-		render (contentType: 'text/json') {
-			result (successed: successed, message: message)
-		}
+		[
+			book: book
+		]
 	}
 
 	def ping = {

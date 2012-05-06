@@ -25,6 +25,13 @@ class SocialTagLib {
 		)
 	}
 
+	def facebookFollow = { attr, body ->
+		out << render(
+			template: '/tagLib/social/facebookFollow',
+			model: [href: grailsApplication.config.social.facebook.like.href]
+		)
+	}
+
 	def facebookSDK = { attr, body ->
 		out << render (
 			template: '/tagLib/social/facebookSDK',

@@ -1,75 +1,29 @@
 <html>
 <head>
-	<title>Explore</title>
-	<style type="text/css">
-	#bookshelf {
-		margin: 0 auto;
-		width: 100%;
-		padding: 0;
-	}
-	#bookshelf .inner {
-		border: 0;
-		margin: 0;
-	}
-	#bookshelf a {
-		border: 0;
-		padding: 0;
-		margin: 0;
-	}
-	#bookshelf .book {
-		clear: both;
-	}
-	#bookshelf h3 {
-		font-size: 1.2em;
-		font-weight: bold;
-		color: #888888;
-	}
-	#bookshelf .description {
-		/*max-height: 110px;
-		overflow: hidden;*/
-	}
-	#bookshelf .book {
-		border-bottom: 1px solid #dadada;
-		width: 95%;
-	}
-	#bookshelf .book-command {
-		clear: both;
-		text-align: right;
-	}
-	.cover-image {
-		float: left;
-		padding: 5px;
-	}
-	</style>
+<title>Explore Awesome eBooks</title>
 </head>
 <body>
-	<div id="bookshelf"><div class="inner">
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Book Title</th>
+			<th>Descriptions</th>
+			<th>Authors</th>
+			<th>Available Formats</th>
+		</tr>
+	</thead>
+	<tbody>
 		<g:each status="i" in="${books}" var="book">
-
-			<g:if test="${i<3}">
-				<div class="book">
-					<bookTag:link book="${book}">
-						<img src="${bookTag.createCoverLink(book: book)}" class="cover-image" />
-					</bookTag:link>
-					<div class="book-info">
-						<bookTag:link book="${book}"><h3 class="title">${book?.title}</h3></bookTag:link>
-						<p class="description">${book?.subtitle}</p>
-					</div>
-					<div class="book-command">
-						<bookTag:link book="${book}">Read more ...</bookTag:link>
-					</div>
-				</div>
-			</g:if>
-			<g:else>
-				<div class="book">
-					<div class="book-info">
-						<bookTag:link book="${book}"><h3 class="title">${book?.title}</h3></bookTag:link>
-						<p class="description">${book?.subtitle}</p>
-					</div>
-				</div>
-			</g:else>
+			<tr>
+				<td>${i+1}</td>
+				<td><bookTag:link book="${book}">${book?.title}</bookTag:link></td>
+				<td>${book?.subtitle}</td>
+				<td>${book?.authors}</td>
+				<td>${book?.formats}</td>
+			</tr>
 		</g:each>
-		<div style="clear:both"></div>
-	</div></div>
+	</tbody>
+</table>
 </body>
 </html>

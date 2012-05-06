@@ -4,112 +4,103 @@
 <title>${book?.title}</title>
 </head>
 <body>
-<div class="breadcrumbs">
+<ul class="breadcrumb">
 	<userTag:isLogin>
-		<g:link action="index">Books</g:link>
+		<li>
+			<g:link action="index">Books</g:link>
+			<span class="divider">/</span>
+		</li>
 	</userTag:isLogin>
 	<userTag:isNotLogin>
-		Books
+		<li>
+			Books
+			<span class="divider">/</span>
+		</li>
 	</userTag:isNotLogin>
-	&gt;
-	${book.title}
-</div>
-<div class="post">
-	<div class="right">
-		<h2 class="title">${book?.title}</h2>
+	<li class="active">${book.title}</li>
+</ul>
+
+<div class="row">
+	<div class="span3">
+		<div class="well">
+			<div style="height:120px;text-align:center">
+				<bookTag:coverImage book="${book}" />
+			</div>
+			<ul class="nav nav-list">
+				<g:if test="${userOwnBook||userBuyBook||book.isPublic}">
+					<li class="nav-header"><g:message code="common.download.ebook" default="Download" /></li>
+					<!--pdf-->
+					<g:if test="${book?.formats?.contains('pdf')}"><li><bookTag:downloadLink book="${book}" type="pdf"><i class="icon-download"></i> ${book?.name}.pdf</bookTag:downloadLink></li></g:if>
+					<!--epub-->
+					<g:if test="${book?.formats?.contains('epub')}"><li><bookTag:downloadLink book="${book}" type="epub"><i class="icon-download"></i> ${book?.name}.epub</bookTag:downloadLink></li></g:if>
+					<!--mobi-->
+					<g:if test="${book?.formats?.contains('mobi')}"><li><bookTag:downloadLink book="${book}" type="mobi"><i class="icon-download"></i> ${book?.name}.mobi</bookTag:downloadLink></li></g:if>
+					<!--html-->
+					<g:if test="${book?.formats?.contains('html')}"><li><bookTag:downloadLink book="${book}" type="zip"><i class="icon-download"></i> ${book?.name}.zip</bookTag:downloadLink></li></g:if>
+					<!--preview-->
+					<g:if test="${book?.formats?.contains('pdf')&&book?.isPublic}"><li><a href="http://docs.google.com/viewer?url=${bookTag.createDownloadLink(book: book, type: 'pdf').encodeAsURL()}&embedded=true" target="_blank" class="fancy-button"><i class="icon-share"></i> <g:message code="common.preview" default="Preview"/></a></li></g:if>
+					<!--vhost-->
+					<g:if test="${book?.formats?.contains('html')||book?.vhost}"><li><bookTag:downloadLink book="${book}" type="cdn"><i class="icon-share"></i> Online</bookTag:downloadLink></li></g:if>
+				</g:if>
+				<g:else>
+					<li><i class="icon-info-sign"></i> You don't have permissions to download.</li>
+				</g:else>
+				<!--actions-->
+				<userTag:isLogin><g:if test="${userOwnBook}">
+					<li class="nav-header">Actions</li>
+					<li>
+						<g:link controller="publish" action="update" id="${book?.id}">
+							<i class="icon-cog"></i>
+							<g:message code="button.publish.update" default="Settings" />
+						</g:link>
+					</li>
+					<li>
+						<g:link controller="publish" action="editor" id="${book?.id}">
+							<i class="icon-edit"></i>
+							<g:message code="button.publish.editor" default="Editor" />
+						</g:link>
+					</li>
+				</g:if></userTag:isLogin>
+			</ul>
+		</div>
+	</div>
+	<div class="span9">
+
+		<!--actions-->
+		<userTag:isLogin><g:if test="${userOwnBook}">
+			<div class="btn-group pull-right">
+				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+					Action
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><g:link controller="publish" action="update" id="${book?.id}"><i class="icon-cog"></i> <g:message code="button.publish.update" default="Settings" /></g:link></li>
+					<li><g:link controller="publish" action="editor" id="${book?.id}"><i class="icon-edit"></i> <g:message code="button.publish.editor" default="Editor" /></g:link></li>
+				</ul>
+			</div>
+		</g:if></userTag:isLogin>
+
+		<!--book-->
+		<h1 class="title">${book?.title}</h1>
 		<g:if test="${book?.subtitle}"><p class="subtitle">${book?.subtitle}</p></g:if>
 		<g:if test="${book?.authors}"><p>By ${book?.authors}</p></g:if>
 		<g:if test="${book?.cookUpdated}"><p>Released: ${book?.cookUpdated?.format('MMM yyyy')}</p></g:if>
 
-		<div class="description">
+		<div style="height:50px;overflow:hidden"><socialTag:facebookLikeButton /></div>
+
+		<g:if test="${book?.isCooking}">
+			<div class="alert alert-info"><a class="close" data-dismiss="alert" href="#">×</a><strong>Notice</strong>: publishing in progress...</div>
+		</g:if>
+
+		<div class="well">
 			${book?.profile?.description}
 		</div>
-		
-		<h3><g:message code="common.download.ebook" default="Download eBooks"/></h3>
-		<div class="downloads">
-			<g:if test="${userOwnBook||userBuyBook||book.isPublic}">
-				<a name="download"></a>
-				<g:if test="${book?.isCooking}">
-					<p><strong>Notice</strong> eBooks are publishing...</p>
-				</g:if>
-				<div class="download-links">
-					
-					<g:if test="${book?.formats?.contains('epub')}"><bookTag:downloadLink book="${book}" type="epub" class="fancy-button">ePub</bookTag:downloadLink></g:if>
-
-					<g:if test="${book?.formats?.contains('mobi')}"><bookTag:downloadLink book="${book}" type="mobi" class="fancy-button">Kindle</bookTag:downloadLink></g:if>
-
-					<g:if test="${book?.formats?.contains('pdf')}"><bookTag:downloadLink book="${book}" type="pdf" class="fancy-button">PDF</bookTag:downloadLink></g:if>
-
-					<g:if test="${book?.formats?.contains('pdf')&&book?.isPublic}"><a href="http://docs.google.com/viewer?url=${bookTag.createDownloadLink(book: book, type: 'pdf').encodeAsURL()}&embedded=true" target="_blank" class="fancy-button"><g:message code="common.preview" default="Preview"/></a></g:if>
-
-					<br/>
-					<br/>
-
-					<g:if test="${book?.formats?.contains('html')}"><bookTag:downloadLink book="${book}" type="zip" class="fancy-button">HTML</bookTag:downloadLink></g:if>
-
-					<g:if test="${book?.formats?.contains('html')||book?.vhost}"><bookTag:downloadLink book="${book}" type="cdn" class="fancy-button">On-Line</bookTag:downloadLink></g:if>
-				</div>
-			</g:if>
-			<g:else>
-				<p>You don't have permission to download files for this book.</p>
-			</g:else>
-		</div>
-
-		<h3>Reader services</h3>
-		<ul>
-			<li>Send email to contact@contpub.org, we'll reply a-s-a-p.</li>
-		</ul>
-		<!--<p>
-		<select>
-			<option value="0"></option>
-			<option value="1">I want to report a problem.</option>
-			<option value="2">I can't download this book.</option>
-			<option value="3">This book contains illegal contents.</option>
-		</select><br/>
-		<g:textArea name="feedback" /><br/>
-		<g:submitButton name="submit" value="Send" class="fancy-button" />
-		</p>-->
-
-		<h3>Share with friends</h3>
-		<div style="height:50px;overflow:hidden">
-			<socialTag:facebookLikeButton />
-		</div>
-
-		<div class="comments" style="min-height:250px">
-			<socialTag:disqus identifier="book-${book?.name}" url="${bookTag.createLink(book: book)}" />
-		</div>
-	</div>
-	
-	<div class="left">
-		<!--<p class="icon">
-			<img src="${createLinkTo(dir: 'images', file: 'book_icon.png')}" class="book-icon" />
-		</p>-->
-		
-		<div style="height:120px;text-align:center">
-			<img src="${bookTag.createCoverLink(book: book)}" alt="${book?.title}" />
-		</div>
-		<div class="post-meta">
-			<!--<h4>Book Info</h4>-->
-			<ul>
-				<!--<g:if test="${!userBuyBook&&!book?.isPublic}">
-					<li><g:link action="addToCart" id="${book.id}">Buy This Book</g:link></li>
-				</g:if>-->
-				<!--<g:if test="${userBuyBook||book.isPublic}">
-					<li class="permalink"><a href="#download">電子書下載</a></li>
-				</g:if>-->
-				<g:if test="${book?.cookUpdated}">
-					<li class="time">${book?.cookUpdated?.format('yyyy/MM/dd')}</li>
-				</g:if>
-				<!--<li class=""><a id="appeal" href="#appeal"><g:message code="common.appeal" default="Appeal" /></a></li>-->
-				<g:if test="${userOwnBook}"><userTag:isLogin>
-					<li><g:link controller="publish" action="update" id="${book?.id}"><g:message code="button.publish.update" default="Settings" /></g:link></li>
-					<li><g:link controller="publish" action="editor" id="${book?.id}"><g:message code="button.publish.editor" default="Editor" /></g:link></li>
-				</userTag:isLogin></g:if>
-			</ul>
-		</div>			
 	</div>
 </div>
-<content tag="sidebar">
-</content>
+
+<div class="comments" style="min-height:380px">
+	<socialTag:disqus identifier="book-${book?.name}" url="${bookTag.createLink(book: book)}" />
+</div>
+
 </body>
 </html>

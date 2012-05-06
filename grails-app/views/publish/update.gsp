@@ -1,7 +1,8 @@
 <html>
 <head>
-<title>Update book info</title>
+<title>Update ${book?.title}</title>
 <socialTag:websnaprSDK />
+<r:require modules="tinymce" />
 <r:script>
 $(function() {
     $('textarea.tinymce').tinymce({
@@ -13,51 +14,60 @@ $(function() {
 </head>
 <body>
 <g:render template="breadcrumbs" model="[title: message(code: 'view.publish.menu.update', default: 'Basic settings')]" />
-<div id="post">
-	<div class="right">
-		<g:form action="updateSave" id="${book?.id}">
-			
-			<layoutTag:flashMessage />
-			
-			<!--display errors-->
-			<div class="form-errors">
+<div class="row">
+	<div class="span3">
+		<g:render template="leftMenu" />
+	</div>
+	<div class="span9">
+		<g:hasErrors bean="${book}">
+			<div class="alert alert-error">
+				<a class="close" data-dismiss="alert" href="#">×</a>
+				<h4>Please correct these errors</h4>
 				<g:renderErrors bean="${book}" as="list" />
 			</div>
+		</g:hasErrors>
+		<g:form action="update" id="${book?.id}" class="form-horizontal">
+			<fieldset>
+				<!--title-->
+				<div class="control-group ${hasErrors(bean: book, field: 'title', 'error')}">
+					<label class="control-label" for="title">Book Title</label>
+					<div class="controls">
+						<g:textField name="title" value="${book?.title}" class="input-xlarge" />
+						<!--<p class="help-block"></p>-->
+					</div>
+				</div>
 
-			<!--form emelments-->
-			<p class="no-border"><span class="required">*</span> = required</p>
-			<p>
-				<label for="title">Book Title</label><span class="required">*</span><br />
-				<g:textField name="title" value="${book?.title}" class="w90p" />
-			</p>
-			<p>
-				<label for="subtitle">Subtitle</label><br />
-				<g:textField name="subtitle" value="${book?.subtitle}" class="w90p" />
-			</p>
-			<p>
-				<label for="authors">Authors</label><br />
-				<g:textField name="authors" value="${book?.authors}" class="w90p" />
-			</p>
-			<p>
-				<label for="description">Brief Description</label><br />
-				<g:textArea name="description" value="${book?.profile?.description}" class="tinymce w90p" style="height:200px" />
-			</p>
-			<g:if test="${book?.type==simaqian.RepoType.GIT}">
-				<p>
-					<label for="url">Url</label><br/>
-					<g:textField name="url" value="${book?.url}" class="w90p" />
-				</p>
-			</g:if>
-			<p class="no-border">
-				<g:submitButton name="create" value="${message(code: 'common.update', default: 'Update')}" class="fancy-button-submit" />
-			</p>
-			<p>
-				<g:link action="delete" id="${book?.id}">Delete this book</g:link> (This action will permanent remove book contents.)
-			</p>
+				<!--subtitle-->
+				<div class="control-group ${hasErrors(bean: book, field: 'subtitle', 'error')}">
+					<label class="control-label" for="subtitle">Subtitle</label>
+					<div class="controls">
+						<g:textField name="subtitle" value="${book?.subtitle}" class="input-xlarge" />
+					</div>
+				</div>
+
+				<!--authors-->
+				<div class="control-group ${hasErrors(bean: book, field: 'authors', 'error')}">
+					<label class="control-label" for="authors">Authors</label>
+					<div class="controls">
+						<g:textField name="authors" value="${book?.authors}" class="input-medium" />
+					</div>
+				</div>
+
+				<!--description-->
+				<div class="control-group ${hasErrors(bean: book?.profile, field: 'description', 'error')}">
+					<label class="control-label" for="description">Brief Description</label>
+					<div class="controls">
+						<g:textArea name="description" value="${book?.profile?.description}" class="tinymce input-xlarge" rows="10" />
+					</div>
+				</div>
+
+				<!--actions-->
+				<div class="form-actions">
+					<g:submitButton name="update" value="Update" class="btn btn-primary" />
+					<bookTag:link book="${book}" class="btn">Cancel</bookTag:link>
+				</div>
+			</fieldset>
 		</g:form>
-	</div>
-	<div class="left">
-		<g:render template="leftMenu"></g:render>
 	</div>
 </div>
 </body>

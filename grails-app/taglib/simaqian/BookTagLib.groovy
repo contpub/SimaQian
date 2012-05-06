@@ -24,7 +24,7 @@ class BookTagLib {
 	 * <bookTag:link book=${book}>Text</bookTag:link>
 	 */
 	def link = { attr, body ->
-		out << "<a href=\"${attr.book?createLink(book: attr.book):'#'}\" title=\"${attr.book?.title}\">"
+		out << "<a href=\"${attr.book?createLink(book: attr.book):'#'}\" title=\"${attr.book?.title}\" class=\"${attr.class}\">"
 		if (body()) {
 			out << body()
 		}

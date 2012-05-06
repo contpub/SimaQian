@@ -4,6 +4,9 @@ modules = {
     }
 
     compass {
+        resource url: [dir: '/ie6', file: 'ie6.1.0.css'],
+            attrs: [media: 'screen'],
+            wrapper: { s -> "<!--[if IE 6]>$s<![endif]-->" }
         resource url: [dir: '/stylesheets', file: 'screen.css'],
             attrs: [media: 'screen, projection']
         resource url: [dir: '/stylesheets', file: 'print.css'],
@@ -16,12 +19,17 @@ modules = {
             wrapper: { s -> "<!--[if lt IE 7]>$s<![endif]-->" }
     }
 
+    bootstrap {
+        resource url: [dir: '/bootstrap/css', file: 'bootstrap.min.css'],
+            attrs: [media: 'screen']
+        resource url: [dir: '/bootstrap/css', file: 'bootstrap-responsive.min.css'],
+            attrs: [media: 'screen']
+        resource url: [dir: '/bootstrap/js', file: 'bootstrap.min.js']        
+    }
+
     reset {
-        resource url: [
-            dir: '/stylesheets',
-            file: 'reset.css'],
-            attrs: [media: 'screen'
-        ]
+        resource url: [dir: '/stylesheets', file: 'reset.css'],
+            attrs: [media: 'screen']
     }
 
     colorbox {
@@ -34,8 +42,13 @@ modules = {
             attrs: [media: 'screen']
         resource url: [dir: '/codemirror/lib', file: 'codemirror.js']
         resource url: [dir: '/codemirror/mode/rst', file: 'rst.js']
-        resource url: [dir: '/js', file: 'jquery.codemirror.js']
         resource url: [dir: '/codemirror/lib/util', file: 'runmode.js']
+        resource url: [dir: '/codemirror/lib/util', file: 'jquery.codemirror.js']
+    }
+
+    prettify {
+        resource url: [dir: '/google-code-prettify', file: 'prettify.css']
+        resource url: [dir: '/google-code-prettify', file: 'prettify.js']
     }
 
     tinymce {

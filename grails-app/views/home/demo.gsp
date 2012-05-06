@@ -1,7 +1,6 @@
 <html>
 <head>
 <title>Welcome</title>
-<layoutTag:webFonts family="Droid Sans Mono" />
 <style tyle="text/css">
 #tabs {
 	width: 90%;

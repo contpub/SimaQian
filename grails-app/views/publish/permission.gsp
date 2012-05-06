@@ -1,43 +1,40 @@
 <html>
 <head>
 <title>Permissions</title>
-<socialTag:websnaprSDK />
-<resource:richTextEditor />
 </head>
 <body>
-	<g:render template="breadcrumbs" model="[title: message(code: 'view.publish.menu.permission', default: 'Permissions')]" />
-	
-	<div id="post">
-		<div class="right">
-			<g:renderErrors bean="${book}" />
-
-			<g:form action="permissionSave" id="${book?.id}">
-
-				<layoutTag:flashMessage />
-
-				<!--display errors-->
-				<div class="form-errors">
-					<g:renderErrors bean="${book}" as="list" />
+<g:render template="breadcrumbs" model="[title: message(code: 'view.publish.menu.permission', default: 'Permissions')]" />
+<div class="row">
+	<div class="span3">
+		<g:render template="leftMenu" />
+	</div>
+	<div class="span9">
+		<g:hasErrors bean="${book}">
+			<div class="alert alert-error">
+				<a class="close" data-dismiss="alert" href="#">×</a>
+				<h4>Please correct these errors</h4>
+				<g:renderErrors bean="${book}" as="list" />
+			</div>
+		</g:hasErrors>
+		<g:form action="permission" id="${book?.id}" class="form-horizontal">
+			<fieldset>
+				<!--isPublic-->
+				<div class="control-group ${hasErrors(bean: book, field: 'isPublic', 'error')}">
+					<label class="control-label">Permissions</label>
+					<div class="controls">
+						<label class="checkbox" for="isPublic"><g:checkBox name="isPublic" value="${book?.isPublic}" /><g:message code="view.publish.form.isPublic" default="Public" /></label>
+						<p class="help-block"><g:message code="view.publish.form.isPublic.desc" default="Anyone can access this book." /></p>
+					</div>
 				</div>
 
-				<p>
-					<g:checkBox name="isPublic" value="${book?.isPublic}" />
-					<label for="isPublic"><g:message code="view.publish.form.isPublic" default="Public" /></label>
-					<div class="desc"><g:message code="view.publish.form.isPublic.desc" default="make this book public" /></div>
-				</p>
-
-				<p class="no-border">
-					<div id="message"></div>
-					<div id="error"></div>
-
-					<g:submitButton name="create" value="${message(code: 'common.update', default: 'Update')}" class="fancy-button-submit" />
-				</p>
-
-			</g:form>
-		</div>
-		<div class="left">
-			<g:render template="leftMenu"></g:render>
-		</div>
+				<!--actions-->
+				<div class="form-actions">
+					<g:submitButton name="update" value="Update" class="btn btn-primary" />
+					<bookTag:link book="${book}" class="btn">Cancel</bookTag:link>
+				</div>
+			</fieldset>
+		</g:form>
 	</div>
+</div>
 </body>
 </html>

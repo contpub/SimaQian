@@ -20,13 +20,6 @@ img.coolblue {
   -webkit-border-radius: 4px;
   border-radius: 4px;
 }
-#header h1#logo-text a {
-  @include single-text-shadow(#acacac, 1px, 1px, 2px);
-}
-#header #nav ul,
-#header p#rss a {
-  text-shadow: 1px 2px 0 rgba(0,0,0,0.9);
-}
 #footer-outer,
 #footer-bottom {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
