@@ -24,7 +24,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<g:link controller="book" action="user" id="${user?.id}">
+							<g:link controller="book" action="user">
 								<g:message code="common.myCreations" default="Publications" />
 							</g:link>
 						</li>

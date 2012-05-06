@@ -78,8 +78,12 @@ class BookController {
      * list books for user
      */
     def user = {
-        def user = User.get(params.id)
+        def user = User.get(session.userId)
         def books = []
+
+        if (params.id) {
+            user = User.get(params.id)
+        }
 
         if (!user) { response.sendError 404; return }
 
