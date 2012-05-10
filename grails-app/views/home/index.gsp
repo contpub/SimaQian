@@ -7,7 +7,7 @@
 	<div class="inner">
 		<h1>Continuous Publishing</h1>
 		<p>Typing and self-publish anytime, anywhere... Get awesome eBooks with your favorite devices in minutes.</p>
-		<p>PDF, EPUB, MOBI and HTML <small>is ready.</small></p>
+		<p><img src="/images/leaf-64.png" /> PDF, EPUB, MOBI and HTML <small>is ready.</small></p>
 		<p class="download-info">
 			<userTag:isLogin>
 				<g:link controller="publish" action="create" class="btn btn-primary btn-large">Publish now</g:link>

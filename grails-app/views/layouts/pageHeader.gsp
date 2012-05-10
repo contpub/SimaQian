@@ -25,22 +25,26 @@
 					<ul class="dropdown-menu">
 						<li>
 							<g:link controller="publish" action="index">
+								<i class="icon-book"></i>
 								<g:message code="common.myCreations" default="Publications" />
 							</g:link>
 						</li>
 						<li>
 							<g:link controller="sandbox" action="user">
+								<i class="icon-pencil"></i>
 								<g:message code="common.mySandbox" default="Sandbox" />
 							</g:link>
 						</li>
 						<li>
 							<g:link controller="home" action="account">
+								<i class="icon-wrench"></i>
 								<g:message code="common.myAccount" default="Account preferences" />
 							</g:link>
 						</li>
 						<li class="divider"></li>
 						<li>
 							<g:link controller="home" action="logout" onclick="return confirm('${message(code: 'home.logout.confirm', default: 'Are you sure???')}');">
+								<i class="icon-minus-sign"></i>
 								<g:message code="layout.header.logout.label" default="Sign out" />
 							</g:link>
 						</li>
