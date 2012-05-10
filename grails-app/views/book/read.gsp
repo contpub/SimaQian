@@ -13,7 +13,7 @@
 	</userTag:isLogin>
 	<userTag:isNotLogin>
 		<li>
-			Books
+			<g:link controller="explore" action="index">Books</g:link>
 			<span class="divider">/</span>
 		</li>
 	</userTag:isNotLogin>
@@ -65,21 +65,6 @@
 		</div>
 	</div>
 	<div class="span9">
-
-		<!--actions-->
-		<userTag:isLogin><g:if test="${userOwnBook}">
-			<div class="btn-group pull-right">
-				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-					Action
-					<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu">
-					<li><g:link controller="publish" action="update" id="${book?.id}"><i class="icon-cog"></i> <g:message code="button.publish.update" default="Settings" /></g:link></li>
-					<li><g:link controller="publish" action="editor" id="${book?.id}"><i class="icon-edit"></i> <g:message code="button.publish.editor" default="Editor" /></g:link></li>
-				</ul>
-			</div>
-		</g:if></userTag:isLogin>
-
 		<!--book-->
 		<h1 class="title">${book?.title}</h1>
 		<g:if test="${book?.subtitle}"><p class="subtitle">${book?.subtitle}</p></g:if>

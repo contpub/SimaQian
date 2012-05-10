@@ -1,0 +1,1 @@
+<div class="fb-like" data-href="${href}" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-action="recommend" style="display:inline-block"></div>

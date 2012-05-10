@@ -7,7 +7,10 @@
 $(function() {
     $('textarea.tinymce').tinymce({
         script_url : '/tiny_mce/tiny_mce.js',
-        theme : "simple"
+        theme : 'advanced',
+		theme_advanced_buttons1 : 'bold,italic,underline,strikethrough,|,undo,redo,|,link,unlink,bullist,numlist,blockquote',
+		theme_advanced_buttons2 : '',
+		theme_advanced_buttons3 : '' 
     });
 });
 </r:script>

@@ -3,7 +3,7 @@
 <title>Explore Awesome eBooks</title>
 </head>
 <body>
-<table class="table">
+<table class="table table-striped table-bordered">
 	<thead>
 		<tr>
 			<th>#</th>

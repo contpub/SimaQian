@@ -18,7 +18,22 @@ class PublishController {
 	 * Homepage, redirect to create a book
 	 */
     def index() {
-    	redirect (action: 'create')
+		def user = User.get(session.userId)
+        def books = []
+
+        if (!user) { response.sendError 403; return }
+
+        (user.books).each {
+            link ->
+            if (link.linkType==UserAndBookLinkType.OWNER) {
+                books << link.book
+            }
+        }
+
+        [
+            user: user,
+            books: books
+        ]
     }
     
     /**
@@ -206,9 +221,26 @@ class PublishController {
 			}
 		}
 
+		def template_for_new_contents = """*************
+Chapter title
+*************
+
+contents here
+
+Section 1
+=========
+
+contents here
+
+Section 2
+=========
+
+contents here
+"""
+
 		// contents_array at least one row
 		if (contents_array.size() == 0) {
-			contents_array << ''
+			contents_array << template_for_new_contents
 		}
 
 		if (contents_array.size() > 0 && offset >= contents_array.size()) {
@@ -230,7 +262,7 @@ class PublishController {
 					contents_array_expand << params.contents
 				}
 				if (offset == i && params.insert) {
-					contents_array_expand << ''
+					contents_array_expand << template_for_new_contents
 				}
 				i++
 			}

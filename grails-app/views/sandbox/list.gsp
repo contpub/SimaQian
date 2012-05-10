@@ -21,7 +21,7 @@
 	</div>
 </userTag:isLogin>
 
-<table class="table table-striped">
+<table class="table table-striped table-bordered">
 	<thead>
 		<tr>
 			<th width="50">#</th>

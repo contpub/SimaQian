@@ -13,7 +13,7 @@
 				<g:link controller="publish" action="create" class="btn btn-primary btn-large">Publish now</g:link>
 			</userTag:isLogin>
 			<userTag:isNotLogin>
-				<g:link action="signup" class="btn btn-danger btn-large">Sign up now</g:link>
+				<g:link action="signup" class="btn btn-success btn-large">Sign up now</g:link>
 			</userTag:isNotLogin>
 			<a href="#" class="btn btn-large">Learning <small>step by step</small></a>
 		</p>

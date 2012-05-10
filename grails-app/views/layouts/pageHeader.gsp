@@ -6,13 +6,13 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</a>
-			<a class="brand" href="#">ContPub</a>
+			<a class="brand" href="/">ContPub</a>
 			<userTag:isNotLogin><div class="pull-right">
 				<g:form controller="home" action="login" class="form-inline" style="margin:0;padding:0">
 					<g:textField name="loginEmail" value="${flash.loginEmail}" class="input-medium" placeholder="Username or e-mail" />
 					<g:passwordField name="loginPassword" value="" autocomplete="off" class="input-small" placeholder="Password" />
 					<g:submitButton name="login" value="Sign in" class="btn btn-primary" />
-					<g:link controller="home" action="signup" class="btn btn-danger">Sign up</g:link>
+					<g:link controller="home" action="signup" class="btn btn btn-success">Sign up</g:link>
 				</g:form>
 				<r:script>$('#loginEmail').focus();</r:script>
 			</div></userTag:isNotLogin>
@@ -24,7 +24,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<g:link controller="book" action="user">
+							<g:link controller="publish" action="index">
 								<g:message code="common.myCreations" default="Publications" />
 							</g:link>
 						</li>
@@ -50,23 +50,23 @@
 			<div class="nav-collapse">
 				<ul class="nav">
 					<li class="${controllerName=='home'?'active':''}">
-						<g:link controller="home">
+						<g:link controller="home" action="index">
 							<g:message code="layout.header.home.label" default="Home"/>
 						</g:link>
 					</li>
 					<li class="${controllerName=='explore'?'active':''}">
-						<g:link controller="explore">
+						<g:link controller="explore" action="index">
 							<g:message code="layout.header.explore.label" default="Explore"/>
 						</g:link>
 					</li>
 					<userTag:isLogin>
 						<li class="${controllerName=='book'?'active':''}">
-							<g:link controller="book">
+							<g:link controller="book" action="index">
 								<g:message code="layout.header.book.label" default="Books"/>
 							</g:link>
 						</li>
 						<li class="${controllerName=='publish'?'active':''}">
-							<g:link controller="publish">
+							<g:link controller="publish" action="index">
 								<g:message code="layout.header.publish.label" default="Publish"/>
 							</g:link>
 						</li>

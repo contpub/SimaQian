@@ -24,43 +24,10 @@ $(function() {
 		<li class="active">${sandbox.title}</li>
 	</ul>
 
-	<userTag:isLogin>
-		<div class="btn-group pull-right">
-			<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-				Action
-				<span class="caret"></span>
-			</a>
-			<ul class="dropdown-menu">
-				<li>
-					<g:link action="publish" params="[create: true, template: sandbox?.id]">As template</g:link>
-				</li>
-				<g:if test="${sandbox.owner==user}">
-					<li>
-						<g:link action="publish" id="${sandbox.id}">
-							<g:message code="button.edit" default="Edit" />
-						</g:link>
-					</li>
-					<li>
-						<g:link action="delete" id="${sandbox.id}" onclick="return confirm('Are you sure?')"> 
-							<g:message code="button.delete" default="Delete" />
-						</g:link>
-					</li>
-				</g:if>
-			</ul>
-		</div>
-	</userTag:isLogin>
-
-	<h1>${sandbox?.title}</h1>
-	<p>Authors: ${sandbox?.authors} (${sandbox?.owner?.name})</p>
-
-	<div style="height:50px;overflow:hidden">
-		<socialTag:facebookLikeButton />
-	</div>
-
 	<div class="row">
 
 		<div class="span3">
-			<ul class="nav nav-list">
+			<ul class="well nav nav-list">
 				<li class="nav-header">Download</li>
 				<li><g:link action="download" id="sandbox${sandbox?.id}.pdf">
 					<i class="icon-download"></i>
@@ -74,10 +41,39 @@ $(function() {
 					<i class="icon-download"></i>
 					sandbox${sandbox?.id}.mobi
 				</g:link></li>
+				<userTag:isLogin>
+					<li class="nav-header">Actions</li>
+					<li>
+						<g:link action="publish" params="[create: true, template: sandbox?.id]">
+							<i class="icon-file"></i> Use as template
+						</g:link>
+					</li>
+					<g:if test="${sandbox.owner==user}">
+						<li>
+							<g:link action="publish" id="${sandbox.id}">
+								<i class="icon-edit"></i>
+								<g:message code="button.edit" default="Edit" />
+							</g:link>
+						</li>
+						<li>
+							<g:link action="delete" id="${sandbox.id}" onclick="return confirm('Are you sure?')">
+								<i class="icon-remove"></i>
+								<g:message code="button.delete" default="Delete" />
+							</g:link>
+						</li>
+					</g:if>
+				</userTag:isLogin>
 			</ul>
 		</div>
 
 		<div class="span9">
+			<h1>${sandbox?.title}</h1>
+			<p>Authors: ${sandbox?.authors} (${sandbox?.owner?.name})</p>
+
+			<div style="height:50px;overflow:hidden">
+				<socialTag:facebookLikeButton />
+			</div>
+
 			<h3>Source Code</h3>
 			<pre class="sourcecode">${sandbox?.contents?.encodeAsHTML()}</pre>
 		</div>

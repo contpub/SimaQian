@@ -9,7 +9,7 @@
 		<g:render template="leftMenu" />
 	</div>
 	<div class="span9">
-		<table class="table">
+		<table class="table table-striped table-bordered">
 			<thead>
 				<tr>
 					<th>#</th>

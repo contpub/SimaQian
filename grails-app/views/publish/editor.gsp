@@ -5,7 +5,7 @@
 <r:require modules="codemirror" />
 <style type="text/css">
 .CodeMirror {
-	font-family: 'Droid Sans Mono', sans-serif, Consolata, monospace;
+	font-family: 'Droid Sans Mono', monospace, courier, sans-serif;
 	font-size: 12pt;
 	height: 30em;
 }
@@ -87,6 +87,12 @@ $(function() {
 </head>
 <body>
 <g:render template="breadcrumbs" model="[title: 'Editor']" />
+<g:if test="${book?.type?.toString()!='EMBED'}">
+	<div class="alert">
+	  <button class="close" data-dismiss="alert">×</button>
+	  <strong>Warning!</strong> The ${book?.type} authoring mode is enabled for this book.
+	</div>
+</g:if>
 <g:form action="editor" id="${book?.id}" params="[offset: offset]" class="form-horizontal">
 	<div class="row">
 		<div class="span3">

@@ -5,9 +5,9 @@
 <layoutTag:webFonts family="Droid+Sans+Mono" />
 <style type="text/css">
 .CodeMirror {
-	font-family: 'Droid Sans Mono', sans-serif, Consolata, monospace;
-	font-size: 12pt;
-	height: 25em;
+	font-family: 'Droid Sans Mono', monospace, courier, sans-serif;
+	font-size: 11pt;
+	height: 30em;
 }
 .CodeMirror-scroll {
 	width: 100%;
