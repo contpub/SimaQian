@@ -1,12 +1,15 @@
 <html>
 <head>
-<!--<meta HTTP-EQUIV="REFRESH" content="15; url=${createLink(controller: 'home')}">-->
 <title>Page not found</title>
 </head>
 <body>
-<h2>Error 404: page not found</h2>
-<p>Oops, something wrong... ${exception}</p>
-<div style="text-align:center"><img src="${createLinkTo(dir:'images', file:'error-404.png')}" alt="error-404" /></div>
-<p><g:link controller="home" action="index">Go Home</g:link></p>
+<div class="hero-unit">
+  <h1>Error 404</h1>
+  <p>page not found</p>
+  <p>${exception}</p>
+  <p><g:link controller="home" action="index" class="btn btn-primary btn-large">
+  	<i class="icon-home icon-white"></i> Go Home
+  </g:link></p>
+</div>
 </body>
 </html>
