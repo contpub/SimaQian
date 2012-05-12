@@ -36,23 +36,20 @@
 
 <hr class="soften" />
 
-<div class="row">
-	<div class="span4">
-		<blockquote>To me a book is a message from the gods to mankind; or, if not, should never be published at all. A message from the gods should be delivered at once. It is damnably blasphemous to talk about the autumn season and so on. How dare the author or publisher demand a price for doing his duty, the highest and most honorable to which a man can be called? </blockquote>
-	</div>
-	<div class="span4">
-		<blockquote>New information and communications technologies can improve the quality of life for people with disabilities, but only if such technologies are designed from the beginning so that everyone can use them. Given the explosive growth in the use of the World Wide Web for publishing, electronic commerce, lifelong learning and the delivery of government services, it is vital that the Web be accessible to everyone.</blockquote>
-	</div>
-	<div class="span4">
-		<blockquote>Having books published is very destructive to writing. It is even worse than making love too much. Because when you make love too much at least you get a damned clarte that is like no other light. A very clear and hollow light.</blockquote>
-	</div>
-</div>
-
-<hr class="soften" />
-
 <div class="marketing">
-	<h1>Featured Books</h1>
+	<h1 class="text-shadow">Featured Books</h1>
 	<p class="marketing-byline">For even more books published with ContPub, try <g:link controller="explore">explore</g:link> or see <a href="#">latest</a>.</p>
+	<div class="row">
+		<div class="span4">
+			<blockquote>To me a book is a message from the gods to mankind; or, if not, should never be published at all. A message from the gods should be delivered at once. It is damnably blasphemous to talk about the autumn season and so on. How dare the author or publisher demand a price for doing his duty, the highest and most honorable to which a man can be called? </blockquote>
+		</div>
+		<div class="span4">
+			<blockquote>New information and communications technologies can improve the quality of life for people with disabilities, but only if such technologies are designed from the beginning so that everyone can use them. Given the explosive growth in the use of the World Wide Web for publishing, electronic commerce, lifelong learning and the delivery of government services, it is vital that the Web be accessible to everyone.</blockquote>
+		</div>
+		<div class="span4">
+			<blockquote>Having books published is very destructive to writing. It is even worse than making love too much. Because when you make love too much at least you get a damned clarte that is like no other light. A very clear and hollow light.</blockquote>
+		</div>
+	</div>
 	<!--<ul class="thumbnails example-sites">
 		<li class="span3">
 			<a class="thumbnail" href="http://soundready.fm/" target="_blank">
