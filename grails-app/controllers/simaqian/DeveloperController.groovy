@@ -10,55 +10,67 @@ package simaqian
  */
 class DeveloperController {
 
-    def index() { }
+    def index = {
+
+    }
     
-    def login() {
-    	render (contentType: 'text/json') {
-			[
-				success: true,
-				session: new Date().toString().encodeAsMD5()
-			]
-		}
-	}
+    def login = {
+        render (contentType: 'text/json') {
+            [
+                success: true,
+                session: new Date().toString().encodeAsMD5()
+            ]
+        }
+    }
     
-    def category() {
-    	render (contentType: 'text/json') {
-			[
-				[id: 1, label: '公版書'],
-				[id: 2, label: '軟體開發']
-			]
-		}
-	}
+    def category = {
+        render (contentType: 'text/json') {
+            [
+                [id: 1, label: '公版書'],
+                [id: 2, label: '軟體開發']
+            ]
+        }
+    }
 
-    def catalog() {
-    	def books = []
-    	
-    	switch (params.id) {
-			case '1':
-		    	books << Book.findByName('PUB000003')
-			break
-			case '2':
-		    	books << Book.findByName('kalvar-20120324')
-			break
-		}
+    def catalog = {
+        def books = []
+        
+        switch (params.id) {
+            case '1':
+                books << Book.findByName('PUB000003')
+            break
+            case '2':
+                books << Book.findByName('kalvar-20120324')
+            break
+        }
 
-    	def results = []
+        def results = []
 
-    	books.each {
-    		book->
-    		if (book) {
-    			results << [
-    				name: book.name,
-    				title: book.title,
-    				subtitle: book.subtitle,
-    				authors: book.authors,
-    				pdf: bookTag.createDownloadLink(book: book, type: 'pdf'),
-    				epub: bookTag.createDownloadLink(book: book, type: 'epub')]
-    		}
-    	}
+        books.each {
+            book->
+            if (book) {
+                results << [
+                    name: book.name,
+                    title: book.title,
+                    subtitle: book.subtitle,
+                    authors: book.authors,
+                    favorite: true,
+                    cover: bookTag.createCoverLink(book: book),
+                    pdf: bookTag.createDownloadLink(book: book, type: 'pdf'),
+                    epub: bookTag.createDownloadLink(book: book, type: 'epub')]
+            }
+        }
 
-	    render (contentType: 'text/json') {
-			results
-		}
-	}
+        render (contentType: 'text/json') {
+            results
+        }
+    }
+
+    def favorite = {
+        render (contentType: 'text/json') {
+            [
+                success: true
+            ]
+        }
+    }
 }

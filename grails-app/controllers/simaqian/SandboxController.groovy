@@ -9,21 +9,17 @@ import groovy.json.JsonBuilder
 
 class SandboxController {
 
-	static defaultAction = 'list'
+	//static defaultAction = 'index'
 
 	def index = {
-		redirect(action: 'publish')
-	}
-
-	def list = {
 		def user = User.get(session.userId)
-		def sandboxList = Sandbox.findAll()
+		def sandboxList = []
 
-		if (params.user) {
-			def owner = User.get(params.user)
-			if (owner) {
-				sandboxList = Sandbox.findAllByOwner(owner)
-			}
+		if (params.all) {
+			sandboxList = Sandbox.findAll()
+		}
+		else if (user) {
+			sandboxList = Sandbox.findAllByOwner(user)
 		}
 
 		[
@@ -125,14 +121,6 @@ class SandboxController {
 
 		sandbox.delete(flush: true)
 		redirect(action: 'user')
-	}
-
-	/**
-	 * Show User's Sandboxes
-	 */
-	def user = {
-		def user = User.get(session.userId)
-		redirect(action: 'list', params: [user: user.id])
 	}
 
 	/**

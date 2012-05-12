@@ -1,5 +1,6 @@
 // Imports -------------------------------------------------------------
 
+@import "compass/css3/text-shadow";
 @import "fancy-buttons";
 @import "silk-sprite.sass";
 @import "docs.scss";
@@ -9,4 +10,8 @@
 .navbar-fixed-top .brand {
 	padding-left: 32px;
 	background: url('../images/leaf-32.png') no-repeat;
+}
+
+.text-shadow {
+	@include single-text-shadow(#aaaaaa, 1px, 1px, 2px);
 }

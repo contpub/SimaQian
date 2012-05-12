@@ -30,13 +30,13 @@
 				<g:if test="${userOwnBook||userBuyBook||book.isPublic}">
 					<li class="nav-header"><g:message code="common.download.ebook" default="Download" /></li>
 					<!--pdf-->
-					<g:if test="${book?.formats?.contains('pdf')}"><li><bookTag:downloadLink book="${book}" type="pdf"><i class="icon-download"></i> ${book?.name}.pdf</bookTag:downloadLink></li></g:if>
+					<g:if test="${book?.formats?.contains('pdf')}"><li><bookTag:downloadLink book="${book}" type="pdf" title="${book?.name}.pdf"><i class="icon-book"></i> PDF</bookTag:downloadLink></li></g:if>
 					<!--epub-->
-					<g:if test="${book?.formats?.contains('epub')}"><li><bookTag:downloadLink book="${book}" type="epub"><i class="icon-download"></i> ${book?.name}.epub</bookTag:downloadLink></li></g:if>
+					<g:if test="${book?.formats?.contains('epub')}"><li><bookTag:downloadLink book="${book}" type="epub" title="${book?.name}.epub"><i class="icon-book"></i> EPUB</bookTag:downloadLink></li></g:if>
 					<!--mobi-->
-					<g:if test="${book?.formats?.contains('mobi')}"><li><bookTag:downloadLink book="${book}" type="mobi"><i class="icon-download"></i> ${book?.name}.mobi</bookTag:downloadLink></li></g:if>
+					<g:if test="${book?.formats?.contains('mobi')}"><li><bookTag:downloadLink book="${book}" type="mobi" title="${book?.name}.mobi"><i class="icon-book"></i> MOBI</bookTag:downloadLink></li></g:if>
 					<!--html-->
-					<g:if test="${book?.formats?.contains('html')}"><li><bookTag:downloadLink book="${book}" type="zip"><i class="icon-download"></i> ${book?.name}.zip</bookTag:downloadLink></li></g:if>
+					<g:if test="${book?.formats?.contains('html')}"><li><bookTag:downloadLink book="${book}" type="zip" title="${book?.name}.zip"><i class="icon-book"></i> HTML</bookTag:downloadLink></li></g:if>
 					<!--preview-->
 					<g:if test="${book?.formats?.contains('pdf')&&book?.isPublic}"><li><a href="http://docs.google.com/viewer?url=${bookTag.createDownloadLink(book: book, type: 'pdf').encodeAsURL()}&embedded=true" target="_blank" class="fancy-button"><i class="icon-share"></i> <g:message code="common.preview" default="Preview"/></a></li></g:if>
 					<!--vhost-->

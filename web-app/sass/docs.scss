@@ -51,50 +51,52 @@ hr.soften {
 -------------------------------------------------- */
 .jumbotron {
   position: relative;
-}
-.jumbotron h1 {
-  margin-bottom: 9px;
-  font-size: 81px;
-  font-weight: bold;
-  letter-spacing: -1px;
-  line-height: 1;
-}
-.jumbotron p {
-  margin-bottom: 18px;
-  font-weight: 300;
-}
-.jumbotron .btn-large {
-  font-size: 20px;
-  font-weight: normal;
-  padding: 14px 24px;
-  margin-right: 10px;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-}
-.jumbotron .btn-large small {
-  font-size: 14px;
+
+  h1 {
+    margin-bottom: 9px;
+    font-size: 72px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  p {
+    margin-bottom: 18px;
+    font-weight: 300;
+  }
+  .btn-large {
+    font-size: 20px;
+    font-weight: normal;
+    padding: 14px 24px;
+    margin-right: 10px;
+    -webkit-border-radius: 6px;
+       -moz-border-radius: 6px;
+            border-radius: 6px;
+  }
+  .btn-large small {
+    font-size: 14px;
+  }
 }
 
 /* Masthead (docs home) */
 .masthead {
   padding-top: 36px;
   margin-bottom: 72px;
-}
-.masthead h1,
-.masthead p {
-  text-align: center;
-}
-.masthead h1 {
-  margin-bottom: 18px;
-}
-.masthead p {
-  margin-left: 5%;
-  margin-right: 5%;
-  font-size: 30px;
-  line-height: 36px;
-}
 
+  h1, p {
+    text-align: center;
+  }
+  
+  h1 {
+    margin-bottom: 18px;
+  }
+  
+  p {
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 30px;
+    line-height: 36px;
+  }
+}
 
 /* Specific jumbotrons
 ------------------------- */
@@ -102,9 +104,10 @@ hr.soften {
 .subhead {
   padding-bottom: 0;
   margin-bottom: 9px;
-}
-.subhead h1 {
-  font-size: 54px;
+
+  h1 {
+    font-size: 54px;
+  }
 }
 
 /* Subnav */
@@ -648,7 +651,7 @@ form.well {
     margin-right: 0;
   }
   .jumbotron h1 {
-    font-size: 45px;
+    font-size: 36px;
     margin-right: 0;
   }
   .jumbotron p {
@@ -778,7 +781,7 @@ form.well {
 
   /* Scale down the jumbotron content */
   .jumbotron h1 {
-    font-size: 54px;
+    font-size: 48px;
   }
   .jumbotron p {
     margin-right: 0;
@@ -797,7 +800,7 @@ form.well {
 
   /* Scale down the jumbotron content */
   .jumbotron h1 {
-    font-size: 72px;
+    font-size: 64px;
   }
 
 }

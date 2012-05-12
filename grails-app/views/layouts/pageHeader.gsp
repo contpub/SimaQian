@@ -11,7 +11,7 @@
 				<g:form controller="home" action="login" class="form-inline" style="margin:0;padding:0">
 					<g:textField name="loginEmail" value="${flash.loginEmail}" class="input-medium" placeholder="Username or e-mail" />
 					<g:passwordField name="loginPassword" value="" autocomplete="off" class="input-small" placeholder="Password" />
-					<g:submitButton name="login" value="Sign in" class="btn btn-primary" />
+					<button type="submit" name="action" value="login" class="btn btn-primary"><i class="icon-lock icon-white"></i> Sign in</button>
 					<g:link controller="home" action="signup" class="btn btn btn-success">Sign up</g:link>
 				</g:form>
 				<r:script>$('#loginEmail').focus();</r:script>
@@ -23,18 +23,6 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li>
-							<g:link controller="publish" action="index">
-								<i class="icon-book"></i>
-								<g:message code="common.myCreations" default="Publications" />
-							</g:link>
-						</li>
-						<li>
-							<g:link controller="sandbox" action="user">
-								<i class="icon-pencil"></i>
-								<g:message code="common.mySandbox" default="Sandbox" />
-							</g:link>
-						</li>
 						<li>
 							<g:link controller="home" action="account">
 								<i class="icon-wrench"></i>
@@ -75,7 +63,7 @@
 							</g:link>
 						</li>
 						<li class="${controllerName=='sandbox'?'active':''}">
-							<g:link controller="sandbox" action="publish">
+							<g:link controller="sandbox" action="index">
 								<g:message code="layout.header.sandbox.label" default="Sandbox"/>
 							</g:link>
 						</li>
@@ -85,7 +73,9 @@
 		</div>
 	</div>
 </nav>
-<div class="container">
-<g:if test="${flash.alertType}"><div class="alert alert-${flash.alertType}"><a class="close" data-dismiss="alert" href="#">×</a>${flash.alertMessage}</div></g:if>
-<g:if test="${flash.type}"><div class="alert alert-${flash.type}"><a class="close" data-dismiss="alert" href="#">×</a><g:message code="${flash.message}" args="${flash.args}" default="${flash.default}"/></div></g:if>
-</div>
+<g:if test="${flash.alertType||flash.type}">
+	<div class="container">
+		<g:if test="${flash.alertType}"><div class="alert alert-${flash.alertType}"><a class="close" data-dismiss="alert" href="#">×</a>${flash.alertMessage}</div></g:if>
+		<g:if test="${flash.type}"><div class="alert alert-${flash.type}"><a class="close" data-dismiss="alert" href="#">×</a><g:message code="${flash.message}" args="${flash.args}" default="${flash.default}"/></div></g:if>
+	</div>
+</g:if>

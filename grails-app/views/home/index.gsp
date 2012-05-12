@@ -5,15 +5,15 @@
 <body>
 <header class="jumbotron masthead">
 	<div class="inner">
-		<h1>Continuous Publishing</h1>
+		<h1 class="text-shadow">Continuous Publishing</h1>
 		<p>Typing and self-publish anytime, anywhere... Get awesome eBooks with your favorite devices in minutes.</p>
-		<p><img src="/images/leaf-64.png" /> PDF, EPUB, MOBI and HTML <small>is ready.</small></p>
+		<p class="text-shadow"><img src="/images/leaf-64.png" /> PDF, EPUB, MOBI and HTML <small>is ready.</small></p>
 		<p class="download-info">
 			<userTag:isLogin>
-				<g:link controller="publish" action="create" class="btn btn-primary btn-large">Publish now</g:link>
+				<g:link controller="publish" action="create" class="btn btn-primary btn-large">Publish now »</g:link>
 			</userTag:isLogin>
 			<userTag:isNotLogin>
-				<g:link action="signup" class="btn btn-success btn-large">Sign up now</g:link>
+				<g:link action="signup" class="btn btn-success btn-large">Sign up now »</g:link>
 			</userTag:isNotLogin>
 			<a href="#" class="btn btn-large">Learning <small>step by step</small></a>
 		</p>
@@ -29,6 +29,7 @@
 		<ul class="quick-links">
 			<li class="follow-btn"><socialTag:twitterFollow /></li>
 			<li class="follow-btn"><socialTag:facebookFollow /></li>
+			<li class="follow-btn"><socialTag:googleFollow /></li>
 		</ul>
 	</div>
 </header>

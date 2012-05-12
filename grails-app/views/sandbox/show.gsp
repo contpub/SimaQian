@@ -18,7 +18,7 @@ $(function() {
 <body>
 	<ul class="breadcrumb">
 		<li>
-			<g:link action="list">Sandbox</g:link>
+			<g:link action="index">Sandbox</g:link>
 			<span class="divider">/</span>
 		</li>
 		<li class="active">${sandbox.title}</li>

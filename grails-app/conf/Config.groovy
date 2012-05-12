@@ -206,6 +206,10 @@ social {
 		channelUrl = 'contpub.org'
 		like.href = 'http://facebook.com/contpub'
 	}
+
+	google {
+		like.href = 'https://plus.google.com/103047737274652189634'
+	}
 }
 
 // Executable Bin Path

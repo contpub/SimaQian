@@ -8,19 +8,18 @@
 </ul>
 <userTag:isLogin>
 	<div class="btn-group pull-right">
-		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-			Action
-			<span class="caret"></span>
-		</a>
-		<ul class="dropdown-menu">
-			<li><g:link action="publish">Editing my sandbox</g:link></li>
-			<li><g:link action="publish" params="[create: true]">Create a new sandbox</g:link></li>
-			<li><g:link action="list">Displays a list of all users</g:link></li>
-			<li><g:link action="list" params="[user: user?.id]">Display only the list of individuals</g:link></li>
-		</ul>
+		<g:link action="index" class="btn">
+			<i class="icon-list"></i> List only my items
+		</g:link>
+		<g:link action="index" params="[all: true]" class="btn">
+			<i class="icon-list"></i> List all items
+		</g:link>
+		<g:link action="publish" params="[create: true]" class="btn btn-primary">
+			<i class="icon-edit icon-white"></i> Create a new sandbox
+		</g:link>
 	</div>
 </userTag:isLogin>
-
+<h2>Sandbox items</h2>
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
@@ -42,8 +41,9 @@
 					<div class="btn-group">
 						<!--<g:link action="publish" params="[create: true, template: sandbox?.id]" class="btn btn-small">Template</g:link>-->
 						<g:if test="${sandbox?.owner==user}">
-							<g:link action="publish" id="${sandbox?.id}" class="btn btn-small">Edit</g:link>
-							<g:link action="delete" id="${sandbox?.id}" class="btn btn-small" onclick="return confirm('Are you sure?')">Delete</g:link>
+							<g:link action="publish" id="${sandbox?.id}">Edit</g:link>
+							|
+							<g:link action="delete" id="${sandbox?.id}" onclick="return confirm('Are you sure?')">Delete</g:link>
 						</g:if>
 					</div>
 				</td>
