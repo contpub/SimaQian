@@ -43,6 +43,7 @@ class UrlMappings {
 			controller = "book"
 			action = "download"
 			constraints {
+				//suffix(matches: /pdf|epub|mobi|zip|png/)
 				//bookName (matches: /^[a-zA-Z0-9]+$/)
 				//userName(matches:/^((?!^css$)(?!^js$)(?!^images$)(?!^session$)(?!^page$)(?!^share$).)*$/)
 			}

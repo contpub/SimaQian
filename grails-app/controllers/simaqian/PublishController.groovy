@@ -9,8 +9,8 @@ import groovyx.net.http.URIBuilder
  */
 class PublishController {
 
-	BookService bookService
-	UserService userService
+	def bookService
+	def userService
 
 	static defaultAction = 'create'
 

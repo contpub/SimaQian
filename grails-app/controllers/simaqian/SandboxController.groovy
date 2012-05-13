@@ -163,11 +163,10 @@ class SandboxController {
    @copyright: ContPub Sandbox
    @authors: ${sandbox.authors}
    @language: zh_TW
-   @epub_theme: ${sandbox.epubTheme}
+   @epub_theme: epub_simple
+   @mobi_theme: mobi_simple
 
-${'#'.multiply(sandbox.title.size()+(sandbox.title.bytes.size()-sandbox.title.size())/2)}
-${sandbox.title}
-${'#'.multiply(sandbox.title.size()+(sandbox.title.bytes.size()-sandbox.title.size())/2)}
+${reStructuredText.title(title: sandbox?.title, adornment: '#', style: 'document')}
 
 .. toctree::
    :maxdepth: 1

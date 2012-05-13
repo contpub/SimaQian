@@ -26,8 +26,8 @@ class DeveloperController {
     def category = {
         render (contentType: 'text/json') {
             [
-                [id: 1, label: '公版書'],
-                [id: 2, label: '軟體開發']
+                [id: 1, label: '公版書', size: 3],
+                [id: 2, label: '軟體開發', size: 2]
             ]
         }
     }

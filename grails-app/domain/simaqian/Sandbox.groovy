@@ -6,15 +6,15 @@ class Sandbox {
 	String contents				//書籍內容
 	String password				//密碼保護
 
-	String epubTheme = "epub_simple"	// ePub 佈景主題
-	Boolean isCooking = false	//是否正在處理轉換中
-	Boolean isSample = false	// in sample catalog
+	Boolean isSample = false		// in sample catalog
 
-	Date dateCreated				// Created Datetime
-	Date lastUpdated				// Modified Datetime
-	Date cookUpdated = new Date()	// Publish Record Datetime
+	Boolean isCooking = false		// cooking status
+	Date cookUpdated = new Date()	// published datetime
 
-	User owner						// who own this?
+	Date dateCreated				// created datetime
+	Date lastUpdated				// modified datetime
+
+	User owner						// owner
 
 	static constraints = {
 		title (nullable: false, blank: false)

@@ -4,78 +4,100 @@ package simaqian
  * Repository type
  */
 public enum RepoType {
-	EMBED,
-	GIT,
-	SVN,
-	DROPBOX;
+    EMBED,
+    GIT,
+    SVN,
+    DROPBOX;
 }
 
 /**
  * Book domain object
  */
 class Book {
-	String name				//book name (code, eg. MyBook1)
-	String title			//book title
-	String subtitle			//book sub-title
-	String authors			//book authors
-	
-	BookProfile profile		//Profile
-	
-	Boolean isCooking		= false		//是否正在處理轉換中
-	Integer countCook		= 0			//計算處理次數
-	
-	Boolean isDeleted		= false		// book deleted?
-	Boolean isAvailable		= false		// Default is not available
-	Boolean isVisible		= true		// Default is visible
-	Boolean isPublic		= true		// Public Book => 公版書/免費書
-	
-	Boolean hasCover		= false		// Has cover or not
-	
-	String formats			= "epub,mobi,pdf"	// Available eBook formats
+    String name             // name
+    String title            // title
+    String subtitle         // sub-title
+    String authors          // authors
+    
+    BookProfile profile     //Profile
 
-	RepoType type = RepoType.EMBED	// Repository Type (ex. GIT, SVN)
-	String url						// Repository URL (ex. git@github.com:user/project)
-	String vhost
+    Boolean isCooking       = false     // true for cooking status
+    Integer countCook       = 0         // cooking counter
+    String cookSecret                   // secret code    
+    Date cookUpdated                    // cooking date time
 
-	Date dateCreated				// Created Datetime
-	Date lastUpdated				// Modified Datetime
-	Date cookUpdated				// Publish Record Datetime
+    Boolean isDeleted       = false     // book deleted?
+    Boolean isAvailable     = false     // default is not available
+    Boolean isVisible       = true      // default is visible
+    Boolean isPublic        = true      // public book => 公版書/免費書
+    
+    Boolean hasCover        = false     // has cover or not
+    
+    String formats          = "epub,mobi,pdf"   // availabled formats
 
-	static hasMany = [
-		users: UserAndBook
-	]
+    RepoType type = RepoType.EMBED  // repository Type (ex. GIT, SVN)
+    String url                      // repository URL (ex. git@github.com:user/project)
+    String vhost                    // virtualhost
 
-	static constraints = {
-		name (nullable: false, blank: false, size: 5..30, unique: true, matches: /[a-zA-Z0-9\-\_]+/)
-		title (nullable: false, blank: false)
-		subtitle (nullable: true, blank: true)
-		authors (nullable: true, blank: true)
-		formats (nullable: true, blank: true)
-		type (nullable: true)
-		url (nullable: true, url: true)
-		vhost (nullable: true, blank: true)
-		profile (nullable: true)
-		cookUpdated (nullable: true)
-	}
+    Date dateCreated                // created datetime
+    Date lastUpdated                // modified datetime
 
-	/**
-	 * Repository type (enum to list)
-	 */	
-	def getTypeList() {
-		RepoType.values()
-	}
-	
-	/**
-	 * Generate permalinks for a book
-	 */
-	def getLink() {
-		new String("/read/${name}")
-	}
-	
-	/**
-	 * Generate download links for a book
-	 */
-	def getDownloadLink(type = 'pdf') {
-		new String("/download/${name}.${type}")
-	}
+    static hasMany = [
+        users: UserAndBook
+    ]
+
+    static constraints = {
+        name (nullable: false, blank: false, size: 5..30, unique: true, matches: /[a-zA-Z0-9\-\_]+/)
+        title (nullable: false, blank: false)
+        subtitle (nullable: true, blank: true)
+        authors (nullable: true, blank: true)
+        profile (nullable: true)
+        cookSecret (nullable: true, blank: true)
+        cookUpdated (nullable: true)
+        formats (nullable: true, blank: true)
+        type (nullable: true)
+        url (nullable: true, url: true)
+        vhost (nullable: true, blank: true)
+    }
+
+    /**
+     * Repository type (enum to list)
+     */ 
+    def getTypeList() {
+        RepoType.values()
+    }
+    
+    /**
+     * Generate permalinks for a book
+     */
+    def getLink() {
+        new String("/read/${name}")
+    }
+    
+    /**
+     * Generate download links for a book
+     */
+    def getDownloadLink(type = 'pdf') {
+        new String("/download/${name}.${type}")
+    }
+
+    /**
+     * Get contents as array list
+     */
+    def getContentsAsList() {
+        def result = []
+
+        if (profile && profile.contents) {
+            def xml = new XmlParser().parseText(profile.contents)
+            def files = xml.file
+            println files
+            if (files) {
+                files.each { file ->
+                    result << file.text()
+                }
+            }
+        }
+
+        return result
+    }
 }

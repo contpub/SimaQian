@@ -1,5 +1,7 @@
 package simaqian
 
+import grails.converters.*
+
 import groovy.json.JsonBuilder
 
 import org.jets3t.service.*
@@ -12,15 +14,21 @@ import java.awt.image.*
 import javax.imageio.*
 import java.io.*;
 
+import java.util.zip.*;
+
+
 /**
  * Book Controller
  */
 class BookController {
 
-    // Grails S3 Services is not working
-    //S3AssetService s3AssetService
-    //S3ClientService s3ClientService
-
+    def bookService
+    def imageService
+    def s3Service
+    
+    /**
+     * List of books
+     */
     def index = {
         def user = User.get(session.userId)
         def books = []
@@ -99,32 +107,19 @@ class BookController {
             books: books
         ]
     }
-
-    def parseFileName(bookName) {
-        def dotPos = bookName.lastIndexOf('.')
-        bookName.substring(0, dotPos)
-    }
-
-    def parseExtName(bookName) {
-        def dotPos = bookName.lastIndexOf('.')
-        bookName.substring(dotPos+1)
-    }
     
     /**
      * Permalinks for Download Books, redirect to Amazon S3 Signed URL
      */
     def download = {
-        def bookName = parseFileName(params.bookName)
-        def fileExt = parseExtName(params.bookName)
+        def bookName = params.bookName
+        def fileExt = response.format
         
         def user = User.get(session.userId)
         def book = Book.findByName(bookName)
 
         // book not found
-        if (!book) {
-            response.sendError 404
-            return
-        }
+        if (!book) { response.sendError 404; return }
 
         if (!book.isPublic) {
             def link = UserAndBook.findByBookAndUser(book, user)
@@ -136,41 +131,22 @@ class BookController {
                 return
             }
         }
-        
-        def awsCredentials = new AWSCredentials(
-            grailsApplication.config.aws.accessKey,
-            grailsApplication.config.aws.secretKey
-        )
-        
-        def s3Service = new RestS3Service(awsCredentials)
 
-        def bucket = s3Service.getBucket(grailsApplication.config.aws.bucketName)
-        def bucketName = grailsApplication.config.aws.bucketName
-        
-        def cal = Calendar.instance
-        cal.add(Calendar.MINUTE, 3)
-        def expiryDate = cal.time
-        
-        //def filepath = "${book.name.substring(0,1).toLowerCase()}/${book.name}.${fileExt}"
-        def filePath = "book/${book.name}.${fileExt}"
-        
         if (params.redirect != null) {
-            def signedUrl = s3Service.createSignedGetUrl(bucketName, filePath, awsCredentials, expiryDate, false)        
-            //dirty hack for https(ssl) auth failed
-            signedUrl = signedUrl.replace('https://', 'http://')
-            redirect (url: signedUrl)
+            def signedUrl = s3Service.createSignedGetUrl("book/${book.name}.${fileExt}", 3)
+            redirect (url: signedUrl.replace('https://', 'http://'))
         }
         else {
             try {
-                def object = s3Service.getObject(bucket, filePath)
+                def object = s3Service.getObject("book/${book.name}.${fileExt}")
                 response.contentType = object.contentType
                 response.setHeader "Content-length", "${object.contentLength}"
                 response.setHeader "Content-Disposition", "inline; filename=\"${bookName}.${fileExt}\""
                 response.outputStream << object.dataInputStream
             }
-            catch (ex) {
+            catch (e) {
+                e.printStackTrace()
                 response.sendError 404
-                return
             }
         }
     }
@@ -178,86 +154,28 @@ class BookController {
     /**
      * Cover image for Book
      */
-    def cover = {       
-        def bookName = parseFileName(params.bookName)
-        def fileExt = parseExtName(params.bookName)
+    def cover = {
+        def book = Book.findByName(params.bookName)
 
-        def book = Book.findByName(bookName)
+        if (!book) { response.sendError 404; return }
 
-        if (!book) {
-            response.sendError 404
-            return
-        }
+        withFormat {
+            png {
+                response.contentType = 'image/png'
 
-        def awsCredentials = new AWSCredentials(
-            grailsApplication.config.aws.accessKey,
-            grailsApplication.config.aws.secretKey
-        )
-        
-        def s3Service = new RestS3Service(awsCredentials)
+                try {
+                    def object = s3Service.getObject("book/${book.name}.png")
+                    def bytes = object.dataInputStream.bytes
 
-        def bucket = s3Service.getBucket(grailsApplication.config.aws.bucketName)
-        def bucketName = grailsApplication.config.aws.bucketName
-        
-        def cal = Calendar.instance
-        cal.add(Calendar.MINUTE, 10)
-        def expiryDate = cal.time
-        
-        //def filepath = "${book.name.substring(0,1).toLowerCase()}/${book.name}.${fileExt}"
-        def filePath = "book/${bookName}.png"
-
-        try {
-            def object = s3Service.getObject(bucket, filePath)
-            def bytes = object.dataInputStream.bytes
-            response.contentType = "image/png"
-            response.setHeader "Content-length", "${bytes.length}"
-            response.setHeader "Content-Disposition", "inline; filename=\"${bookName}.png\""
-            response.outputStream << bytes
-        }
-        catch (e) {
-            def image = new BufferedImage(95, 115, BufferedImage.TYPE_INT_ARGB)
-            def g2d = image.createGraphics()
-            // render to graphics 2d - 
-            // graphics2D.drawString(...), graphics2D.drawLine(...), etc.
-
-            def castle = ImageIO.read(grailsAttributes.applicationContext.getResource('/images/book_cover.png').file)
-
-            g2d.drawImage(castle, 0, 0, null);
-
-            g2d.setRenderingHint( RenderingHints.KEY_TEXT_ANTIALIASING,
-                            RenderingHints.VALUE_TEXT_ANTIALIAS_ON )
-            //g2d.setFont(new Font("Adobe Heiti Std", Font.PLAIN, 12))
-            g2d.setFont(new Font("sans-serif", Font.PLAIN, 12))
-
-            FontMetrics fm = g2d.getFontMetrics();
-            int lineHeight = fm.getHeight()*0.75;
-            def x=22, y=30, width=95-22
-            int curX = x;
-            int curY = y;
-            
-            String[] words = "${book.title}".split(" ");
-            def c = 0
-            for (String word : words) {
-                int wordWidth = fm.stringWidth(word + " ");
-                if (c++ > 0) {
-                    if (curX + wordWidth >= x + width) {
-                        curY += lineHeight;
-                        curX = x;
-                    }
+                    response.setHeader 'Content-length', "${bytes.length}"
+                    response.setHeader 'Content-Disposition', "inline; filename=\"${book.name}.png\""
+                    response.outputStream << bytes
                 }
-                g2d.drawString(word, curX, curY);
-                curX += wordWidth;
+                catch (e) {
+                    response.setHeader 'Content-Disposition', "inline; filename=\"${book.name}.png\""
+                    imageService.generateBookCover(book, response.outputStream)
+                }
             }
-            //g2d.drawString("${book.title}", 25, 30)
-
-            g2d.dispose()
-
-            response.contentType = "image/png"
-            response.setHeader "Content-Disposition", "inline; filename=\"${bookName}.png\""
-
-            def stream = response.outputStream
-            ImageIO.write(image, "png", stream)
-            stream.close()
         }
     }
 
@@ -308,49 +226,82 @@ class BookController {
             redirect (action: 'index')
         }
     }
-    
-    /**
-     * Get embedded contents
-     */
-    def embed = {
-        def contentType = 'text/plain'
 
-        //Implement SecretKey here!!!
+    /**
+     * source of book in xml or zip formats
+     */
+    def source = {
         def book = Book.get(params.id)
 
-        if (!book) {
-            book = new Book()
-        }
-        
-        if (params.index != null) {
-            return renderIndex(book)
-        }
-        else if (params.syntax != null) {
-            return renderSyntax(book)
-        }
-        
-        def contents = book.profile?.contents
+        def files = toSourceFileList(book)
 
-        if (!contents) {
-            contents = 'empty'
-        }
-        else {
-            def texts = []
-            def xml = new XmlParser().parseText(contents)
-            def files = xml.file
-            if (files) {
-                files.each { file ->
-                    texts << file.text()
-                }
+        withFormat {
+            json {
+                render files as JSON
             }
-            contents = texts.join("\n\n")
-        }
+            xml {
+                response.characterEncoding = 'UTF-8'
+                render files as XML
+            }
+            zip {
+                response.setHeader('Content-Disposition', "attachment; filename=${book?.id}.zip")
 
-        render (contentType: contentType, encoding: 'UTF-8', text: contents)
+                def zip = new ZipOutputStream(response.outputStream)
+                zip.level = 9
+
+                files.each { file ->
+                    zip.putNextEntry(new ZipEntry(file.path))
+                    zip << file.content
+                    zip.closeEntry()
+                }
+                //zip.flush()
+                zip.close()
+            }
+        }
     }
 
-    def renderIndex(book) {
-        def contents = """.. metadata
+    /**
+     * parse base from file name
+     */
+    private parseFileName(bookName) {
+        def dotPos = bookName.lastIndexOf('.')
+        bookName.substring(0, dotPos)
+    }
+
+    /**
+     * parse extension from file name
+     */
+    private parseExtName(bookName) {
+        def dotPos = bookName.lastIndexOf('.')
+        bookName.substring(dotPos+1)
+    }
+
+    /**
+     * convert book to source file list
+     */
+    private toSourceFileList(book) {
+        def result = []
+
+        if (book) {
+            def contents = book.getContentsAsList()
+
+            result << [path: 'index.rst', content: renderIndex(book, contents.size())]
+        
+            def i = 0
+            contents.each { content ->
+                result << [path: "content${i}.rst", content: content]
+                i++
+            }
+        }
+
+        return result
+    }
+    
+    /**
+     * generate index.rst contents
+     */
+    private renderIndex(book, num = 0) {
+        def result = """.. metadata
    @project: ${book.name}
    @title: ${book.title}
    @authors: ${book.authors}
@@ -359,47 +310,21 @@ class BookController {
    @epub_theme: epub_simple
    @mobi_theme: mobi_simple
 
-####
-${book.title}
-####
+${reStructuredText.title(title: book?.title, adornment: '#', style: 'document')}
 
 .. toctree::
    :maxdepth: 1
 
-   contents
 """
-        render (contentType: 'text/plain', encoding: 'UTF-8', text: contents)
-    }
-
-    //using codemirror layout
-    def renderSyntax(book) {
-        return render (template: 'codemirror', model: [contents: book.profile?.contents])
-    }
-
-    //using pygments layout
-    def renderSyntax2(book) {
-        try {
-            def pygmentize = grailsApplication.config.executable?.pygmentize
-
-            if (!pygmentize) {
-                pygmentize = "pygmentize"
+        if (num > 0) {
+            (1..num).each {
+                result += "    content${it}\n"
             }
-
-            //def options = "full,style=trac,linenos=1,encoding=utf-8"
-            def options = "linenos=1,encoding=utf-8"
-            def command = "${pygmentize} -O ${options} -l rst -f html"
-            def proc = command.execute()
-
-            proc.withWriter { writer ->
-                writer << book.profile?.contents
-            }
-
-            proc.waitForOrKill(3000)
-
-            return render (template: 'pygments', model: [contents: proc.text])
         }
-        catch (e) {
-            return render (contentType: 'text/plain', encoding: 'UTF-8', text: e.message)
+        else {
+            result += "   contents\n"
         }
+
+        return result;
     }
 }
