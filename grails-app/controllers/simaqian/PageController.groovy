@@ -5,6 +5,9 @@ class PageController {
     def index() { }
 
     def show() {
-    	[ category: params.category, name: params.name ]
+    	[
+    		category: params.category,
+    		name: params.name
+    	]
     }
 }

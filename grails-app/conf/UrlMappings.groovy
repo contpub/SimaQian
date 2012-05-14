@@ -21,6 +21,14 @@ class UrlMappings {
 			}
 		}
 
+		"/page/$category?/$name?" {
+			controller = "page"
+			action = "show"
+			constraints {
+
+			}
+		}
+
 		"/apps/$name?" {
 			controller = "page"
 			action = "show"

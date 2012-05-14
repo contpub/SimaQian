@@ -10,6 +10,7 @@
 			<li><a href="#doc-category">Category</a></li>
 			<li><a href="#doc-catalog">Catalog</a></li>
 			<li><a href="#doc-favorite">Favorite</a></li>
+			<li><a href="#doc-search">Search</a></li>
 		</ul>
 	</div>
 	<div class="span9">
@@ -59,6 +60,17 @@
 			<p>URL Format</p>
 			<pre>${g.basehref()}/api/<strong>favorite</strong>/<span class="label label-warning">SESSION</span>/<span class="label label-success">PUB000003</span></pre>
 			<pre>${g.basehref()}/api/<strong>favorite</strong>/<span class="label label-warning">SESSION</span>/<span class="label label-success">PUB000003</span>?<strong>cancel</strong>=true</pre>
+			<p>Response Sample (JSON)</p>
+			<pre>{"success":true}</pre>
+			<pre>{"success":false}</pre>
+		</section>
+
+		<section id="doc-search">
+			<div class="page-header">
+				<h2>Search <small>find something interesting</small?</h2>
+			</div>
+			<p>URL Format</p>
+			<pre>${g.basehref()}/api/<strong>search</strong>/<span class="label label-warning">SESSION</span>?<strong>q</strong>=keywords</pre>
 			<p>Response Sample (JSON)</p>
 			<pre>{"success":true}</pre>
 			<pre>{"success":false}</pre>

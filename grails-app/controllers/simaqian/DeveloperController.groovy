@@ -66,6 +66,36 @@ class DeveloperController {
         }
     }
 
+    def search = {
+        def books = []
+        
+        if (params.q) {
+            books << Book.findByName('PUB000003')
+            books << Book.findByName('kalvar-20120324')
+        }
+
+        def results = []
+
+        books.each {
+            book->
+            if (book) {
+                results << [
+                    name: book.name,
+                    title: book.title,
+                    subtitle: book.subtitle,
+                    authors: book.authors,
+                    favorite: true,
+                    cover: bookTag.createCoverLink(book: book),
+                    pdf: bookTag.createDownloadLink(book: book, type: 'pdf'),
+                    epub: bookTag.createDownloadLink(book: book, type: 'epub')]
+            }
+        }
+
+        render (contentType: 'text/json') {
+            results
+        }
+    }
+
     def favorite = {
         render (contentType: 'text/json') {
             [

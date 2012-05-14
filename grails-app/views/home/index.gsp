@@ -15,7 +15,7 @@
 			<userTag:isNotLogin>
 				<g:link action="signup" class="btn btn-success btn-large">Sign up now »</g:link>
 			</userTag:isNotLogin>
-			<a href="#" class="btn btn-large">Learning <small>step by step</small></a>
+			<g:link controller="page" action="show" params="[category: 'help', name: 'learning']" class="btn btn-large">Learning <small>step by step</small></g:link>
 		</p>
 	</div>
 	<div class="bs-links">
