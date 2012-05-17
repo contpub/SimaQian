@@ -1,11 +1,15 @@
 package simaqian
 
+import groovy.json.JsonBuilder
+import groovyx.net.http.URIBuilder
+
 import org.jets3t.service.*
 import org.jets3t.service.acl.GroupGrantee
 import org.jets3t.service.acl.Permission
 import org.jets3t.service.model.S3Object
 import org.jets3t.service.security.AWSCredentials
 import org.jets3t.service.impl.rest.httpclient.RestS3Service
+
 import java.awt.*
 import java.awt.Toolkit
 import java.awt.Transparency
@@ -21,6 +25,7 @@ import java.awt.image.ConvolveOp
 import java.awt.image.Kernel
 import javax.imageio.ImageIO
 import javax.swing.ImageIcon
+
 import com.sun.image.codec.jpeg.JPEGEncodeParam
 import com.sun.image.codec.jpeg.JPEGCodec
 import com.sun.image.codec.jpeg.JPEGImageEncoder
@@ -105,5 +110,40 @@ class BookService {
 		g.drawImage(image, 0, 0, width, height, null);
 		g.dispose();
 		return resizedImage;
+	}
+
+
+	/**
+	 * check cooking avaliable? for a book
+	 */
+	def boolean cookingAvaliabled(book) {
+		def cookExpired = true
+
+		// check last cooking expired
+		if (book.cookUpdated) {
+			def diff = new Date().time - book.cookUpdated.time
+			cookExpired = (diff >= 30*1000)
+		}
+
+		(!book.isCooking || cookExpired)
+	}
+
+	/**
+	 * start process for book cooking
+	 */
+	def void cookingStart(book) {
+		book.countCook ++
+		book.cookCreated = new Date()
+		book.isCooking = true
+		book.save(flush: true)
+	}
+
+	/**
+	 * end process for book cooking
+	 */
+	def void cookingEnd(book) {
+		book.cookUpdated = new Date()
+		book.isCooking = false
+		book.save(flush: true)
 	}
 }

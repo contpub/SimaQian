@@ -24,7 +24,8 @@ class Book {
     Boolean isCooking       = false     // true for cooking status
     Integer countCook       = 0         // cooking counter
     String cookSecret                   // secret code    
-    Date cookUpdated                    // cooking date time
+    Date cookUpdated                    // cooking updated date time
+    Date cookCreated                    // cooking created date time
 
     Boolean isDeleted       = false     // book deleted?
     Boolean isAvailable     = false     // default is not available
@@ -54,6 +55,7 @@ class Book {
         profile (nullable: true)
         cookSecret (nullable: true, blank: true)
         cookUpdated (nullable: true)
+        cookCreated (nullable: true)
         formats (nullable: true, blank: true)
         type (nullable: true)
         url (nullable: true, url: true)

@@ -12,6 +12,7 @@
 			<th>Descriptions</th>
 			<th>Authors</th>
 			<th>Available Formats</th>
+			<th>Authoring Mode</th>
 			<th>Actions</th>
 		</tr>
 	</thead>
@@ -23,6 +24,7 @@
 				<td>${book?.subtitle}</td>
 				<td>${book?.authors}</td>
 				<td>${book?.formats}</td>
+				<td>${book?.type}</td>
 				<td>
 					<g:link controller="publish" action="update" id="${book?.id}"><g:message code="button.publish.update" default="Settings" /></g:link>
 					|

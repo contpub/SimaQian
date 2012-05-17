@@ -33,8 +33,10 @@ please tell us with questionnaire below. Also you could send a mail to <img src=
 	<p>Invite you to experience CafeBook immediately!</p>
 </g:if>
 <g:if test="${category=='help'&&name=='learning'}">
-<h1>Learning</h1>
-<div style="width:720px" id="__ss_12925004"><object id="__sse12925004" width="720" height="600"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=contpub-learning-120514082121-phpapp02&amp;stripped_title=selfpublishing-in-contpub-first-look&amp;userName=lyhcode" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><param name="wmode" value="transparent"/><embed name="__sse12925004" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=contpub-learning-120514082121-phpapp02&amp;stripped_title=selfpublishing-in-contpub-first-look&amp;userName=lyhcode" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" width="720" height="600"></embed></object></div>
+<div class="page-header">
+	<h1>Learning</h1>
+</div>
+<div style="width:100%" id="__ss_12925004"><object id="__sse12925004" width="100%" height="600"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=contpub-learning-120514082121-phpapp02&amp;stripped_title=selfpublishing-in-contpub-first-look&amp;userName=lyhcode" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><param name="wmode" value="transparent"/><embed name="__sse12925004" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=contpub-learning-120514082121-phpapp02&amp;stripped_title=selfpublishing-in-contpub-first-look&amp;userName=lyhcode" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" width="100%" height="600"></embed></object></div>
 </g:if>
 </body>
 </html>

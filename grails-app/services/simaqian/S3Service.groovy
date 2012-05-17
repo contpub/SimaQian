@@ -29,7 +29,7 @@ class S3Service {
     }
 
     def getObject(path) {
-    	getObject(getBucket(), path)
+    	getService().getObject(getBucket(), path)
     }
 
     def createSignedGetUrl(path, minutes) {

@@ -19,7 +19,6 @@
 	</userTag:isNotLogin>
 	<li class="active">${book.title}</li>
 </ul>
-
 <div class="row">
 	<div class="span3">
 		<div class="well">
@@ -66,11 +65,14 @@
 	</div>
 	<div class="span9">
 		<!--book-->
-		<h1 class="title">${book?.title}</h1>
+		<div class="page-header">
+			<h1 class="title">${book?.title}</h1>
+		</div>
 		<g:if test="${book?.subtitle}"><p class="subtitle">${book?.subtitle}</p></g:if>
 		<g:if test="${book?.authors}"><p>By ${book?.authors}</p></g:if>
 		<g:if test="${book?.cookUpdated}"><p>Released: ${book?.cookUpdated?.format('MMM yyyy')}</p></g:if>
 
+		<!--facebook link button-->
 		<div style="height:50px;overflow:hidden"><socialTag:facebookLikeButton /></div>
 
 		<g:if test="${book?.isCooking}">

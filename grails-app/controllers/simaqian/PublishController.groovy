@@ -151,44 +151,6 @@ class PublishController {
 	}
 
 	/**
-	 * legacyToXml transfer plain text to xml files structure
-	 */
-	def legacyToXml = {
-		Book.findAll().each {
-			book ->
-			//println book
-			if (book.profile) {
-				println "${book} process"
-				
-				def contents = book.profile.contents
-
-				if (contents) {
-					def contentsArray = contents.split("\n.. end-of-file\n")
-
-					def writer = new StringWriter()
-					def xml = new MarkupBuilder(writer)
-					xml.files() {
-						contentsArray.each {
-							c->
-							file(c)
-						}
-					}
-
-					book.profile.contents = writer.toString()
-					book.profile.save(flush: true)
-
-					println "-xml-created-" 
-				}
-
-			}
-			else {
-				println "${book} no profile"
-			}
-		}
-		render('-end-')
-	}
-
-	/**
 	 * Editor
 	 */
 	def editor = {
@@ -285,7 +247,7 @@ contents here
 			}
 
 			if (params.update == 'publish') {
-				sendCookMessage(book)
+				startCooking(book)
 			}
 
 			def newoffset = offset + (params.insert?1:0)
@@ -549,59 +511,66 @@ contents here
 		]
 	}
 
+	/**
+	 * request for cooking a book
+	 */
 	def ping = {
 		def book = Book.findByName(params.bookName)
 		
-		if (book) {
-			sendCookMessage(book)
-		}
+		if (!book) { response.sendError 404; return }
 
 		render (contentType: 'text/json') {
-			result (id: book?.id, name: book?.name, message: 'ok', date: new Date().format('yyyy-MM-dd HH:mm:ss'))
+			result (
+				id: book?.id,
+				name: book?.name,
+				success: startCooking(book),
+				message: 'ok',
+				date: new Date().format('yyyy-MM-dd HH:mm:ss')
+			)
 		}
 	}
 
-	private boolean sendCookMessage(book) {
-		def cookExpired = false
-
-		if (!book.cookUpdated) {
-			cookExpired = true
-		}
-		else {
-			def diff = new Date().time - book.cookUpdated.time
-			if (diff >= 30*1000) {
-				cookExpired = true
-			}
-		}
-
-		if (book.isCooking == false || cookExpired) {
-			book.isCooking = true
-			book.countCook ++
-			book.save()
+	/**
+	 * job done for a cooking book
+	 */
+	def done = {
+		def book = Book.get(params.id)
 		
+		if (!book) { response.sendError 404; return }
+
+		bookService.cookingEnd(book)
+
+		render (contentType: 'text/json') {
+			result (
+				id: book?.id,
+				name: book?.name,
+				message: 'ok',
+				date: new Date().format('yyyy-MM-dd HH:mm:ss')
+			)
+		}
+	}
+
+	/**
+	 * send a cooking message through rabbitmq
+	 */
+	private boolean startCooking(book) {
+		if (bookService.cookingAvaliabled(book)) {
+			bookService.cookingStart(book);
+
 			def json = new JsonBuilder()
 			def version = grailsApplication.config.appConf.cook.version
-
-			def contentType = book.type
-			def contentUrl = book.url
 			
-			// check type settings
-			if (contentType.equals(RepoType.GIT) || contentType.equals(RepoType.SVN)) {
-
-				// repositories must have url
-				if (contentUrl == null || contentUrl == '') {
-					contentType = RepoType.EMBED
-				}
+			// setup url for book source, generate source url for EMBED books
+			def url = book.url
+			if (book.type?.equals(RepoType.EMBED)) {
+				url = "${createLink(controller: 'book', action: 'source', id: "${book?.id}.zip", absolute: true)}"
 			}
 
-			// auto-generate url if type is EMBED
-			if (book.type.equals(RepoType.EMBED)) {
-				contentUrl = createLink(controller: 'book', action: 'embed', id: book.id, absolute: true)
-			}
+			// setup url for job done callback for book
+			def callback = "${createLink(controller: 'publish', action: 'done', id: book?.id, absolute: true)}"
 
-			def vhost
-
-			// generate contents for virtual host
+			// generate virtual host callback link for virtual host
+			def vhost = ''
 			if (book.vhost) {
 				def baseUrl = grailsApplication.config.appConf.baseUrl
 				def vhostUrl = grailsApplication.config.appConf.vhost.href
@@ -615,21 +584,31 @@ contents here
 
 			json (
 				id: book.id,
-				url: "${contentUrl}",
-				type: "${book.type}",
-				name: "${book.name}",
-				vhost: "${vhost}",
+				url: url,
+				callback: callback,
+				type: book.type,
+				name: book.name,
+				vhost: vhost,
 				version: version
 			)
 			
 			def routingKey = grailsApplication.config.appConf.cook.routingKey
-			def msgContent = json?.toString()
 		
-			// Send msg to RepoCook agents using RabbitMQ
-			rabbitSend routingKey, msgContent
+			log.info "Process Book [${book.name}]: rabbitSend ${routingKey}, ${json?.toString()} at ${book.cookUpdated}"
+
+			try {
+				// Send msg to RepoCook agents using RabbitMQ
+				rabbitSend routingKey, json?.toString()
+			}
+			catch (e) {
+				log.error "RabbitMQ Connection Error"
+				log.error e.message
+			}
 
 			return true
 		}
+
+		log.info "Process Book [${book.name}]: already sent at ${book.cookUpdated}"
 
 		return false
 	}

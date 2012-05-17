@@ -289,7 +289,7 @@ class BookController {
         
             def i = 0
             contents.each { content ->
-                result << [path: "content${i}.rst", content: content]
+                result << [path: "content${i+1}.rst", content: content]
                 i++
             }
         }
@@ -318,7 +318,7 @@ ${reStructuredText.title(title: book?.title, adornment: '#', style: 'document')}
 """
         if (num > 0) {
             (1..num).each {
-                result += "    content${it}\n"
+                result += "   content${it}\n"
             }
         }
         else {

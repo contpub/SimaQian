@@ -32,9 +32,6 @@ class SandboxController {
 		def user = User.get(session.userId)
 		def sandbox = Sandbox.get(params.id)
 
-		//process params.create=true
-		//process params.id
-
 		if (!user) { response.sendError 403; return }
 		if (sandbox && sandbox.owner != user) { response.sendError 403; return }
 
@@ -87,8 +84,17 @@ class SandboxController {
 					version: grailsApplication.config.appConf.cook.version
 				)
 				
-				// Send msg to RepoCook agents using RabbitMQ
-				rabbitSend grailsApplication.config.appConf.cook.routingKey, json?.toString()
+				log.info "Sent Sandbox to RabbitMQ ${json}"
+
+				try {
+					// Send msg to RepoCook agents using RabbitMQ
+					def routingKey = grailsApplication.config.appConf.cook.routingKey
+					rabbitSend routingKey, json?.toString()					
+				}
+				catch (e) {
+					log.error 'RabbitMQ Connection Error'
+					log.error e.message
+				}
 			
 				flash.alertType = 'success'
 				flash.alertMessage = "Sandbox is publishing. ${new Date()}"
@@ -120,7 +126,7 @@ class SandboxController {
 		if (sandbox.owner != user) { response.sendError 403; return }
 
 		sandbox.delete(flush: true)
-		redirect(action: 'user')
+		redirect(action: 'index')
 	}
 
 	/**

@@ -46,9 +46,11 @@
 			<div class="page-header">
 				<h2>Catalog</h2>
 			</div>
-			<p>URL Format</p>
+			<p>URL Formats</p>
 			<pre>${g.basehref()}/api/<strong>catalog</strong>/<span class="label label-warning">SESSION</span>/<span class="badge badge-success">1</span></pre>
 			<pre>${g.basehref()}/api/<strong>catalog</strong>/<span class="label label-warning">SESSION</span>/<span class="badge badge-success">1</span>?<strong>offset</strong>=20&amp;<strong>limit</strong>=10</pre>
+			<p>Display all favorited books.</p>
+			<pre>${g.basehref()}/api/<strong>catalog</strong>/<span class="label label-warning">SESSION</span>/?<strong>favorite</strong>=true</pre>
 			<p>Response Sample (JSON)</p>
 			<pre>[{"name":"<span class="label label-success">PUB000003</span>","title":"孫子兵法","subtitle":"SunZi [ SunTzu ] - Art of War","authors":"孫武","favorite":true,"cover":"${g.basehref()}/cover/PUB000003.png","pdf":"${g.basehref()}/download/PUB000003.pdf","epub":"${g.basehref()}/download/PUB000003.epub"}]</pre>
 		</section>
@@ -57,7 +59,7 @@
 			<div class="page-header">
 				<h2>Favorite</h2>
 			</div>
-			<p>URL Format</p>
+			<p>URL Formats</p>
 			<pre>${g.basehref()}/api/<strong>favorite</strong>/<span class="label label-warning">SESSION</span>/<span class="label label-success">PUB000003</span></pre>
 			<pre>${g.basehref()}/api/<strong>favorite</strong>/<span class="label label-warning">SESSION</span>/<span class="label label-success">PUB000003</span>?<strong>cancel</strong>=true</pre>
 			<p>Response Sample (JSON)</p>

@@ -44,6 +44,13 @@ class DeveloperController {
             break
         }
 
+        if (!params.id) {
+            books << Book.findByName('PUB000001')
+            books << Book.findByName('PUB000002')
+            books << Book.findByName('PUB000003')
+            books << Book.findByName('kalvar-20120324')
+        }
+
         def results = []
 
         books.each {
@@ -57,7 +64,8 @@ class DeveloperController {
                     favorite: true,
                     cover: bookTag.createCoverLink(book: book),
                     pdf: bookTag.createDownloadLink(book: book, type: 'pdf'),
-                    epub: bookTag.createDownloadLink(book: book, type: 'epub')]
+                    epub: bookTag.createDownloadLink(book: book, type: 'epub'),
+                    mobi: bookTag.createDownloadLink(book: book, type: 'mobi')]
             }
         }
 
@@ -87,7 +95,8 @@ class DeveloperController {
                     favorite: true,
                     cover: bookTag.createCoverLink(book: book),
                     pdf: bookTag.createDownloadLink(book: book, type: 'pdf'),
-                    epub: bookTag.createDownloadLink(book: book, type: 'epub')]
+                    epub: bookTag.createDownloadLink(book: book, type: 'epub'),
+                    mobi: bookTag.createDownloadLink(book: book, type: 'mobi')]
             }
         }
 

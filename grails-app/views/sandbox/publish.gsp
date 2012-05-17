@@ -64,7 +64,9 @@ $(function() {
 
 		<!--actions-->
 		<div class="form-actions">
-			<g:submitButton name="publish" value="Publish" class="btn btn-primary" />
+			<button type="submit" name="publish" value="true" class="btn btn-primary">
+				<i class="icon-print icon-white"></i> Publish
+			</button>
 			<g:if test="${sandbox?.id}">
 				<g:link action="show" id="${sandbox?.id}" class="btn">Cancel</g:link>
 			</g:if>
