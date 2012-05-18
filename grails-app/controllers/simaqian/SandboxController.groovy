@@ -36,12 +36,10 @@ class SandboxController {
 		if (sandbox && sandbox.owner != user) { response.sendError 403; return }
 
 		if (!sandbox) {
-			sandbox = Sandbox.findByOwner(user)
+			sandbox = new Sandbox()
 		}
 
 		if (!sandbox || params.create) {
-			sandbox = new Sandbox()
-
 			def template
 
 			if (params.template) {
@@ -63,7 +61,6 @@ class SandboxController {
 		}
 
 		if (params.publish) {
-			
 			sandbox.title = params.title
 			sandbox.authors = params.authors
 			sandbox.contents = params.contents
@@ -109,8 +106,7 @@ class SandboxController {
 		}
 		
 		[
-			sandbox: sandbox,
-			sampleList: Sandbox.findAllByIsSample(true)
+			sandbox: sandbox
 		]
 	}
 
@@ -197,7 +193,7 @@ ${reStructuredText.title(title: sandbox?.title, adornment: '#', style: 'document
 		cal.add(Calendar.MINUTE, 30)
 		def expiryDate = cal.time
 
-        def filePath = "sandbox/${params.id}"
+        def filePath = "sandbox/${params.id}.${response.format}"
         
         if (params.redirect) {
             def signedUrl = s3Service.createSignedGetUrl(bucketName, filePath, awsCredentials, expiryDate, false)        

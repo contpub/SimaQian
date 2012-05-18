@@ -27,7 +27,11 @@ class DeveloperController {
         render (contentType: 'text/json') {
             [
                 [id: 1, label: '公版書', size: 3],
-                [id: 2, label: '軟體開發', size: 2]
+                [id: 2, label: '軟體開發', size: 3],
+                [id: 3, label: '信仰', size: 3],
+                [id: 4, label: '旅遊文化', size: 3],
+                [id: 5, label: '新進書', size: 3],
+                [id: 6, label: '最新發佈', size: 3]
             ]
         }
     }
@@ -37,17 +41,42 @@ class DeveloperController {
         
         switch (params.id) {
             case '1':
-                books << Book.findByName('PUB000003')
+                def rows = Book.withCriteria {
+                    like('name', 'PUB%')
+                }
+                rows.each { books << it }
             break
             case '2':
                 books << Book.findByName('kalvar-20120324')
+                books << Book.findByName('JavaSteps')
+                books << Book.findByName('nodejs-wiki-book')
+                books << Book.findByName('the-little-mongodb-book-zh-tw')
+                books << Book.findByName('android-certification-book')
+            break
+            case '3':
+                books << Book.findByName('normal-christan-life')
+            break
+            case '4':
+                books << Book.findByName('margolliu-20120508')
+            break
+            case '5':
+                Book.findAll(sort: 'dateCreated', max: 5).each {
+                    books << it
+                }
+            break
+            case '6':
+                Book.findAll(sort: 'lastUpdated', max: 5).each {
+                    books << it
+                }
             break
         }
 
         if (!params.id) {
-            books << Book.findByName('PUB000001')
-            books << Book.findByName('PUB000002')
-            books << Book.findByName('PUB000003')
+            def rows = Book.withCriteria {
+                like('name', 'PUB%')
+            }
+            rows.each { books << it }
+            books << Book.findByName('normal-christan-life')
             books << Book.findByName('kalvar-20120324')
         }
 
@@ -78,8 +107,15 @@ class DeveloperController {
         def books = []
         
         if (params.q) {
-            books << Book.findByName('PUB000003')
-            books << Book.findByName('kalvar-20120324')
+            def rows = Book.withCriteria {
+                or {
+                    like('name', "%${params.q}%")
+                    like('title', "%${params.q}%")
+                    like('subtitle', "%${params.q}%")
+                    like('authors', "%${params.q}%")
+                }
+            }
+            rows.each { books << it }
         }
 
         def results = []

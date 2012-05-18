@@ -38,6 +38,8 @@ $(function() {
 </ul>
 <g:form action="publish" id="${sandbox?.id}" class="form-horizontal">
 	<fieldset>
+		${sandbox?.id}
+		
 		<!--title-->
 		<div class="control-group">
 			<label class="control-label" for="title">Title</label>
@@ -71,7 +73,7 @@ $(function() {
 				<g:link action="show" id="${sandbox?.id}" class="btn">Cancel</g:link>
 			</g:if>
 			<g:else>
-				<g:link action="list" class="btn">Cancel</g:link>
+				<g:link action="index" class="btn">Cancel</g:link>
 			</g:else>
 		</div>
 	</fieldset>
