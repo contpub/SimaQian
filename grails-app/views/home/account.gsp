@@ -29,12 +29,12 @@ img.avatar {
 <body>
 
 <div class="row">
-	<div class="span4">
+	<div class="span3">
 		<avatar:gravatar email="${user?.email}" size="48" />
 		<p>Change your avatar at <a href="http://gravatar.com/" target="_blank" title="gravatar">gravatar.com</a><br/>
 			We’re using ${user?.email}</p>
 	</div>
-	<div class="span8">
+	<div class="span9">
 		<g:hasErrors bean="${user}">
 			<div class="alert alert-error">
 				<a class="close" data-dismiss="alert" href="#">×</a>
@@ -75,7 +75,7 @@ img.avatar {
 				<div class="control-group ${hasErrors(bean: user, field: 'password', 'error')}">
 					<label class="control-label" for="password">Password</label>
 					<div class="controls">
-						<g:passwordField name="password" value="" class="input-xlarge" autocomplete="off" /><br />
+						<g:passwordField name="password" value="" class="input-medium" autocomplete="off" /><br />
 					</div>
 				</div>
 
@@ -83,7 +83,7 @@ img.avatar {
 				<div class="control-group ${hasErrors(bean: user, field: 'password', 'error')}">
 					<label class="control-label" for="password2">Confirm Password</label>
 					<div class="controls">
-						<g:passwordField name="password2" value="" class="input-xlarge" autocomplete="off" /><br />
+						<g:passwordField name="password2" value="" class="input-medium" autocomplete="off" /><br />
 						<p class="help-block">If you do not want to change your password, leave it blank.</p>
 					</div>
 				</div>

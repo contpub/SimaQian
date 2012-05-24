@@ -26,7 +26,7 @@
 						<li>
 							<g:link controller="home" action="account">
 								<i class="icon-wrench"></i>
-								<g:message code="common.myAccount" default="Account preferences" />
+								<g:message code="common.myAccount" default="Preferences" />
 							</g:link>
 						</li>
 						<li class="divider"></li>

@@ -39,3 +39,7 @@ log:
 
 syncdb:
 	mysqldump -h contpub.org -usynconly -p contpub | mysql -h localhost -ucontpub -pcontpub contpub
+
+services:
+	mysqld_safe5 &
+	rabbitmq-server &

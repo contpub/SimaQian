@@ -16,7 +16,8 @@
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1">
+<!--<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1">-->
+<meta name="viewport" content="width=device-width" />
 <!--iOS. Delete if not required -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
