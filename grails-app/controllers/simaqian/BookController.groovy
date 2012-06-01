@@ -12,9 +12,13 @@ import org.jets3t.service.impl.rest.httpclient.*
 import java.awt.*
 import java.awt.image.*
 import javax.imageio.*
-import java.io.*;
+import java.io.*
 
-import java.util.zip.*;
+import java.util.zip.*
+
+// iText
+import com.itextpdf.text.*
+import com.itextpdf.text.pdf.*
 
 
 /**
@@ -135,6 +139,41 @@ class BookController {
         if (params.redirect != null) {
             def signedUrl = s3Service.createSignedGetUrl("book/${book.name}.${fileExt}", 3)
             redirect (url: signedUrl.replace('https://', 'http://'))
+        }
+        else if (params.encrypt != null) {
+            try {
+                def object = s3Service.getObject("book/${book.name}.${fileExt}")
+                response.contentType = object.contentType
+                //response.setHeader "Content-length", "${object.contentLength}"
+                response.setHeader "Content-Disposition", "inline; filename=\"${bookName}.${fileExt}\""
+
+                def OWNER = "Test".bytes
+                def reader = new PdfReader(object.dataInputStream)
+                def stamper = new PdfStamper(reader, response.outputStream)
+                stamper.setEncryption(null, OWNER, ~(PdfWriter.ALLOW_PRINTING|PdfWriter.ALLOW_COPY|PdfWriter.ALLOW_MODIFY_CONTENTS|PdfWriter.ALLOW_MODIFY_ANNOTATIONS), PdfWriter.ENCRYPTION_AES_128 | PdfWriter.DO_NOT_ENCRYPT_METADATA)
+                int n = reader.getNumberOfPages()
+                def bf = BaseFont.createFont()
+                for (def i = 0; i < n; i++) {
+                    def canvas = stamper.getOverContent(i)
+                    if (canvas) {
+                        canvas.beginText()
+                        canvas.setTextMatrix(100, 20)
+                        canvas.setFontAndSize(bf, 10)
+                        canvas.showText("Copyright licensed to ${user?.email} only. Please do not distribute without permission.")
+                        canvas.endText()
+                    }
+                }
+                //def info = reader.getInfo()
+                //info.put("Producer", "ContPub")
+                //info.put("License", user?.name)
+                //stamper.setMoreInfo(info)
+                stamper.close()
+            }
+            catch (e) {
+                println e.message
+                e.printStackTrace()
+                response.sendError 404
+            }
         }
         else {
             try {
