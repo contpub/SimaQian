@@ -48,10 +48,12 @@ grails.project.dependency.resolution = {
 		
 		//runtime 'commons-collections:commons-collections:3.2.1'
 		
-		runtime "net.java.dev.jets3t:jets3t:0.9.0"
+		runtime 'net.java.dev.jets3t:jets3t:0.9.0'
 
-		//runtime "org.apache.pdfbox:pdfbox:1.7.0"
-		runtime "com.itextpdf:itextpdf:5.1.3"
+		//runtime 'org.apache.pdfbox:pdfbox:1.7.0'
+		runtime 'com.itextpdf:itextpdf:5.2.0'
+		runtime 'com.itextpdf:itext-asian:5.2.0'
+		runtime 'org.bouncycastle:bcprov-jdk16:1.46'
 	}
 
 	plugins {

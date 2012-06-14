@@ -7,7 +7,7 @@
 	<div class="inner">
 		<h1 class="text-shadow">Continuous Publishing</h1>
 		<p>Typing and self-publish anytime, anywhere... Get awesome eBooks with your favorite devices in minutes.</p>
-		<p class="text-shadow"><img src="/images/leaf-64.png" /> PDF, EPUB, MOBI and HTML <small>is ready.</small></p>
+		<p class="text-shadow"><g:img uri="/images/leaf-64.png" /> PDF, EPUB, MOBI and HTML <small>is ready.</small></p>
 		<p class="download-info">
 			<userTag:isLogin>
 				<g:link controller="publish" action="create" class="btn btn-primary btn-large">Publish now »</g:link>
@@ -34,44 +34,56 @@
 	</div>
 </header>
 
+<div class="hero-unit">
+  <g:img uri="/images/champion.png" align="left" />
+  <h1>Award-Winning Innovation</h1>
+  <p>Cloud Application <strong>Champion</strong> in 2012 Open Software Competition</p>
+  <p>「ContPub 雲端電子書自助出版平台」<br/>榮獲 2012 年開放軟體創作競賽，產學合作組<strong>金牌</strong>。</p>
+  <p>
+	<a class="btn btn-primary btn-large" href="http://osc2012.csie.ncku.edu.tw/news.php">
+	  Read more
+	</a>
+  </p>
+</div>
+
 <hr class="soften" />
 
 <div class="marketing">
 	<h1 class="text-shadow">Featured Books</h1>
-	<p class="marketing-byline">For even more books published with ContPub, try <g:link controller="explore">explore</g:link> or see <a href="#">latest</a>.</p>
-	<div class="row">
-		<div class="span4">
-			<blockquote>To me a book is a message from the gods to mankind; or, if not, should never be published at all. A message from the gods should be delivered at once. It is damnably blasphemous to talk about the autumn season and so on. How dare the author or publisher demand a price for doing his duty, the highest and most honorable to which a man can be called? </blockquote>
-		</div>
-		<div class="span4">
-			<blockquote>New information and communications technologies can improve the quality of life for people with disabilities, but only if such technologies are designed from the beginning so that everyone can use them. Given the explosive growth in the use of the World Wide Web for publishing, electronic commerce, lifelong learning and the delivery of government services, it is vital that the Web be accessible to everyone.</blockquote>
-		</div>
-		<div class="span4">
-			<blockquote>Having books published is very destructive to writing. It is even worse than making love too much. Because when you make love too much at least you get a damned clarte that is like no other light. A very clear and hollow light.</blockquote>
-		</div>
-	</div>
-	<!--<ul class="thumbnails example-sites">
+	<p class="marketing-byline">Would you like to read more book? Please try to <g:link controller="explore">explore</g:link>.</p>
+	<ul class="thumbnails example-sites">
 		<li class="span3">
-			<a class="thumbnail" href="http://soundready.fm/" target="_blank">
-				<img src="assets/img/example-sites/soundready.png" alt="SoundReady.fm">
-			</a>
+			<div class="thumbnail">
+				<g:img uri="/images/cover-nodejs.png" />
+				<h5>Node.js Taiwan 中文電子書</h5>
+				<p>由台灣社群作者協作，從初學到進階都適用的開發指南。</p>
+				<g:link controller="book" action="read" id="nodejs-wiki-book" class="btn btn-primary">Read more</g:link>
+			</div>
 		</li>
 		<li class="span3">
-			<a class="thumbnail" href="http://kippt.com/" target="_blank">
-				<img src="assets/img/example-sites/kippt.png" alt="Kippt">
-			</a>
+			<div class="thumbnail">
+				<g:img uri="/images/cover-javasteps.png" />
+				<h5>Java Steps：手腦並用學 Java</h5>
+				<p>適合大學課程的 Java 程式設計教科書，搭配豐富詳盡的 TQC+ Java 認證題庫與補充練習。</p>
+				<g:link controller="book" action="read" id="JavaSteps" class="btn btn-primary">Read more</g:link>
+			</div>
 		</li>
 		<li class="span3">
-			<a class="thumbnail" href="http://www.fleetio.com/" target="_blank">
-				<img src="assets/img/example-sites/fleetio.png" alt="Fleetio">
-			</a>
+			<div class="thumbnail">
+				<g:img uri="/images/cover-mongodb.png" />
+				<h5>The Little MongoDB Book 中文版</h5>
+				<p>MongoDB 是效能極高的 NoSQL 資料庫軟體，這本書適合剛開始接觸的初學者。</p>
+				<g:link controller="book" action="read" id="the-little-mongodb-book-zh-tw" class="btn btn-primary">Read more</g:link>
+			</div>
 		</li>
 		<li class="span3">
-			<a class="thumbnail" href="http://www.jshint.com/" target="_blank">
-				<img src="assets/img/example-sites/jshint.png" alt="JS Hint">
-			</a>
+			<div class="thumbnail">
+				<h5>正常的基督徒生活</h5>
+				<p>《正常的基督徒生活》（英語：The Normal Christian Life）是倪柝聲於1938年至1939年旅行歐洲時完成的著名作品，首先用英語在英國（開西大會）、丹麥講道時發表，回中國後由上海福音書房出版了中文文本。該書被許多基督徒視為經典著作，這也是西方基督教界最熟悉的一本倪柝聲著作。該書已經用多種語言出版，至今至少出版了25萬冊。</p>
+				<g:link controller="book" action="read" id="normal-christan-life" class="btn btn-primary">Read more</g:link>
+			</div>
 		</li>
-	</ul>-->
+	</ul>
 </div>
 
 </body>

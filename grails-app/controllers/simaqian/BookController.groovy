@@ -53,7 +53,7 @@ class BookController {
      * Read a book
      */
     def read = {
-        def bookName = params.bookName
+        def bookName = params.id
         
         //bookName = bookName?.substring(5)
         def book = Book.findByName(bookName)
@@ -152,14 +152,16 @@ class BookController {
                 def stamper = new PdfStamper(reader, response.outputStream)
                 stamper.setEncryption(null, OWNER, ~(PdfWriter.ALLOW_PRINTING|PdfWriter.ALLOW_COPY|PdfWriter.ALLOW_MODIFY_CONTENTS|PdfWriter.ALLOW_MODIFY_ANNOTATIONS), PdfWriter.ENCRYPTION_AES_128 | PdfWriter.DO_NOT_ENCRYPT_METADATA)
                 int n = reader.getNumberOfPages()
-                def bf = BaseFont.createFont()
-                for (def i = 0; i < n; i++) {
+                def bf = BaseFont.createFont('MHei-Medium', 'UniCNS-UCS2-H', BaseFont.NOT_EMBEDDED)
+                
+                for (def i = 1; i <= n; i++) {
                     def canvas = stamper.getOverContent(i)
                     if (canvas) {
                         canvas.beginText()
-                        canvas.setTextMatrix(100, 20)
+                        canvas.setTextMatrix(75, 15)
                         canvas.setFontAndSize(bf, 10)
-                        canvas.showText("Copyright licensed to ${user?.email} only. Please do not distribute without permission.")
+                        //canvas.showText("Copyright licensed to ${user?.email} only. Please do not distribute without permission.")
+                        canvas.showText("著作權所有，僅授權 ${user?.email} 個人閱讀，嚴禁盜版行為。")
                         canvas.endText()
                     }
                 }

@@ -57,7 +57,7 @@ class UrlMappings {
 			}
 		}
 		
-		"/read/$bookName" {
+		"/read/$id" {
 			controller = "book"
 			action = "read"
 			constraints {
