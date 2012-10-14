@@ -2,6 +2,8 @@ grails.servlet.version = "2.5" // Change depending on target container complianc
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
+grails.project.target.level = 1.6
+grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 grails.project.war.file = "target/${appName}.war"
 
@@ -21,6 +23,8 @@ grails.project.dependency.resolution = {
         grailsPlugins()
         grailsHome()
         grailsCentral()
+
+        mavenLocal()
         mavenCentral()
 
         // uncomment these to enable remote dependency resolution from public Maven repositories
@@ -33,8 +37,18 @@ grails.project.dependency.resolution = {
     }
 	dependencies {
 		// specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
+    	
+        //groovy and related
+        //compile 'org.codehaus.groovy:groovy:2.0.4'
+        compile('org.codehaus.groovy.modules.http-builder:http-builder:0.5.2') {
+            excludes "groovy"
+        }
+        //runtime 'cglib:cglib:2.2.2'
+	
+        //require org.apache.xerces.dom
+        //compile 'xerces:xercesImpl:2.10.0'
 		
-		//for mysql datasource
+        //for mysql datasource
 		runtime 'mysql:mysql-connector-java:5.1.19'
 		
 		//for rst2html
@@ -47,23 +61,28 @@ grails.project.dependency.resolution = {
         */
 		
 		//runtime 'commons-collections:commons-collections:3.2.1'
-		
+
 		runtime 'net.java.dev.jets3t:jets3t:0.9.0'
 
 		//runtime 'org.apache.pdfbox:pdfbox:1.7.0'
-		runtime 'com.itextpdf:itextpdf:5.2.0'
+		
+        runtime 'com.itextpdf:itextpdf:5.2.0'
 		runtime 'com.itextpdf:itext-asian:5.2.0'
 		runtime 'org.bouncycastle:bcprov-jdk16:1.46'
 	}
 
 	plugins {
 		compile ":hibernate:$grailsVersion"
-		compile ":jquery:1.7.1"
+		compile ":jquery:1.8.0"
 		compile ":resources:1.1.6"
 		
 		// either compile & test require latest spock plugin, or UnitSpec compile failed
 		//compile ":spock:0.6-SNAPSHOT"
 
 		build ":tomcat:$grailsVersion"
+
+        runtime ":database-migration:1.1"
+
+        compile ':cache:1.0.0'
 	}
 }

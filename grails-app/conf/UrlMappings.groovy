@@ -64,6 +64,13 @@ class UrlMappings {
 			}
 		}
 
+		"/request/$bookName" {
+			controller = "book"
+			action = "request"
+			constraints {
+			}
+		}
+
 		"/cover/$bookName" {
 			controller = "book"
 			action = "cover"

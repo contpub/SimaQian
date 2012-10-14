@@ -20,7 +20,6 @@ import java.util.zip.*
 import com.itextpdf.text.*
 import com.itextpdf.text.pdf.*
 
-
 /**
  * Book Controller
  */
@@ -84,6 +83,21 @@ class BookController {
             userBuyBook: userBuyBook,
             userOwnBook: userOwnBook
         ])
+    }
+
+    def request = {
+        def bookName = params.bookName
+        
+        def user = User.get(session.userId)
+        def book = Book.findByName(bookName)
+
+        // book not found
+        if (!book) { response.sendError 404; return }
+
+        [
+            user: user,
+            book: book
+        ]
     }
 
     /**

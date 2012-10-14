@@ -10,7 +10,6 @@
 	<title><g:layoutTitle default="Grails"/></title>
 	<layoutTag:normalHead />
 	<ga:trackPageview />
-	<g:woopraTrackingScript />
 	<g:layoutHead/>
 </head>
 <body>

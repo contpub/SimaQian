@@ -16,14 +16,16 @@ $(function() {
 </r:script>
 </head>
 <body>
-	<g:render template="breadcrumbs" model="[title: message(code: 'view.publish.menu.permission', default: 'Permissions')]" />
-	
-	<div id="post">
-		<div class="right">
-			<g:renderErrors bean="${book}" />
+<g:render template="breadcrumbs" model="[title: message(code: 'view.publish.menu.permission', default: 'Permissions')]" />
+<div class="row">
+	<div class="span3">
+		<g:render template="leftMenu" />
+	</div>
+	<div class="span9">
+		<g:renderErrors bean="${book}" />
 
-			<g:form action="setupGitSave" id="${book?.id}">
-
+		<g:form action="setupGitSave" id="${book?.id}" class="form-horizontal">
+			<fieldset>
 				<layoutTag:flashMessage />
 
 				<!--display errors-->
@@ -31,31 +33,36 @@ $(function() {
 					<g:renderErrors bean="${book}" as="list" />
 				</div>
 
-				<p>
-					<label for="url">Git Repository Url</label><br/>
-					<g:textField name="url" value="${book?.url}" class="w90p" />
-				</p>
+				<div class="control-group">
+					<label class="control-label">GitHub Repository</label>
+					<div class="controls">
+						<label for="url">User or Organization</label>
+						<g:textField name="ghuser" value="" class="input-medium" />
+						<label for="url">Repository</label>
+						<g:textField name="ghname" value="" class="input-medium" />
+					</div>
+				</div>
 
-				<p>
-					GitHub<br/>
-					<label for="url">User/Organization Name</label><br/>
-					<g:textField name="ghuser" value="" /><br/>
-					<label for="url">Project/Repository Name</label><br/>
-					<g:textField name="ghname" value="" />
-				</p>
+				<div class="control-group">
+					<label class="control-label" for="url">Git Repository Url</label>
+					<div class="controls">
+						<g:textField name="url" value="${book?.url}" class="input-xlarge" />
+					</div>
+				</div>
 
-				<p class="no-border">
+				<!--actions-->
+				<div class="form-actions">
 					<div id="message"></div>
 					<div id="error"></div>
 
-					<g:submitButton name="create" value="${message(code: 'common.update', default: 'Update')}" class="fancy-button-submit" />
-				</p>
+					<g:submitButton name="create" value="${message(code: 'common.update', default: 'Update')}" class="btn btn-primary" />
+					<g:link controller="publish" action="mode" id="${book?.id}">Cancel</g:link>
+				</div>
 
-			</g:form>
-		</div>
-		<div class="left">
-			<g:render template="leftMenu"></g:render>
-		</div>
+					
+			</fieldset>
+		</g:form>
 	</div>
+</div>
 </body>
 </html>

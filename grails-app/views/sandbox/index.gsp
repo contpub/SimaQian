@@ -19,7 +19,7 @@
 		</g:link>
 	</div>
 </userTag:isLogin>
-<h2>Sandbox items</h2>
+<h2>Sandbox List</h2>
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>

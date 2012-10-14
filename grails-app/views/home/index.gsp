@@ -19,13 +19,6 @@
 		</p>
 	</div>
 	<div class="bs-links">
-		<!--<ul class="quick-links">
-			<li><a href="./upgrading.html">Upgrading from 1.4</a></li>
-			<li><a href="https://github.com/twitter/bootstrap/zipball/master">Download with docs</a></li>
-			<li><a href="http://blog.getbootstrap.com">Read the blog</a></li>
-			<li><a href="https://github.com/twitter/bootstrap/issues?state=open">Submit issues</a></li>
-			<li><a href="https://github.com/twitter/bootstrap/wiki">Roadmap and changelog</a></li>
-		</ul>-->
 		<ul class="quick-links">
 			<li class="follow-btn"><socialTag:twitterFollow /></li>
 			<li class="follow-btn"><socialTag:facebookFollow /></li>
@@ -35,15 +28,12 @@
 </header>
 
 <div class="hero-unit">
-  <g:img uri="/images/champion.png" align="left" />
-  <h1>Award-Winning Innovation</h1>
-  <p>Cloud Application <strong>Champion</strong> in 2012 Open Software Competition</p>
-  <p>「ContPub 雲端電子書自助出版平台」<br/>榮獲 2012 年開放軟體創作競賽，產學合作組<strong>金牌</strong>。</p>
-  <p>
-	<a class="btn btn-primary btn-large" href="http://osc2012.csie.ncku.edu.tw/news.php">
-	  Read more
-	</a>
-  </p>
+ 	<g:img uri="/images/champion.png" align="left" />
+ 	<h1>Award-Winning Innovation</h1>
+	<div class="fb-like" data-href="http://www.facebook.com/contpub" data-send="false" data-layout="box_count" data-width="60" data-show-faces="false" style="float:right"></div>
+ 	<p><strong>Champion</strong> project in The 2012 Open Source and Creative Applications Contest Award Software</p>
+	<p>「ContPub 雲端電子書自助出版平台」<br/>榮獲2012開放軟體創作競賽，產學合作組<strong>金牌</strong>。</p>
+	<p><a class="btn btn-primary btn-large" href="http://osc2012.csie.ncku.edu.tw/news.php">Read more</a></p>
 </div>
 
 <hr class="soften" />
@@ -78,6 +68,7 @@
 		</li>
 		<li class="span3">
 			<div class="thumbnail">
+                <img src="http://ecx.images-amazon.com/images/I/516phpgX1TL.jpg" />
 				<h5>正常的基督徒生活</h5>
 				<p>《正常的基督徒生活》（英語：The Normal Christian Life）是倪柝聲於1938年至1939年旅行歐洲時完成的著名作品，首先用英語在英國（開西大會）、丹麥講道時發表，回中國後由上海福音書房出版了中文文本。該書被許多基督徒視為經典著作，這也是西方基督教界最熟悉的一本倪柝聲著作。該書已經用多種語言出版，至今至少出版了25萬冊。</p>
 				<g:link controller="book" action="read" id="normal-christan-life" class="btn btn-primary">Read more</g:link>

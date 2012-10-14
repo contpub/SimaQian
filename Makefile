@@ -12,6 +12,9 @@ update:
 clean:
 	grails clean
 
+clean-cache:
+	rm -rf ./web-app/.sass-cache
+
 war:
 	grails war
 

@@ -10,7 +10,7 @@
 			<g:message code="view.publish.menu.cover" default="Change cover image" />
 		</g:link>
 	</li>
-	<li class="${actionName=='mode'?'active':''}">
+	<li class="${actionName=='mode'||actionName=='setupGit'?'active':''}">
 		<g:link action="mode" id="${book?.id}">
 			<i class="icon-cog"></i>
 			<g:message code="view.publish.menu.mode" default="Authoring modes" />
