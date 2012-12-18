@@ -28,6 +28,12 @@
 			<g:message code="view.publish.menu.reader" default="Readers" />
 		</g:link>
 	</li>
+	<li class="${actionName=='sale'?'active':''}">
+		<g:link action="sale" id="${book?.id}">
+			<i class="icon-cog"></i>
+			<g:message code="view.publish.menu.sale" default="Sales" />
+		</g:link>
+	</li>
 	<li class="${actionName=='permission'?'active':''}">
 		<g:link action="permission" id="${book?.id}">
 			<i class="icon-cog"></i>

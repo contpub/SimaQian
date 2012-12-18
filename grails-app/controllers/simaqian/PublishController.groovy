@@ -349,7 +349,7 @@ contents here
 	/**
 	 * Reader Management
 	 */
-	def reader = {
+	def reader() {
 		def book = Book.get(params.id)
 		def user = User.get(session.userId)
 		def link = UserAndBook.findByBookAndUser(book, user)
@@ -378,6 +378,76 @@ contents here
 
 		[
 			book: book
+		]
+	}
+
+	/**
+	 * 銷貨管理 Sales Management
+	 */
+	def sale() {
+		def book = Book.get(params.id)
+		def user = User.get(session.userId)
+		def link = UserAndBook.findByBookAndUser(book, user)
+
+		if (!book) { response.sendError 404; return }
+		if (!user) { response.sendError 403; return }
+		if (link?.linkType != UserAndBookLinkType.OWNER) { response.sendError 403; return }
+
+		def buyer = new BookBuyer()
+
+		if (params.add) {
+			
+			log.info "Add new buyer"
+
+			buyer.email = params.email
+			buyer.name = params.name
+			buyer.method = params.method
+			buyer.serial = params.serial
+			buyer.memo = params.memo
+			buyer.book = book
+			
+			def password = new StringBuffer()
+			def chars = "${new Date()}".encodeAsMD5()
+			(1..8).each {it->
+				password << chars[new Random().nextInt(32)]
+			}
+			
+			buyer.password = password
+			buyer.save(flush: true)
+
+			redirect(action: 'sale', id: book?.id)
+			return
+		}
+
+		//單筆刪除
+		if (params.unlink) {
+			buyer = BookBuyer.get(params.unlink)
+			if (buyer) {
+				buyer.delete(flush: true)
+			}
+			redirect(action: 'sale', id: book?.id)
+			return
+		}
+
+		//批次刪除
+		if (params.batchunlink) {
+			log.info "Unlink buyers: ${params.selBuyerId}"
+			params.selBuyerId?.each { id ->
+				buyer = BookBuyer.get(id)
+				if (buyer) {
+					buyer.delete(flush: true)
+				}
+			}
+			redirect(action: 'sale', id: book?.id)
+			return
+		}
+
+		def buyers = BookBuyer.findAllByBook(book)
+
+		[
+			book: book,
+			buyer: buyer,
+			buyers: buyers
 		]
 	}
 

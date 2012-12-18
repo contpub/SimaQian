@@ -34,12 +34,13 @@
 		</table>
 
 		<g:form action="reader" id="${book?.id}" class="well">
-			<label for="email">E-Mail</label>
+			<legend>新增一位讀者</legend>
+			<label for="email">請輸入讀者的 E-Mail</label>
 			<div class="controls">
 				<g:textField name="email" value="" class="input-xlarge" />
 			</div>
 			<g:submitButton name="add" value="Add Reader" class="btn btn-primary" />
-			<bookTag:link book="${book}" class="btn">Cancel</bookTag:link>
+			<bookTag:link book="${book}" class="btn"><g:message code="common.cancel" default="Cancel"/></bookTag:link>
 		</g:form>
 	</div>
 </div>

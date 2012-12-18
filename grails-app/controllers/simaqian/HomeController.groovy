@@ -105,5 +105,10 @@ class HomeController {
         }
 
         [user: user]
-    }    
+    }  
+
+
+    def champion = {
+        []
+    }  
 }

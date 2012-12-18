@@ -78,12 +78,55 @@ class BookController {
         def userBuyBook = link?.linkType?.equals(UserAndBookLinkType.BUYER)
         def userOwnBook = link?.linkType?.equals(UserAndBookLinkType.OWNER)
     
-        render (view: 'read', model: [
+        [
             book: book,
             userBuyBook: userBuyBook,
             userOwnBook: userOwnBook
-        ])
+        ]
     }
+
+    /**
+     * Checkout
+     */
+    def checkout = {
+        def bookName = params.bookName
+        def method = params.method
+
+        def book = Book.findByName(bookName)
+
+        // book not found
+        if (!book) { response.sendError 404; return }
+
+        /*
+        https://www.paypal.com/cgi-bin/webscr
+        https://sandbox.paypal.com/cgi-bin/webscr
+        */
+
+        def paypal_params = [
+            cmd: '_xclick',
+            lc: 'zh_TW',
+            business: 'lyhcode@gmail.com',
+            quantity: 1,
+            charset: 'UTF-8',
+            item_name: 'ASP.NET MVC 2 開發實戰',
+            currency_code: 'TWD',
+            amount: 350,
+            shipping: 0,
+            no_shipping: 1,
+            custom: '',
+            return: 'http://contpub.org/paypal/success',
+            cancel_return: 'http://page.contpub.org/aspnetmvc2/cancel.php',
+            notify_url: ''
+        ]
+
+        def url = new StringBuffer('https://www.paypal.com/cgi-bin/webscr?')
+        paypal_params.each { k, v->
+            url << "${k}=${URLEncoder.encode(v.toString())}&"
+        }
+
+        redirect(url: url)
+    }
+
 
     def request = {
         def bookName = params.bookName
@@ -96,8 +139,31 @@ class BookController {
 
         [
             user: user,
-            book: book
+            book: book,
+            result: params.result
         ]
+    }
+
+    def requestSend = {
+        
+        def user = User.get(session.userId)
+        def book = Book.get(params.id)
+
+        // book not found
+        if (!book) { response.sendError 404; return }
+
+        def email = params.email
+
+        log.info "Send ebook download links to ${email}."
+        sendMail {     
+            to email
+            subject "您已購買的${book?.title}電子書"
+            body 'How are you?'
+        }
+
+        println params.email
+
+        redirect (action: 'request', params: [bookName: book?.name, result: 'SENDMAILOK'])
     }
 
     /**
@@ -248,15 +314,7 @@ class BookController {
             redirect (action: 'index')
         }
     }
-    
-    /**
-     * Checkout
-     */
-    def checkout = {
-        def book = Book.get(params.id)
-        [book: book]
-    }
-    
+
     /**
      * Checkout Save
      */

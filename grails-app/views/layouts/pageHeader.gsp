@@ -9,10 +9,10 @@
 			<a class="brand" href="/">ContPub</a>
 			<userTag:isNotLogin><div class="pull-right">
 				<g:form controller="home" action="login" class="form-inline" style="margin:0;padding:0">
-					<g:textField name="loginEmail" value="${flash.loginEmail}" class="input-medium" placeholder="Username or e-mail" />
-					<g:passwordField name="loginPassword" value="" autocomplete="off" class="input-small" placeholder="Password" />
-					<button type="submit" name="action" value="login" class="btn btn-primary"><i class="icon-lock icon-white"></i> Sign in</button>
-					<g:link controller="home" action="signup" class="btn btn btn-success">Sign up</g:link>
+					<g:textField name="loginEmail" value="${flash.loginEmail}" class="input-medium" placeholder="${g.message(code: 'common.header.username', default: 'Username or e-mail')}" />
+					<g:passwordField name="loginPassword" value="" autocomplete="off" class="input-small" placeholder="${g.message(code: 'common.header.password', default: 'Password')}" />
+					<button type="submit" name="action" value="login" class="btn btn-primary"><i class="icon-lock icon-white"></i> <g:message code="common.header.signin" default="Sign in" /></button>
+					<g:link controller="home" action="signup" class="btn btn btn-success"><g:message code="common.header.signup" default="Sign up" /></g:link>
 				</g:form>
 				<r:script>$('#loginEmail').focus();</r:script>
 			</div></userTag:isNotLogin>

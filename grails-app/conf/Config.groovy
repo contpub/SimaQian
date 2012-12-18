@@ -72,8 +72,8 @@ grails.exceptionresolver.params.exclude = ['password']
 
 // set per-environment serverURL stem for creating absolute links
 environments {
-    development {
-        grails.logging.jul.usebridge = true
+	development {
+		grails.logging.jul.usebridge = true
 
 		// disable cdn-resources plugin
 		grails.resources.cdn.enabled = false
@@ -90,13 +90,13 @@ environments {
 			useSecureAPI = true
 		}
 
-		log4j = {
-			info "grails.app"
-		}
+		//log4j = {
+		//	info "grails.app"
+		//}
 	}
-    production {
-        grails.logging.jul.usebridge = false
-        grails.serverURL = "http://contpub.org"
+	production {
+		grails.logging.jul.usebridge = false
+		grails.serverURL = "http://contpub.org"
 
 		// Grails cdn-resources plugin
 		grails.resources.cdn.enabled = false
@@ -108,32 +108,32 @@ environments {
 		}
 
 		//log4j.appender.'errors.File'="/tmp/stacktrace.log"
-		log4j = {
-			'null' name:'stacktrace'
-		}
+		//log4j = {
+		//	'null' name:'stacktrace'
+		//}
 	}
 }
 
 // log4j configuration
 log4j = {
-    // Example of changing the log pattern for the default console
-    // appender:
-    //
-    //appenders {
-    //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-    //}
+	// Example of changing the log pattern for the default console
+	// appender:
+	//
+	//appenders {
+	//    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+	//}
 
-    error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
-           'org.codehaus.groovy.grails.web.pages', //  GSP
-           'org.codehaus.groovy.grails.web.sitemesh', //  layouts
-           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping', // URL mapping
-           'org.codehaus.groovy.grails.commons', // core / classloading
-           'org.codehaus.groovy.grails.plugins', // plugins
-           'org.codehaus.groovy.grails.orm.hibernate', // hibernate integration
-           'org.springframework',
-           'org.hibernate',
-           'net.sf.ehcache.hibernate'
+	error  'org.codehaus.groovy.grails.web.servlet',  //  controllers
+		   'org.codehaus.groovy.grails.web.pages', //  GSP
+		   'org.codehaus.groovy.grails.web.sitemesh', //  layouts
+		   'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+		   'org.codehaus.groovy.grails.web.mapping', // URL mapping
+		   'org.codehaus.groovy.grails.commons', // core / classloading
+		   'org.codehaus.groovy.grails.plugins', // plugins
+		   'org.codehaus.groovy.grails.orm.hibernate', // hibernate integration
+		   'org.springframework',
+		   'org.hibernate',
+		   'net.sf.ehcache.hibernate'
 }
 
 //richui
@@ -247,4 +247,18 @@ mailhide {
 	privateKey = ""
 }
 
+grails {
+	mail {
+		host = "smtp.gmail.com"
+		port = 465
+		username = "username@gmail.com"
+		password = "password"
+		props = [
+			"mail.smtp.auth": "true",
+			"mail.smtp.socketFactory.port": "465",
+			"mail.smtp.socketFactory.class": "javax.net.ssl.SSLSocketFactory",
+			"mail.smtp.socketFactory.fallback": "false"
+		]
+	}
+}
 
