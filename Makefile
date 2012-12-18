@@ -19,7 +19,7 @@ war:
 	grails war
 
 download:
-	wget -O target/SimaQian.war s3://s3.lyhdev.com/apps/SimaQian.war
+	wget -O target/SimaQian.war http://s3.lyhdev.com/apps/SimaQian.war
 
 upload:
 	s3cmd put -P target/SimaQian.war s3://s3.lyhdev.com/apps/
