@@ -17,8 +17,8 @@ import java.io.*
 import java.util.zip.*
 
 // iText
-import com.itextpdf.text.*
-import com.itextpdf.text.pdf.*
+//import com.itextpdf.text.*
+//import com.itextpdf.text.pdf.*
 
 /**
  * Book Controller
@@ -220,7 +220,7 @@ class BookController {
             def signedUrl = s3Service.createSignedGetUrl("book/${book.name}.${fileExt}", 3)
             redirect (url: signedUrl.replace('https://', 'http://'))
         }
-        else if (params.encrypt != null) {
+        /*else if (params.encrypt != null) {
             try {
                 def object = s3Service.getObject("book/${book.name}.${fileExt}")
                 response.contentType = object.contentType
@@ -256,7 +256,7 @@ class BookController {
                 e.printStackTrace()
                 response.sendError 404
             }
-        }
+        }*/
         else {
             try {
                 def object = s3Service.getObject("book/${book.name}.${fileExt}")

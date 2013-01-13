@@ -40,16 +40,16 @@ grails.project.dependency.resolution = {
     	
         //groovy and related
         //compile 'org.codehaus.groovy:groovy:2.0.4'
-        compile('org.codehaus.groovy.modules.http-builder:http-builder:0.5.2') {
-            excludes "groovy"
-        }
+        //compile('org.codehaus.groovy.modules.http-builder:http-builder:0.5.2') {
+        //    excludes "groovy"
+        //}
         //runtime 'cglib:cglib:2.2.2'
 	
         //require org.apache.xerces.dom
         //compile 'xerces:xercesImpl:2.10.0'
 		
         //for mysql datasource
-		runtime 'mysql:mysql-connector-java:5.1.19'
+		runtime 'mysql:mysql-connector-java:5.1.20'
 		
 		//for rst2html
 		/*
@@ -66,22 +66,23 @@ grails.project.dependency.resolution = {
 
 		//runtime 'org.apache.pdfbox:pdfbox:1.7.0'
 		
-        runtime 'com.itextpdf:itextpdf:5.2.0'
-		runtime 'com.itextpdf:itext-asian:5.2.0'
-		runtime 'org.bouncycastle:bcprov-jdk16:1.46'
+        //runtime 'com.itextpdf:itextpdf:5.2.0'
+		//runtime 'com.itextpdf:itext-asian:5.2.0'
+		//runtime 'org.bouncycastle:bcprov-jdk16:1.46'
 	}
 
 	plugins {
 		compile ":hibernate:$grailsVersion"
-		compile ":jquery:1.8.0"
+		compile ":jquery:1.8.3"
 		compile ":resources:1.1.6"
+		compile ":rest:0.7"
 		
 		// either compile & test require latest spock plugin, or UnitSpec compile failed
 		//compile ":spock:0.6-SNAPSHOT"
 
 		build ":tomcat:$grailsVersion"
 
-        runtime ":database-migration:1.1"
+        //runtime ":database-migration:1.1"
 
         //compile ':cache:1.0.0'
 	}
